@@ -1,5 +1,5 @@
 {
-  "name": "demo",
+  "name": "card",
   "devDependencies": {
     "apache-server-configs": "^2.7.1",
     "grunt": "^0.4.5",
@@ -26,10 +26,8 @@
     "grunt-wiredep": "^1.7.0",
     "jshint-stylish": "^0.4.0",
     "load-grunt-tasks": "^0.4.0",
-    "mustache": "^1.0.0",
     "request": "^2.51.0",
-    "time-grunt": "^0.4.0",
-    "underscore": "^1.7.0"
+    "time-grunt": "^0.4.0"
   },
   "version": "1.0.0",
   "description": "demo for canjs",
@@ -38,5 +36,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "lpt",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsbhb/card.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jsbhb/card/issues"
+  },
+  "homepage": "https://github.com/jsbhb/card#readme"
 }
