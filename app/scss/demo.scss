@@ -1,0 +1,35 @@
+@charset "utf-8";
+/**
+ * Created by linpengteng on 2017/5/15.
+ */
+$base_font: "Helvetica Neue", "Helvetica,Arial","sans-serif","Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, "Microsoft YaHei","微软雅黑";
+$fontSize:16px;
+
+$smallSize:14px;
+
+body{
+  font-family: $base_font;
+  font-size: $fontSize;
+}
+
+h2{
+  height: 150px;
+  line-height: 100px;
+  background-color: antiquewhite;
+  border-radius: 10px;
+}
+
+#demo_header{
+  color: #446edb;
+  font-size:$smallSize;
+}
+
+#demo_center{
+   color:palevioletred;
+  font-size:$smallSize;
+}
+
+#demo_tfoot{
+  color: #62db36;
+  font-size:$smallSize;
+}
