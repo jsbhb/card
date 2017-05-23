@@ -4,12 +4,30 @@
  */
 
 body{
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif, "微软雅黑";
+  font-family: "Microsoft YaHei", tahoma, arial, "Hiragino Sans GB", "\\5b8b体", sans-serif, "微软雅黑";
   font-size: 14px;
   *{
     margin: 0;
     padding: 0;
   }
+  a:link,
+  a:hover,
+  a:hover,
+  a:active,
+  a:focus,
+  a:visited,
+  a:hover:active,
+  a:hover:focus,
+  a:hover:focus:active{
+    color: #fff;
+    text-decoration: none;
+    background-color: transparent;
+  }
+}
+
+input:focus{
+  outline: 0;
+  box-shadow: none;
 }
 
 ul,li{
@@ -18,16 +36,17 @@ ul,li{
   list-style-type: none;
 }
 
-.hide{
-  display: none;
-}
-
 .block{
   display: block;
 }
 
 .inline-block{
   display: inline-block;
+  vertical-align: top;
+}
+
+.hide{
+  display: none;
 }
 
 .float-left{

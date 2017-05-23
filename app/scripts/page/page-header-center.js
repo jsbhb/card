@@ -6,11 +6,11 @@
 
 define([
     "jquery",
-    "underscore",
+    "bower_components/underscore/underscore",
     "can",
     "comm.model",
     "fixture.test"
-], function($, _, can, Comm, Render){
+], function($, _, can, Comm){
 
     //Control
     var Control = can.Control.extend({

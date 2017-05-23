@@ -6,11 +6,11 @@
 
 define([
     "jquery",
-    "underscore",
+    "bower_components/underscore/underscore",
     "can",
     "comm.model",
     "fixture.test"
-], function($, _, can, Comm, Render){
+], function($, _, can, Comm){
 
     //Model
     var Model = new Comm({
@@ -20,7 +20,7 @@ define([
          */
         findCity: function(){
             return this.sendRequest({
-                url: "/card/findLocalCity",
+                url: "/card/findCity",
                 type: "get"
             })
         }

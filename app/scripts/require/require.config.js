@@ -19,12 +19,14 @@ requirejs.config({
         "fixture.data": "app/scripts/fixture/fixture.data",
         "fixture.test": "app/scripts/fixture/fixture.test",
         "require.config": "app/scripts/require/require.config",
-        "page.header.top": "app/scripts/page/page.header.top",
-        "page.header.center": "app/scripts/page/page.header.center",
+        "page.header": "app/scripts/page/page-header",
+        "page.header.top": "app/scripts/page/page-header-top",
+        "page.header.center": "app/scripts/page/page-header-center",
 
         //app (mustache)
         "page-header-top": "app/templates/page/page-header-top",
-        "page-header-center": "app/templates/page/page-header-center"
+        "page-header-center": "app/templates/page/page-header-center",
+        "page-center-nav": "app/templates/page/page-center-nav"
 
     },
 

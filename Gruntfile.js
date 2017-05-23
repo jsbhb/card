@@ -41,12 +41,15 @@ module.exports = function(grunt) {
             concatsass: {
                 options: {
                     separator: '',
-                    stripBanners: true,
+                    stripBanners: false,
                     banner: ''
                 },
-                files: {
-                    '<%= config.scss %>/page.scss': ['<%= config.scss %>/page/{,*/}*.scss']
-                }
+                src: [
+                    '<%= config.scss %>/page/page-common.scss',
+                    '<%= config.scss %>/page/*.scss',
+                    '!<%= config.scss %>/page/page.scss'
+                ],
+                dest: '<%= config.scss %>/page/page.scss'
             }
         },
 
@@ -57,7 +60,7 @@ module.exports = function(grunt) {
                     style: 'expanded'
                 },
                 files: {
-                    '<%=config.app%>/css/page/page.css': '<%=config.app%>/scss/page.scss'
+                    '<%= config.css %>/page/page.css': '<%= config.scss %>/page/page.scss'
                 }
             }
         },
@@ -65,7 +68,7 @@ module.exports = function(grunt) {
         //监听文件变动
         watch: {
             watchsass : {
-                files :['<%=config.scss%>/*/*.scss'],
+                files :['<%= config.scss %>/*/*.scss'],
                 tasks : ['concat', 'sass']
             },
             livereload: {
@@ -73,7 +76,7 @@ module.exports = function(grunt) {
                     livereload: '<%= connect.options.livereload %>'
                 },
                 files: [
-                    '<%=config.root%>{,**/}*.{html,htm}',
+                    '<%=config.root%>/{,**/}*.{html,htm}',
                     '<%=config.css%>/{,**/}*.css'
                 ]
             }
@@ -88,7 +91,7 @@ module.exports = function(grunt) {
 
 
     //加载任务代码：执行默认任务中的所有方法
-    grunt.registerTask('default',['concat', 'sass','connect','watch']);
+    grunt.registerTask('default',['concat', 'sass', 'connect', 'watch']);
 
 }
 
