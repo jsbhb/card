@@ -5,23 +5,21 @@
      <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
      <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
      <title>Title</title>
-     <script src="scripts/full/require.js"></script>
-     <script src="scripts/full/require.config.js"></script>
-     <link href="style.css" rel="stylesheet" type="text/css" />
+     <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
+     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+     <link rel="stylesheet" href="/app/css/page/page.css">
+     <script src="/bower_components/requirejs/require.js"></script>
+     <script src="/app/scripts/require/require.config.js"></script>
    </head>
 
-
    <body>
-     <h2>正在演示中.....</h2>
-     <div id="demo_header"><
-       div>
-     <div id="demo_center"></div>
-     <div id="demo_tfoot"></div>
+       <div class="load-page-header-top"></div>
+       <div class="load-page-header-center"></div>
    </body>
 
-
    <script type="text/javascript">
-     require(["demo_mustache"]);
+       require(["page.header.top"]);
+       require(["page.header.center"]);
    </script>
    
  </html>

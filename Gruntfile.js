@@ -2,110 +2,93 @@
 
 module.exports = function(grunt) {
 
-    var sassStyle = 'expanded';
-
     // Configurable paths
     var config = {
-        app: 'app',
-        dist: 'dist',
-        tmp: '.tmp',
-        publish: 'publish',
-        timestamp: Date.now()
+        root:    './',
+        app:     './app',
+        css:     './app/css',
+        fonts:   './app/fonts',
+        scripts: './app/scripts',
+        scss:    './app/scss'
     };
 
     //任务配置代码
     grunt.initConfig({
 
-        // Project settings
-        config :config,
-
+        //读取package.json文件
         pkg: grunt.file.readJSON('package.json'),
 
-        //压缩css文件
-        sass:{
-            output : {
+        // 项目默认配置
+        config: config,
+
+        // 服务器参数设置
+        connect: {
+            options: {
+                hostname: '127.0.0.1',
+                port: 9000,
+                livereload: 35729
+            },
+            server: {
                 options: {
-                    style: sassStyle
-                },
-                files: {
-                    '<%=config.app%>/style.css': '<%=config.app%>/scss/{,*/}*.scss'
+                    open: true,
+                    base: './'
                 }
             }
         },
-        //结合js文件
-        // concat: {
-        //     dist: {
-        //         src: ['<%= config.app %>/scripts/{,*/}*.js'],
-        //         dest: '<%= config.app %>/global.js',
-        //     },
-        // },
-        //压缩js
-        // uglify: {
-        //     compressjs: {
-        //         files: {
-        //             '<%= config.app %>/global.min.js': ['<%= config.app %>/global.js']
-        //         }
-        //     }
-        // },
-        //检查js语法
-        jshint: {
-            all: ['app/scripts/full/demo_mustache.js']
+
+        //合并文件
+        concat: {
+            concatsass: {
+                options: {
+                    separator: '',
+                    stripBanners: true,
+                    banner: ''
+                },
+                files: {
+                    '<%= config.scss %>/page.scss': ['<%= config.scss %>/page/{,*/}*.scss']
+                }
+            }
+        },
+
+        //编译scss文件
+        sass:{
+            output : {
+                options: {
+                    style: 'expanded'
+                },
+                files: {
+                    '<%=config.app%>/css/page/page.css': '<%=config.app%>/scss/page.scss'
+                }
+            }
         },
 
         //监听文件变动
         watch: {
-            scripts: {
-                files: ['<%=config.app%>/scripts/{,*/}*.js'],
-                tasks: ['jshint']
-            },
-            sass: {
-                files: ['<%=config.app%>/scss/{,*/}*.scss'],
-                tasks: ['sass']
+            watchsass : {
+                files :['<%=config.scss%>/*/*.scss'],
+                tasks : ['concat', 'sass']
             },
             livereload: {
                 options: {
                     livereload: '<%= connect.options.livereload %>'
                 },
                 files: [
-                    '<%=config.app%>/index.html',
-                    '<%=config.app%>/style.css'
+                    '<%=config.root%>{,**/}*.{html,htm}',
+                    '<%=config.css%>/{,**/}*.css'
                 ]
             }
         },
-        connect: {
-            options: {
-                port: 9000,
-                open: true,
-                livereload: 35729,
-                // Change this to '0.0.0.0' to access the server from outside
-                hostname: 'localhost'
-            },
-            server: {
-                options: {
-                    port: 9001,
-                    base: './app'
-                }
-            }
-        }
     });
 
     //插件加载代码
-    //load the plugin that provides the 'scss' task
-    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+
 
     //加载任务代码：执行默认任务中的所有方法
-    // Default task(s).
-    grunt.registerTask('outputcss', ['sass']);
-    // grunt.registerTask('concatjs',['concat']);
-    // grunt.registerTask('compressjs',['concat','jshint','uglify']);
-    grunt.registerTask('watchit',['sass','connect','watch']);
-    //加载任务代码：执行uglify中指定的方法
-    grunt.registerTask('default');
+    grunt.registerTask('default',['concat', 'sass','connect','watch']);
 
 }
 
