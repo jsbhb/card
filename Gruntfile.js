@@ -8,6 +8,7 @@ module.exports = function(grunt) {
         app:     './app',
         css:     './app/css',
         fonts:   './app/fonts',
+        images:  './app/images',
         scripts: './app/scripts',
         scss:    './app/scss'
     };
@@ -77,7 +78,10 @@ module.exports = function(grunt) {
                 },
                 files: [
                     '<%=config.root%>/{,**/}*.{html,htm}',
-                    '<%=config.css%>/{,**/}*.css'
+                    '<%=config.css%>/{,**/}*.css',
+                    '<%=config.fonts%>/{,**/}*.{otf, eot, svg, ttf, woff, woff2}',
+                    '<%=config.images%>/{,**/}*.{png, jpg}',
+                    '<%=config.scripts%>/{,**/}*.js'
                 ]
             }
         },
@@ -91,7 +95,7 @@ module.exports = function(grunt) {
 
 
     //加载任务代码：执行默认任务中的所有方法
-    grunt.registerTask('default',['concat', 'sass', 'connect', 'watch']);
+    grunt.registerTask('default', ['concat', 'sass', 'connect', 'watch']);
 
 }
 
