@@ -22,11 +22,13 @@ requirejs.config({
         "page.header": "app/scripts/page/page-header",
         "page.header.top": "app/scripts/page/page-header-top",
         "page.header.center": "app/scripts/page/page-header-center",
+        "page.body": "app/scripts/page/page-body",
+        "page.body.nav": "app/scripts/page/page-body-nav",
 
         //app (mustache)
         "page-header-top": "app/templates/page/page-header-top",
         "page-header-center": "app/templates/page/page-header-center",
-        "page-center-nav": "app/templates/page/page-center-nav"
+        "page-body-nav": "app/templates/page/page-body-nav"
 
     },
 

@@ -1,0 +1,89 @@
+
+// base
+$top_color: #777;
+$top_backgroundColor: #f6f6f6;
+$color_tangerine: #ff4200;
+
+@mixin page{
+  width: 100%;
+  min-width:1390px;
+  @at-root .short &{
+    min-width:1200px;
+  }
+}
+@mixin pageContent($height:auto,$lineHeight:1.42857143, $fontSize:12px, $color:#333){
+  width: 100%;
+  height: $height;
+  max-width: 1390px;
+  margin: auto;
+  line-height: $lineHeight;
+  font-size: $fontSize;
+  color: $color;
+  @at-root .short &{
+    max-width:1200px;
+  }
+}
+
+/*
+ * page header-nav部分样式
+ */
+.page-body-nav{
+  @include page;
+  &>.page-body-nav-content{
+    @include pageContent(580px,28px,13px,#777);
+    &>.nav_left{
+      width: 200px;
+      height: 520px;
+      background-color: #fff;
+      float: left;
+      .items{
+        padding:0 16px;
+        li{
+          height: 65px;
+          padding-top: 15px;
+          position: relative;
+          .title{
+            font-size: 1.17em;
+            font-weight: 500;
+            color: #333;
+          }
+          a.item{
+            font-size: 12px;
+            color: #999;
+            margin:0 2px;
+          }
+          span.fa-angle-right{
+            color: #888;
+            position: absolute;
+            top: 15px;
+            right: -13px;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+    &>.nav_center{
+      width: 800px;
+      height: 500px;
+      float: left;
+      &>.banner{
+        width: 800px;
+        height: 365px;
+        border:solid 1px #999;
+        float: left;
+      }
+      &>.footer{
+        width: 800px;
+        height: 155px;
+        border:solid 1px #999;
+        clear: both;
+      }
+    }
+    &>.nav_right{
+      width: 200px;
+      height: 520px;
+      border:solid 1px #999;
+      float: left;
+    }
+  }
+}

@@ -39,7 +39,7 @@ module.exports = function(grunt) {
 
         //合并文件
         concat: {
-            concatsass: {
+            sass_page: {
                 options: {
                     separator: '',
                     stripBanners: false,

@@ -6,10 +6,12 @@
 body{
   font-family: "Microsoft YaHei", tahoma, arial, "Hiragino Sans GB", "\\5b8b体", sans-serif, "微软雅黑";
   font-size: 14px;
+  background-color: #f9f9f9;
   *{
     margin: 0;
     padding: 0;
   }
+  a,
   a:link,
   a:hover,
   a:hover,
@@ -19,7 +21,7 @@ body{
   a:hover:active,
   a:hover:focus,
   a:hover:focus:active{
-    color: #fff;
+    color: #333;
     text-decoration: none;
     background-color: transparent;
   }

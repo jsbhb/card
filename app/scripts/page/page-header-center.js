@@ -6,7 +6,7 @@
 
 define([
     "jquery",
-    "bower_components/underscore/underscore",
+    "underscore",
     "can",
     "comm.model",
     "fixture.test"

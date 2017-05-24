@@ -18,9 +18,9 @@ define([
         /**
          * @description 查询所处市区
          */
-        findCity: function(){
+        findNav: function(){
             return this.sendRequest({
-                url: "/card/findCity",
+                url: "",
                 type: "get"
             })
         }
@@ -47,13 +47,13 @@ define([
          */
         render: function() {
             var that = this;
-            can.when(Model.findCity()).done(function(responseData){
-                that.element.html(can.view("page-header-top.mustache", responseData, that.helper));
+            can.when(true).done(function(responseData){
+                that.element.html(can.view("page-body-nav.mustache", responseData, that.helper));
             })
         }
 
     })
 
-    return new Control(".load-page-header-top");
+    return new Control(".load-page-body-nav");
 
 })
