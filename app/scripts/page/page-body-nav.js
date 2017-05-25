@@ -12,57 +12,70 @@ define([
     "fixture.test"
 ], function($, _, can, Comm){
 
-    //Model
+    /** Model
+     *   @description 模型
+     *   @findNav  查询Nav数据
+     */
     var Model = new Comm({
-
-        /** Model
-         *   @description 模型
-         *   @findNav  查询Nav数据
-         */
         findNav: function(){
             return this.sendRequest({
-                url: "",
+                url: "/card/findNav",
                 type: "get"
             })
         }
     });
 
     /** Component
-     *   @description: 组件
+     *   @description: 模板组件
      */
     can.Component.extend({
         tag: "load-page-body-nav",
         scope: {
+            content_css: "display: none",
         },
         template: can.view("page-body-nav.mustache"),
         helpers: {
+            // func: function(items,options){
+            //    ... ...
+            //    return options.fn(options.contexts || this);
+            // }
         },
         events: {
             ".nav_left li mouseenter": function(elements, event){
-                var css = $(elements[0]).attr("items-index")*1>4?
-                          {"top": "auto","bottom": "0px","display": "block"}:
-                          {"top": "0px","bottom": "auto","display": "block"}
-                $(".nav_center_content2").css(css);
-                $(".nav_left>.items>li").removeClass("hover");
+                var css_top = {"top": "0px","bottom": "auto","display": "block"};
+                var css_bottom = {"top": "auto","bottom": "0px","display": "block" };
+                var index = $(elements[0]).attr("item-index")*1;
+                index<5?this.scope.attr("content_css", css_top):this.scope.attr("content_css", css_bottom);
+                $("[item-index]").removeClass("hover");
                 $(elements[0]).addClass("hover");
             },
-            ".nav_left mouseleave,.nav_center_content2 mouseleave": function(elements, event){
-                $(".nav_center_content2").css("display", "none");
-                $(".nav_left>.items>li").removeClass("hover");
+            ".page-body-nav-content, .nav_center_content2 mouseleave": function(elements, event){
+                this.scope.attr("content_css", "display: none");
+                $("[item-index]").removeClass("hover");
+                event && event.stopPropagation();
             }
-        },
-        init: function(){
-
         }
     })
 
-    /** 加载js时
+    /** Control
+     *   @description 控制
      *   @description: 发起请求，返回数据，处理模板并渲染输出
+     *   @param:
+     *      loadPage: 创建模板节点, 自动调用相应的模板组件
+     *      mapData: 封装成can.Map类型的responseData数据, 以便起到监听作用, 实现动态渲染
      */
-    can.when(true).done(function(responseData){
-        $(".load-page-body-nav").html(
-            can.mustache("<load-page-body-nav></load-page-body-nav>")(responseData)
-        );
+    var Control = can.Control.extend({
+        init: function(){
+            can.when(Model.findNav()).done(
+                $.proxy(function(responseData){
+                    this.options.loadPage = "<load-page-body-nav></load-page-body-nav>";
+                    this.options.mapData = new can.Map(responseData);
+                    this.element.html(can.mustache(this.options.loadPage)(this.options.mapData));
+                },this)
+            )
+        }
     })
+
+    new Control(".load-page-body-nav");
 
 })

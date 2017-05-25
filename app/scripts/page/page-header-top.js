@@ -39,13 +39,25 @@ define([
         }
     })
 
-    /** 加载js时
+    /** Control
+     *   @description 控制
      *   @description: 发起请求，返回数据，处理模板并渲染输出
+     *   @param:
+     *      loadPage: 创建模板节点, 自动调用相应的模板组件
+     *      mapData: 封装成can.Map类型的responseData数据, 以便起到监听作用, 实现动态渲染
      */
-    can.when(Model.findCity()).done(function(responseData){
-        $(".load-page-header-top").html(
-            can.mustache("<load-page-header-top></load-page-header-top>")(responseData)
-        );
+    var Control = can.Control.extend({
+        init: function(){
+            can.when(Model.findCity()).done(
+                $.proxy(function(responseData){
+                    this.options.loadPage = "<load-page-header-top></load-page-header-top>";
+                    this.options.mapData = new can.Map(responseData);
+                    this.element.html(can.mustache(this.options.loadPage)(this.options.mapData));
+                },this)
+            )
+        }
     })
+
+    new Control(".load-page-header-top");
 
 });
