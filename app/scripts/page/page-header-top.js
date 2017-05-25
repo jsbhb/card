@@ -13,8 +13,9 @@ define([
 ], function($, _, can, Comm){
 
     /** Model
-     *   @description 模型
-     *   @findCity  查询所在市区
+     *   @description 查询数据
+     *   @parameter:
+     *       findCity:  查询所在市区
      */
     var Model = new Comm({
         findCity: function(){
@@ -41,9 +42,9 @@ define([
 
     /** Control
      *   @description: 发起请求，返回数据，处理模板并渲染输出
-     *   @param:
-     *      loadPage: 创建模板节点, 自动调用相应的模板组件
-     *      mapData: 封装成can.Map类型的responseData数据, 以便起到监听作用, 实现动态渲染
+     *   @parameter:
+     *       loadPage: 创建模板节点, 自动调用相应的模板组件
+     *       mapData: 封装成can.Map类型的responseData数据, 以便起到监听作用, 实现动态渲染
      */
     var Control = can.Control.extend({
         init: function(){
