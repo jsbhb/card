@@ -40,7 +40,6 @@ define([
     })
 
     /** Control
-     *   @description 控制
      *   @description: 发起请求，返回数据，处理模板并渲染输出
      *   @param:
      *      loadPage: 创建模板节点, 自动调用相应的模板组件
