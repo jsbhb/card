@@ -46,7 +46,7 @@ define([
                 $(".nav_left>.items>li").removeClass("hover");
                 $(elements[0]).addClass("hover");
             },
-            ".page-body-nav-content mouseleave": function(elements, event){
+            ".nav_left mouseleave,.nav_center_content2 mouseleave": function(elements, event){
                 $(".nav_center_content2").css("display", "none");
                 $(".nav_left>.items>li").removeClass("hover");
             }
