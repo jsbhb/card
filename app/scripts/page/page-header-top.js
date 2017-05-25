@@ -12,48 +12,40 @@ define([
     "fixture.test"
 ], function($, _, can, Comm){
 
-    //Model
+    /** Model
+     *   @description 模型
+     *   @findCity  查询所在市区
+     */
     var Model = new Comm({
-
-        /**
-         * @description 查询所处市区
-         */
         findCity: function(){
             return this.sendRequest({
                 url: "/card/findCity",
                 type: "get"
             })
         }
-
     });
 
-    //Control
-    var Control = can.Control.extend({
-
-        /**
-         * @description 全局helper
-         */
-        helper: {},
-
-        /**
-         * @description 初始化
-         */
-        init: function(){
-            this.render();
+    /** Component
+     *   @description: 组件
+     */
+    can.Component.extend({
+        tag: "load-page-header-top",
+        scope: {
         },
-
-        /**
-         * @description 渲染
-         */
-        render: function() {
-            var that = this;
-            can.when(Model.findCity()).done(function(responseData){
-                that.element.html(can.view("page-header-top.mustache", responseData, that.helper));
-            })
+        template: can.view("page-header-top.mustache"),
+        helpers: {
+        },
+        events: {
         }
-
     })
 
-    return new Control(".load-page-header-top");
+    /** 加载js时
+     *   @description: 发起请求，返回数据，处理模板并渲染输出
+     */
+    can.when(Model.findCity()).done(function(responseData){
+        $(".load-page-header-top").html(
+            can.mustache("<load-page-header-top></load-page-header-top>")(responseData)
+        );
+    })
 
-})
+});

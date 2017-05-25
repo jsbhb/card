@@ -12,30 +12,23 @@ define([
     "fixture.test"
 ], function($, _, can, Comm){
 
-    //Control
-    var Control = can.Control.extend({
-
-        /**
-         * @description 全局helper
-         */
-        helper: {},
-
-        /**
-         * @description 初始化
-         */
-        init: function(){
-            this.render();
+    /** Component
+     *   @description: 组件
+     */
+    can.Component.extend({
+        tag: "load-page-header-center",
+        scope: {
         },
-
-        /**
-         * @description 渲染
-         */
-        render: function() {
-            this.element.html(can.view("page-header-center.mustache", {}, this.helper));
+        template: can.view("page-header-center.mustache"),
+        helpers: {
+        },
+        events: {
         }
-
     })
 
-    return new Control(".load-page-header-center");
+    /** 加载js时
+     *   @description: 处理模板并渲染输出
+     */
+    $(".load-page-header-center").html(can.mustache("<load-page-header-center></load-page-header-center>"));
 
 })

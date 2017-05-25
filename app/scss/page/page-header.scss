@@ -1,31 +1,6 @@
-
-// base
-$top_color: #777;
-$top_backgroundColor: #f6f6f6;
-$color_tangerine: #ff4200;
-
-@mixin page{
-  width: 100%;
-  min-width:1390px;
-  @at-root .short &{
-    min-width:1200px;
-  }
-}
-@mixin pageContent($height:auto,$lineHeight:1.42857143, $fontSize:12px, $color:#333){
-  width: 100%;
-  height: $height;
-  max-width: 1390px;
-  margin: auto;
-  line-height: $lineHeight;
-  font-size: $fontSize;
-  color: $color;
-  @at-root .short &{
-    max-width:1200px;
-  }
-}
-
+@charset "utf-8";
 /*
- * page header-top部分样式
+ * page-header-top部分样式
  */
 .page-header-top{
   @include page;
@@ -36,7 +11,7 @@ $color_tangerine: #ff4200;
 }
 
 /*
- * page header-center部分样式
+ * page-header-center部分样式
  */
 .page-header-center{
   @include page;
@@ -52,10 +27,11 @@ $color_tangerine: #ff4200;
       }
     }
     .page-header-center-search{
-      width: calc(100% - 300px);
-      max-width: 680px;
+      width: 520px;
       height: 100px;
       padding-top: 13px;
+      float: right;
+      margin-right: 60px;
       [class~='search-baby'],
       [class~='search-shop']{
         width: 50px;
@@ -76,7 +52,7 @@ $color_tangerine: #ff4200;
       }
       .btn-search{
         @extend .input-search;
-        width: 100px;
+        width: 120px;
         padding: 3px 10px;
         background-color: $color_tangerine;
         font-size: 17px;
@@ -101,11 +77,15 @@ $color_tangerine: #ff4200;
         text-align: center;
         background-color: #ff4200;
       }
+      ul{
+        float: right;
+        margin-right: 10px;
+      }
       li{
-        min-width: 110px;
+        min-width: 85px;
         height: 33px;
         margin-top: 7px;
-        padding: 0 14px;
+        padding: 0 15px;
         display: inline-block;
       }
       li>a.plate{

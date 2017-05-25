@@ -37,23 +37,6 @@ module.exports = function(grunt) {
             }
         },
 
-        //合并文件
-        concat: {
-            sass_page: {
-                options: {
-                    separator: '',
-                    stripBanners: false,
-                    banner: ''
-                },
-                src: [
-                    '<%= config.scss %>/page/page-common.scss',
-                    '<%= config.scss %>/page/*.scss',
-                    '!<%= config.scss %>/page/page.scss'
-                ],
-                dest: '<%= config.scss %>/page/page.scss'
-            }
-        },
-
         //编译scss文件
         sass:{
             output : {
@@ -70,7 +53,7 @@ module.exports = function(grunt) {
         watch: {
             watchsass : {
                 files :['<%= config.scss %>/*/*.scss'],
-                tasks : ['concat', 'sass']
+                tasks : ['sass']
             },
             livereload: {
                 options: {
@@ -95,7 +78,7 @@ module.exports = function(grunt) {
 
 
     //加载任务代码：执行默认任务中的所有方法
-    grunt.registerTask('default', ['concat', 'sass', 'connect', 'watch']);
+    grunt.registerTask('default', ['sass', 'connect', 'watch']);
 
 }
 

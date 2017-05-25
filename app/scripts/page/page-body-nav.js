@@ -15,8 +15,9 @@ define([
     //Model
     var Model = new Comm({
 
-        /**
-         * @description 查询所处市区
+        /** Model
+         *   @description 模型
+         *   @findNav  查询Nav数据
          */
         findNav: function(){
             return this.sendRequest({
@@ -24,36 +25,49 @@ define([
                 type: "get"
             })
         }
-
     });
 
-    //Control
-    var Control = can.Control.extend({
+    /** Component
+     *   @description: 组件
+     */
+    can.Component.extend({
+        tag: "load-page-body-nav",
+        scope: {
 
-        /**
-         * @description 全局helper
-         */
-        helper: {},
-
-        /**
-         * @description 初始化
-         */
-        init: function(){
-            this.render();
         },
+        template: can.view("page-body-nav.mustache"),
+        helpers: {
+        },
+        events: {
+            ".nav_left li mouseenter": function(elements, event){
+                $(".nav_left>.items>li").removeClass("hover");
+                $(".nav_center_content2").css("display", "block");
+                if($(elements[0]).attr("items-index")*1>4){
+                    $(".nav_center_content2").css("top", "auto");
+                    $(".nav_center_content2").css("bottom", "0px");
+                }else{
+                    $(".nav_center_content2").css("bottom", "auto");
+                    $(".nav_center_content2").css("top", "0px");
+                }
+                $(elements[0]).addClass("hover");
+            },
+            ".page-body-nav-content mouseleave": function(elements, event){
+                $(".nav_left>.items>li").removeClass("hover");
+                $(".nav_center_content2").css("display", "none");
+            }
+        },
+        init: function(){
 
-        /**
-         * @description 渲染
-         */
-        render: function() {
-            var that = this;
-            can.when(true).done(function(responseData){
-                that.element.html(can.view("page-body-nav.mustache", responseData, that.helper));
-            })
         }
-
     })
 
-    return new Control(".load-page-body-nav");
+    /** 加载js时
+     *   @description: 发起请求，返回数据，处理模板并渲染输出
+     */
+    can.when(true).done(function(responseData){
+        $(".load-page-body-nav").html(
+            can.mustache("<load-page-body-nav></load-page-body-nav>")(responseData)
+        );
+    })
 
 })
