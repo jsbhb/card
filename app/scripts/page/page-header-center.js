@@ -16,7 +16,7 @@ define([
      *   @description: 组件
      */
     can.Component.extend({
-        tag: "load-page-header-center",
+        tag: "page-header-center",
         scope: {
         },
         template: can.view("page-header-center.mustache"),
@@ -38,7 +38,7 @@ define([
         init: function(){
             can.when(true).done(
                 $.proxy(function(responseData){
-                    this.options.loadPage = "<load-page-header-center></load-page-header-center>";
+                    this.options.loadPage = "<page-header-center></page-header-center>";
                     this.options.mapData = new can.Map(responseData);
                     this.element.html(can.mustache(this.options.loadPage)(this.options.mapData));
                 },this)

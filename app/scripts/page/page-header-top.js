@@ -29,7 +29,7 @@ define([
      *   @description: 组件
      */
     can.Component.extend({
-        tag: "load-page-header-top",
+        tag: "page-header-top",
         scope: {
         },
         template: can.view("page-header-top.mustache"),
@@ -50,7 +50,7 @@ define([
         init: function(){
             can.when(Model.findCity()).done(
                 $.proxy(function(responseData){
-                    this.options.loadPage = "<load-page-header-top></load-page-header-top>";
+                    this.options.loadPage = "<page-header-top></page-header-top>";
                     this.options.mapData = new can.Map(responseData);
                     this.element.html(can.mustache(this.options.loadPage)(this.options.mapData));
                 },this)

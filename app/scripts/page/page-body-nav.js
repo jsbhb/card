@@ -29,7 +29,7 @@ define([
      *   @description: 模板组件
      */
     can.Component.extend({
-        tag: "load-page-body-nav",
+        tag: "page-body-nav",
         scope: {
             content_css: "display: none",
         },
@@ -68,7 +68,7 @@ define([
         init: function(){
             can.when(Model.findNav()).done(
                 $.proxy(function(responseData){
-                    this.options.loadPage = "<load-page-body-nav></load-page-body-nav>";
+                    this.options.loadPage = "<page-body-nav></page-body-nav>";
                     this.options.mapData = new can.Map(responseData);
                     this.element.html(can.mustache(this.options.loadPage)(this.options.mapData));
                 },this)
