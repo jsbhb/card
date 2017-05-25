@@ -8,6 +8,7 @@ module.exports = function(grunt) {
         app:     './app',
         css:     './app/css',
         fonts:   './app/fonts',
+        images:   './app/images',
         scripts: './app/scripts',
         scss:    './app/scss'
     };
@@ -36,20 +37,6 @@ module.exports = function(grunt) {
             }
         },
 
-        //合并文件
-        concat: {
-            concatsass: {
-                options: {
-                    separator: '',
-                    stripBanners: true,
-                    banner: ''
-                },
-                files: {
-                    '<%= config.scss %>/page.scss': ['<%= config.scss %>/page/{,*/}*.scss']
-                }
-            }
-        },
-
         //编译scss文件
         sass:{
             output : {
@@ -57,7 +44,7 @@ module.exports = function(grunt) {
                     style: 'expanded'
                 },
                 files: {
-                    '<%=config.app%>/css/page/page.css': '<%=config.app%>/scss/page.scss'
+                    '<%=config.css%>/page/page.css': '<%=config.scss%>/page/page.scss'
                 }
             }
         },
@@ -65,15 +52,17 @@ module.exports = function(grunt) {
         //监听文件变动
         watch: {
             watchsass : {
-                files :['<%=config.scss%>/*/*.scss'],
-                tasks : ['concat', 'sass']
+                files :[
+                    '<%=config.scss%>/{,**/}*.scss',
+                ],
+                tasks : ['sass']
             },
             livereload: {
                 options: {
                     livereload: '<%= connect.options.livereload %>'
                 },
                 files: [
-                    '<%=config.root%>{,**/}*.{html,htm}',
+                    '<%=config.root%>/{,**/}*.{html,htm}',
                     '<%=config.css%>/{,**/}*.css'
                 ]
             }
@@ -81,14 +70,13 @@ module.exports = function(grunt) {
     });
 
     //插件加载代码
-    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
 
     //加载任务代码：执行默认任务中的所有方法
-    grunt.registerTask('default',['concat', 'sass','connect','watch']);
+    grunt.registerTask('default',['sass','connect','watch']);
 
 }
 

@@ -23,7 +23,6 @@ requirejs.config({
         "page": "app/scripts/page/page",
         "page.header.top": "app/scripts/page/page-header-top",
         "page.header.center": "app/scripts/page/page-header-center",
-        "page.body": "app/scripts/page/page-body",
         "page.body.nav": "app/scripts/page/page-body-nav",
 
         //app (mustache)

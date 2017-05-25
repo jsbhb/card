@@ -1,0 +1,33 @@
+@charset "utf-8";
+/**
+ * Created by linpengteng on 2017/5/22.
+ */
+
+// 自定义参数
+$top_color: #777;
+$top_backgroundColor: #f6f6f6;
+$color_tangerine: #ff4200;
+
+@mixin page{
+  width: 100%;
+  min-width:1390px;
+  @at-root .short &{
+    min-width:1100px;
+  }
+}
+@mixin pageContent($height:auto,$lineHeight:1.42857143, $fontSize:12px, $color:#333){
+  width: 100%;
+  height: $height;
+  max-width: 1390px;
+  margin: auto;
+  line-height: $lineHeight;
+  font-size: $fontSize;
+  color: $color;
+  @at-root .short &{
+    max-width:1100px;
+  }
+}
+
+@import "page-common";
+@import "page-header";
+@import "page-body";
