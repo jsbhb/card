@@ -33,27 +33,22 @@ define([
     can.Component.extend({
         tag: "load-page-body-nav",
         scope: {
-
         },
         template: can.view("page-body-nav.mustache"),
         helpers: {
         },
         events: {
             ".nav_left li mouseenter": function(elements, event){
+                var css = $(elements[0]).attr("items-index")*1>4?
+                          {"top": "auto","bottom": "0px","display": "block"}:
+                          {"top": "0px","bottom": "auto","display": "block"}
+                $(".nav_center_content2").css(css);
                 $(".nav_left>.items>li").removeClass("hover");
-                $(".nav_center_content2").css("display", "block");
-                if($(elements[0]).attr("items-index")*1>4){
-                    $(".nav_center_content2").css("top", "auto");
-                    $(".nav_center_content2").css("bottom", "0px");
-                }else{
-                    $(".nav_center_content2").css("bottom", "auto");
-                    $(".nav_center_content2").css("top", "0px");
-                }
                 $(elements[0]).addClass("hover");
             },
             ".page-body-nav-content mouseleave": function(elements, event){
-                $(".nav_left>.items>li").removeClass("hover");
                 $(".nav_center_content2").css("display", "none");
+                $(".nav_left>.items>li").removeClass("hover");
             }
         },
         init: function(){
