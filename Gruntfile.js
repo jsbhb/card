@@ -9,7 +9,9 @@ module.exports = function(grunt) {
         css:     './app/css',
         fonts:   './app/fonts',
         scripts: './app/scripts',
-        scss:    './app/scss'
+        scss:    './app/scss',
+        distscrpits:'./app/dist/scripts',
+        distdcss:'./app/dist/css'
     };
 
     //任务配置代码
@@ -36,6 +38,26 @@ module.exports = function(grunt) {
             }
         },
 
+        uglify:{
+            options: {
+                banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'//添加banner
+            },
+            build:{
+                options: {
+                    mangle: false, //不混淆变量名
+                    preserveComments: 'all', //不删除注释，还可以为 false（删除全部注释），some（保留@preserve @license @cc_on等注释）
+                    footer:'\n/*! <%= pkg.name %> 最后修改于： <%= grunt.template.today("yyyy-mm-dd") %> */'//添加footer
+                },
+                files:[{
+                    expand:true,
+                    cwd:'<%=config.scripts%>',
+                    src:'**/*.js',
+                    dest:'<%=config.distscrpits%>',
+                    ext:'.min.js'
+                }]
+            }
+        },
+
         //合并文件
         concat: {
             concatsass: {
@@ -47,6 +69,12 @@ module.exports = function(grunt) {
                 files: {
                     '<%= config.scss %>/page.scss': ['<%= config.scss %>/page/{,*/}*.scss']
                 }
+            }
+        },
+        wiredep: {
+            app: {
+                ignorePath: /^\/|\.\.\//,
+                src: ['<%= config.root %>/index.html']
             }
         },
 
@@ -85,10 +113,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-wiredep');
 
-
+    grunt.registerTask('ug',['uglify']);
+    grunt.registerTask('wi',['wiredep']);
     //加载任务代码：执行默认任务中的所有方法
-    grunt.registerTask('default',['concat', 'sass','connect','watch']);
-
+    grunt.registerTask('default',['ug','concat', 'sass','connect','watch']);
 }
 
