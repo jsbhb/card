@@ -27,7 +27,7 @@ define([
     });
 
     /** Component
-     *   @description: 组件
+     *   @description: 模板组件
      */
     can.Component.extend({
         tag: "page-header-top",

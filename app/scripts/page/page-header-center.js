@@ -13,7 +13,7 @@ define([
 ], function($, _, can, Comm){
 
     /** Component
-     *   @description: 组件
+     *   @description: 模板组件
      */
     can.Component.extend({
         tag: "page-header-center",
