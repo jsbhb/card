@@ -6,19 +6,22 @@ requirejs.config({
     baseUrl: '/',
 
     shim: {
-            'can':           { deps: ['jquery'],  exports: 'can' },
-            'fixture':       { deps: ['can'],     exports: 'fixture' },
-            'fixture.test':  { deps: ['fixture'], exports: 'fixture.test' }
+            'bower.jquery':      { deps: [],                 exports: '$' },
+            'bower.underscore':  { deps: [],                 exports: '_' },
+            'bower.can':         { deps: ['bower.jquery'],   exports: 'can' },
+            'bower.fixture':     { deps: ['bower.can'],      exports: 'fixture' },
+            'bower.text':        { deps: [],                 exports: 'text' },
+            'fixture.test':      { deps: ['bower.fixture'],  exports: 'fixture.test' }
     },
 
     paths: {
         // --------------------- bower_components -------------------
             //实用工具(框架)
-            "jquery":      "bower_components/jquery/dist/jquery.min",
-            "underscore":  "bower_components/underscore/underscore-min",
-            "can":         "bower_components/CanJS/can.jquery.min",
-            "fixture":     "bower_components/CanJS/can.fixture",
-            "text":        "bower_components/text/text",
+            "bower.jquery":      "bower_components/jquery/dist/jquery.min",
+            "bower.underscore":  "bower_components/underscore/underscore-min",
+            "bower.can":         "bower_components/CanJS/can.jquery.min",
+            "bower.fixture":     "bower_components/CanJS/can.fixture",
+            "bower.text":        "bower_components/text/text",
 
         // --------------------- app/scripts -------------------------
             //配置(基类)

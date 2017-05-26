@@ -5,11 +5,10 @@
 'use strict';
 
 define([
-    "jquery",
-    "underscore",
-    "config.comm",
-    "can"
-], function ($, _, config, can) {
+    "bower.jquery",
+    "bower.underscore",
+    "bower.can"
+], function ($, _, can) {
 
     var CONFIG = {
         url: '',

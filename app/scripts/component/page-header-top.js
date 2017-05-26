@@ -5,9 +5,9 @@
 'use strict';
 
 define([
-    "jquery",
-    "underscore",
-    "can",
+    "bower.jquery",
+    "bower.underscore",
+    "bower.can"
 ], function($, _, can){
 
     /** @description: 模板组件

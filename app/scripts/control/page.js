@@ -5,8 +5,8 @@
 'use strict';
 
 define([
-    "jquery",
-    "underscore",
+    "bower.jquery",
+    "bower.underscore",
     "control.page.header.top",
     "control.page.header.center",
     "control.page.body.nav"

@@ -5,9 +5,9 @@
 'use strict';
 
 define([
-    "jquery",
-    "underscore",
-    "can",
+    "bower.jquery",
+    "bower.underscore",
+    "bower.can",
     "component.page.header.center",
     "fixture.test"
 ], function($, _, can, Comm){

@@ -5,9 +5,9 @@
 'use strict';
 
 define([
-    "jquery",
-    "underscore",
-    "can",
+    "bower.jquery",
+    "bower.underscore",
+    "bower.can",
     "comm.query.city",
     "component.page.header.top",
     "fixture.test"
