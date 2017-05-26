@@ -29,8 +29,8 @@ define([
         },
         events: {
             ".navLeft li mouseenter": function(elements, event){
-                var css_top = {"top": "0px","bottom": "auto","display": "block"};
-                var css_bottom = {"top": "auto","bottom": "0px","display": "block" };
+                var css_top = "top:auto, bottom:0px, display:block";
+                var css_bottom = "top:auto, bottom:0px, display: block";
                 var index = $(elements[0]).attr("item-index")*1;
                 index<5?
                     this.scope.css.attr("navRightContent2", css_top):
@@ -39,7 +39,7 @@ define([
                 $(elements[0]).addClass("hover");
             },
             ".navContent, .navRightContent2 mouseleave": function(elements, event){
-                var css_none = {"display": "none"};
+                var css_none = "display:none" ;
                 this.scope.css.attr("navRightContent2", css_none);
                 $("[item-index]").removeClass("hover");
                 event && event.stopPropagation();

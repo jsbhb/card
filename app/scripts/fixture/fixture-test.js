@@ -20,7 +20,7 @@ define([
         },
         'GET /card/nav/queryAll': function () {
             var data = {};
-            $.extend(true, data, fixtureData.getNavigation);
+            $.extend(true, data, fixtureData.getNav);
             return data;
         }
     });

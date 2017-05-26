@@ -19,9 +19,9 @@ define(function(){
             }
         },
 
-        getNavigation: {
+        getNav: {
             //导航模块
-            navigation: {
+            nav: {
                 items:[
                     {
                         title: "食品饮料",

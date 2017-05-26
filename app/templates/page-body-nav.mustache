@@ -1,7 +1,7 @@
 <div class="page-body-nav">
     <div class="navContent">
         <div class="navLeft">
-            {{#navigation}}
+            {{#nav}}
                 <ul class="items">
                     {{#each items}}
                         <li item-index="{{@index}}">
@@ -11,11 +11,11 @@
                         </li>
                     {{/each}}
                 </ul>
-            {{/navigation}}
+            {{/nav}}
         </div>
         <div class="navRight">
             <div class="navRightContent1">
-                {{#navigation}}
+                {{#nav}}
                     <div class="banner">
                         {{#imgs}}
                             {{#banner}}
@@ -43,10 +43,10 @@
                             </div>
                         {{/imgs}}
                     </div>
-                {{/navigation}}
+                {{/nav}}
             </div>
             <div class="navRightContent2" style="{{css.navRightContent2}}">
-                {{#navigation}}
+                {{#nav}}
                     <ul class="nav_detail">
                         {{#more}}
                             {{#each .}}
@@ -72,7 +72,7 @@
                             {{/items}}
                         {{/imgs}}
                     </ul>
-                {{/navigation}}
+                {{/nav}}
             </div>
         </div>
     </div>
