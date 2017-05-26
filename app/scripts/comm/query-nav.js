@@ -8,14 +8,14 @@ define([
     "jquery",
     "underscore",
     "can",
-    "comm.config",
+    "config.comm",
     "fixture.test"
 ], function($, _, can, Comm){
 
     /** @queryNav:  查询Nav数据
      */
     return new Comm({
-        queryAll: function(){
+        all: function(){
             return this.sendRequest({
                 url: "/card/nav/queryAll",
                 type: "get"

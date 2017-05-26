@@ -8,10 +8,10 @@ define([
     "jquery",
     "underscore",
     "can",
-    "comm.nav",
+    "comm.query.nav",
     "component.page.body.nav",
     "fixture.test"
-], function($, _, can, nav){
+], function($, _, can, queryNav){
 
     /** @description:  发起请求, 返回数据, 调用模板组件, 并渲染输出
      */
@@ -19,7 +19,7 @@ define([
 
         sendRequest: function(type){
             switch(type){
-                case "getAllNav": return nav.queryAll();
+                case "queryNavAll": return queryNav.all();
                 default: return can.Deferred().reject();
             }
         },
@@ -32,7 +32,7 @@ define([
 
         init: function(){
             can.when(
-                this.sendRequest("getAllNav")
+                this.sendRequest("queryNavAll")
             ).done(
                 $.proxy(function(responseData){
                     this.render(responseData);

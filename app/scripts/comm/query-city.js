@@ -8,14 +8,14 @@ define([
     "jquery",
     "underscore",
     "can",
-    "comm.config",
+    "config.comm",
     "fixture.test"
 ], function($, _, can, Comm){
 
     /** @city:  查询所在市区
      */
     return new Comm({
-        queryAll: function(){
+        all: function(){
             return this.sendRequest({
                 url: "/card/city/queryAll",
                 type: "get"

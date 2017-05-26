@@ -22,12 +22,12 @@ requirejs.config({
 
         // --------------------- app/scripts -------------------------
             //配置(基类)
-            "require.config":  "app/scripts/.config/require.config",
-            "comm.config":     "app/scripts/.config/comm.config",
+            "config.require":  "app/scripts/.config/require",
+            "config.comm":     "app/scripts/.config/comm",
 
             //通讯(Model)
-            "comm.city":  "app/scripts/comm/city",
-            "comm.nav":   "app/scripts/comm/nav",
+            "comm.query.city":  "app/scripts/comm/query-city",
+            "comm.query.nav":   "app/scripts/comm/query-nav",
 
             //模板组件
             "component.page.header.top":     "app/scripts/component/page-header-top",
@@ -35,7 +35,7 @@ requirejs.config({
             "component.page.body.nav":       "app/scripts/component/page-body-nav",
 
             //页面(业务)
-            "control.page":             "app/scripts/control/page",
+            "control.page":                "app/scripts/control/page",
             "control.page.header.top":     "app/scripts/control/page-header-top",
             "control.page.header.center":  "app/scripts/control/page-header-center",
             "control.page.body.nav":       "app/scripts/control/page-body-nav",

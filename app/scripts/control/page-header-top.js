@@ -8,10 +8,10 @@ define([
     "jquery",
     "underscore",
     "can",
-    "comm.city",
+    "comm.query.city",
     "component.page.header.top",
     "fixture.test"
-], function($, _, can, city){
+], function($, _, can, queryCity){
 
     /** @description:  发起请求, 返回数据, 调用模板组件, 并渲染输出
      */
@@ -19,7 +19,7 @@ define([
 
         sendRequest: function(type){
             switch(type){
-                case "getAllCity": return city.queryAll();
+                case "queryCityAll": return queryCity.all();
                 default: return can.Deferred().reject();
             }
         },
@@ -32,7 +32,7 @@ define([
 
         init: function(){
             can.when(
-                this.sendRequest("getAllCity")
+                this.sendRequest("queryCityAll")
             ).done(
                 $.proxy(function(responseData){
                     this.render(responseData);

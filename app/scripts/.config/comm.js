@@ -7,7 +7,7 @@
 define([
     "jquery",
     "underscore",
-    "comm.config",
+    "config.comm",
     "can"
 ], function ($, _, config, can) {
 
