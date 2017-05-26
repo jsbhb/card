@@ -8,7 +8,7 @@ module.exports = function(grunt) {
         app:     './app',
         css:     './app/css',
         fonts:   './app/fonts',
-        images:   './app/images',
+        images:  './app/images',
         scripts: './app/scripts',
         scss:    './app/scss'
     };

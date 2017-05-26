@@ -1,7 +1,7 @@
 <div class="page-body-nav">
-    <div class="page-body-nav-content">
-        <div class="nav_left">
-            {{#navData}}
+    <div class="navContent">
+        <div class="navLeft">
+            {{#navigation}}
                 <ul class="items">
                     {{#each items}}
                         <li item-index="{{@index}}">
@@ -11,12 +11,11 @@
                         </li>
                     {{/each}}
                 </ul>
-            {{/navData}}
-
+            {{/navigation}}
         </div>
-        <div class="nav_right">
-            <div class="nav_center_content1">
-                {{#navData}}
+        <div class="navRight">
+            <div class="navRightContent1">
+                {{#navigation}}
                     <div class="banner">
                         {{#imgs}}
                             {{#banner}}
@@ -44,10 +43,10 @@
                             </div>
                         {{/imgs}}
                     </div>
-                {{/navData}}
+                {{/navigation}}
             </div>
-            <div class="nav_center_content2" style="{{content_css}}">
-                {{#navData}}
+            <div class="navRightContent2" style="{{css.navRightContent2}}">
+                {{#navigation}}
                     <ul class="nav_detail">
                         {{#more}}
                             {{#each .}}
@@ -73,7 +72,7 @@
                             {{/items}}
                         {{/imgs}}
                     </ul>
-                {{/navData}}
+                {{/navigation}}
             </div>
         </div>
     </div>

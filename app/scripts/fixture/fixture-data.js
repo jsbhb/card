@@ -4,12 +4,12 @@
 
 'use strict';
 
-define(["can"], function(can){
+define(function(){
 
     //模拟数据库(全局)
     return {
 
-        getHederTop: {
+        getRegion: {
             //区域
             region: {
                 localCity: "宁波",
@@ -19,9 +19,9 @@ define(["can"], function(can){
             }
         },
 
-        getHederNav: {
+        getNavigation: {
             //导航模块
-            navData: {
+            navigation: {
                 items:[
                     {
                         title: "食品饮料",
@@ -42,7 +42,7 @@ define(["can"], function(can){
                                 "饼干蛋糕": "#饼干蛋糕",
                                 "橄榄油": "#饮料",
                                 "坚果蜜饯": "#坚果蜜饯",
-                                "糖果/巧克力": "#糖果/巧克力",
+                                "糖果/巧克力": "#糖果-巧克力",
                                 "进口牛奶": "#进口牛奶",
                                 "方便食品": "#方便食品",
                                 "饮料冲调": "#饮料冲调"
@@ -53,7 +53,7 @@ define(["can"], function(can){
                             content: {
                                 "饼干蛋糕": "#饼干蛋糕",
                                 "猪肉脯": "#猪肉脯",
-                                "薯片/膨化": "#薯片/膨化",
+                                "薯片/膨化": "#薯片-膨化",
                                 "鸭脖": "#鸭脖",
                                 "海苔": "#海苔",
                                 "牛肉干": "#牛肉干",

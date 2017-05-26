@@ -1,10 +1,20 @@
 /**
- * Created by linpengteng on 2017/5/18.
+ * Created by linpengteng on 2017/5/19.
  */
 
 'use strict';
 
-define(["jquery", "underscore", "comm.config", "can"], function ($, _, config, can) {
+define([
+    "jquery",
+    "underscore",
+    "comm.config",
+    "can"
+], function ($, _, config, can) {
+
+    var CONFIG = {
+        url: '',
+        fixtrue: true
+    };
 
     /**
      * @description 创建Comm通讯基类
@@ -20,10 +30,10 @@ define(["jquery", "underscore", "comm.config", "can"], function ($, _, config, c
          * @description 为Comm对象绑定参数
          */
         setData: function(param){
-            this.url = param.url || this.url || config.url;
+            this.url = param.url || this.url || CONFIG.url;
             this.type = param.type || this.type || "post";
             this.data = param.data || this.data || null;
-            this.fixtrue = param.fixtrue || this.fixtrue || config.fixtrue;
+            this.fixtrue = param.fixtrue || this.fixtrue || CONFIG.fixtrue;
         },
 
         /**
@@ -86,5 +96,6 @@ define(["jquery", "underscore", "comm.config", "can"], function ($, _, config, c
         }
 
     })
+
 
 });

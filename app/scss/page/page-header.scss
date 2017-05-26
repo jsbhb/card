@@ -1,6 +1,6 @@
 @charset "utf-8";
 /*
- * page-header-top部分样式
+ * control-header-top部分样式
  */
 .page-header-top{
   @include page;
@@ -11,7 +11,7 @@
 }
 
 /*
- * page-header-center部分样式
+ * control-header-center部分样式
  */
 .page-header-center{
   @include page;
