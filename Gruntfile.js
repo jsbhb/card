@@ -2,7 +2,7 @@
 
 module.exports = function(grunt) {
 
-    // Configurable paths
+    //路径配置
     var config = {
         root:    './',
         app:     './app',
