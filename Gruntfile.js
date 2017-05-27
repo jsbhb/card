@@ -76,7 +76,7 @@ module.exports = function(grunt) {
 
 
     //加载任务代码：执行默认任务中的所有方法
-    grunt.registerTask('default',['sass','connect','watch']);
+    grunt.registerTask('default', ['sass','connect','watch']);
 
 }
 
