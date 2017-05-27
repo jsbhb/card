@@ -44,7 +44,7 @@ module.exports = function(grunt) {
                     style: 'expanded'
                 },
                 files: {
-                    '<%=config.css%>/page/page.css': '<%=config.scss%>/page/page.scss'
+                    '<%=config.css%>/page.css': '<%=config.scss%>/page.scss'
                 }
             }
         },
