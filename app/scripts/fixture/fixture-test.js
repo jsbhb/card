@@ -8,8 +8,9 @@ define([
     "bower.jquery",
     "bower.underscore",
     "bower.can",
+    "bower.fixture",
     "fixture.data"
-], function($, _, can, fixtureData) {
+], function($, _, can, fixture, fixtureData) {
 
     //模拟REST
     can.fixture({

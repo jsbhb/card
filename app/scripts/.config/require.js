@@ -10,8 +10,7 @@ requirejs.config({
             'bower.underscore':  { deps: [],                 exports: '_' },
             'bower.can':         { deps: ['bower.jquery'],   exports: 'can' },
             'bower.fixture':     { deps: ['bower.can'],      exports: 'fixture' },
-            'bower.text':        { deps: [],                 exports: 'text' },
-            'fixture.test':      { deps: ['bower.fixture'],  exports: 'fixture.test' }
+            'bower.text':        { deps: [],                 exports: 'text' }
     },
 
     paths: {
