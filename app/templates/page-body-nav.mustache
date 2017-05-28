@@ -1,79 +1,71 @@
 <div class="page-body-nav">
     <div class="navContent">
-        <div class="navLeft">
-            {{#nav}}
-                <ul class="items">
-                    {{#each items}}
-                        <li item-index="{{@index}}">
-                            <h3 class="title">{{title}}{{hover}}</h3>
-                            {{#each content}}<a class="content" href="{{.}}">{{@key}}</a>{{/each}}
-                            <span class="fa fa-angle-right fa-fw"></span>
-                        </li>
-                    {{/each}}
-                </ul>
-            {{/nav}}
-        </div>
-        <div class="navRight">
-            <div class="navRightContent1">
-                {{#nav}}
-                    <div class="banner">
-                        {{#imgs}}
-                            {{#banner}}
-                                {{#each .}}
-                                    <a href="{{.}}"><img src="{{@key}}"/></a>
-                                {{/each}}
-                            {{/banner}}
-                            <span class="carousel_list">
-                                {{#each banner}}
-                                    <i class="carousel_i" img-index="{{@index}}"></i>
-                                {{/each}}
-                            </span>
-                            <a class="carousel prev"><</a>
-                            <a class="carousel next">></a>
-                        {{/imgs}}
-                    </div>
-                    <div class="footer">
-                        {{#imgs}}
-                            <div class="imgs">
-                                {{#banner_bottom}}
-                                    {{#each .}}
-                                        <a href="{{.}}"><img src="{{@key}}"/></a>
-                                    {{/each}}
-                                {{/banner_bottom}}
-                            </div>
-                        {{/imgs}}
-                    </div>
-                {{/nav}}
+        {{#nav}}
+            <div class="navLeft">
+                <div class="itemBriefly">
+                    <ul>
+                        {{#each items}}
+                            <li itemBriefly-index="{{@index}}">
+                                <h3 class="title">{{title}}</h3>
+                                {{#each content}}<a class="content" href="{{.}}">{{@key}}</a>{{/each}}
+                                <span class="fa fa-angle-right fa-fw"></span>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </div>
             </div>
-            <div class="navRightContent2" style="{{css.navRightContent2}}">
-                {{#nav}}
-                    <ul class="nav_detail">
-                        {{#more}}
+            <div class="navRight">
+                <div class="showContainer">
+                    <div class="show_banner">
+                        {{#bannerImg}}
                             {{#each .}}
-                                <li>
-                                    <span class="title">{{title}}</span>
-                                    <div class="content">
-                                        {{#each content}}
-                                            <a href="{{.}}">{{@key}}</a>
-                                        {{/each}}
-                                    </div>
-                                </li>
+                                <a href="{{.}}"><img src="{{@key}}"/></a>
                             {{/each}}
-                        {{/more}}
-                    </ul>
-                    <ul class="nav_nominate">
-                        {{#imgs}}
-                            {{#items}}
-                                {{#each .}}
-                                    {{#each .}}
-                                        <a href="{{.}}"><img src="{{@key}}"/></a>
-                                    {{/each}}
-                                {{/each}}
-                            {{/items}}
-                        {{/imgs}}
-                    </ul>
-                {{/nav}}
+                        {{/bannerImg}}
+                        <span class="carousel_list">
+                            {{#bannerImg}}
+                                <i class="carousel_i" bannerImg-index="{{@index}}"></i>
+                            {{/bannerImg}}
+                        </span>
+                        <a class="carousel prev"><</a>
+                        <a class="carousel next">></a>
+                    </div>
+                    <div class="show_info">
+                        {{#infoImg}}
+                            {{#each .}}
+                                <a href="{{.}}"><img src="{{@key}}"/></a>
+                            {{/each}}
+                        {{/infoImg}}
+                    </div>
+                </div>
+                <div class="itemDetails">
+                    {{#each items}}
+                        <div itemDetails-index="{{@index}}">
+                            <ul class="classify">
+                                {{#more.classify}}
+                                    <li>
+                                        <span class="title">{{title}}</span>
+                                        <div class="content">
+                                            {{#each content}}
+                                                <a href="{{.}}">{{@key}}</a>
+                                            {{/each}}
+                                        </div>
+                                    </li>
+                                {{/more.classify}}
+                            </ul>
+                            <ul class="recommend">
+                                {{#more.recommend}}
+                                    <li>
+                                        {{#each .}}
+                                            <a href="{{.}}"><img src="{{@key}}"/></a>
+                                        {{/each}}
+                                    </li>
+                                {{/more.recommend}}
+                            </ul>
+                        </div>
+                    {{/each}}
+                </div>
             </div>
-        </div>
+        {{/nav}}
     </div>
 </div>

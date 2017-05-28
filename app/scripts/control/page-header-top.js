@@ -8,10 +8,10 @@ define([
     "bower.jquery",
     "bower.underscore",
     "bower.can",
-    "comm.query.city",
+    "comm.city",
     "component.page.header.top",
     "fixture.test"
-], function($, _, can, queryCity){
+], function($, _, can, city){
 
     /** @description:  发起请求, 返回数据, 调用模板组件, 并渲染输出
      */
@@ -19,20 +19,20 @@ define([
 
         sendRequest: function(type){
             switch(type){
-                case "queryCityAll": return queryCity.all();
+                case "queryAll": return city.queryAll();
                 default: return can.Deferred().reject();
             }
         },
 
         render: function(data){
             this.options.templates = "<page-header-top></page-header-top>";
-            this.options.data = data? new can.Map(data): {};
+            this.options.data = data || {};
             this.element.html(can.mustache(this.options.templates)(this.options.data));
         },
 
         init: function(){
             can.when(
-                this.sendRequest("queryCityAll")
+                this.sendRequest("queryAll")
             ).done(
                 $.proxy(function(responseData){
                     this.render(responseData);

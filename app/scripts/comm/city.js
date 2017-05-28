@@ -12,12 +12,12 @@ define([
     "fixture.test"
 ], function($, _, can, Comm){
 
-    /** @queryNav:  查询Nav数据
+    /** @queryAll:  查询市区
      */
     return new Comm({
-        all: function(){
+        queryAll: function(){
             return this.sendRequest({
-                url: "/card/nav/queryAll",
+                url: "/card/city/queryAll",
                 type: "get"
             })
         }

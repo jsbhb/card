@@ -22,7 +22,7 @@ define([
 
         render: function(data){
             this.options.templates = "<page-header-center></page-header-center>";
-            this.options.data = data? new can.Map(data): {};
+            this.options.data = data || {};
             this.element.html(can.mustache(this.options.templates)(this.options.data));
         },
 

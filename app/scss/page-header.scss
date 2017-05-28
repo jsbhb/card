@@ -7,6 +7,14 @@
   background-color: $top_backgroundColor;
   &>.page-header-top-content{
     @include pageContent(30px,28px,13px,#777);
+    .iconMapMarker{
+      font-size: 17px;
+      vertical-align: -1.5px;
+      color: #ca3719;
+    }
+    .localCity{
+      margin-left:-4px;
+    }
   }
 }
 

@@ -10,29 +10,19 @@ define([
     "bower.can"
 ], function ($, _, can) {
 
-    var CONFIG = {
-        url: '',
-        fixtrue: true
-    };
-
     /**
      * @description 创建Comm通讯基类
      */
     return can.Model.extend({
 
         /**
-         * @type {Object}
-         */
-        api: {},
-
-        /**
          * @description 为Comm对象绑定参数
          */
         setData: function(param){
-            this.url = param.url || this.url || CONFIG.url;
+            this.url = param.url   || this.url  || "";
             this.type = param.type || this.type || "post";
             this.data = param.data || this.data || null;
-            this.fixtrue = param.fixtrue || this.fixtrue || CONFIG.fixtrue;
+            this.fixtrue = true;
         },
 
         /**
@@ -41,15 +31,9 @@ define([
         buildRequestData: function(){
             // 构建请求的数据
             var requestData = {};
-            // 扩展api的参数()
-            if(this.api.config){
-                _.extend(requestData.api, this.api.config);
-            }
             // 扩展传入的参数
-            if(this.data){
-                _.extend(requestData, this.data);
-            }
-            // 返回请求的数据
+            this.data && $.extend(true, requestData, this.data);
+            // 返回构建的数据
             return requestData;
         },
 
@@ -66,7 +50,7 @@ define([
                 data: data,
                 fixture: that.fixtrue
             }).done(function(response) {
-                def.resolve(response);
+                def.resolve(new can.Model(response));
             }).fail(function(error) {
                 def.reject(error);
             });
@@ -95,6 +79,5 @@ define([
         }
 
     })
-
 
 });
