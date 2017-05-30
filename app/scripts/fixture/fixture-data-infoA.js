@@ -118,85 +118,85 @@ define(function(){
                     "/app/images/test_logo2.jpg": {
                         bannerInfo:[
                             {
-                                title: "GXG男装2018夏季新品",
+                                title: "GXG男装2018冬季新品",
                                 shortTitle: "GXG男装",
                                 description: "时尚修身版",
-                                price: "209.0",
+                                price: "219.0",
                                 img: "/app/images/test_yifu1.jpg",
                                 url: "#GXG男装修身版"
                             },
                             {
-                                title: "GXG男装2018夏季新品",
+                                title: "GXG男装2018冬季新品",
                                 shortTitle: "GXG男装",
                                 description: "时尚运动版",
-                                price: "309",
+                                price: "300",
                                 img: "/app/images/test_yifu2.jpg",
                                 url: "#GXG男装运动版"
                             },
                             {
-                                title: "GXG男装2018夏季新品",
+                                title: "GXG男装2018冬季新品",
                                 shortTitle: "GXG男装",
                                 description: "至尊版",
-                                price: "459.00",
+                                price: "419.00",
                                 img: "/app/images/test_yifu3.jpg",
                                 url: "#GXG男装至尊版"
                             }
                         ],
                         generalInfo: [
                             {
-                                title: "GXG男装2018夏季新品",
+                                title: "GXG男装2018冬季新品",
                                 shortTitle: "GXG男装",
                                 description: "No1",
-                                price: "270.00",
+                                price: "215.00",
                                 img: "/app/images/test_yifu4.jpg",
                                 url: "#GXG男装No1"
                             },
                             {
-                                title: "GXG男装2018夏季新品",
+                                title: "GXG男装2018冬季新品",
                                 shortTitle: "GXG男装",
                                 description: "No2",
-                                price: "310.00",
+                                price: "316.00",
                                 img: "/app/images/test_yifu5.jpg",
                                 url: "#GXG男装No2"
                             },
                             {
-                                title: "GXG男装2018夏季新品",
+                                title: "GXG男装2018冬季新品",
                                 shortTitle: "GXG男装",
                                 description: "No3",
-                                price: "290.00",
+                                price: "299.00",
                                 img: "/app/images/test_yifu6.jpg",
                                 url: "#GXG男装No3"
                             },
                             {
-                                title: "GXG男装2018夏季新品",
+                                title: "GXG男装2018冬季新品",
                                 shortTitle: "GXG男装",
                                 description: "No4",
-                                price: "308.00",
+                                price: "399.00",
                                 img: "/app/images/test_yifu4.jpg",
                                 url: "#GXG男装No4"
                             },
                             {
-                                title: "GXG男装2018夏季新品",
+                                title: "GXG男装2018冬季新品",
                                 shortTitle: "GXG男装",
                                 description: "No5",
-                                price: "330.00",
+                                price: "290.00",
                                 img: "/app/images/test_yifu5.jpg",
                                 url: "#GXG男装No5"
                             },
                             {
-                                title: "GXG男装2018夏季新品",
+                                title: "GXG男装2018冬季新品",
                                 shortTitle: "GXG男装",
                                 description: "No6",
-                                price: "210.00",
+                                price: "207.00",
                                 img: "/app/images/test_yifu6.jpg",
                                 url: "#GXG男装No6"
                             },
 
                             {
-                                title: "GXG男装2018夏季新品",
+                                title: "GXG男装2018冬季新品",
                                 shortTitle: "GXG男装",
                                 description: "No7",
-                                price: "410.50",
+                                price: "408.50",
                                 img: "/app/images/test_yifu4.jpg",
                                 url: "#GXG男装No7"
                             }
