@@ -561,32 +561,35 @@
           width: calc(100% + 2px);
           height: calc(100% + 2px);
           border: solid 1px #ddd;
-        }
-        ul{
-          width: 100%;
-          height: 100%;
           overflow: hidden;
-          &>li{
-            width: 110px;
+          position: relative;
+          &>ul{
+            width: 100%;
             height: 100%;
-            position: relative;
-            border-left: solid 1px #ddd;
-            float: left;
-            display: inline-block;
-            &>a{
-              width: 100%;
+            position: absolute;
+            left: 0px;
+            &>li{
+              width: 110px;
               height: 100%;
-              display: block;
-              &>img{
-                width: auto;
-                height: 99%;
-                max-width: 99%;
-                margin: auto;
-                position: absolute;
-                top: 0px;
-                bottom: 0px;
-                left: 0px;
-                right: 0px;
+              position: relative;
+              border-left: solid 1px #ddd;
+              float: left;
+              display: inline-block;
+              &>a{
+                width: 100%;
+                height: 100%;
+                display: block;
+                &>img{
+                  width: auto;
+                  height: 99%;
+                  max-width: 99%;
+                  margin: auto;
+                  position: absolute;
+                  top: 0px;
+                  bottom: 0px;
+                  left: 0px;
+                  right: 0px;
+                }
               }
             }
           }

@@ -33,6 +33,9 @@ define([
             },
             parsefloat: function(val){
                 return "￥"+parseFloat(val()).toFixed(2);
+            },
+            length: function(content){
+                console.log(content);
             }
         },
         scope: {
@@ -126,8 +129,28 @@ define([
                     }, 500);
                 }
             },
+            ".carousel.prev,.carousel.next click": function(node){
+                var that = this;
+                var $element = this.element;
+                var left = $element.find(".logoUl").css("left");
+                var width = $element.find(".logoUl").css("width");
+                left = parseFloat(left);
+                width = parseFloat(width);
+                var range = node.hasClass("prev")? 550: -550;
+                if(left + range > 0){
+                    $element.find(".logoUl").animate({left: "0px"}, 300);
+                }else if(left + range < 1100-width){
+                    $element.find(".logoUl").animate({left: (1100-width)+"px"}, 300);
+                }else{
+                    $element.find(".logoUl").animate({left: (left+range)+"px"}, 500)
+                }
+            },
         },
         init: function(element){
+            //logo轮播模块设置
+            var length = $(element).find(".logoUl>li").length;
+            $(element).find(".logoUl").css("width", 110*length+"px");
+
             //图片轮播初始化
             function bannerInit($this, $element){
                 var index = 0;
