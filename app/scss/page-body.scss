@@ -357,8 +357,7 @@
               left: 0px;
               right: 0px;
             }
-            &:hover,
-            &:first-child{
+            &.active{
               border-color: #ff77a5;
               &::before{
                 content: "";
@@ -379,6 +378,8 @@
           vertical-align: top;
           position: relative;
           &>ul{
+            width: 900px;
+            height: 520px;
             position: absolute;
             top: 0px;
             left: 0px;
@@ -400,6 +401,7 @@
               &.bannerInfo{
                 width: 540px;
                 height: 260px;
+                overflow: hidden;
                 &>div{
                   width: 100%;
                   height: 100%;
@@ -478,7 +480,7 @@
                   left: 0px;
                   right: 0px;
                   bottom: 20px;
-                  z-index: 101;
+                  z-index: 110;
                   margin: 0 auto;
                   border-radius: 13px;
                   background-color:  rgba(230,230,230,.7);
@@ -491,7 +493,6 @@
                     background-color:  #fff;
                     cursor: pointer;
                     &.showed,
-                    &:first-child,
                     &.showed:hover{
                       height: 5px;
                       vertical-align: 3px;

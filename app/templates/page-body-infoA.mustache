@@ -19,7 +19,9 @@
                         {{#each main}}
                             {{#isShow @index 5}}
                                 {{#each .}}
-                                    <span><img src="{{@key}}"/></span>
+                                    <span index="{{../@index}}" class="{{isFirst ../@index "active"}}">
+                                        <img src="{{@key}}"/>
+                                    </span>
                                 {{/each}}
                             {{/isShow}}
                         {{/each}}
@@ -28,7 +30,7 @@
                         {{#each main}}
                             {{#isShow @index 5}}
                                 {{#each .}}
-                                    <ul>
+                                    <ul index="{{../@index}}">
                                         {{#if bannerInfo}}
                                             <li class="bannerInfo">
                                                 {{#each bannerInfo}}
@@ -49,9 +51,11 @@
                                                     </div>
                                                 {{/each}}
                                                 <span class="carousel_list">
-                                                    {{#bannerInfo}}
-                                                        <i class="carousel_i"></i>
-                                                    {{/bannerInfo}}
+                                                    {{#each bannerInfo}}
+                                                        <i class="carousel_i {{isFirst @index "showed"}}"
+                                                           index="{{@index}}">
+                                                        </i>
+                                                    {{/each}}
                                                 </span>
                                             </li>
                                         {{/if}}
