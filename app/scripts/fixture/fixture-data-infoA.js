@@ -15,13 +15,13 @@ define(function(){
                     {"连衣裙": "#连衣裙"},
                     {"T恤男":"#T恤男"},
                     {"美容护肤":"#美容护肤"},
-                    {"休闲男鞋":"#休闲男鞋"},
+                    {"休闲男鞋":"#美容护肤"},
                     {"黄金项链":"#黄金项链"},
                     {"单鞋":"#单鞋"},
                     {"女包":"#女包"},
                     {"文胸":"#文胸"},
                     {"大牌腕表":"#大牌腕表"},
-                ]
+    ]
             },
             main:[
                 {
@@ -100,15 +100,6 @@ define(function(){
                                 price: "210.00",
                                 img: "/app/images/test_yifu6.jpg",
                                 url: "#GXG男装No6"
-                            },
-
-                            {
-                                title: "GXG男装2017夏季新品",
-                                shortTitle: "GXG男装",
-                                description: "No7",
-                                price: "410.50",
-                                img: "/app/images/test_yifu4.jpg",
-                                url: "#GXG男装No7"
                             },
 
                             {
@@ -218,6 +209,39 @@ define(function(){
                 }},
                 {"/app/images/test_logo4.jpg": {
                     logoUrl: "#logo4"
+                }},
+                {"/app/images/test_logo5.jpg": {
+                    logoUrl: "#logo5"
+                }},
+                {"/app/images/test_logo1.jpg": {
+                    logoUrl: "#logo1"
+                }},
+                {"/app/images/test_logo2.jpg": {
+                    logoUrl: "#logo2"
+                }},
+                {"/app/images/test_logo3.jpg": {
+                    logoUrl: "#logo3"
+                }},
+                {"/app/images/test_logo4.jpg": {
+                    logoUrl: "#logo4"
+                }},
+                {"/app/images/test_logo5.jpg": {
+                    logoUrl: "#logo5"
+                }},
+                {"/app/images/test_logo1.jpg": {
+                    logoUrl: "#logo1"
+                }},
+                {"/app/images/test_logo2.jpg": {
+                    logoUrl: "#logo2"
+                }},
+                {"/app/images/test_logo3.jpg": {
+                    logoUrl: "#logo3"
+                }},
+                {"/app/images/test_logo4.jpg": {
+                    logoUrl: "#logo4"
+                }},
+                {"/app/images/test_logo5.jpg": {
+                    logoUrl: "#logo5"
                 }},
                 {"/app/images/test_logo5.jpg": {
                     logoUrl: "#logo5"

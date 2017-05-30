@@ -10,8 +10,9 @@ define([
     "control.page.header.top",
     "control.page.header.center",
     "control.page.body.nav",
-    "control.page.body.infoA"
-], function($, _, pageHeaderTop, pageHeaderCenter, pageBodyNav, pageBodyInfoA){
+    "control.page.body.infoA",
+    "control.page.body.infoB"
+], function($, _, pageHeaderTop, pageHeaderCenter, pageBodyNav, pageBodyInfoA, pageBodyInfoB){
 
     var el_headerTop=    "<div class='load-header-top'></div>";
     var el_headerCenter= "<div class='load-header-center'></div>";
@@ -30,5 +31,6 @@ define([
     new pageHeaderCenter(".load-header-center");
     new pageBodyNav(".load-body-nav");
     new pageBodyInfoA(".load-body-infoA");
+    new pageBodyInfoB(".load-body-infoB");
 
 })

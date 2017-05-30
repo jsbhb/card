@@ -7,14 +7,16 @@
 define([
     "fixture.data.region",
     "fixture.data.nav",
-    "fixture.data.infoA"
-], function(region, nav, infoA){
+    "fixture.data.infoA",
+    "fixture.data.infoB"
+], function(region, nav, infoA, infoB){
 
     //模拟数据库
     return {
         getRegion: region,
         getNav: nav,
-        getInfoA: infoA
+        getInfoA: infoA,
+        getInfoB: infoB
     }
 
 })

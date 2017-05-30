@@ -28,6 +28,11 @@ define([
             var data = {};
             $.extend(true, data, fixtureData.getInfoA);
             return data;
+        },
+        'GET /card/infoB/queryAll': function () {
+            var data = {};
+            $.extend(true, data, fixtureData.getInfoB);
+            return data;
         }
     });
 

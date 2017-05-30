@@ -1,0 +1,37 @@
+<div class="page-body-infoA">
+    <div class="infoAContent">
+        {{#infoB}}
+            <div class="header">
+                {{#header}}
+                    <div class="title">{{title}}</div>
+                    <div class="list">
+                        {{#each list}}
+                            {{#each .}}
+                                <a href="{{.}}">{{@key}}</a>
+                            {{/each}}
+                        {{/each}}
+                    </div>
+                {{/header}}
+            </div>
+            <div class="body">
+                <div class="logoBanner">
+                    <div>
+                        <ul class="logoUl" style="left:0px;">
+                            {{#logos}}
+                                {{#each .}}
+                                    <li>
+                                        <a href="{{logoUrl}}">
+                                            <img src="{{@key}}"/>
+                                        </a>
+                                    </li>
+                                {{/each}}
+                            {{/logos}}
+                        </ul>
+                    </div>
+                    <a class="carousel prev"><</a>
+                    <a class="carousel next">></a>
+                </div>
+            </div>
+        {{/infoB}}
+    </div>
+</div>

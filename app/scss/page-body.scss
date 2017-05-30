@@ -634,3 +634,135 @@
     }
   }
 }
+
+.page-body-infoB{
+  @include page;
+  margin-bottom:60px;
+  &>.infoAContent{
+    @include pageContent(650px,28px,13px,#777);
+    &>.header{
+      height: 40px;
+      border-bottom: solid 2px #ff77a5;
+      &>.title{
+        font-size: 25px;
+        line-height: 30px;
+        padding: 0 10px 0 30px;
+        color: #ff77a5;
+        float: left;
+        display: inline-block;
+        position: relative;
+        &:before{
+          content: "";
+          width: 10px;
+          height: 10px;
+          background-color: #ff77a5;
+          position: absolute;
+          top: 12px;
+          left: 10px;
+        }
+      }
+      &>.list{
+        height: 36px;
+        line-height:45px;
+        float: right;
+        display: inline-block;
+        &>a{
+          color: #666;
+          font-size:13px;
+          padding: 0 7px;
+          cursor: pointer;
+          &:hover,
+          &:focus,
+          &:active{
+            color: #ff77a5;
+          }
+        }
+      }
+    }
+    &>.body{
+      width: 100%;
+      height: 610px;
+
+      &>.logoBanner{
+        margin-top: 10px;
+        width: 100%;
+        height: 80px;
+        background-color: #fff;
+        position: relative;
+        &>div{
+          width: calc(100% + 2px);
+          height: calc(100% + 2px);
+          border: solid 1px #ddd;
+          overflow: hidden;
+          position: relative;
+          &>ul{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0px;
+            &>li{
+              width: 110px;
+              height: 100%;
+              position: relative;
+              border-left: solid 1px #ddd;
+              float: left;
+              display: inline-block;
+              &>a{
+                width: 100%;
+                height: 100%;
+                display: block;
+                &>img{
+                  width: auto;
+                  height: 99%;
+                  max-width: 99%;
+                  margin: auto;
+                  position: absolute;
+                  top: 0px;
+                  bottom: 0px;
+                  left: 0px;
+                  right: 0px;
+                }
+              }
+            }
+          }
+        }
+        .carousel {
+          width: 20px;
+          height: 40px;
+          line-height: 40px;
+          font-size: 21px;
+          font-weight: 400;
+          font-family: simsun;
+          text-align: center;
+          color: #fff;
+          background-color: rgba(200, 200, 200, .3);
+          position: absolute;
+          top: 0px;
+          bottom: 0px;
+          z-index: 101;
+          opacity: 1;
+          margin: auto 0;
+          cursor: pointer;
+          &.prev{
+            font-weight: 500;
+            left: 0px;
+            right: auto;
+            &:hover{
+              background-color: rgba(230,230,230,.5);
+              color: #ff4e2d;
+            }
+          }
+          &.next{
+            font-weight: 500;
+            left: auto;
+            right: 0px;
+            &:hover{
+              background-color: rgba(230,230,230,.5);
+              color: #ff4e2d;
+            }
+          }
+        }
+      }
+    }
+  }
+}
