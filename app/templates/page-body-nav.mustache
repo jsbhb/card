@@ -5,7 +5,7 @@
                 <div class="itemBriefly">
                     <ul>
                         {{#each items}}
-                            <li itemBriefly-index="{{@index}}">
+                            <li index="{{@index}}">
                                 <h3 class="title">{{title}}</h3>
                                 {{#each content}}<a class="content" href="{{.}}">{{@key}}</a>{{/each}}
                                 <span class="fa fa-angle-right fa-fw"></span>
@@ -17,15 +17,18 @@
             <div class="navRight">
                 <div class="showContainer">
                     <div class="show_banner">
-                        {{#bannerImg}}
+                        {{#each bannerImg}}
                             {{#each .}}
-                                <a href="{{.}}"><img src="{{@key}}"/></a>
+                                <a href="{{.}}" class="bannerImg">
+                                    <img src="{{@key}}"/>
+                                </a>
                             {{/each}}
-                        {{/bannerImg}}
+                        {{/each}}
                         <span class="carousel_list">
-                            {{#bannerImg}}
-                                <i class="carousel_i" bannerImg-index="{{@index}}"></i>
-                            {{/bannerImg}}
+                            {{#each bannerImg}}
+                                <i class="carousel_i {{#isFirst @index "showed"}}{{/isFirst}}"
+                                   index="{{@index}}"></i>
+                            {{/each}}
                         </span>
                         <a class="carousel prev"><</a>
                         <a class="carousel next">></a>
@@ -38,9 +41,9 @@
                         {{/infoImg}}
                     </div>
                 </div>
-                <div class="itemDetails">
+                <div class="itemDetails" style="display:none">
                     {{#each items}}
-                        <div itemDetails-index="{{@index}}">
+                        <div index="{{@index}}" style="display:none">
                             <ul class="classify">
                                 {{#more.classify}}
                                     <li>
@@ -68,4 +71,5 @@
             </div>
         {{/nav}}
     </div>
+
 </div>

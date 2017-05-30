@@ -5,10 +5,11 @@
 body{
   font-family: "Microsoft YaHei", tahoma, arial, "Hiragino Sans GB", "\\5b8b体", sans-serif, "微软雅黑";
   font-size: 14px;
-  background-color: #f6f6f6;
+  background-color: #fff;
   *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
   }
   a,
   a:link,

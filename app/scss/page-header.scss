@@ -25,7 +25,7 @@
   @include page;
   background-color: #fff;
   &>.page-header-center-content{
-    @include pageContent(100px);
+    @include pageContent(110px);
     .page-header-center-logo{
       width: 300px;
       padding: 25px 0 0 0;
@@ -37,7 +37,7 @@
     .page-header-center-search{
       width: 520px;
       height: 100px;
-      padding-top: 13px;
+      padding-top: 20px;
       float: right;
       margin-right: 60px;
       [class~='search-baby'],
@@ -57,6 +57,10 @@
         border-radius: 0px;
         height:34px;
         border:solid 1.5px $color_tangerine;
+        &:focus{
+          box-shadow: none;
+          -webkit-box-shadow: none;
+        }
       }
       .btn-search{
         @extend .input-search;

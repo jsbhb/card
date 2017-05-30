@@ -23,6 +23,11 @@ define([
             var data = {};
             $.extend(true, data, fixtureData.getNav);
             return data;
+        },
+        'GET /card/infoA/queryAll': function () {
+            var data = {};
+            $.extend(true, data, fixtureData.getInfoA);
+            return data;
         }
     });
 
