@@ -42,17 +42,25 @@ define([
                 var that = this;
                 $element.find(".carousel_i[index]").removeClass("isEnd showed");
                 $element.find(".carousel_i[index='"+sureIndex+"']").addClass("showed");
-                $element.find(".bannerInfo>div").eq(sureIndex).animate({left: "0px"}, 1500, function(){
-                    $element.find(".carousel_i[index='"+sureIndex+"']").addClass("isEnd");
-                });
+                $element.find(".bannerInfo>div[index='"+sureIndex+"']").animate(
+                    {left: "0px"}, 1500, function(){
+                        $element.find(".carousel_i[index='"+sureIndex+"']").addClass("isEnd");
+                    }
+                );
                 this.timer = setTimeout(function(){
                     index = index+1<that.count? index+1: 0;
                     var prevIndex = index-1>=0? index-1: that.count-1;
                     var nextIndex = index+1<that.count? index+1: 0;
                     $element.find(".bannerInfo>div").css({"z-index":90,  left: "0px"});
-                    $element.find(".bannerInfo>div").eq(prevIndex).css({"z-index":105, left: "-540px"});
-                    $element.find(".bannerInfo>div").eq(index).css({"z-index":100, left: "0px"});
-                    $element.find(".bannerInfo>div").eq(nextIndex).css({"z-index":105, left: "540px"});
+                    $element.find(".bannerInfo>div[index='"+prevIndex+"']").css({
+                        "z-index":105, left: "-540px"
+                    });
+                    $element.find(".bannerInfo>div[index='"+index+"']").css({
+                        "z-index":100, left: "0px"
+                    });
+                    $element.find(".bannerInfo>div[index='"+nextIndex+"']").css({
+                        "z-index":105, left: "540px"
+                    });
                     that.toBanner($element, index, nextIndex);
                 }, 5000)
             },
@@ -62,13 +70,21 @@ define([
                 var index = $element.find(".carousel_i.showed").attr("index")*1;
                 if(nextIndex>index){
                     $element.find(".bannerInfo>div").css({"z-index":90,  left: "0px"});
-                    $element.find(".bannerInfo>div").eq(index).css({"z-index":100, left: "0px"});
-                    $element.find(".bannerInfo>div").eq(nextIndex).css({"z-index":105, left: "540px"});
+                    $element.find(".bannerInfo>div[index='"+index+"']").css({
+                        "z-index":100, left: "0px"
+                    });
+                    $element.find(".bannerInfo>div[index='"+nextIndex+"']").css({
+                        "z-index":105, left: "540px"
+                    });
                     that.toBanner($element, index, nextIndex);
                 }else{
                     $element.find(".bannerInfo>div").css({"z-index":90,  left: "0px"});
-                    $element.find(".bannerInfo>div").eq(index).css({"z-index":100, left: "0px"});
-                    $element.find(".bannerInfo>div").eq(nextIndex).css({"z-index":105, left: "-540px"});
+                    $element.find(".bannerInfo>div[index='"+index+"']").css({
+                        "z-index":100, left: "0px"
+                    });
+                    $element.find(".bannerInfo>div[index='"+nextIndex+"']").css({
+                        "z-index":105, left: "-540px"
+                    });
                     that.toBanner($element, index, nextIndex);
                 }
             }
@@ -97,9 +113,15 @@ define([
                         var prevIndex = index-1>=0? index-1: that.scope.count-1;
                         var nextIndex = index+1<that.scope.count? index+1: 0;
                         $element.find(".bannerInfo>div").css({"z-index":90,  left: "0px"});
-                        $element.find(".bannerInfo>div").eq(prevIndex).css({"z-index":105, left: "-540px"});
-                        $element.find(".bannerInfo>div").eq(index).css({"z-index":100, left: "0px"});
-                        $element.find(".bannerInfo>div").eq(nextIndex).css({"z-index":105, left: "540px"});
+                        $element.find(".bannerInfo>div[index='"+prevIndex+"']").css({
+                            "z-index":105, left: "-540px"
+                        });
+                        $element.find(".bannerInfo>div[index='"+index+"']").css({
+                            "z-index":100, left: "0px"
+                        });
+                        $element.find(".bannerInfo>div[index='"+nextIndex+"']").css({
+                            "z-index":105, left: "540px"
+                        });
                         that.scope.toBanner($element, index, nextIndex);
                     }, 500);
                 }
@@ -114,9 +136,15 @@ define([
                     var prevIndex = index-1>=0? index-1: $this.scope.count-1;
                     var nextIndex = index+1<$this.scope.count? index+1: 0;
                     $element.find(".bannerInfo>div").css({"z-index":90,  left: "0px"});
-                    $element.find(".bannerInfo>div").eq(prevIndex).css({"z-index":105, left: "-540px"});
-                    $element.find(".bannerInfo>div").eq(index).css({"z-index":100, left: "0px"});
-                    $element.find(".bannerInfo>div").eq(nextIndex).css({"z-index":105, left: "540px"});
+                    $element.find(".bannerInfo>div[index='"+prevIndex+"']").css({
+                        "z-index":105, left: "-540px"
+                    });
+                    $element.find(".bannerInfo>div[index='"+index+"']").css({
+                        "z-index":100, left: "0px"
+                    });
+                    $element.find(".bannerInfo>div[index='"+nextIndex+"']").css({
+                        "z-index":105, left: "540px"
+                    });
                     $this.scope.toBanner($element, index, nextIndex);
                 }, 1500);
             }
