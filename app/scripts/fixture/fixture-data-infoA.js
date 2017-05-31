@@ -27,6 +27,7 @@ define(function(){
                 {
                     company: {
                         logoImg: "/app/images/test_logo1.jpg",
+                        logoUrl: "#logo1",
                         bannerInfo:[
                             {
                                 title: "GXG男装2017夏季新品",
@@ -111,13 +112,13 @@ define(function(){
                                 img: "/app/images/test_yifu4.jpg",
                                 url: "#GXG男装No7"
                             }
-                        ],
-                        logoUrl: "#logo1"
+                        ]
                     }
                 },
                 {
                     company: {
                         logoImg: "/app/images/test_logo2.jpg",
+                        logoUrl: "#logo2",
                         bannerInfo:[
                             {
                                 title: "GXG男装2018冬季新品",
@@ -202,8 +203,7 @@ define(function(){
                                 img: "/app/images/test_yifu4.jpg",
                                 url: "#GXG男装No7"
                             }
-                        ],
-                        logoUrl: "#logo2"
+                        ]
                     }
                 },
                 {
