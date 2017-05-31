@@ -90,7 +90,7 @@ define([
             }
         },
         events: {
-            ".infoLogo>span mouseenter": function(node){
+            ".infoLogos>span mouseenter": function(node){
                 var index = node.attr("index")*1;
                 this.element.find(".infoLogo>span").removeClass("active");
                 this.element.find(".infoLogo>span").eq(index).addClass("active");
