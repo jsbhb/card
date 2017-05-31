@@ -33,9 +33,6 @@ define([
             },
             parsefloat: function(val){
                 return "￥"+parseFloat(val()).toFixed(2);
-            },
-            length: function(content){
-                console.log(content);
             }
         },
         scope: {

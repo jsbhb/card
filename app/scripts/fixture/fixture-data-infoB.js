@@ -20,79 +20,131 @@ define(function(){
                     {"大牌腕表":"#大牌腕表"},
                 ]
             },
+            main: {
+                company: {
+                    companyImg: "/app/images/test_b1.jpg",
+                    companyUrl: "#company"
+                },
+                shopList: [
+                    {
+                        shopImg: "/app/images/test_b2.jpg",
+                        shopTitle: "伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水",
+                        shopPrice: 699,
+                        shopUrl: "#test_b2"
+                    },
+                    {
+                        shopImg: "/app/images/test_b3.jpg",
+                        shopTitle: "伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水",
+                        shopPrice: 339,
+                        shopUrl: "#test_b3"
+                    },
+                    {
+                        shopImg: "/app/images/test_b4.jpg",
+                        shopTitle: "伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水",
+                        shopPrice: 699,
+                        shopUrl: "#test_b4"
+                    },
+                    {
+                        shopImg: "/app/images/test_b5.jpg",
+                        shopTitle: "伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水",
+                        shopPrice: 409,
+                        shopUrl: "#test_b5"
+                    },
+                    {
+                        shopImg: "/app/images/test_b6.jpg",
+                        shopTitle: "伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水",
+                        shopPrice: 569,
+                        shopUrl: "#test_b6"
+                    },
+                    {
+                        shopImg: "/app/images/test_b7.jpg",
+                        shopTitle: "伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水",
+                        shopPrice: 609,
+                        shopUrl: "#test_b7"
+                    }
+                ]
+            },
             logos:[
-                {"/app/images/test_logo3.jpg": {
-                    logoUrl: "#logo3"
-                }},
-                {"/app/images/test_logo4.jpg": {
-                    logoUrl: "#logo4"
-                }},
-                {"/app/images/test_logo5.jpg": {
-                    logoUrl: "#logo5"
-                }},
-                {"/app/images/test_logo1.jpg": {
+                {
+                    logoImg: "/app/images/test_logo1.jpg",
                     logoUrl: "#logo1"
-                }},
-                {"/app/images/test_logo2.jpg": {
+                },
+                {
+                    logoImg: "/app/images/test_logo2.jpg",
                     logoUrl: "#logo2"
-                }},
-                {"/app/images/test_logo3.jpg": {
+                },
+                {
+                    logoImg: "/app/images/test_logo3.jpg",
                     logoUrl: "#logo3"
-                }},
-                {"/app/images/test_logo4.jpg": {
+                },
+                {
+                    logoImg: "/app/images/test_logo4.jpg",
                     logoUrl: "#logo4"
-                }},
-                {"/app/images/test_logo5.jpg": {
+                },
+                {
+                    logoImg: "/app/images/test_logo5.jpg",
                     logoUrl: "#logo5"
-                }},
-                {"/app/images/test_logo1.jpg": {
+                },
+                {
+                    logoImg: "/app/images/test_logo1.jpg",
                     logoUrl: "#logo1"
-                }},
-                {"/app/images/test_logo2.jpg": {
+                },
+                {
+                    logoImg: "/app/images/test_logo2.jpg",
                     logoUrl: "#logo2"
-                }},
-                {"/app/images/test_logo3.jpg": {
+                },
+                {
+                    logoImg: "/app/images/test_logo3.jpg",
                     logoUrl: "#logo3"
-                }},
-                {"/app/images/test_logo4.jpg": {
+                },
+                {
+                    logoImg: "/app/images/test_logo4.jpg",
                     logoUrl: "#logo4"
-                }},
-                {"/app/images/test_logo5.jpg": {
+                },
+                {
+                    logoImg: "/app/images/test_logo5.jpg",
                     logoUrl: "#logo5"
-                }},
-                {"/app/images/test_logo5.jpg": {
-                    logoUrl: "#logo5"
-                }},
-                {"/app/images/test_logo1.jpg": {
+                },
+                {
+                    logoImg: "/app/images/test_logo1.jpg",
                     logoUrl: "#logo1"
-                }},
-                {"/app/images/test_logo2.jpg": {
+                },
+                {
+                    logoImg: "/app/images/test_logo2.jpg",
                     logoUrl: "#logo2"
-                }},
-                {"/app/images/test_logo3.jpg": {
+                },
+                {
+                    logoImg: "/app/images/test_logo3.jpg",
                     logoUrl: "#logo3"
-                }},
-                {"/app/images/test_logo4.jpg": {
+                },
+                {
+                    logoImg: "/app/images/test_logo4.jpg",
                     logoUrl: "#logo4"
-                }},
-                {"/app/images/test_logo5.jpg": {
+                },
+                {
+                    logoImg: "/app/images/test_logo5.jpg",
                     logoUrl: "#logo5"
-                }},
-                {"/app/images/test_logo1.jpg": {
+                },
+                {
+                    logoImg: "/app/images/test_logo1.jpg",
                     logoUrl: "#logo1"
-                }},
-                {"/app/images/test_logo2.jpg": {
+                },
+                {
+                    logoImg: "/app/images/test_logo2.jpg",
                     logoUrl: "#logo2"
-                }},
-                {"/app/images/test_logo3.jpg": {
+                },
+                {
+                    logoImg: "/app/images/test_logo3.jpg",
                     logoUrl: "#logo3"
-                }},
-                {"/app/images/test_logo4.jpg": {
+                },
+                {
+                    logoImg: "/app/images/test_logo4.jpg",
                     logoUrl: "#logo4"
-                }},
-                {"/app/images/test_logo5.jpg": {
+                },
+                {
+                    logoImg: "/app/images/test_logo5.jpg",
                     logoUrl: "#logo5"
-                }}
+                }
             ]
         }
     }

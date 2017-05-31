@@ -15,78 +15,41 @@
             </div>
             <div class="body">
                 <div class="infoContent">
-                    <div>
-                        <a class="company" href="#company">
-                            <img src="/app/images/test_b1.jpg"/>
-                        </a>
-                        <a class="shop" href="#shop1">
-                            <div class="shopImg">
-                                <img src="/app/images/test_b2.jpg"/>
-                            </div>
-                            <div class="text">
-                                <span class="title">伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水</span>
-                                <span class="price">￥699.00</span>
-                            </div>
-                        </a>
-                        <a class="shop" href="#shop2">
-                            <div class="shopImg">
-                                <img src="/app/images/test_b3.jpg"/>
-                            </div>
-                            <div class="text">
-                                <span class="title">伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水</span>
-                                <span class="price">￥689.00</span>
-                            </div>
-                        </a>
-                        <a class="shop" href="#shop3">
-                            <div class="shopImg">
-                                <img src="/app/images/test_b4.jpg"/>
-                            </div>
-                            <div class="text">
-                                <span class="title">伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水</span>
-                                <span class="price">￥549.00</span>
-                            </div>
-                        </a>
-                        <a class="shop" href="#shop4">
-                            <div class="shopImg">
-                                <img src="/app/images/test_b5.jpg"/>
-                            </div>
-                            <div class="text">
-                                <span class="title">伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水</span>
-                                <span class="price">￥669.00</span>
-                            </div>
-                        </a>
-                        <a class="shop" href="#shop5">
-                            <div class="shopImg">
-                                <img src="/app/images/test_b6.jpg"/>
-                            </div>
-                            <div class="text">
-                                <span class="title">伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水</span>
-                                <span class="price">￥611.00</span>
-                            </div>
-                        </a>
-                        <a class="shop" href="#shop6">
-                            <div class="shopImg">
-                                <img src="/app/images/test_b7.jpg"/>
-                            </div>
-                            <div class="text">
-                                <span class="title">伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水</span>
-                                <span class="price">￥700.00</span>
-                            </div>
-                        </a>
-                    </div>
+                    {{#main}}
+                        <div>
+                            {{#company}}
+                                <a class="company" href="{{companyUrl}}">
+                                    <img src="{{companyImg}}"/>
+                                </a>
+                            {{/company}}
+                            {{#each shopList}}
+                                {{#isShow @index 6}}
+                                    <a class="shop" href="{{shopUrl}}">
+                                        <div class="shopImg">
+                                            <img src="{{shopImg}}"/>
+                                        </div>
+                                        <div class="text">
+                                        <span class="title">
+                                            {{shopTitle}}
+                                        </span>
+                                            <span class="price">{{parsefloat shopPrice}}</span>
+                                        </div>
+                                    </a>
+                                {{/isShow}}
+                            {{/each}}
+                        </div>
+                    {{/main}}
                 </div>
                 <div class="logoBanner">
                     <div>
                         <ul class="logoUl" style="left:0px;">
-                            {{#logos}}
-                                {{#each .}}
-                                    <li>
-                                        <a href="{{logoUrl}}">
-                                            <img src="{{@key}}"/>
-                                        </a>
-                                    </li>
-                                {{/each}}
-                            {{/logos}}
+                            {{#each logos}}
+                                <li>
+                                    <a href="{{logoUrl}}">
+                                        <img src="{{logoImg}}"/>
+                                    </a>
+                                </li>
+                            {{/each}}
                         </ul>
                     </div>
                     <a class="carousel prev"><</a>
