@@ -92,8 +92,8 @@ define([
         events: {
             ".infoLogos>span mouseenter": function(node){
                 var index = node.attr("index")*1;
-                this.element.find(".infoLogo>span").removeClass("active");
-                this.element.find(".infoLogo>span").eq(index).addClass("active");
+                this.element.find(".infoLogos>span").removeClass("active");
+                this.element.find(".infoLogos>span").eq(index).addClass("active");
                 this.element.find(".infoShow>ul").css("z-index","99");
                 this.element.find(".infoShow>ul").eq(index).css("z-index","101");
             },
