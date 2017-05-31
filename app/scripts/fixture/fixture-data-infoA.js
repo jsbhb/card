@@ -25,7 +25,8 @@ define(function(){
             },
             main:[
                 {
-                    "/app/images/test_logo1.jpg": {
+                    company: {
+                        logoImg: "/app/images/test_logo1.jpg",
                         bannerInfo:[
                             {
                                 title: "GXG男装2017夏季新品",
@@ -115,7 +116,8 @@ define(function(){
                     }
                 },
                 {
-                    "/app/images/test_logo2.jpg": {
+                    company: {
+                        logoImg: "/app/images/test_logo2.jpg",
                         bannerInfo:[
                             {
                                 title: "GXG男装2018冬季新品",
@@ -204,78 +206,84 @@ define(function(){
                         logoUrl: "#logo2"
                     }
                 },
-                {"/app/images/test_logo3.jpg": {
-                    logoUrl: "#logo3"
-                }},
-                {"/app/images/test_logo4.jpg": {
-                    logoUrl: "#logo4"
-                }},
-                {"/app/images/test_logo5.jpg": {
-                    logoUrl: "#logo5"
-                }},
-                {"/app/images/test_logo1.jpg": {
-                    logoUrl: "#logo1"
-                }},
-                {"/app/images/test_logo2.jpg": {
-                    logoUrl: "#logo2"
-                }},
-                {"/app/images/test_logo3.jpg": {
-                    logoUrl: "#logo3"
-                }},
-                {"/app/images/test_logo4.jpg": {
-                    logoUrl: "#logo4"
-                }},
-                {"/app/images/test_logo5.jpg": {
-                    logoUrl: "#logo5"
-                }},
-                {"/app/images/test_logo1.jpg": {
-                    logoUrl: "#logo1"
-                }},
-                {"/app/images/test_logo2.jpg": {
-                    logoUrl: "#logo2"
-                }},
-                {"/app/images/test_logo3.jpg": {
-                    logoUrl: "#logo3"
-                }},
-                {"/app/images/test_logo4.jpg": {
-                    logoUrl: "#logo4"
-                }},
-                {"/app/images/test_logo5.jpg": {
-                    logoUrl: "#logo5"
-                }},
-                {"/app/images/test_logo5.jpg": {
-                    logoUrl: "#logo5"
-                }},
-                {"/app/images/test_logo1.jpg": {
-                    logoUrl: "#logo1"
-                }},
-                {"/app/images/test_logo2.jpg": {
-                    logoUrl: "#logo2"
-                }},
-                {"/app/images/test_logo3.jpg": {
-                    logoUrl: "#logo3"
-                }},
-                {"/app/images/test_logo4.jpg": {
-                    logoUrl: "#logo4"
-                }},
-                {"/app/images/test_logo5.jpg": {
-                    logoUrl: "#logo5"
-                }},
-                {"/app/images/test_logo1.jpg": {
-                    logoUrl: "#logo1"
-                }},
-                {"/app/images/test_logo2.jpg": {
-                    logoUrl: "#logo2"
-                }},
-                {"/app/images/test_logo3.jpg": {
-                    logoUrl: "#logo3"
-                }},
-                {"/app/images/test_logo4.jpg": {
-                    logoUrl: "#logo4"
-                }},
-                {"/app/images/test_logo5.jpg": {
-                    logoUrl: "#logo5"
-                }}
+                {
+                    company: {
+                        logoImg: "/app/images/test_logo3.jpg",
+                        logoUrl: "#logo3"
+                    }
+                },
+                {
+                    company: {
+                        logoImg: "/app/images/test_logo4.jpg",
+                        logoUrl: "#logo4"
+                    }
+                },
+                {
+                    company: {
+                        logoImg: "/app/images/test_logo5.jpg",
+                        logoUrl: "#logo5"
+                    }
+                },
+                {
+                    company: {
+                        logoImg: "/app/images/test_logo1.jpg",
+                        logoUrl: "#logo1"
+                    }
+                },
+                {
+                    company: {
+                        logoImg: "/app/images/test_logo2.jpg",
+                        logoUrl: "#logo2"
+                    }
+                },
+                {
+                    company: {
+                        logoImg: "/app/images/test_logo3.jpg",
+                        logoUrl: "#logo3"
+                    }
+                },
+                {
+                    company: {
+                        logoImg: "/app/images/test_logo4.jpg",
+                        logoUrl: "#logo4"
+                    }
+                },
+                {
+                    company: {
+                        logoImg: "/app/images/test_logo5.jpg",
+                        logoUrl: "#logo5"
+                    }
+                },
+                {
+                    company: {
+                        logoImg: "/app/images/test_logo1.jpg",
+                        logoUrl: "#logo1"
+                    }
+                },
+                {
+                    company: {
+                        logoImg: "/app/images/test_logo2.jpg",
+                        logoUrl: "#logo2"
+                    }
+                },
+                {
+                    company: {
+                        logoImg: "/app/images/test_logo3.jpg",
+                        logoUrl: "#logo3"
+                    }
+                },
+                {
+                    company: {
+                        logoImg: "/app/images/test_logo4.jpg",
+                        logoUrl: "#logo4"
+                    }
+                },
+                {
+                    company: {
+                        logoImg: "/app/images/test_logo5.jpg",
+                        logoUrl: "#logo5"
+                    }
+                }
             ]
         }
     }

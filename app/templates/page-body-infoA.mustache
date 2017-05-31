@@ -15,12 +15,12 @@
             </div>
             <div class="body">
                 <div class="infoContent">
-                    <div class="infoLogo">
+                    <div class="infoLogos">
                         {{#each main}}
                             {{#isShow @index 5}}
                                 {{#each .}}
                                     <span index="{{../@index}}" class="{{isFirst ../@index "active"}}">
-                                        <img src="{{@key}}"/>
+                                        <img src="{{logoImg}}"/>
                                     </span>
                                 {{/each}}
                             {{/isShow}}
@@ -87,7 +87,7 @@
                                 {{#each .}}
                                     <li>
                                         <a href="{{logoUrl}}">
-                                            <img src="{{@key}}"/>
+                                            <img src="{{logoImg}}"/>
                                         </a>
                                     </li>
                                 {{/each}}

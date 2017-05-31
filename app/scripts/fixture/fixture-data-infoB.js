@@ -61,91 +61,15 @@ define(function(){
                         shopTitle: "伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水",
                         shopPrice: 609,
                         shopUrl: "#test_b7"
+                    },
+                    {
+                        shopImg: "/app/images/test_b7.jpg",
+                        shopTitle: "伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水",
+                        shopPrice: 609,
+                        shopUrl: "#test_b7"
                     }
                 ]
-            },
-            logos:[
-                {
-                    logoImg: "/app/images/test_logo1.jpg",
-                    logoUrl: "#logo1"
-                },
-                {
-                    logoImg: "/app/images/test_logo2.jpg",
-                    logoUrl: "#logo2"
-                },
-                {
-                    logoImg: "/app/images/test_logo3.jpg",
-                    logoUrl: "#logo3"
-                },
-                {
-                    logoImg: "/app/images/test_logo4.jpg",
-                    logoUrl: "#logo4"
-                },
-                {
-                    logoImg: "/app/images/test_logo5.jpg",
-                    logoUrl: "#logo5"
-                },
-                {
-                    logoImg: "/app/images/test_logo1.jpg",
-                    logoUrl: "#logo1"
-                },
-                {
-                    logoImg: "/app/images/test_logo2.jpg",
-                    logoUrl: "#logo2"
-                },
-                {
-                    logoImg: "/app/images/test_logo3.jpg",
-                    logoUrl: "#logo3"
-                },
-                {
-                    logoImg: "/app/images/test_logo4.jpg",
-                    logoUrl: "#logo4"
-                },
-                {
-                    logoImg: "/app/images/test_logo5.jpg",
-                    logoUrl: "#logo5"
-                },
-                {
-                    logoImg: "/app/images/test_logo1.jpg",
-                    logoUrl: "#logo1"
-                },
-                {
-                    logoImg: "/app/images/test_logo2.jpg",
-                    logoUrl: "#logo2"
-                },
-                {
-                    logoImg: "/app/images/test_logo3.jpg",
-                    logoUrl: "#logo3"
-                },
-                {
-                    logoImg: "/app/images/test_logo4.jpg",
-                    logoUrl: "#logo4"
-                },
-                {
-                    logoImg: "/app/images/test_logo5.jpg",
-                    logoUrl: "#logo5"
-                },
-                {
-                    logoImg: "/app/images/test_logo1.jpg",
-                    logoUrl: "#logo1"
-                },
-                {
-                    logoImg: "/app/images/test_logo2.jpg",
-                    logoUrl: "#logo2"
-                },
-                {
-                    logoImg: "/app/images/test_logo3.jpg",
-                    logoUrl: "#logo3"
-                },
-                {
-                    logoImg: "/app/images/test_logo4.jpg",
-                    logoUrl: "#logo4"
-                },
-                {
-                    logoImg: "/app/images/test_logo5.jpg",
-                    logoUrl: "#logo5"
-                }
-            ]
+            }
         }
     }
 

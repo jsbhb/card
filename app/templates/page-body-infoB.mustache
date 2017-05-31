@@ -16,44 +16,27 @@
             <div class="body">
                 <div class="infoContent">
                     {{#main}}
-                        <div>
-                            {{#company}}
-                                <a class="company" href="{{companyUrl}}">
-                                    <img src="{{companyImg}}"/>
-                                </a>
-                            {{/company}}
-                            {{#each shopList}}
-                                {{#isShow @index 6}}
-                                    <a class="shop" href="{{shopUrl}}">
-                                        <div class="shopImg">
-                                            <img src="{{shopImg}}"/>
-                                        </div>
-                                        <div class="text">
+                        {{#company}}
+                            <a class="company" href="{{companyUrl}}">
+                                <img src="{{companyImg}}"/>
+                            </a>
+                        {{/company}}
+                        {{#each shopList}}
+                            {{#isShow @index 6}}
+                                <a class="shop" href="{{shopUrl}}">
+                                    <div class="shopImg">
+                                        <img src="{{shopImg}}"/>
+                                    </div>
+                                    <div class="text">
                                         <span class="title">
                                             {{shopTitle}}
                                         </span>
-                                            <span class="price">{{parsefloat shopPrice}}</span>
-                                        </div>
-                                    </a>
-                                {{/isShow}}
-                            {{/each}}
-                        </div>
+                                        <span class="price">{{parsefloat shopPrice}}</span>
+                                    </div>
+                                </a>
+                            {{/isShow}}
+                        {{/each}}
                     {{/main}}
-                </div>
-                <div class="logoBanner">
-                    <div>
-                        <ul class="logoUl" style="left:0px;">
-                            {{#each logos}}
-                                <li>
-                                    <a href="{{logoUrl}}">
-                                        <img src="{{logoImg}}"/>
-                                    </a>
-                                </li>
-                            {{/each}}
-                        </ul>
-                    </div>
-                    <a class="carousel prev"><</a>
-                    <a class="carousel next">></a>
                 </div>
             </div>
         {{/infoB}}
