@@ -1,0 +1,92 @@
+<div class="page-info-content">
+    {{#page-info-1}}
+        <div class="header">
+            {{#MEMBER_PRODUCT_POPULARIZE_1}}
+                <div class="title">{{popularizeName}}</div>
+                <div class="list">
+                    {{#each popularizeList}}
+                        {{#each items}}
+                            <a href="{{.}}">{{@key}}</a>
+                        {{/each}}
+                    {{/each}}
+                </div>
+            {{/MEMBER_PRODUCT_POPULARIZE_1}}
+        </div>
+        <div class="body">
+            <div class="content">
+                <div class="content-logoImg">
+                    {{#each MEMBER_PRODUCT_POPULARIZE_1.modelList}}
+                        {{#isShow @index 5}}
+                            <span index="{{../@index}}" class="{{isFirst ../@index "active"}}">
+                               <img src="{{logoPath}}"/>
+                            </span>
+                        {{/isShow}}
+                    {{/each}}
+                </div>
+                <div class="content-showInfo">
+                    {{#each MEMBER_PRODUCT_POPULARIZE_1.modelList}}
+                        {{#isShow @index 5}}
+                            <ul index="{{../@index}}">
+                                <li class="info_banner">
+                                    <a href="javascript:void(0);" index="0" memberId="{{memberId}}"
+                                       style="background-image: url({{picPath1}})">
+                                        <div class="text">
+                                            <span class="description">{{description1}}</span>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:void(0);" index="1" memberId="{{memberId}}"
+                                       style="background-image: url({{picPath2}})">
+                                        <div class="text">
+                                            <span class="description">{{description2}}</span>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:void(0);" index="2" memberId="{{memberId}}"
+                                       style="background-image: url({{picPath3}})">
+                                        <div class="text">
+                                           <span class="description">{{description3}}</span>
+                                        </div>
+                                    </a>
+                                    <span class="carousel_list">
+                                        <i class="carousel_i showing" index="0"></i>
+                                        <i class="carousel_i" index="1"></i>
+                                        <i class="carousel_i" index="2"></i>
+                                    </span>
+                                </li>
+                                {{#each generalInfoList}}
+                                    {{#isShow @index 7}}
+                                        <li class="generalInfo" productId="{{productId}}">
+                                            <a href="javascript:void(0);">
+                                                <div class="text">
+                                                    <i class="title">{{shortTitle}}</i>
+                                                    <i class="price">{{parsefloat price}}</i>
+                                                </div>
+                                                <div class="img">
+                                                    <img src="{{picPath}}"/>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    {{/isShow}}
+                                {{/each}}
+                            </ul>
+                        {{/isShow}}
+                    {{/each}}
+                </div>
+            </div>
+            <div class="banner-logoImg">
+                <div>
+                    <ul class="bannerUl" style="left:0px;">
+                        {{#MEMBER_POPULARIZE_1.modelList}}
+                            <li>
+                                <a href="javascript:void(0);" memberId="{{memberId}}">
+                                    <img src="{{logoPath}}"/>
+                                </a>
+                            </li>
+                        {{/MEMBER_POPULARIZE_1.modelList}}
+                    </ul>
+                </div>
+                <a class="carousel prev"><</a>
+                <a class="carousel next">></a>
+            </div>
+        </div>
+    {{/page-info-1}}
+</div>

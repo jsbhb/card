@@ -1,0 +1,171 @@
+@charset "utf-8";
+
+@import "page.param.1";
+
+/*
+ * page-top-1部分样式
+ */
+page-top-1{
+  @include page;
+  background-color: $top_backgroundColor;
+  &>.page-top-content{
+    @include pageContent(30px,19px,12px,$base_color);
+    font-size:12px;
+    line-height: 28px;
+    .floatLeft{
+      &>span{
+        cursor: default;
+        &:not(:first-child){
+          margin-left: 15px;
+        }
+        &>a{
+          color: $base_color;
+        }
+      }
+      &>.login{
+        position: relative;
+        &>a:first-child{
+          display: inline-block;
+          margin-right: 10px;
+        }
+        &::after{
+          content: "";
+          position: absolute;
+          width: 1px;
+          height: 14px;
+          background-color: $base_color;
+          top: 7px;
+          left:42px;
+        }
+      }
+      &>.iconMapMarker{
+        font-size: 13px;
+        color: $base_tangerine;
+        margin-left: 5px;
+        cursor: pointer;
+        &>.fa-map-marker{
+          width: 10px;
+          font-size: 15px;
+          vertical-align: -1px;
+          margin-right: -2px;
+        }
+        &>.caret{
+          margin-left: -2px;
+        }
+      }
+    }
+    .floatRight{
+      &>span{
+        padding-left: 8px;
+        padding-right: 4px;
+        float: right;
+        position: relative;
+        z-index: 999;
+        cursor: default;
+        &:hover{
+          padding-right: 3px;
+          background-color: $white;
+          border-right:solid 1px $base_tangerine;
+          &::before{
+            content: "";
+            width: 1px;
+            height: 29px;
+            background-color: $base_tangerine;
+            position: absolute;
+            top: 0px;
+            left: -1px;
+          }
+          &::after{
+            content: "";
+            width: 100%;
+            height: 2px;
+            background-color: $white;
+            position: absolute;
+            z-index: 1000;
+            top: 28px;
+            left: 0;
+          }
+        }
+        &>.fa:first-child{
+          color: $base_tangerine;
+        }
+        &:hover>ul{
+          display: block;
+        }
+        &>ul{
+          min-width: calc(100% + 2px);
+          padding: 5px 0;
+          position: absolute;
+          z-index: 999;
+          left: auto;
+          right: -1px;
+          background-color: $white;
+          border:solid 1px $base_tangerine;
+          display: none;
+          &>li{
+            min-height: 100%;
+            float: left;
+            position: relative;
+            &:not(:last-child){
+              &:after{
+                content: "";
+                width: 1px;
+                height: 90%;
+                background-color: $base_tangerine;
+                position: absolute;
+                top: 4%;
+                right: 0px;
+              }
+            }
+            &>span{
+              width: 100%;
+              text-align: center;
+              padding-top: 5px;
+              font-size: 16px;
+              display: inline-block;
+            }
+            &>ul.one{
+              width: 120px;
+              &>li{
+                width: 120px;
+                float: left;
+                text-align: center;
+                cursor: pointer;
+                &:hover{
+                  background-color: $li_backgroundColor;
+                }
+                &>a{
+                  font-size:13px;
+                  color: $base_color;
+                  display: block;
+                  &:hover{
+                    color: $base_tangerine;
+                  }
+                }
+              }
+            }
+            &>ul.many{
+              &>li{
+                width: 80px;
+                float: left;
+                text-align: center;
+                cursor: pointer;
+                &:hover{
+                  background-color: $li_backgroundColor;
+                }
+                &>a{
+                  font-size:13px;
+                  color: $base_color;
+                  display: block;
+                  &:hover{
+                    color: $base_tangerine;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

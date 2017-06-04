@@ -1,0 +1,43 @@
+<div class="page-nav-content">
+    {{#page-nav-1}}
+        <div class="page-nav-showCont">
+            <div class="contType inlineBlock {{renderCSS.contType}}">
+                <i class="fa fa-th fa-fw inlineBlock"></i>
+                <span class="classify inlineBlock">全部商品分类</span>
+                <ul>
+                    {{#each showCont}}
+                        <li>
+                                <span class="contTypeTitle">
+                                    <span>{{contTypeTitle}}</span>
+                                    <i class="fa fa-angle-right fa-fw"></i>
+                                </span>
+                            <div class="showContItemList">
+                                <ul>
+                                    {{#each showContItemList}}
+                                        <li>
+                                            <span class="title">{{title}}</span>
+                                            <div class="content">
+                                                {{#each content}}
+                                                    <a href="{{.}}">{{@key}}</a>
+                                                {{/each}}
+                                            </div>
+                                        </li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                        </li>
+                    {{/each}}
+                </ul>
+            </div>
+            <div class="contNav inlineBlock">
+                <a href="#" class="inlineBlock active">首页</a>
+                <a href="#" class="inlineBlock">板块一</a>
+                <a href="#" class="inlineBlock">板块二</a>
+                <a href="#" class="inlineBlock">板块三</a>
+                <a href="#" class="inlineBlock">板块四</a>
+                <a href="#" class="inlineBlock">板块五</a>
+                <a href="#" class="inlineBlock">板块六</a>
+            </div>
+        </div>
+    {{/page-nav-1}}
+</div>

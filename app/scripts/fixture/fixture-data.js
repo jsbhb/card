@@ -5,18 +5,11 @@
 'use strict';
 
 define([
-    "fixture.data.region",
-    "fixture.data.nav",
-    "fixture.data.infoA",
-    "fixture.data.infoB"
-], function(region, nav, infoA, infoB){
+    "fixture.data.page.index.1"
+], function(pageIndex1){
 
-    //模拟数据库
     return {
-        getRegion: region,
-        getNav: nav,
-        getInfoA: infoA,
-        getInfoB: infoB
+        getPageIndex1: pageIndex1,
     }
 
 })

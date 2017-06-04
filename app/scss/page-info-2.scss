@@ -1,0 +1,135 @@
+@charset "utf-8";
+
+@import "page.param.1";
+
+/*
+ * page-info-2部分样式
+ */
+page-info-2{
+  @include page;
+  &>.page-info-content{
+    @include pageContent(630px,19px,12px,$base_color);
+    &>.header{
+      height: 40px;
+      border-bottom: solid 2px $base_tangerine;
+      &>.title{
+        font-size: 25px;
+        line-height: 30px;
+        padding: 0 10px 0 30px;
+        color: $base_tangerine;
+        float: left;
+        display: inline-block;
+        position: relative;
+        &:before{
+          content: "";
+          width: 10px;
+          height: 10px;
+          background-color: $base_tangerine;
+          position: absolute;
+          top: 12px;
+          left: 10px;
+        }
+      }
+      &>.list{
+        height: 36px;
+        line-height:45px;
+        float: right;
+        display: inline-block;
+        &>a{
+          color: $title_color;
+          font-size:13px;
+          padding: 0 7px;
+          cursor: pointer;
+          &:hover,
+          &:focus,
+          &:active{
+            color: $base_tangerine;
+          }
+        }
+      }
+    }
+    &>.body{
+      width: 100%;
+      height: 600px;
+      &>.content{
+        width: 100%;
+        min-height: 588px;
+        position: relative;
+        overflow: hidden;
+        &>.shop.big{
+          width: 470px;
+          height: 260px;
+          float: left;
+          background-color: $white;
+          position: relative;
+          display: block;
+          &>img{
+            width: 100%;
+            height: auto;
+            max-height: 100%;
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            margin: auto;
+          }
+        }
+        &>.shop.small{
+          width: 230px;
+          height: 260px;
+          padding: 3px 10px;
+          display: block;
+          margin-left: 10px;
+          margin-bottom: 10px;
+          float: left;
+          position: relative;
+          background-color: $white;
+          border: solid 1px $li_borderColor;
+          &>.shopImg{
+            width: 100%;
+            height: 170px;
+            display: block;
+            position: relative;
+            &>img{
+              height: 96%;
+              width: auto;
+              max-width: 100%;
+              position: absolute;
+              top: 0px;
+              bottom: 0px;
+              left: 0px;
+              right: 0px;
+              margin: auto;
+            }
+          }
+          &>.text{
+            width: 100%;
+            height: 90px;
+            &>span{
+              font-size: 12px;
+              line-height:18px;
+              white-space:normal;
+              word-wrap:break-word;
+              word-break:break-all;
+              display: inline-block;
+              &.description{
+                line-height: 20px;
+                padding: 3px 0;
+              }
+              &.price{
+                font-size: 13px;
+                color: $base_tangerine;
+                padding: 0 5px;
+              }
+            }
+          }
+        }
+        &>.shop:nth-child(5n){
+          margin-left: 0px;
+        }
+      }
+    }
+  }
+}
+

@@ -26,8 +26,8 @@ module.exports = function(grunt) {
         connect: {
             options: {
                 hostname: '127.0.0.1',
-                port: 9000,
-                livereload: 35729
+                port: 8000,
+                livereload: 35730
             },
             server: {
                 options: {
@@ -44,7 +44,13 @@ module.exports = function(grunt) {
                     style: 'expanded'
                 },
                 files: {
-                    '<%=config.css%>/page.css': '<%=config.scss%>/page.scss'
+                    '<%=config.css%>/page-top-1.css':        '<%=config.scss%>/page-top-1.scss',
+                    '<%=config.css%>/page-header-1.css':     '<%=config.scss%>/page-header-1.scss',
+                    '<%=config.css%>/page-nav-1.css':        '<%=config.scss%>/page-nav-1.scss',
+                    '<%=config.css%>/page-banner-1.css':     '<%=config.scss%>/page-banner-1.scss',
+                    '<%=config.css%>/page-footer-1.css':     '<%=config.scss%>/page-footer-1.scss',
+                    '<%=config.css%>/page-info-1.css':       '<%=config.scss%>/page-info-1.scss',
+                    '<%=config.css%>/page-info-2.css':       '<%=config.scss%>/page-info-2.scss',
                 }
             }
         },

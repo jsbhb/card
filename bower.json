@@ -7,7 +7,8 @@
     "CanJS": "canjs#^2.3.29",
     "font-awesome": "^4.7.0",
     "underscore": "^1.8.3",
-    "text": "^2.0.15"
+    "text": "^2.0.15",
+    "require-css": "^0.1.10"
   },
   "version": "1.0.0",
   "description": "",

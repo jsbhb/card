@@ -14,24 +14,9 @@ define([
 
     //模拟REST
     can.fixture({
-        'GET /card/city/queryAll': function () {
+        'GET /card/pageIndex1/queryAll': function () {
             var data = {};
-            $.extend(true, data, fixtureData.getRegion);
-            return data;
-        },
-        'GET /card/nav/queryAll': function () {
-            var data = {};
-            $.extend(true, data, fixtureData.getNav);
-            return data;
-        },
-        'GET /card/infoA/queryAll': function () {
-            var data = {};
-            $.extend(true, data, fixtureData.getInfoA);
-            return data;
-        },
-        'GET /card/infoB/queryAll': function () {
-            var data = {};
-            $.extend(true, data, fixtureData.getInfoB);
+            $.extend(true, data, fixtureData.getPageIndex1);
             return data;
         }
     });

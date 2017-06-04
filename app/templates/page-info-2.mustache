@@ -1,0 +1,42 @@
+<div class="page-info-content">
+    {{#page-info-2}}
+        <div class="header">
+            {{#PRODUCT_POPULARIZE_1}}
+                <div class="title">{{popularizeName}}</div>
+                <div class="list">
+                    {{#each popularizeList}}
+                        {{#each items}}
+                            <a href="{{.}}">{{@key}}</a>
+                        {{/each}}
+                    {{/each}}
+                </div>
+            {{/PRODUCT_POPULARIZE_1}}
+        </div>
+        <div class="body">
+            <div class="content">
+                {{#each PRODUCT_POPULARIZE_1.modelList}}
+                    {{#isShow @index 9}}
+                        {{#isFirst @index}}
+                            <a class="shop big" productId={{productId}}  href="javascript:void(0);">
+                                <img src="{{picPath}}"/>
+                            </a>
+                        {{/isFirst}}
+                        {{#notFirst @index}}
+                            <a class="shop small" productId="productId" href="javascript:void(0);">
+                                <div class="shopImg">
+                                    <img src="{{picPath}}"/>
+                                </div>
+                                <div class="text">
+                                <span class="description">
+                                    {{description}}
+                                </span>
+                                    <span class="price">{{parsefloat price}}</span>
+                                </div>
+                            </a>
+                        {{/notFirst}}
+                    {{/isShow}}
+                {{/each}}
+            </div>
+        </div>
+    {{/page-info-2}}
+</div>
