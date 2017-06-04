@@ -27,7 +27,7 @@ define([
         scope: {
             count: 6,
             timer: null,
-            toBanner: function($element, index, nextIndex){
+            toBanner: function($element, index, nextIndex, bool){
                 var that = this;
                 if($element.find(".carousel_i[index='"+index+"'].isShowed").length!=1){ return }
                 $element.find(".carousel_i[index]").removeClass("showing isShowed");
@@ -37,17 +37,19 @@ define([
                 $element.find("a[index='"+nextIndex+"']").css({"z-index":95, opacity:1});
                 $element.find("a[index='"+index+"']").animate({opacity: 0}, 1500, function(){
                     $element.find(".carousel_i[index='"+nextIndex+"']").addClass("isShowed");
-                    that.timer = setTimeout(function(){
-                        index = nextIndex;
-                        nextIndex = index+1<that.count? index+1: 0;
-                        that.toBanner($element, index, nextIndex);
-                    }, 3500)
+                    if(!bool){
+                        that.timer = setTimeout(function(){
+                            index = nextIndex;
+                            nextIndex = index+1<that.count? index+1: 0;
+                            that.toBanner($element, index, nextIndex);
+                        }, 3500)
+                    }
                 });
             },
             carouselClick: function($element, nextIndex){
                 var that = this;
                 var index = $element.find(".carousel_i.showing").attr("index")*1;
-                that.toBanner($element, index, nextIndex);
+                that.toBanner($element, index, nextIndex, true);
             }
         },
         events: {

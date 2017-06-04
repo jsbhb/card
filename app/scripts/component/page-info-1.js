@@ -42,29 +42,29 @@ define([
                 var that = this;
                 $element.find(".carousel_i[index]").removeClass("showing");
                 $element.find(".carousel_i[index='"+toIndex+"']").addClass("showing");
-                $element.find(".info_banner>a[index='"+toIndex+"']").animate({left: "0px"}, 1500);
+                $element.find(".infoBanner>a[index='"+toIndex+"']").animate({left: "0px"}, 1500);
                 that.timer = setTimeout(function(){
                     index = index+1<that.count? index+1: 0;
-                    var nextIndex = index+1<that.count? index+1: 0;
-                    $element.find(".info_banner>a").css({"z-index":90,  left: "0px"});
-                    $element.find(".info_banner>a[index='"+index+"']").css({ "z-index":100, left: "0px" });
-                    $element.find(".info_banner>a[index='"+nextIndex+"']").css({ "z-index":105, left: "600px"});
-                    that.toBanner($element, index, nextIndex);
-                }, 3500);
+                    var toIndex = index+1<that.count? index+1: 0;
+                    $element.find(".infoBanner>a[index]").css({"z-index":90,  left: "0px"});
+                    $element.find(".infoBanner>a[index='"+index+"']").css({ "z-index":100, left: "0px" });
+                    $element.find(".infoBanner>a[index='"+toIndex+"']").css({ "z-index":105, left: "600px"});
+                    that.toBanner($element, index, toIndex);
+                }, 3000);
             },
-            carouselClick: function($element, index, nextIndex){
-                var that = this;
-                if(nextIndex>index){
-                    $element.find(".info_banner>a").css({"z-index":90,  left: "0px"});
-                    $element.find(".info_banner>a[index='"+index+"']").css({ "z-index":100, left: "0px" });
-                    $element.find(".info_banner>a[index='"+nextIndex+"']").css({ "z-index":105, left: "600px" });
-                    that.toBanner($element, index, nextIndex);
+            carouselClick: function($element, index, toIndex){
+                if(toIndex>index){
+                    $element.find(".infoBanner>a[index]").css({"z-index":90,  left: "0px"});
+                    $element.find(".infoBanner>a[index='"+index+"']").css({ "z-index":100, left: "0px" });
+                    $element.find(".infoBanner>a[index='"+toIndex+"']").css({ "z-index":105, left: "600px" });
                 }else{
-                    $element.find(".info_banner>a").css({"z-index":90,  left: "0px"});
-                    $element.find(".info_banner>a[index='"+index+"']").css({ "z-index":100, left: "0px" });
-                    $element.find(".info_banner>a[index='"+nextIndex+"']").css({ "z-index":105, left: "-600px" });
-                    that.toBanner($element, index, nextIndex);
+                    $element.find(".infoBanner>a[index]").css({"z-index":90,  left: "0px"});
+                    $element.find(".infoBanner>a[index='"+index+"']").css({ "z-index":100, left: "0px" });
+                    $element.find(".infoBanner>a[index='"+toIndex+"']").css({ "z-index":105, left: "-600px" });
                 }
+                $element.find(".carousel_i[index]").removeClass("showing");
+                $element.find(".carousel_i[index='"+toIndex+"']").addClass("showing");
+                $element.find(".infoBanner>a[index='"+toIndex+"']").animate({left: "0px"}, 1500);
             }
         },
         events: {
@@ -75,32 +75,26 @@ define([
                 this.element.find(".content-showInfo>ul").css("z-index","99");
                 this.element.find(".content-showInfo>ul").eq(index).css("z-index","101");
             },
-            ".carousel_i:not(.showing) click": function(node){
-                var index = this.element.find(".carousel_i.showing").attr("index")*1;
-                clearTimeout(this.scope.timer);
-                this.element.find(".info_banner>a[index]").stop(true,true);
-                clearTimeout(this.scope.timer);
-                var nextIndex =  node.attr("index")*1;
-                this.scope.carouselClick(this.element, index, nextIndex);
-            },
-            ".info_banner mouseenter": function(){
+            ".infoBanner .carousel_i:not(.showing) click": function(node){
                 var $element = this.element;
                 var index = $element.find(".carousel_i.showing").attr("index")*1;
+                var toIndex =  node.attr("index")*1;
                 clearTimeout(this.scope.timer);
-                $element.find(".info_banner>a[index]").stop(true,true);
+                this.scope.carouselClick($element, index, toIndex);
+            },
+            ".infoBanner mouseenter": function(element){
                 clearTimeout(this.scope.timer);
             },
-            ".info_banner mouseleave": function(){
+            ".infoBanner mouseleave": function(){
                 var that = this;
                 var $element = this.element;
                 var index = $element.find(".carousel_i.showing").attr("index")*1;
                 that.scope.timer = setTimeout(function(){
-                    index = index+1<that.count? index+1: 0;
-                    var nextIndex = index+1<that.count? index+1: 0;
-                    $element.find(".info_banner>a").css({"z-index":90,  left: "0px"});
-                    $element.find(".info_banner>a[index='"+index+"']").css({ "z-index":100, left: "0px" });
-                    $element.find(".info_banner>a[index='"+nextIndex+"']").css({ "z-index":105, left: "600px" });
-                    that.scope.toBanner($element, index, nextIndex);
+                    var toIndex = index+1<that.scope.count? index+1: 0;
+                    $element.find(".infoBanner>a[index]").css({"z-index":90,  left: "0px"});
+                    $element.find(".infoBanner>a[index='"+index+"']").css({ "z-index":100, left: "0px" });
+                    $element.find(".infoBanner>a[index='"+toIndex+"']").css({ "z-index":105, left: "600px" });
+                    that.scope.toBanner($element, index, toIndex);
                 }, 2500);
             },
             ".carousel.prev,.carousel.next click": function(node){
@@ -129,11 +123,11 @@ define([
             function bannerInit($this, $element){
                 var index = 0;
                 $this.scope.timer = setTimeout(function () {
-                    var nextIndex = index + 1 < $this.scope.count ? index + 1 : 0;
-                    $element.find(".info_banner>a").css({"z-index": 90, left: "0px"});
-                    $element.find(".info_banner>a[index='" + index + "']").css({"z-index": 100, left: "0px"});
-                    $element.find(".info_banner>a[index='" + nextIndex + "']").css({"z-index": 105, left: "600px"});
-                    $this.scope.toBanner($element, index, nextIndex);
+                    var toIndex = index + 1 < $this.scope.count ? index + 1 : 0;
+                    $element.find(".infoBanner>a[index]").css({"z-index": 90, left: "0px"});
+                    $element.find(".infoBanner>a[index='"+index+"']").css({"z-index": 100, left: "0px"});
+                    $element.find(".infoBanner>a[index='"+toIndex+"']").css({"z-index": 105, left: "600px"});
+                    $this.scope.toBanner($element, index, toIndex);
                 }, 1500)
             }
             bannerInit(this, $(element));
