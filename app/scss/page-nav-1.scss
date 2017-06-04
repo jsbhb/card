@@ -7,6 +7,9 @@
  */
 page-nav-1{
   @include page;
+  &.border{
+    border-bottom: solid 1.5px $base_tangerine;
+  }
   background-color: $white;
   &>.page-nav-content{
     @include pageContent(42px,19px,12px,$base_color);

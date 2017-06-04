@@ -44,29 +44,34 @@ define([
             var PRODUCT_POPULARIZE_1 = responseData && responseData.obj &&
                                        responseData.obj.PRODUCT_POPULARIZE_1 || {};
 
+            var C_SHORT =         "SHORT";
+            var E_PAGE_TOP =      $("<div class='load-pageTop'></div>");
+            var E_PAGE_HEADER =   $("<div class='load-pageHeader'></div>");
+            var E_PAGE_NAV =      $("<div class='load-pageNav'></div>");
+            var E_PAGE_BANNER =   $("<div class='load-pageBanner'></div>");
+            var E_PAGE_BODY =     $("<div class='load-pageBody' style='min-height:396px'></div>");
+            var E_PAGE_FOOTER =   $("<div class='load-pageFooter'></div>");
 
-            var C_SHORT =           "SHORT";
-            var E_PAGETOP =         "<div class='load-pageTop'></div>";
-            var E_PAGEHEADER =      "<div class='load-pageHeader'></div>";
-            var E_PAGENAV =         "<div class='load-pageNav'></div>";
-            var E_PAGEBANNER =      "<div class='load-pageBanner'></div>";
-            var E_PAGEINFOA1 =       "<div class='load-pageInfoA1'></div>";
-            var E_PAGEINFOB1 =       "<div class='load-pageInfoB1'></div>";
-            var E_PAGEINFOA2 =       "<div class='load-pageInfoA2'></div>";
-            var E_PAGEINFOB2 =       "<div class='load-pageInfoB1'></div>";
-            var E_PAGEFOOTER =      "<div class='load-pageFooter'></div>";
+            var E_PAGE_INFOA1 =   $("<div class='load-pageInfoA1'></div>");
+            var E_PAGE_INFOB1 =   $("<div class='load-pageInfoB1'></div>");
+            var E_PAGE_INFOA2 =   $("<div class='load-pageInfoA2'></div>");
+            var E_PAGE_INFOB2 =   $("<div class='load-pageInfoB1'></div>");
 
             $("body")
                 .addClass(C_SHORT)
-                .append(E_PAGETOP)
-                .append(E_PAGEHEADER)
-                .append(E_PAGENAV)
-                .append(E_PAGEBANNER)
-                .append(E_PAGEINFOA1)
-                .append(E_PAGEINFOB1)
-                .append(E_PAGEINFOA2)
-                .append(E_PAGEINFOB2)
-                .append(E_PAGEFOOTER);
+                .append(E_PAGE_TOP)
+                .append(E_PAGE_HEADER)
+                .append(E_PAGE_NAV)
+                .append(E_PAGE_BANNER)
+                .append(E_PAGE_BODY)
+                .append(E_PAGE_FOOTER);
+
+            $("body").find($(E_PAGE_BODY))
+                .append(E_PAGE_INFOA1)
+                .append(E_PAGE_INFOB1)
+                .append(E_PAGE_INFOA2)
+                .append(E_PAGE_INFOB2);
+
 
             //生成页面top部分
             new controlPageTop1(".load-pageTop",{
@@ -102,7 +107,7 @@ define([
                 }
             });
 
-            //生成页面info部分
+            //生成页面info-content部分
             new controlPageInfo1(".load-pageInfoA1",{
                 config:{
                     directRender: true,
@@ -112,7 +117,6 @@ define([
                     }
                 }
             });
-
             new controlPageInfo2(".load-pageInfoB1",{
                 config:{
                     directRender: true,
@@ -121,8 +125,6 @@ define([
                     }
                 }
             });
-
-            //生成页面info部分
             new controlPageInfo1(".load-pageInfoA2",{
                 config:{
                     directRender: true,
@@ -132,7 +134,6 @@ define([
                     }
                 }
             });
-
             new controlPageInfo2(".load-pageInfoB2",{
                 config:{
                     directRender: true,

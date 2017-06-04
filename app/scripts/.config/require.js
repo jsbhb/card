@@ -49,6 +49,7 @@ requirejs.config({
 
         //JS -通讯模块
         "comm.page.index.1":           "app/scripts/comm/page-index-1",
+        "comm.page.search.1":          "app/scripts/comm/page-search-1",
 
         //JS -组件模块
         "component.page.top.1":        "app/scripts/component/page-top-1",
@@ -60,7 +61,6 @@ requirejs.config({
         "component.page.info.2":       "app/scripts/component/page-info-2",
 
         //JS -业务模块
-        "control.page.index.1":        "app/scripts/control/page-index-1",
         "control.page.top.1":          "app/scripts/control/page-top-1",
         "control.page.header.1":       "app/scripts/control/page-header-1",
         "control.page.nav.1":          "app/scripts/control/page-nav-1",
@@ -68,6 +68,8 @@ requirejs.config({
         "control.page.footer.1":       "app/scripts/control/page-footer-1",
         "control.page.info.1":         "app/scripts/control/page-info-1",
         "control.page.info.2":         "app/scripts/control/page-info-2",
+        "control.page.index.1":        "app/scripts/control/page-index-1",
+        "control.page.search.1":       "app/scripts/control/page-search-1",
 
         //JS -测试模块
         "fixture.test":                "app/scripts/fixture/fixture-test",

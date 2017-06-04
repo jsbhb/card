@@ -28,7 +28,7 @@ define([
 
         render: function(data){
             data && data.success && $.extend(true, this.options.renderData, data.obj);
-            this.options.templates = "<page-nav-1></page-nav-1>";
+            this.options.templates = "<page-nav-1 class='{{page-nav-1.renderCSS.border}}'></page-nav-1>";
             this.element.html(
                 can.mustache(this.options.templates)({
                     "page-nav-1": this.options.renderData
