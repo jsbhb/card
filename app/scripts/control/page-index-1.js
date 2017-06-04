@@ -52,6 +52,8 @@ define([
             var E_PAGEBANNER =      "<div class='load-pageBanner'></div>";
             var E_PAGEINFOA1 =       "<div class='load-pageInfoA1'></div>";
             var E_PAGEINFOB1 =       "<div class='load-pageInfoB1'></div>";
+            var E_PAGEINFOA2 =       "<div class='load-pageInfoA2'></div>";
+            var E_PAGEINFOB2 =       "<div class='load-pageInfoB1'></div>";
             var E_PAGEFOOTER =      "<div class='load-pageFooter'></div>";
 
             $("body")
@@ -62,6 +64,8 @@ define([
                 .append(E_PAGEBANNER)
                 .append(E_PAGEINFOA1)
                 .append(E_PAGEINFOB1)
+                .append(E_PAGEINFOA2)
+                .append(E_PAGEINFOB2)
                 .append(E_PAGEFOOTER);
 
             //生成页面top部分
@@ -117,6 +121,27 @@ define([
                     }
                 }
             });
+
+            //生成页面info部分
+            new controlPageInfo1(".load-pageInfoA2",{
+                config:{
+                    directRender: true,
+                    renderData: {
+                        MEMBER_PRODUCT_POPULARIZE_1: MEMBER_PRODUCT_POPULARIZE_1,
+                        MEMBER_POPULARIZE_1: MEMBER_POPULARIZE_1
+                    }
+                }
+            });
+
+            new controlPageInfo2(".load-pageInfoB2",{
+                config:{
+                    directRender: true,
+                    renderData: {
+                        PRODUCT_POPULARIZE_1: PRODUCT_POPULARIZE_1
+                    }
+                }
+            });
+
 
             //生成页面footer部分
             new controlPageFooter1(".load-pageFooter",{
