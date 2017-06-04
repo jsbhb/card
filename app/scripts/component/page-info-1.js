@@ -78,7 +78,7 @@ define([
             ".carousel_i:not(.showing) click": function(node){
                 var index = this.element.find(".carousel_i.showing").attr("index")*1;
                 clearTimeout(this.scope.timer);
-                this.element.find(".info_banner>a[index='"+index+"']").stop(true,true);
+                this.element.find(".info_banner>a[index]").stop(true,true);
                 clearTimeout(this.scope.timer);
                 var nextIndex =  node.attr("index")*1;
                 this.scope.carouselClick(this.element, index, nextIndex);
@@ -87,7 +87,7 @@ define([
                 var $element = this.element;
                 var index = $element.find(".carousel_i.showing").attr("index")*1;
                 clearTimeout(this.scope.timer);
-                $element.find(".info_banner>a[index='"+index+"']").stop(true,true);
+                $element.find(".info_banner>a[index]").stop(true,true);
                 clearTimeout(this.scope.timer);
             },
             ".info_banner mouseleave": function(){
