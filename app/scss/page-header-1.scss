@@ -121,7 +121,7 @@ page-header-1{
       &>span.qrcodeImg{
         width: 138px;
         height: 138px;
-        margin-top: 2px;
+        margin-top: 4px;
         border: solid 1.5px $base_tangerine;
         position: relative;
         z-index: 999;
@@ -139,11 +139,6 @@ page-header-1{
         &>img{
           width: 100%;
           height: 100%;
-        }
-      }
-      &:hover{
-        &>span.qrcodeImg{
-          display: inline-block;
         }
       }
     }

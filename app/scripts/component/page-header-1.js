@@ -18,6 +18,10 @@ define([
         helpers: {
         },
         scope: {
+            timer: null ,
+            qrcodeImgHide: function(element){
+                $(element).find(".qrcodeImg").css("display","none");
+            }
         },
         events: {
             ".page-header-search .dropdown-menu>li>a click": function(element){
@@ -25,7 +29,15 @@ define([
                 var type = $(element).attr("type");
                 $(".searchTypeText").text(text);
                 $(".searchTypeText").attr("searchType", type);
-            }
+            },
+            ".page-header-qrcode mouseenter": function(element){
+                clearTimeout(this.scope.timer);
+                $(element).find(".qrcodeImg").css("display","inline-block");
+            },
+            ".page-header-qrcode mouseleave": function(element){
+                var that = this;
+                that.scope.timer = setTimeout(function(){ that.scope.qrcodeImgHide(element) }, 350);
+            },
         }
     })
 
