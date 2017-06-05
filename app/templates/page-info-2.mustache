@@ -17,12 +17,12 @@
                 {{#each PRODUCT_POPULARIZE_1.modelList}}
                     {{#isShow @index 9}}
                         {{#isFirst @index}}
-                            <a class="shop big" productId={{productId}}  href="javascript:void(0);">
+                            <a class="shop big" productId="{{productId}}"  href="javascript:void(0);">
                                 <img src="{{picPath}}"/>
                             </a>
                         {{/isFirst}}
                         {{#notFirst @index}}
-                            <a class="shop small" productId="productId" href="javascript:void(0);">
+                            <a class="shop small" productId="{{productId}}" href="javascript:void(0);">
                                 <div class="shopImg">
                                     <img src="{{picPath}}"/>
                                 </div>
