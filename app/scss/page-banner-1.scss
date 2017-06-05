@@ -9,7 +9,7 @@ page-banner-1{
   @include page;
   background-color: $top_backgroundColor;
   &>.page-banner-content{
-    @include pageContent(545px,19px,12px,$base_color);
+    @include pageContent(490px,19px,12px,$base_color);
     max-width: none;
     @at-root .SHORT &{
       max-width: none;
@@ -17,11 +17,11 @@ page-banner-1{
     margin-bottom: 50px;
     &>.bannerImg{
       width: 100%;
-      height: 500px;
+      height: 450px;
       position: relative;
       &>a{
         width: 100%;
-        height: 500px;
+        height: 450px;
         background-position: center;
         background-repeat: no-repeat;
         position: absolute;
@@ -64,7 +64,7 @@ page-banner-1{
     }
     &>.bannerInfo{
       width: 100%;
-      height: 45px;
+      height: 48px;
       position: relative;
       background-color: $white;
       &>div{
@@ -73,9 +73,9 @@ page-banner-1{
         &>span{
           width: 296px;
           text-align: center;
-          height: 45px;
-          line-height: 42px;
-          font-size: 18px;
+          height: 48px;
+          line-height: 47px;
+          font-size: 20px;
           color: $base_tangerine;
           display: inline-block;
           &>i{
