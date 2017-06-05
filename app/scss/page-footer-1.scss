@@ -17,7 +17,6 @@ page-footer-1{
       font-size: 14px;
       line-height:28px;
       background-color: $white;
-      border-bottom: dashed 1px $li_borderColor;
       &>ul{
         padding-top: 13px;
         height:140px;
@@ -55,6 +54,7 @@ page-footer-1{
         max-width: 1390px;
         margin: auto;
         padding-top: 8px;
+        border-top: dashed 1px $base_color;
         &>span{
           height: 30px;
           line-height: 30px;
