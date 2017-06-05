@@ -180,6 +180,9 @@ page-nav-1{
             }
           }
         }
+        span{
+          cursor: default;
+        }
         &.showed{
           overflow: visible;
         }
