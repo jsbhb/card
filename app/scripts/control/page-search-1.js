@@ -2,88 +2,54 @@
  * Created by linpengteng on 2017/5/23.
  */
 
-
+'use strict';
 
 define([
     "bower.jquery",
     "bower.underscore",
-    "bower.bootstrap.min",
-    "comm.page.index.1",
-    "comm.page.search.1",
-    "control.page.top.1",
-    "control.page.header.1",
-    "control.page.nav.1",
-    "control.page.footer.1",
-    "bower.css!css.font.awesome.min",
-    "bower.css!css.bootstrap.min",
-    "bower.css!css.uFont",
-], function(
-    $, _, bootstrap, commPageIndex1, commPageSearch1, controlPageTop1,
-    controlPageHeader1, controlPageNav1, controlPageFooter1){
+    "bower.can",
+    "component.page.search.1",
+    "bower.css!css.page.search.1",
+    "fixture.test",
+], function($, _, can){
 
-    can.when(commPageIndex1.queryAll())
+    /** @description:  调用数据、模板组件, 并渲染输出
+     */
+    return can.Control.extend({
 
-        .done(function(responseData){
+        sendRequest: function(type){
+            switch(type){
+                case undefined:  return can.Deferred().resolve(new can.Model({}));
+                default:         return can.Deferred().reject();
+            }
+        },
 
-            var CITY_POPULARIZE = responseData && responseData.obj &&
-                                  responseData.obj.CITY_POPULARIZE || {};
+        render: function(data){
+            data && data.success && $.extend(true, this.options.renderData, data.obj);
+            this.options.templates = "<page-search-1></page-search-1>";
+            this.element.html(
+                can.mustache(this.options.templates)({
+                    "page-search-1": this.options.renderData
+                })
+            );
+        },
 
-            var INDEX_BANNER = responseData && responseData.obj &&
-                               responseData.obj.INDEX_BANNER || {};
+        init: function(){
 
-            var C_SHORT =         "SHORT";
-            var E_PAGE_TOP =      $("<div class='load-pageTop'></div>");
-            var E_PAGE_HEADER =   $("<div class='load-pageHeader'></div>");
-            var E_PAGE_NAV =      $("<div class='load-pageNav'></div>");
-            var E_PAGE_BODY =     $("<div class='load-pageBody' style='min-height:396px'></div>");
-            var E_PAGE_FOOTER =   $("<div class='load-pageFooter'></div>");
+            this.options.directRender=  this.options.config && this.options.config.directRender || false;
+            this.options.renderData= this.options.config && this.options.config.renderData || {};
 
-            $("body")
-                .addClass(C_SHORT)
-                .append(E_PAGE_TOP)
-                .append(E_PAGE_HEADER)
-                .append(E_PAGE_NAV)
-                .append(E_PAGE_BODY)
-                .append(E_PAGE_FOOTER);
+            if(this.options.directRender){
+                this.render();
+            }else{
+                can.when(this.sendRequest())
+                    .done(
+                        $.proxy(function(responseData){
+                            this.render(responseData);
+                        },this)
+                    )
+            }
+        }
 
-            //生成页面top部分
-            new controlPageTop1(".load-pageTop",{
-                config:{
-                    directRender: true,
-                    renderData: { CITY_POPULARIZE: CITY_POPULARIZE }
-                }
-            });
-
-            //生成页面header部分
-            new controlPageHeader1(".load-pageHeader",{
-                config:{
-                    directRender: true,
-                    renderData: {}
-                }
-            });
-
-            //生成页面nav部分
-            new controlPageNav1(".load-pageNav",{
-                config:{
-                    directRender: false,
-                    renderData: {
-                        renderCSS: { border: "border" }
-                    }
-                }
-            });
-
-            //生成页面search-content部分
-
-
-
-            //生成页面footer部分
-            new controlPageFooter1(".load-pageFooter",{
-                config:{
-                    directRender: true,
-                    renderData: { }
-                }
-            });
-
-        })
-
-})
+    })
+});

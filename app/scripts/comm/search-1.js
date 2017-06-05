@@ -17,7 +17,7 @@ define([
     return new Comm({
         queryAll: function(){
             return this.sendRequest({
-                url: "/card/pageIndex1/queryAll",
+                url: "/card/getSearch1/queryAll",
                 type: "get"
             })
         }

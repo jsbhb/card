@@ -8,7 +8,7 @@ define([
     "bower.jquery",
     "bower.underscore",
     "bower.bootstrap.min",
-    "comm.page.index.1",
+    "comm.index.1",
     "control.page.top.1",
     "control.page.header.1",
     "control.page.nav.1",
@@ -21,11 +21,16 @@ define([
     "bower.css!css.uFont",
 ], function(
     $, _, bootstrap,
-    commPageIndex1, controlPageTop1,
-    controlPageHeader1, controlPageNav1, controlPageBanner1,
-    controlPageInfo1, controlPageInfo2, controlPageFooter1){
+    commIndex1,
+    controlPageTop1,
+    controlPageHeader1,
+    controlPageNav1,
+    controlPageBanner1,
+    controlPageInfo1,
+    controlPageInfo2,
+    controlPageFooter1){
 
-    can.when(commPageIndex1.queryAll())
+    can.when(commIndex1.queryAll())
 
         .done(function(responseData){
 

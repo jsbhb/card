@@ -5,11 +5,13 @@
 'use strict';
 
 define([
-    "fixture.data.page.index.1"
-], function(pageIndex1){
+    "fixture.data.index.1",
+    "fixture.data.search.1"
+], function(dataIndex1, dataSearch1){
 
     return {
-        getPageIndex1: pageIndex1,
+        getDataIndex1: dataIndex1,
+        getDataSearch1: dataSearch1,
     }
 
 })

@@ -21,7 +21,7 @@ define([
         sendRequest: function(type){
             switch(type){
                 case "queryAll":  return can.Deferred().resolve(nav);
-                case undefined:   return can.Deferred().resolve;
+                case undefined:   return can.Deferred().resolve(new can.Model({}));
                 default:          return can.Deferred().reject();
             }
         },

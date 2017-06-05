@@ -51,6 +51,7 @@ module.exports = function(grunt) {
                     '<%=config.css%>/page-footer-1.css':     '<%=config.scss%>/page-footer-1.scss',
                     '<%=config.css%>/page-info-1.css':       '<%=config.scss%>/page-info-1.scss',
                     '<%=config.css%>/page-info-2.css':       '<%=config.scss%>/page-info-2.scss',
+                    '<%=config.css%>/page-search-1.css':     '<%=config.scss%>/page-search-1.scss',
                 }
             }
         },

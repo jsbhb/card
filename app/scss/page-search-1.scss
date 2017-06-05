@@ -1,0 +1,14 @@
+@charset "utf-8";
+
+@import "page.param.1";
+
+/*
+ * page-search-1部分样式
+ */
+page-search-1{
+  @include page;
+  &>.page-search-content{
+    @include pageContent(500px,19px,12px,$base_color);
+  }
+}
+

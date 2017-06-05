@@ -14,9 +14,17 @@ define([
 
     //模拟REST
     can.fixture({
-        'GET /card/pageIndex1/queryAll': function () {
+        'GET /card/getIndex1/queryAll': function () {
             var data = {};
-            $.extend(true, data, fixtureData.getPageIndex1);
+            $.extend(true, data, fixtureData.getDataIndex1);
+            return data;
+        }
+    });
+
+    can.fixture({
+        'GET /card/getSearch1/queryAll': function () {
+            var data = {};
+            $.extend(true, data, fixtureData.getDataSearch1);
             return data;
         }
     });
