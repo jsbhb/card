@@ -33,7 +33,7 @@ define([
                 }else{
                     this.timer=setTimeout(function(){
                         that.getWIdth($element);
-                    },300);
+                    },200);
                 }
             }
         },
@@ -59,7 +59,7 @@ define([
                 var $element = element.parent();
                 this.scope.timer=setTimeout(function(){
                     that.scope.getWIdth($element);
-                },300);
+                },200);
             },
             ".contType>ul>li mouseenter": function(element){
                 $(".contType>ul>li").removeClass("hover");
