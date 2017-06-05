@@ -7,9 +7,10 @@
  */
 page-banner-1{
   @include page;
-  background-color: $top_backgroundColor;
+  background-color: $white;
   &>.page-banner-content{
     @include pageContent(520px,19px,12px,$base_color);
+    border-bottom: solid 5px $banner_border;
     max-width: none;
     @at-root .SHORT &{
       max-width: none;
@@ -74,7 +75,7 @@ page-banner-1{
           width: 296px;
           text-align: center;
           height: 50px;
-          line-height: 50px;
+          line-height: 52px;
           font-size: 18px;
           color: $base_tangerine;
           display: inline-block;

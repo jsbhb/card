@@ -9,6 +9,35 @@ page-search-1{
   @include page;
   &>.page-search-content{
     @include pageContent(500px,19px,12px,$base_color);
+    &>.recommImg{
+      width: 100%;
+      height: 145px;
+      padding-top: 20px;
+      &>a{
+        width: 232px;
+        height: 100%;
+        float: left;
+        text-align: center;
+        display: inline-block;
+        position: relative;
+        &:not(:last-child){
+          margin-right: 10px;
+        }
+        &>div{
+          text-align: center;
+          display: inline-block;
+          height: 100%;
+          &>img{
+            width: auto;
+            max-width: 100%;
+            height: 100%;
+          }
+          &:hover{
+            border: solid 1px $base_color;
+          }
+        }
+      }
+    }
   }
 }
 

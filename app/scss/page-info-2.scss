@@ -55,7 +55,6 @@ page-info-2{
         width: 100%;
         min-height: 588px;
         position: relative;
-        overflow: hidden;
         &>.shop.big{
           width: 472.5px;
           height: 260px;
@@ -73,6 +72,9 @@ page-info-2{
             left: 0px;
             right: 0px;
             margin: auto;
+          }
+          &:hover{
+            box-shadow: 0px 0px 15px 0px $fade_backgroundColor;
           }
         }
         &>.shop.small{
@@ -123,6 +125,9 @@ page-info-2{
                 padding: 0 5px;
               }
             }
+          }
+          &:hover{
+            box-shadow: 0px 0px 15px 0px $fade_backgroundColor;
           }
         }
         &>.shop:nth-child(5n){

@@ -11,13 +11,16 @@ $title_color: #777;
 $title_border: #c3c3c3;
 $qrcode_Color: #ff8100;
 $banner_hoverBackgroundColor: #ffced8;
+$banner_border: #f3f3f3;
 $base_backgroundColor: #f6f6f6;
 $top_backgroundColor: #f3f3f3;
+$footer_backgroundColor: #fff;
 $ul_backgroundColor: #bbb;
 $li_backgroundColor: #e9e9e9;
 $li_borderColor: #ddd;
 $price_color: #FF5722;
 $logoBanner_color: rgba(230,230,230,.5);
+$fade_backgroundColor: rgba(0, 0, 0, 0.35);
 
 @mixin page{
   width: 100%;
@@ -45,7 +48,7 @@ $logoBanner_color: rgba(230,230,230,.5);
 body{
   font-family: "Microsoft YaHei", tahoma, arial, "Hiragino Sans GB", "\\5b8b体", sans-serif, "微软雅黑";
   font-size: 14px;
-  background-color: $base_backgroundColor;
+  background-color: $white;
   *{
     margin: 0;
     padding: 0;
