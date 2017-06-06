@@ -27,13 +27,15 @@ page-search-1{
           text-align: center;
           display: inline-block;
           height: 100%;
+          transition: transform 0.5s ease-in-out 0s;
+          transform: scale(0.92);
           &>img{
             width: auto;
             max-width: 100%;
             height: 100%;
           }
           &:hover{
-            border: solid 1px $base_color;
+            transform: scale(1);
           }
         }
       }
