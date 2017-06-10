@@ -10,7 +10,7 @@ page-banner-1{
   background-color: $white;
   &>.page-banner-content{
     @include pageContent(520px,19px,12px,$base_color);
-    border-bottom: solid 5px $banner_border;
+    box-shadow: 0px 0px 1.3px 0px $fade_backgroundColor;
     max-width: none;
     @at-root .SHORT &{
       max-width: none;

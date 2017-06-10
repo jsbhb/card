@@ -28,19 +28,19 @@
                         {{#isShow @index 5}}
                             <ul index="{{../@index}}">
                                 <li class="infoBanner">
-                                    <a href="javascript:void(0);" index="0" memberId="{{memberId}}"
+                                    <a href="/app/webpage/company.html" index="0" memberId="{{memberId}}"
                                        style="background-image: url({{picPath1}})">
                                         <div class="text">
                                             <span class="description">{{description1}}</span>
                                         </div>
                                     </a>
-                                    <a href="javascript:void(0);" index="1" memberId="{{memberId}}"
+                                    <a href="/app/webpage/company.html" index="1" memberId="{{memberId}}"
                                        style="background-image: url({{picPath2}})">
                                         <div class="text">
                                             <span class="description">{{description2}}</span>
                                         </div>
                                     </a>
-                                    <a href="javascript:void(0);" index="2" memberId="{{memberId}}"
+                                    <a href="/app/webpage/company.html" index="2" memberId="{{memberId}}"
                                        style="background-image: url({{picPath3}})">
                                         <div class="text">
                                            <span class="description">{{description3}}</span>
@@ -55,7 +55,7 @@
                                 {{#each generalInfoList}}
                                     {{#isShow @index 7}}
                                         <li class="generalInfo" productId="{{productId}}">
-                                            <a href="javascript:void(0);">
+                                            <a href="/app/webpage/shop.html">
                                                 <div class="text">
                                                     <i class="title">{{shortTitle}}</i>
                                                     <i class="price">{{parsefloat price}}</i>
@@ -77,7 +77,7 @@
                     <ul class="bannerUl" style="left:0px;">
                         {{#MEMBER_POPULARIZE_1.modelList}}
                             <li>
-                                <a href="javascript:void(0);" memberId="{{memberId}}">
+                                <a href="/app/webpage/company.html" memberId="{{memberId}}">
                                     <img src="{{logoPath}}"/>
                                 </a>
                             </li>

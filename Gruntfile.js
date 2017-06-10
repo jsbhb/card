@@ -44,14 +44,19 @@ module.exports = function(grunt) {
                     style: 'expanded'
                 },
                 files: {
-                    '<%=config.css%>/page-top-1.css':        '<%=config.scss%>/page-top-1.scss',
-                    '<%=config.css%>/page-header-1.css':     '<%=config.scss%>/page-header-1.scss',
-                    '<%=config.css%>/page-nav-1.css':        '<%=config.scss%>/page-nav-1.scss',
-                    '<%=config.css%>/page-banner-1.css':     '<%=config.scss%>/page-banner-1.scss',
-                    '<%=config.css%>/page-footer-1.css':     '<%=config.scss%>/page-footer-1.scss',
-                    '<%=config.css%>/page-info-1.css':       '<%=config.scss%>/page-info-1.scss',
-                    '<%=config.css%>/page-info-2.css':       '<%=config.scss%>/page-info-2.scss',
-                    '<%=config.css%>/page-search-1.css':     '<%=config.scss%>/page-search-1.scss',
+                    '<%=config.css%>/page-top-1.css':               '<%=config.scss%>/page-top-1.scss',
+                    '<%=config.css%>/page-header-1.css':            '<%=config.scss%>/page-header-1.scss',
+                    '<%=config.css%>/page-nav-1.css':               '<%=config.scss%>/page-nav-1.scss',
+                    '<%=config.css%>/page-banner-1.css':            '<%=config.scss%>/page-banner-1.scss',
+                    '<%=config.css%>/page-footer-1.css':            '<%=config.scss%>/page-footer-1.scss',
+                    '<%=config.css%>/page-info-1.css':              '<%=config.scss%>/page-info-1.scss',
+                    '<%=config.css%>/page-info-2.css':              '<%=config.scss%>/page-info-2.scss',
+                    '<%=config.css%>/page-searchCompany-1.css':     '<%=config.scss%>/page-searchCompany-1.scss',
+                    '<%=config.css%>/page-searchShop-1.css':        '<%=config.scss%>/page-searchShop-1.scss',
+                    '<%=config.css%>/page-shop-1.css':              '<%=config.scss%>/page-shop-1.scss',
+                    '<%=config.css%>/page-shop-2.css':              '<%=config.scss%>/page-shop-2.scss',
+                    '<%=config.css%>/page-company-1.css':           '<%=config.scss%>/page-company-1.scss',
+                    '<%=config.css%>/page-company-2.css':           '<%=config.scss%>/page-company-2.scss',
                 }
             }
         },

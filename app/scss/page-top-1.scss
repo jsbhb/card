@@ -7,7 +7,7 @@
  */
 page-top-1{
   @include page;
-  background-color: $top_backgroundColor;
+  background-color: $base_backgroundColor;
   &>.page-top-content{
     @include pageContent(30px,19px,12px,$base_color);
     font-size:12px;

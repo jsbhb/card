@@ -42,7 +42,7 @@ define([
                 var that = this;
                 if(that.ul_mouseleave_end && !$(".contType").hasClass("showed")){
                     $(".contType>ul").css("overflow", "hidden");
-                    $(".contType>ul").stop(true, true).animate({height: "0px"}, 1000);
+                    $(".contType>ul").stop(true, true).animate({height: "0px"}, 700);
                 }else if(!$(".contType").hasClass("showed")){
                     this.contType_timer=setTimeout(function(){ that.contType_mouseleave(); },200);
                 }

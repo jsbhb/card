@@ -8,10 +8,11 @@ define([
     "bower.jquery",
     "bower.underscore",
     "bower.can",
-    "component.page.search.1",
-    "bower.css!css.page.search.1",
+    "comm.company.1",
+    "component.page.company.1",
+    "bower.css!css.page.company.1",
     "fixture.test",
-], function($, _, can){
+], function($, _, can, comm){
 
     /** @description:  调用数据、模板组件, 并渲染输出
      */
@@ -26,10 +27,10 @@ define([
 
         render: function(data){
             data && data.success && $.extend(true, this.options.renderData, data.obj);
-            this.options.templates = "<page-search-1></page-search-1>";
+            this.options.templates = "<page-company-1></page-company-1>";
             this.element.html(
                 can.mustache(this.options.templates)({
-                    "page-search-1": this.options.renderData
+                    "page-company-1": this.options.renderData
                 })
             );
         },
@@ -38,6 +39,7 @@ define([
 
             this.options.directRender=  this.options.config && this.options.config.directRender || false;
             this.options.renderData= this.options.config && this.options.config.renderData || {};
+            this.options.urlData= this.options.config && this.options.config.urlData || {};
 
             if(this.options.directRender){
                 this.render();
@@ -49,6 +51,31 @@ define([
                         },this)
                     )
             }
+        },
+
+        "[industrymap] click": function(element){
+
+        },
+
+        "[categorymap] click": function(element){
+
+        },
+        ".resultCategory>a .deleteIcon click": function(element){
+
+        },
+        ".filter>.btn-group>a click": function(element){
+            if(element.hasClass("filterDefault")){
+
+            }
+            if(element.hasClass("filterReputation")){
+
+            }
+            if(element.hasClass("filterCalendar")){
+
+            }
+        },
+        ".inputGroup>label click": function(element){
+
         }
 
     })

@@ -14,19 +14,32 @@ define([
 
     //模拟REST
     can.fixture({
-        'GET /card/getIndex1/queryAll': function () {
+        'GET http://192.168.2.224:8080/cardapi/1.0/popularizations/index': function () {
             var data = {};
             $.extend(true, data, fixtureData.getDataIndex1);
             return data;
-        }
-    });
-
-    can.fixture({
-        'GET /card/getSearch1/queryAll': function () {
+        },
+        'GET http://192.168.2.224:8080/cardapi/1.0/members': function () {
             var data = {};
-            $.extend(true, data, fixtureData.getDataSearch1);
+            $.extend(true, data, fixtureData.getDataSearchCompany1);
+            return data;
+        },
+        'GET http://192.168.2.224:8080/cardapi/1.0/commodityName': function () {
+            var data = {};
+            $.extend(true, data, fixtureData.getDataSearchShop1);
+            return data;
+        },
+        'GET /card/getCompany/queryAll': function () {
+            var data = {};
+            $.extend(true, data, null);
+            return data;
+        },
+        'GET /card/getShop/queryAll': function () {
+            var data = {};
+            $.extend(true, data, null);
             return data;
         }
+
     });
 
 })

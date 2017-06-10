@@ -1,0 +1,132 @@
+<div class="page-searchCompany-content">
+    {{#page-searchCompany-1}}
+        {{#searchFilter}}
+            <div class="resultCategory">
+                <span class="inlineBlock">全部结果</span>
+                <i class="rightIcon">></i>
+                <span class="inlineBlock searchText">电脑</span>
+            </div>
+            <div class="classifyCategory">
+                {{#if industryMap}}
+                    <div class="industryItem">
+                        <div>
+                            <span class="classifyType">所属行业</span>
+                        </div>
+                        <div>
+                            <div>
+                                {{#each industryMap}}
+                                    <a href="javascript:void(0)" industryMap="{{@key}}">
+                                        <span>{{.}}</span>
+                                    </a>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                {{/if}}
+                {{#if categoryMap}}
+                    <div class="categoryItem">
+                        <div>
+                            <span class="classifyType">主营类目</span>
+                        </div>
+                        <div>
+                            <div>
+                                {{#each categoryMap}}
+                                    <a href="javascript:void(0)" categoryMap="{{@key}}">
+                                        <span>{{.}}</span>
+                                    </a>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                {{/if}}
+            </div>
+            <div class="reminder">
+                <span>温馨提示：企业简介处带有</span>
+                <span><i class="uFont font-company_highQuality"></i>表示该企业为优质企业;</span>
+                <span><i class="uFont font-company_sincerity"></i>表示该企业为诚信企业;</span>
+                <span><i class="uFont font-company_returnGoods"></i>表示该企业支持退货处理;</span>
+                <span><i class="uFont font-company_guarantee"></i>表示本平台为该企业做担保;</span>
+            </div>
+            <div class="filter">
+                <div class="btn-group inlineBlock">
+                    <a href="javascript:void(0)" class="btn btn-default inlineBlock filterDefault active">默认
+                        <i class="uFont font-base_directionDown"></i>
+                    </a>
+                    <a href="javascript:void(0)" class="btn btn-default inlineBlock filterReputation">信誉度
+                        <i class="uFont font-base_directionDown"></i>
+                    </a>
+                    <a href="javascript:void(0)" class="btn btn-default inlineBlock filterCalendar">入驻时间
+                        <i class="uFont font-base_directionDown"></i>
+                    </a>
+                </div>
+                <div class="inputGroup inlineBlock">
+                    <label for="company_highQuality">
+                        <i class="fa fa-square-o fa-fw"></i><span>优质企业</span>
+                    </label>
+                    <input type="checkbox" id="company_highQuality">
+                    <label for="company_sincerity">
+                        <i class="fa fa-square-o fa-fw"></i><span>诚信企业</span>
+                    </label>
+                    <input type="checkbox" id="company_sincerity">
+                    <label for="company_returnGoods">
+                        <i class="fa fa-square-o fa-fw"></i><span>支持退货处理</span>
+                    </label>
+                    <input type="checkbox" id="company_returnGoods">
+                    <label for="company_guarantee">
+                        <i class="fa fa-square-o fa-fw"></i><span>本平台担保</span>
+                    </label>
+                    <input type="checkbox" id="company_guarantee">
+                </div>
+            </div>
+        {{/searchFilter}}
+            <div class="companyList">
+                <ul>
+                    {{#each memberList}}
+                        <li class="inlineBlock">
+                            <a href="#" memberId="{{memberId}}">
+                                <div class="imgBox">
+                                    <img src="{{frontPicPath}}">
+                                </div>
+                                <div class="info">
+                               <span class="name inlineBlock">
+                                  <span class="inlineBlock">公司名称：</span>
+                                  <span class="contnet inlineBlock">{{memberName}}</span>
+                               </span>
+                                    <span class="description inlineBlock">
+                                    <span class="inlineBlock">经营方向：</span>
+                                    <span class="contnet inlineBlock"> {{product}} </span>
+                               </span>
+                                </div>
+                                <div class="mark">
+                                    <span>好评度：<span>{{reputation}}</span></span>
+                                    {{#if highQuality}}
+                                        <span class="uFont font-company_highQuality"></span>
+                                    {{/if}}
+                                    {{#if sincerity}}
+                                        <span class="uFont font-company_sincerity"></span>
+                                    {{/if}}
+                                    {{#if returnGoods}}
+                                        <span class="uFont font-company_returnGoods"></span>
+                                    {{/if}}
+                                    {{#if guarantee}}
+                                        <span class="uFont font-company_guarantee"></span>
+                                    {{/if}}
+                                </div>
+                            </a>
+                        </li>
+                    {{/each}}
+                </ul>
+                <div class="pagination" style="margin-right: 15px;"></div>
+            </div>
+    {{/page-searchCompany-1}}
+
+
+    {{^page-searchCompany-1}}
+        <div class="nothingError">
+            <span class="description"><i class="fa fa-warning fa-fw"></i>抱歉没有找到</span>
+            <span class="text"></span>
+            <span class="description">相关商品!</span>
+        </div>
+    {{/page-searchCompany-1}}
+
+</div>

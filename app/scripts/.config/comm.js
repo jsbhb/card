@@ -22,7 +22,7 @@ define([
             this.url = param.url   || this.url  || "";
             this.type = param.type || this.type || "post";
             this.data = param.data || this.data || null;
-            this.fixtrue = true;
+            this.fixtrue = param.fixtrue || this.fixtrue || false;
         },
 
         /**

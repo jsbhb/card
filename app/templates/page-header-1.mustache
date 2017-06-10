@@ -1,20 +1,25 @@
 <div class="page-header-content {{page-header-1.renderCSS.shortHeight}}">
     <div class="page-header-logo inlineBlock">
-        <img src="/app/images/logo2.png">
+        <a href="/app/webpage">
+            <img src="/app/images/logo.png">
+        </a>
     </div>
     <div  class="page-header-search inlineBlock">
         <div class="input-group">
             <div class="input-group-btn">
                 <button type="button" class="btn searchTypeBtn dropdown-toggle" data-toggle="dropdown">
-                    <span class="searchTypeText" searchType="1">企业</span>
-                    <i class="fa fa-angle-down fa-fw"></i>
+
+                        <span class="searchTypeText" searchType="{{page-header-1.renderCSS.SEARCH_TYPE}}">
+                            {{page-header-1.renderCSS.SEARCH_COMPANY}}</span>
+                        <i class="fa fa-angle-down fa-fw"></i>
                 </button>
                 <ul class="dropdown-menu">
                     <li><a href="javascript:void(0);" type="1">企业</a></li>
                     <li><a href="javascript:void(0);" type="2">商品</a></li>
                 </ul>
             </div>
-            <input type="text" class="form-control input-search">
+            <input type="text" class="form-control input-search"
+                   value="{{page-header-1.renderCSS.SEARCH_CONTENT}}">
             <div class="input-group-btn">
                 <a class="btn btn-default btn-search">搜 索</a>
             </div>

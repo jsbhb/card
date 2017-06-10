@@ -17,8 +17,9 @@ define([
     return new Comm({
         queryAll: function(){
             return this.sendRequest({
-                url: "/card/getIndex1/queryAll",
-                type: "get"
+                url: "http://192.168.2.224:8080/cardapi/1.0/popularizations/index",
+                type: "get",
+                fixtrue: true
             })
         }
     });

@@ -25,7 +25,7 @@ define([
         },
 
         render: function(data){
-            data && data.success && $.extend(true, this.options.renderData, data.obj);
+            data && data.success && $.extend(true, this.options.renderData, data.obj.MEMBER_PRODUCT_POPULARIZE_1);
             this.options.templates = "<page-info-1></page-info-1>";
             this.element.html(
                 can.mustache(this.options.templates)({

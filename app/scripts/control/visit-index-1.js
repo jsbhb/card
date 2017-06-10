@@ -34,8 +34,7 @@ define([
 
         .done(function(responseData){
 
-            var CITY_POPULARIZE = responseData && responseData.obj &&
-                                  responseData.obj.CITY_POPULARIZE || {};
+            var CITY_POPULARIZE = { localCity: "浙江宁波" };
 
             var INDEX_BANNER = responseData && responseData.obj &&
                                responseData.obj.INDEX_BANNER || {};
@@ -90,7 +89,12 @@ define([
             new controlPageHeader1(".load-pageHeader",{
                 config:{
                     directRender: true,
-                    renderData: {}
+                    renderData: {
+                        renderCSS: {
+                            SEARCH_TYPE:1,
+                            SEARCH_COMPANY: "企业"
+                        }
+                    }
                 }
             });
 
@@ -99,7 +103,10 @@ define([
                 config:{
                     directRender: false,
                     renderData: {
-                        renderCSS: { contType: "showed" }
+                        renderCSS: {
+                            index: "active",
+                            contType: "showed"
+                        }
                     }
                 }
             });

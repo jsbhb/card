@@ -8,10 +8,12 @@ define([
     "bower.jquery",
     "bower.underscore",
     "bower.can",
+    "control.page.searchCompany.1",
+    "control.page.searchShop.1",
     "component.page.header.1",
     "bower.css!css.page.header.1",
     "fixture.test"
-], function($, _, can){
+], function($, _, can, controlSearchCompany1, controlSearchShop1){
 
     /** @description:  调用数据、模板组件, 并渲染输出
      */
@@ -48,6 +50,38 @@ define([
                             this.render(responseData);
                         },this)
                     )
+            }
+        },
+
+        ".btn-search click": function(elemenet){
+            var $element = this.element;
+            var $thisElemenet = $(elemenet);
+            var searchType = $thisElemenet.parents(".page-header-search").find("[searchType]").attr("searchType");
+            var searchText = $element.find(".input-search").val().trim();
+            if(!searchText){
+                 return false;
+            }else if(searchType == "1"){
+                if(location.pathname!= "/app/webpage/searchCompany.html"){
+                    location.href = encodeURI("/app/webpage/searchCompany.html?memberName="+searchText);
+                }else{
+                    new controlSearchCompany1(".load-searchCompany1", {
+                        config:{
+                            directRender: false,
+                            urlData: { memberName: searchText, }
+                        }
+                    });
+                }
+            }else if(searchType == "2"){
+                if(location.pathname!= "/app/webpage/searchShop.html"){
+                    location.href = encodeURI("/app/webpage/searchShop.html?commodityName="+searchText);
+                }else{
+                    new controlSearchShop1(".load-searchShop1", {
+                        config:{
+                            directRender: false,
+                            urlData: { commodityName: searchText, }
+                        }
+                    });
+                }
             }
         }
 

@@ -1,0 +1,142 @@
+<div class="page-searchShop-content">
+    {{#page-searchShop-1}}
+        <div class="recommImg">
+            <a href="#">
+                <div>
+                    <img src="/app/images/test/test_recomm1.jpg">
+                </div>
+            </a>
+            <a href="#">
+                <div>
+                    <img src="/app/images/test/test_recomm2.jpg">
+                </div>
+            </a>
+            <a href="#">
+                <div>
+                    <img src="/app/images/test/test_recomm3.jpg">
+                </div>
+            </a>
+            <a href="#">
+                <div>
+                    <img src="/app/images/test/test_recomm4.jpg">
+                </div>
+            </a>
+            <a href="#">
+                <div>
+                    <img src="/app/images/test/test_recomm5.jpg">
+                </div>
+            </a>
+        </div>
+        {{#searchFilter}}
+            <div class="resultCategory">
+                <span class="inlineBlock">全部结果</span>
+                <i class="rightIcon">></i>
+                <span class="inlineBlock searchText">电脑</span>
+            </div>
+            <div class="classifyCategory">
+                {{#if commodityBrand}}
+                    <div class="industryItem">
+                        <div>
+                            <span class="classifyType">所属品牌</span>
+                        </div>
+                        <div>
+                            <div>
+                                {{#each commodityBrand}}
+                                    <a href="javascript:void(0)" brandMap="{{@key}}">
+                                        <span>{{.}}</span>
+                                    </a>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                {{/if}}
+                {{#if commodityType}}
+                    <div class="categoryItem">
+                        <div>
+                            <span class="classifyType">规格</span>
+                        </div>
+                        <div>
+                            <div>
+                                {{#each commodityType}}
+                                    <a href="javascript:void(0)" typeMap="{{@key}}">
+                                        <span>{{.}}</span>
+                                    </a>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                {{/if}}
+            </div>
+            <div class="filter">
+                <div class="btn-group inlineBlock">
+                    <a href="javascript:void(0)" class="btn btn-default inlineBlock filterDefault active">默认
+                        <i class="uFont font-base_directionDown"></i>
+                    </a>
+                    <a href="javascript:void(0)" class="btn btn-default inlineBlock filterSales">销量
+                        <i class="uFont font-base_directionDown"></i>
+                    </a>
+                    <a href="javascript:void(0)" class="btn btn-default inlineBlock filterPrice">价格
+                        <i class="uFont font-base_directionDown"></i>
+                    </a>
+                </div>
+                <div class="inputGroup inlineBlock">
+                    <label for="shop_CashOnDelivery">
+                        <i class="fa fa-square-o fa-fw"></i><span>货到付款</span>
+                    </label>
+                    <input type="checkbox" id="shop_CashOnDelivery">
+                    <label for="shop_HaveTheGoods">
+                        <i class="fa fa-square-o fa-fw"></i><span>仅显示有货</span>
+                    </label>
+                    <input type="checkbox" id="shop_HaveTheGoods">
+                </div>
+            </div>
+        {{/searchFilter}}
+            <div class="ShopList">
+                <ul>
+                    {{#each commodityList}}
+                        <li class="inlineBlock">
+                            <a href="javascript:void(0)" commodityId="{{commodityId}}">
+                                <div class="imgBox">
+                                    <img src="{{picture1}}">
+                                </div>
+                            </a>
+                            <div class="info">
+                                <div class="showImg">
+                                    <div class="box"><img src="{{picture1}}" class="active"></div>
+                                    {{#if picture2}}<div class="box"><img src="{{picture2}}"></div>{{/if}}
+                                    {{#if picture3}}<div class="box"><img src="{{picture3}}"></div>{{/if}}
+                                    {{#if picture4}}<div class="box"><img src="{{picture4}}"></div>{{/if}}
+                                </div>
+                                <div class="showPrice">
+                                    ￥{{price}}
+                                </div>
+                                <div class="showText">
+                                    <a href="javascript:void(0)" commodityId="{{commodityId}}">
+                                        <abbr title="{{commodityName}}"> {{commodityName}}</abbr>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="mark">
+                                <span class="inlineBlock">好评度：<span>{{reputation}}</span></span>
+                                <a href="javascript:void(0)"
+                                   class="inlineBlock pull-right" memberId="{{memberId}}">
+                                    <abbr title="{{memberName}}"> {{memberName}}</abbr>
+                                </a>
+                            </div>
+                        </li>
+                    {{/each}}
+                </ul>
+                <div class="pagination" style="margin-right: 15px;"></div>
+            </div>
+    {{/page-searchShop-1}}
+
+
+    {{^page-searchShop-1}}
+        <div class="nothingError">
+            <span class="description"><i class="fa fa-warning fa-fw"></i>抱歉没有找到</span>
+            <span class="text"></span>
+            <span class="description">相关商品!</span>
+        </div>
+    {{/page-searchShop-1}}
+
+</div>
