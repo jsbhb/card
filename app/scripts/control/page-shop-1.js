@@ -8,11 +8,11 @@ define([
     "bower.jquery",
     "bower.underscore",
     "bower.can",
-    "comm.shop.1",
+    "comm.shop",
     "component.page.shop.1",
     "bower.css!css.page.shop.1",
     "fixture.test",
-], function($, _, can, comm){
+], function($, _, can, comm_shop){
 
     /** @description:  调用数据、模板组件, 并渲染输出
      */
@@ -20,63 +20,53 @@ define([
 
         sendRequest: function(type){
             switch(type){
-                case undefined:  return can.Deferred().resolve(new can.Model({}));
+                case "queryAll": return comm_shop.queryAll(this.options.urlData);
+                case undefined:  return can.Deferred().resolve();
                 default:         return can.Deferred().reject();
             }
         },
 
-        render: function(data){
-            data && data.success && $.extend(true, this.options.renderData, data.obj);
+
+        setRenderData: function(responseData){
+            if(typeof this.options.config=="object"){
+                this.options.renderData.attr("CONFIG", this.options.config);
+            }
+            if(typeof responseData == "object"){
+                this.options.renderData.attr("RESPONSEDATA", responseData);
+            }
+        },
+
+
+        render: function(){
             this.options.templates = "<page-shop-1></page-shop-1>";
             this.element.html(
-                can.mustache(this.options.templates)({
-                    "page-shop-1": this.options.renderData
-                })
+                can.mustache(this.options.templates)({ "SHOP": this.options.renderData })
             );
         },
 
+
         init: function(){
-
-            this.options.directRender=  this.options.config && this.options.config.directRender || false;
-            this.options.renderData= this.options.config && this.options.config.renderData || {};
-            this.options.urlData= this.options.config && this.options.config.urlData || {};
-
-            if(this.options.directRender){
+            this.options.config = this.options.config || {};
+            this.options.urlData = this.options.urlData || {};
+            this.options.responseData = this.options.responseData || null;
+            this.options.renderData = new can.Model({ CONFIG:{}, RESPONSEDATA:{} });
+            if(this.options.responseData){
+                this.setRenderData(this.options.responseData);
                 this.render();
             }else{
-                can.when(this.sendRequest())
+                can.when(this.sendRequest("queryAll"))
                     .done(
                         $.proxy(function(responseData){
-                            this.render(responseData);
+                            console.log(responseData);
+                            if(responseData && responseData.success){
+                                this.setRenderData(responseData.obj);
+                            }else{
+                                this.setRenderData(responseData);
+                            }
+                            this.render();
                         },this)
                     )
             }
-        },
-
-        "[industrymap] click": function(element){
-
-        },
-
-        "[categorymap] click": function(element){
-
-        },
-        ".resultCategory>a .deleteIcon click": function(element){
-
-        },
-        ".filter>.btn-group>a click": function(element){
-            if(element.hasClass("filterDefault")){
-
-            }
-            if(element.hasClass("filterReputation")){
-
-            }
-            if(element.hasClass("filterCalendar")){
-
-            }
-        },
-        ".inputGroup>label click": function(element){
-
         }
-
     })
 });

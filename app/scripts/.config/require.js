@@ -26,6 +26,7 @@ requirejs.config({
         "css.font.awesome.min":        "bower_components/font-awesome/css/font-awesome.min",
         "css.bootstrap.min":           "bower_components/bootstrap/dist/css/bootstrap.min",
         "css.uFont":                   "app/fonts/uFont/uFont",
+        "css.page.pagination":         "app/css/page-pagination",
         "css.page.top.1":              "app/css/page-top-1",
         "css.page.header.1":           "app/css/page-header-1",
         "css.page.nav.1":              "app/css/page-nav-1",
@@ -35,11 +36,8 @@ requirejs.config({
         "css.page.info.2":             "app/css/page-info-2",
         "css.page.searchCompany.1":    "app/css/page-searchCompany-1",
         "css.page.searchShop.1":       "app/css/page-searchShop-1",
-        "css.page.pagination":         "app/css/page-pagination",
         "css.page.shop.1":             "app/css/page-shop-1",
-        "css.page.shop.2":             "app/css/page-shop-2",
         "css.page.company.1":          "app/css/page-company-1",
-        "css.page.company.2":          "app/css/page-company-2",
 
         /** JS --框架/工具
          */
@@ -53,21 +51,24 @@ requirejs.config({
 
         /** JS --配置信息
          */
-        "config.require":             "app/scripts/.config/require",
-        "config.comm":                "app/scripts/.config/comm",
+        "config.require":              "app/scripts/.config/require",
+        "config.comm":                 "app/scripts/.config/comm",
+        "config.path":                 "app/scripts/.config/path",
+        "config.util":                 "app/scripts/.config/util",
+        "config.helper":               "app/scripts/.config/helper",
 
         /** JS --数据块
          */
-        "data.nav.1":                 "app/scripts/.data/nav-1",
-        "data.region.1":              "app/scripts/.data/region-1",
+        "data.region":                 "app/scripts/.data/region",
 
         /** JS --通讯交互
          */
-        "comm.index.1":               "app/scripts/comm/index-1",
-        "comm.searchCompany.1":       "app/scripts/comm/searchCompany-1",
-        "comm.searchShop.1":          "app/scripts/comm/searchShop-1",
-        "comm.shop.1":                "app/scripts/comm/shop-1",
-        "comm.company.1":             "app/scripts/comm/company-1",
+        "comm.index":                  "app/scripts/comm/index",
+        "comm.searchCompany":          "app/scripts/comm/searchCompany",
+        "comm.searchShop":             "app/scripts/comm/searchShop",
+        "comm.shop":                   "app/scripts/comm/shop",
+        "comm.company":                "app/scripts/comm/company",
+        "comm.nav":                    "app/scripts/comm/nav",
 
         /** JS --组件
          */
@@ -82,9 +83,7 @@ requirejs.config({
         "component.page.searchShop.1":       "app/scripts/component/page-searchShop-1",
         "component.page.pagination":         "app/scripts/component/page-pagination",
         "component.page.shop.1":             "app/scripts/component/page-shop-1",
-        "component.page.shop.2":             "app/scripts/component/page-shop-2",
         "component.page.company.1":          "app/scripts/component/page-company-1",
-        "component.page.company.2":          "app/scripts/component/page-company-2",
 
         /** JS --业务
          *    control.page:   将页面各部分拆分为模块（拥有独自的样式、事件、以及通讯交互）
@@ -100,24 +99,23 @@ requirejs.config({
         "control.page.searchCompany.1":     "app/scripts/control/page-searchCompany-1",
         "control.page.searchShop.1":        "app/scripts/control/page-searchShop-1",
         "control.page.shop.1":              "app/scripts/control/page-shop-1",
-        "control.page.shop.2":              "app/scripts/control/page-shop-2",
         "control.page.company.1":           "app/scripts/control/page-company-1",
-        "control.page.company.2":           "app/scripts/control/page-company-2",
         "control.visit.index.1":            "app/scripts/control/visit-index-1",
         "control.visit.searchCompany.1":    "app/scripts/control/visit-searchCompany-1",
         "control.visit.searchShop.1":       "app/scripts/control/visit-searchShop-1",
         "control.visit.shop.1":             "app/scripts/control/visit-shop-1",
-        "control.visit.shop.2":             "app/scripts/control/visit-shop-2",
         "control.visit.company.1":          "app/scripts/control/visit-company-1",
-        "control.visit.company.2":          "app/scripts/control/visit-company-2",
 
         /** JS --测试模块
          */
         "fixture.test":                     "app/scripts/fixture/fixture-test",
         "fixture.data":                     "app/scripts/fixture/fixture-data",
         "fixture.data.index.1":             "app/scripts/fixture/fixture-data-index-1",
+        "fixture.data.nav.1":               "app/scripts/fixture/fixture-data-nav-1",
         "fixture.data.searchCompany.1":     "app/scripts/fixture/fixture-data-searchCompany-1",
         "fixture.data.searchShop.1":        "app/scripts/fixture/fixture-data-searchShop-1",
+        "fixture.data.company.1":           "app/scripts/fixture/fixture-data-company-1",
+        "fixture.data.shop.1":              "app/scripts/fixture/fixture-data-shop-1",
 
         /** TEMPLATE --模板模块
          */
@@ -131,9 +129,7 @@ requirejs.config({
         "templates.page.searchCompany.1":   "app/templates/page-searchCompany-1",
         "templates.page.searchShop.1":      "app/templates/page-searchShop-1",
         "templates.page.shop.1":            "app/templates/page-shop-1",
-        "templates.page.shop.2":            "app/templates/page-shop-2",
         "templates.page.company.1":         "app/templates/page-company-1",
-        "templates.page.company.2":         "app/templates/page-company-2",
 
     }
 

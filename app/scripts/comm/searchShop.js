@@ -17,9 +17,10 @@ define([
     return new Comm({
         queryAll: function(data){
             return this.sendRequest({
-                url: "/card/getCompany/queryAll",
-                type: "get",
-                data: data
+                "urlPath":  "/cardapi/1.0/commoditys",
+                "type":     "get",
+                "data":      data||null,
+                "fixture":   true
             })
         }
     });

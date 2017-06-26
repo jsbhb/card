@@ -21,37 +21,53 @@ define([
 
         sendRequest: function(type){
             switch(type){
-                case undefined:  return can.Deferred().resolve(new can.Model({}));
+                case undefined:  return can.Deferred().resolve();
                 default:         return can.Deferred().reject();
             }
         },
 
-        render: function(data){
-            data && data.success && $.extend(true, this.options.renderData, data.obj);
+
+        setRenderData: function(responseData){
+            if(typeof this.options.config=="object"){
+                this.options.renderData.attr("CONFIG", this.options.config);
+            }
+            if(typeof responseData == "object"){
+                this.options.renderData.attr("RESPONSEDATA", responseData);
+            }
+        },
+
+
+        render: function(){
             this.options.templates = "<page-header-1></page-header-1>";
             this.element.html(
-                can.mustache(this.options.templates)({
-                    "page-header-1": this.options.renderData
-                })
+                can.mustache(this.options.templates)({ "PAGEHEADER": this.options.renderData })
             );
         },
 
+
         init: function(){
-
-            this.options.directRender=  this.options.config && this.options.config.directRender || false;
-            this.options.renderData= this.options.config && this.options.config.renderData || {};
-
-            if(this.options.directRender){
+            this.options.config = this.options.config || {};
+            this.options.urlData = this.options.urlData || {};
+            this.options.responseData = this.options.responseData || null;
+            this.options.renderData = new can.Model({ CONFIG:{}, RESPONSEDATA:{} });
+            if(this.options.responseData){
+                this.setRenderData(this.options.responseData);
                 this.render();
             }else{
                 can.when(this.sendRequest())
                     .done(
                         $.proxy(function(responseData){
-                            this.render(responseData);
+                            if(responseData && responseData.success){
+                                this.setRenderData(responseData.obj);
+                            }else{
+                                this.setRenderData(responseData);
+                            }
+                            this.render();
                         },this)
                     )
             }
         },
+
 
         ".btn-search click": function(elemenet){
             var $element = this.element;
@@ -65,10 +81,8 @@ define([
                     location.href = encodeURI("/app/webpage/searchCompany.html?memberName="+searchText);
                 }else{
                     new controlSearchCompany1(".load-searchCompany1", {
-                        config:{
-                            directRender: false,
-                            urlData: { memberName: searchText, }
-                        }
+                        config: { searchText: searchText },
+                        urlData: { memberName: searchText }
                     });
                 }
             }else if(searchType == "2"){
@@ -76,10 +90,8 @@ define([
                     location.href = encodeURI("/app/webpage/searchShop.html?commodityName="+searchText);
                 }else{
                     new controlSearchShop1(".load-searchShop1", {
-                        config:{
-                            directRender: false,
-                            urlData: { commodityName: searchText, }
-                        }
+                        config: { searchText: searchText },
+                        urlData: { commodityName: searchText }
                     });
                 }
             }

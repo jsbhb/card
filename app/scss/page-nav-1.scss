@@ -12,118 +12,111 @@ page-nav-1{
   }
   background-color: $white;
   &>.page-nav-content{
-    @include pageContent(42px,19px,12px,$base_color);
+    @include pageContent(40px,19px,12px,$base_color);
     position: relative;
     .page-nav-showCont{
       width: 100%;
       height: 100%;
       &>.contType{
-        width: 210px;
-        height: 42px;
+        width: 190px;
+        height: 40px;
         position: relative;
         z-index: 999;
         background-color: $base_tangerine;
         &>i{
-          width: 56px;
-          height: 42px;
-          line-height: 42px;
-          padding-top: 2px;
-          padding-right: 5px;
-          text-align: right;
+          width: 36px;
+          height: 40px;
+          line-height: 45px;
+          padding-left: 10px;
           color: $white;
           font-size:20px;
         }
         &>span{
-          width: 140px;
-          height: 42px;
+          width: 120px;
+          height: 40px;
           line-height: 40px;
           text-align: left;
           color: $white;
-          font-size:18px;
+          font-size:16px;
         }
         &>ul{
           width: 100%;
           height: 0px;
           background-color: $white_transparent;
-          border-right: dashed 1px $base_tangerine;
-          border-left: dashed 1px $base_tangerine;
           overflow: hidden;
           &>li{
             width: 100%;
-            height: 50px;
+            height: 31px;
             position: relative;
-            border-top: dashed 1px $base_tangerine;
-            &:last-child{
-              border-bottom: dashed 1px $base_tangerine;
-            }
             &>.contTypeTitle{
-              height: 50px;
-              line-height: 48px;
-              font-size: 16px;
-              letter-spacing: 5px;
+              height: 31px;
+              line-height: 30px;
+              font-size: 14px;
+              letter-spacing: 1px;
               color: $title_color;
-              padding-left: 45px;
+              padding-left: 15px;
               position: relative;
               display: block;
               &>i.fa-angle-right{
-                font-size: 19px;
+                font-size: 18px;
                 color: $title_color;
                 position: absolute;
-                top: 14.5px;
+                top: 6.5px;
                 right: 10px;
               }
             }
             &>.showContItemList{
               width: 0px;
               background-color: $white_transparent;
+              border: solid 1px $base_tangerine;
               box-shadow: 3px 1px 8px rgba(255, 66, 0, .35);
               -webkit-box-shadow: 3px 1px 8px rgba(255, 66, 0, .35);
               transition: width 0.7s ease-in-out 0s;
               position: absolute;
-              left: 208px;
+              left: 188px;
               z-index: 500;
+              visibility: hidden;
               overflow: hidden;
               &>ul{
-                width: 730px;
-                min-height: 250px;
-                max-height: 500px;
-                padding: 20px 25px 0 30px;
-                border: solid 1px $base_tangerine;
+                width: 790px;
+                min-height: 494px;
+                padding: 10px 0px 5px 20px;
                 display: inline-block;
                 vertical-align: top;
                 overflow: hidden;
                 &>li {
-                  width: calc(50% - 20px);
-                  max-height: 81px;
-                  margin-bottom: 15px;
+                  width: 100%;
+                  padding: 10px 0;
                   vertical-align: top;
                   display: inline-block;
                   overflow: hidden;
-                  &:nth-child(2n+1){
-                    margin-right: 18px;
-                  }
-                  &:nth-child(2n){
-                    margin-left: 18px;
+                  &:not(:last-child){
+                    border-bottom: dashed 1px $title_border;
                   }
                   .title{
-                    width:100%;
-                    height:20px;
-                    line-height: 18px;
+                    width: 100px;
+                    line-height: 23px;
+                    text-align: right;
                     font-size: 14px;
                     color: $title_color;
-                    padding: 0 0 2px 10px;
-                    border-bottom: dashed 1px $title_border;
+                    vertical-align: top;
                     display: inline-block;
+                    &::after{
+                      content: ">";
+                      font-family: "simsun";
+                      font-weight: 600;
+                      margin-left: 5px;
+                    }
                   }
                   .content{
-                    padding: 3px;
-                    line-height: 18px;
+                    width: calc(100% - 105px);
+                    line-height: 20px;
                     overflow: hidden;
+                    vertical-align: top;
+                    display: inline-block;
                     a{
-                      width: 101px;
-                      height: 19px;
-                      line-height: 19px;
-                      padding-left: 12px;
+                      line-height: 24px;
+                      padding: 0 7px;
                       font-size: 12px;
                       color: $base_color;
                       display: inline-block;
@@ -136,13 +129,9 @@ page-nav-1{
                 }
               }
             }
-            @for $i from 1 through 10 {
+            @for $i from 1 through 16 {
               &:nth-of-type(#{$i})>.showContItemList{
-                @if($i<6){
-                  top: (-1-(($i)-1)*50)+px;
-                }@else{
-                  bottom: (-1-(10-($i))*50)+px;
-                }
+                top: (-1-(($i)-1)*31)+px;
               }
             }
             &.hover{
@@ -156,7 +145,7 @@ page-nav-1{
                 background-color: $white;
                 position: absolute;
                 top: 0px;
-                left: 208px;
+                left: 188px;
                 z-index:550;
               }
               &>span{
@@ -176,7 +165,7 @@ page-nav-1{
           }
           &:hover{
             &>li>.showContItemList{
-              width: 730px;
+              width: 1010px;
             }
           }
         }
@@ -190,7 +179,7 @@ page-nav-1{
         }
       }
       &>.contNav{
-        width: 960px;
+        width: 1000px;
         height: 100%;
         &>a{
           min-width: 100px;

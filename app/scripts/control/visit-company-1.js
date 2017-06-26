@@ -8,6 +8,8 @@ define([
     "bower.jquery",
     "bower.underscore",
     "bower.bootstrap.min",
+    "config.util",
+    "config.helper",
     "control.page.top.1",
     "control.page.header.1",
     "control.page.nav.1",
@@ -17,7 +19,7 @@ define([
     "bower.css!css.bootstrap.min",
     "bower.css!css.uFont",
 ], function(
-    $, _, bootstrap,
+    $, _, bootstrap, util, helper,
     controlPageTop1,
     controlPageHeader1,
     controlPageNav1,
@@ -25,6 +27,7 @@ define([
     controlPageFooter1){
 
     var CITY_POPULARIZE = { localCity: "浙江宁波" };
+    var memberid = util.getUrlParam("memberid");
 
     var C_SHORT =         "SHORT";
     var E_PAGE_TOP =      $("<div class='load-pageTop'></div>");
@@ -50,23 +53,15 @@ define([
 
     //生成页面top部分
     new controlPageTop1(".load-pageTop",{
-        config:{
-            directRender: true,
-            renderData: { CITY_POPULARIZE: CITY_POPULARIZE }
-        }
+        responseData: CITY_POPULARIZE,
     });
 
 
     //生成页面header部分
     new controlPageHeader1(".load-pageHeader",{
-        config:{
-            directRender: true,
-            renderData: {
-                renderCSS: {
-                    SEARCH_TYPE:1,
-                    SEARCH_COMPANY: "企业",
-                },
-            }
+        config: {
+            SEARCH_TYPE: 1,
+            SEARCH_COMPANY: "企业"
         }
     });
 
@@ -74,29 +69,21 @@ define([
     //生成页面nav部分
     new controlPageNav1(".load-pageNav",{
         config:{
-            directRender: false,
-            renderData: {
-                renderCSS: { border: "border" }
-            }
+            SEARCHCOMPANY: "active",
+            BORDER: "border"
         }
     });
 
 
     //生成页面company部分
     new controlCompany1(".load-pageCompany1",{
-        config:{
-            directRender: true,
-            renderData: { },
+        urlData: {
+            "memberid": memberid,
         }
     });
 
 
     //生成页面footer部分
-    new controlPageFooter1(".load-pageFooter",{
-        config:{
-            directRender: true,
-            renderData: { }
-        }
-    });
+    new controlPageFooter1(".load-pageFooter");
 
 })

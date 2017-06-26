@@ -26,7 +26,7 @@ define(function(){
                         "description":"伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水",
                         "price":699.00,
                         "productId":null,
-                        "picPath":"/app/images/test/test_b1.jpg",
+                        "picPath":"test_b1.jpg",
                         "name":"热卖商品",
                         "popularizeCode":"PRODUCT_POPULARIZE_1"
                     },
@@ -37,7 +37,7 @@ define(function(){
                         "description":"伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水",
                         "price":619.00,
                         "productId":null,
-                        "picPath":"/app/images/test/test_b2.jpg",
+                        "picPath":"test_b2.jpg",
                         "name":"热卖商品",
                         "popularizeCode":"PRODUCT_POPULARIZE_1"
                     },
@@ -48,7 +48,7 @@ define(function(){
                         "description":"伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水",
                         "price":577.00,
                         "productId":null,
-                        "picPath":"/app/images/test/test_b3.jpg",
+                        "picPath":"test_b3.jpg",
                         "name":"热卖商品",
                         "popularizeCode":"PRODUCT_POPULARIZE_1"
                     },
@@ -59,7 +59,7 @@ define(function(){
                         "description":"伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水",
                         "price":719.00,
                         "productId":null,
-                        "picPath":"/app/images/test/test_b4.jpg",
+                        "picPath":"test_b4.jpg",
                         "name":"热卖商品",
                         "popularizeCode":"PRODUCT_POPULARIZE_1"
                     },
@@ -70,7 +70,7 @@ define(function(){
                         "description":"伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水",
                         "price":449.00,
                         "productId":null,
-                        "picPath":"/app/images/test/test_b5.jpg",
+                        "picPath":"test_b5.jpg",
                         "name":"热卖商品",
                         "popularizeCode":"PRODUCT_POPULARIZE_1"
                     },
@@ -81,7 +81,7 @@ define(function(){
                         "description":"伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水",
                         "price":539.00,
                         "productId":null,
-                        "picPath":"/app/images/test/test_b6.jpg",
+                        "picPath":"test_b6.jpg",
                         "name":"热卖商品",
                         "popularizeCode":"PRODUCT_POPULARIZE_1"
                     },
@@ -92,7 +92,7 @@ define(function(){
                         "description":"伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水",
                         "price":609.00,
                         "productId":null,
-                        "picPath":"/app/images/test/test_b7.jpg",
+                        "picPath":"test_b7.jpg",
                         "name":"热卖商品",
                         "popularizeCode":"PRODUCT_POPULARIZE_1"
                     },
@@ -103,7 +103,7 @@ define(function(){
                         "description":"伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水",
                         "price":609.00,
                         "productId":null,
-                        "picPath":"/app/images/test/test_b2.jpg",
+                        "picPath":"test_b2.jpg",
                         "name":"热卖商品",
                         "popularizeCode":"PRODUCT_POPULARIZE_1"
                     },
@@ -114,7 +114,7 @@ define(function(){
                         "description":"伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水",
                         "price":609.00,
                         "productId":null,
-                        "picPath":"/app/images/test/test_b3.jpg",
+                        "picPath":"test_b3.jpg",
                         "name":"热卖商品",
                         "popularizeCode":"PRODUCT_POPULARIZE_1"
                     }
@@ -126,128 +126,128 @@ define(function(){
                     {
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_1",
-                        "logoPath":"/app/images/test/test_logo1.jpg",
+                        "logoPath":"test_logo1.jpg",
                         "memberId":null,
-                        "picPath":"/app/images/test/test_a1.jpg",
+                        "picPath":"test_a1.jpg",
                         "description":"测试"
                     },
                     {
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_1",
-                        "logoPath":"/app/images/test/test_logo2.jpg",
+                        "logoPath":"test_logo2.jpg",
                         "memberId":null,
-                        "picPath":"/app/images/test/test_a1.jpg",
+                        "picPath":"test_a1.jpg",
                         "description":"测试"
                     },
                     {
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_1",
-                        "logoPath":"/app/images/test/test_logo3.jpg",
+                        "logoPath":"test_logo3.jpg",
                         "memberId":null,
-                        "picPath":"/app/images/test/test_a1.jpg",
+                        "picPath":"test_a1.jpg",
                         "description":"测试"
                     },
                     {
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_1",
-                        "logoPath":"/app/images/test/test_logo4.jpg",
+                        "logoPath":"test_logo4.jpg",
                         "memberId":null,
-                        "picPath":"/app/images/test/test_a1.jpg",
+                        "picPath":"test_a1.jpg",
                         "description":"测试"
                     },
                     {
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_1",
-                        "logoPath":"/app/images/test/test_logo5.jpg",
+                        "logoPath":"test_logo5.jpg",
                         "memberId":null,
-                        "picPath":"/app/images/test/test_a1.jpg",
+                        "picPath":"test_a1.jpg",
                         "description":"测试"
                     },
                     {
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_1",
-                        "logoPath":"/app/images/test/test_logo1.jpg",
+                        "logoPath":"test_logo1.jpg",
                         "memberId":null,
-                        "picPath":"/app/images/test/test_a1.jpg",
+                        "picPath":"test_a1.jpg",
                         "description":"测试"
                     },
                     {
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_1",
-                        "logoPath":"/app/images/test/test_logo2.jpg",
+                        "logoPath":"test_logo2.jpg",
                         "memberId":null,
-                        "picPath":"/app/images/test/test_a1.jpg",
+                        "picPath":"test_a1.jpg",
                         "description":"测试"
                     },
                     {
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_3",
-                        "logoPath":"/app/images/test/test_logo1.jpg",
+                        "logoPath":"test_logo1.jpg",
                         "memberId":null,
-                        "picPath":"/app/images/test/test_a1.jpg",
+                        "picPath":"test_a1.jpg",
                         "description":"测试"
                     },
                     {
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_4",
-                        "logoPath":"/app/images/test/test_logo1.jpg",
+                        "logoPath":"test_logo1.jpg",
                         "memberId":null,
-                        "picPath":"/app/images/test/test_a1.jpg",
+                        "picPath":"test_a1.jpg",
                         "description":"测试"
                     },
                     {
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_1",
-                        "logoPath":"/app/images/test/test_logo5.jpg",
+                        "logoPath":"test_logo5.jpg",
                         "memberId":null,
-                        "picPath":"/app/images/test/test_a1.jpg",
+                        "picPath":"test_a1.jpg",
                         "description":"测试"
                     },
                     {
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_1",
-                        "logoPath":"/app/images/test/test_logo1.jpg",
+                        "logoPath":"test_logo1.jpg",
                         "memberId":null,
-                        "picPath":"/app/images/test/test_a1.jpg",
+                        "picPath":"test_a1.jpg",
                         "description":"测试"
                     },
                     {
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_1",
-                        "logoPath":"/app/images/test/test_logo2.jpg",
+                        "logoPath":"test_logo2.jpg",
                         "memberId":null,
-                        "picPath":"/app/images/test/test_a1.jpg",
+                        "picPath":"test_a1.jpg",
                         "description":"测试"
                     },
                     {
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_1",
-                        "logoPath":"/app/images/test/test_logo3.jpg",
-                        "memberId":null,"picPath":"/app/images/test/test_a1.jpg",
+                        "logoPath":"test_logo3.jpg",
+                        "memberId":null,"picPath":"test_a1.jpg",
                         "description":"测试"
                     },
                     {
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_1",
-                        "logoPath":"/app/images/test/test_logo4.jpg",
+                        "logoPath":"test_logo4.jpg",
                         "memberId":null,
-                        "picPath":"/app/images/test/test_a1.jpg",
+                        "picPath":"test_a1.jpg",
                         "description":"测试"
                     },
                     {
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_1",
-                        "logoPath":"/app/images/test/test_logo5.jpg",
+                        "logoPath":"test_logo5.jpg",
                         "memberId":null,
-                        "picPath":"/app/images/test/test_a1.jpg",
+                        "picPath":"test_a1.jpg",
                         "description":"测试"
                     },
                     {
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_1",
-                        "logoPath":"/app/images/test/test_logo1.jpg",
+                        "logoPath":"test_logo1.jpg",
                         "memberId":null,
-                        "picPath":"/app/images/test/test_a1.jpg",
+                        "picPath":"test_a1.jpg",
                         "description":"测试"
                     }
                 ]
@@ -258,11 +258,11 @@ define(function(){
                     {
                         "name":"新品推荐",
                         "popularizeCode":"MEMBER_PRODUCT_POPULARIZE_1",
-                        "logoPath":"/app/images/test/test_logo1.jpg",
+                        "logoPath":"test_logo1.jpg",
                         "memberId":null,
-                        "picPath1":"/app/images/test/test_a1.jpg",
-                        "picPath2":"/app/images/test/test_a2.jpg",
-                        "picPath3":"/app/images/test/test_a3.jpg",
+                        "picPath1":"test_a1.jpg",
+                        "picPath2":"test_a2.jpg",
+                        "picPath3":"test_a3.jpg",
                         "description1":"时尚修身版",
                         "description2":"时尚运动版",
                         "description3":"时尚至尊版",
@@ -274,7 +274,7 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":120.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a4.jpg"
+                                "picPath":"test_a4.jpg"
                             },
                             {
                                 "id":2,
@@ -283,7 +283,7 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":110.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a5.jpg"
+                                "picPath":"test_a5.jpg"
                             },
                             {
                                 "id":3,
@@ -292,7 +292,7 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":108.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a6.jpg"
+                                "picPath":"test_a6.jpg"
                             },
                             {
                                 "id":4,
@@ -301,14 +301,14 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":151.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a4.jpg"
+                                "picPath":"test_a4.jpg"
                             },
                             {
                                 "id":5,
                                 "title":"GXG男装,2021夏季新品",
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
-                                "price":132.00,"productId":null,"picPath":"/app/images/test/test_a5.jpg"
+                                "price":132.00,"productId":null,"picPath":"test_a5.jpg"
                             },
                             {
                                 "id":6,
@@ -317,7 +317,7 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":108.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a6.jpg"
+                                "picPath":"test_a6.jpg"
                             },
                             {
                                 "id":7,
@@ -326,18 +326,18 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":160.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a4.jpg"
+                                "picPath":"test_a4.jpg"
                             }
                         ]
                     },
                     {
                         "name":"新品推荐",
                         "popularizeCode":"MEMBER_PRODUCT_POPULARIZE_1",
-                        "logoPath":"/app/images/test/test_logo2.jpg",
+                        "logoPath":"test_logo2.jpg",
                         "memberId":null,
-                        "picPath1":"/app/images/test/test_a1.jpg",
-                        "picPath2":"/app/images/test/test_a2.jpg",
-                        "picPath3":"/app/images/test/test_a3.jpg",
+                        "picPath1":"test_a1.jpg",
+                        "picPath2":"test_a2.jpg",
+                        "picPath3":"test_a3.jpg",
                         "description1":"时尚修身版",
                         "description2":"时尚运动版",
                         "description3":"时尚至尊版",
@@ -349,7 +349,7 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":155.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a4.jpg"
+                                "picPath":"test_a4.jpg"
                             },
                             {
                                 "id":9,
@@ -358,7 +358,7 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":104.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a5.jpg"
+                                "picPath":"test_a5.jpg"
                             },
                             {
                                 "id":10,
@@ -367,7 +367,7 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":121.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a6.jpg"
+                                "picPath":"test_a6.jpg"
                             },
                             {
                                 "id":11,
@@ -376,14 +376,14 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":104.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a4.jpg"
+                                "picPath":"test_a4.jpg"
                             },
                             {
                                 "id":12,
                                 "title":"GXG男装2018夏季新品",
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
-                                "price":180.00,"productId":null,"picPath":"/app/images/test/test_a5.jpg"
+                                "price":180.00,"productId":null,"picPath":"test_a5.jpg"
                             },
                             {
                                 "id":13,
@@ -392,7 +392,7 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":117.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a6.jpg"
+                                "picPath":"test_a6.jpg"
                             },
                             {
                                 "id":14,
@@ -401,18 +401,18 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":132.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a4.jpg"
+                                "picPath":"test_a4.jpg"
                             }
                         ]
                     },
                     {
                         "name":"新品推荐",
                         "popularizeCode":"MEMBER_PRODUCT_POPULARIZE_1",
-                        "logoPath":"/app/images/test/test_logo3.jpg",
+                        "logoPath":"test_logo3.jpg",
                         "memberId":null,
-                        "picPath1":"/app/images/test/test_a1.jpg",
-                        "picPath2":"/app/images/test/test_a2.jpg",
-                        "picPath3":"/app/images/test/test_a3.jpg",
+                        "picPath1":"test_a1.jpg",
+                        "picPath2":"test_a2.jpg",
+                        "picPath3":"test_a3.jpg",
                         "description1":"时尚修身版",
                         "description2":"时尚运动版",
                         "description3":"时尚至尊版",
@@ -424,7 +424,7 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":111.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a4.jpg"
+                                "picPath":"test_a4.jpg"
                             },
                             {
                                 "id":16,
@@ -433,7 +433,7 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":123.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a5.jpg"
+                                "picPath":"test_a5.jpg"
                             },
                             {
                                 "id":17,
@@ -442,7 +442,7 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":111.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a6.jpg"
+                                "picPath":"test_a6.jpg"
                             },
                             {
                                 "id":18,
@@ -451,7 +451,7 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":142.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a4.jpg"
+                                "picPath":"test_a4.jpg"
                             },
                             {
                                 "id":19,
@@ -460,7 +460,7 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":118.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a5.jpg"
+                                "picPath":"test_a5.jpg"
                             },
                             {
                                 "id":20,
@@ -469,7 +469,7 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":230.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a6.jpg"
+                                "picPath":"test_a6.jpg"
                             },
                             {
                                 "id":21,
@@ -478,18 +478,18 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":430.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a4.jpg"
+                                "picPath":"test_a4.jpg"
                             }
                         ]
                     },
                     {
                         "name":"新品推荐",
                         "popularizeCode":"MEMBER_PRODUCT_POPULARIZE_1",
-                        "logoPath":"/app/images/test/test_logo4.jpg",
+                        "logoPath":"test_logo4.jpg",
                         "memberId":null,
-                        "picPath1":"/app/images/test/test_a1.jpg",
-                        "picPath2":"/app/images/test/test_a2.jpg",
-                        "picPath3":"/app/images/test/test_a3.jpg",
+                        "picPath1":"test_a1.jpg",
+                        "picPath2":"test_a2.jpg",
+                        "picPath3":"test_a3.jpg",
                         "description1":"时尚修身版",
                         "description2":"时尚运动版",
                         "description3":"时尚至尊版",
@@ -501,7 +501,7 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":165.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a4.jpg"
+                                "picPath":"test_a4.jpg"
                             },
                             {
                                 "id":23,
@@ -510,7 +510,7 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":139.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a5.jpg"
+                                "picPath":"test_a5.jpg"
                             },
                             {
                                 "id":24,
@@ -519,7 +519,7 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":121.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a6.jpg"
+                                "picPath":"test_a6.jpg"
                             },
                             {
                                 "id":25,
@@ -528,7 +528,7 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":131.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a4.jpg"
+                                "picPath":"test_a4.jpg"
                             },
                             {
                                 "id":26,
@@ -537,7 +537,7 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":247.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a5.jpg"
+                                "picPath":"test_a5.jpg"
                             },
                             {
                                 "id":27,
@@ -546,7 +546,7 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":399.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a6.jpg"
+                                "picPath":"test_a6.jpg"
                             },
                             {
                                 "id":28,
@@ -555,18 +555,18 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":268.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a4.jpg"
+                                "picPath":"test_a4.jpg"
                             }
                         ]
                     },
                     {
                         "name":"新品推荐",
                         "popularizeCode":"MEMBER_PRODUCT_POPULARIZE_1",
-                        "logoPath":"/app/images/test/test_logo5.jpg",
+                        "logoPath":"test_logo5.jpg",
                         "memberId":null,
-                        "picPath1":"/app/images/test/test_a1.jpg",
-                        "picPath2":"/app/images/test/test_a2.jpg",
-                        "picPath3":"/app/images/test/test_a3.jpg",
+                        "picPath1":"test_a1.jpg",
+                        "picPath2":"test_a2.jpg",
+                        "picPath3":"test_a3.jpg",
                         "description1":"时尚修身版",
                         "description2":"时尚运动版",
                         "description3":"时尚至尊版",
@@ -578,7 +578,7 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":100.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a4.jpg"
+                                "picPath":"test_a4.jpg"
                             },
                             {
                                 "id":30,
@@ -587,7 +587,7 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":100.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a5.jpg"
+                                "picPath":"test_a5.jpg"
                             },
                             {
                                 "id":31,
@@ -596,7 +596,7 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":100.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a6.jpg"
+                                "picPath":"test_a6.jpg"
                             },
                             {
                                 "id":32,
@@ -605,14 +605,14 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":100.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a4.jpg"
+                                "picPath":"test_a4.jpg"
                             },
                             {
                                 "id":33,
                                 "title":"GXG男装,2021夏季新品",
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
-                                "price":100.00,"productId":null,"picPath":"/app/images/test/test_a5.jpg"
+                                "price":100.00,"productId":null,"picPath":"test_a5.jpg"
                             },
                             {
                                 "id":34,
@@ -621,7 +621,7 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":100.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a6.jpg"
+                                "picPath":"test_a6.jpg"
                             },
                             {
                                 "id":35,
@@ -630,7 +630,7 @@ define(function(){
                                 "description":"GXG男装",
                                 "price":100.00,
                                 "productId":null,
-                                "picPath":"/app/images/test/test_a4.jpg"
+                                "picPath":"test_a4.jpg"
                             }
                         ]
                     },
@@ -640,37 +640,37 @@ define(function(){
                 "popularizeName":"首页轮播",
                 "modelList":[
                     {
-                        "picPath":"/app/images/test/test_banner_1.jpg",
+                        "picPath":"test_banner_1.jpg",
                         "href":"#",
                         "name":"首页轮播",
                         "popularizeCode":"INDEX_BANNER"
                     },
                     {
-                        "picPath":"/app/images/test/test_banner_2.jpg",
+                        "picPath":"test_banner_2.jpg",
                         "href":"#",
                         "name":"首页轮播",
                         "popularizeCode":"INDEX_BANNER"
                     },
                     {
-                        "picPath":"/app/images/test/test_banner_3.jpg",
+                        "picPath":"test_banner_3.jpg",
                         "href":"#",
                         "name":"首页轮播",
                         "popularizeCode":"INDEX_BANNER"
                     },
                     {
-                        "picPath":"/app/images/test/test_banner_4.jpg",
+                        "picPath":"test_banner_4.jpg",
                         "href":"#",
                         "name":"首页轮播",
                         "popularizeCode":"INDEX_BANNER"
                     },
                     {
-                        "picPath":"/app/images/test/test_banner_5.jpg",
+                        "picPath":"test_banner_5.jpg",
                         "href":"#",
                         "name":"首页轮播",
                         "popularizeCode":"INDEX_BANNER"
                     },
                     {
-                        "picPath":"/app/images/test/test_banner_6.jpg",
+                        "picPath":"test_banner_6.jpg",
                         "href":"#",
                         "name":"首页轮播",
                         "popularizeCode":"INDEX_BANNER"

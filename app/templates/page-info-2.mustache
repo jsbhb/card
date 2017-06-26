@@ -1,42 +1,40 @@
 <div class="page-info-content">
-    {{#page-info-2}}
-        <div class="header">
-            {{#PRODUCT_POPULARIZE_1}}
-                <div class="title">{{popularizeName}}</div>
-                <div class="list">
-                    {{#each popularizeList}}
-                        {{#each items}}
-                            <a href="{{.}}">{{@key}}</a>
-                        {{/each}}
+    <div class="header">
+        {{#INFO}}
+            <div class="title">{{popularizeName}}</div>
+            <div class="list">
+                {{#each popularizeList}}
+                    {{#each items}}
+                        <a href="{{.}}">{{@key}}</a>
                     {{/each}}
-                </div>
-            {{/PRODUCT_POPULARIZE_1}}
-        </div>
-        <div class="body">
-            <div class="content">
-                {{#each PRODUCT_POPULARIZE_1.modelList}}
-                    {{#isShow @index 9}}
-                        {{#isFirst @index}}
-                            <a class="shop big" productId="{{productId}}"  href="/app/webpage/company2.html">
-                                <img src="{{picPath}}"/>
-                            </a>
-                        {{/isFirst}}
-                        {{#notFirst @index}}
-                            <a class="shop small" productId="{{productId}}" href="/app/webpage/shop2.html">
-                                <div class="shopImg">
-                                    <img src="{{picPath}}"/>
-                                </div>
-                                <div class="text">
+                {{/each}}
+            </div>
+        {{/INFO}}
+    </div>
+    <div class="body">
+        <div class="content">
+            {{#each INFO.RESPONSEDATA.modelList}}
+                {{#isShow @index 9}}
+                    {{#isFirst @index}}
+                        <a class="shop big" productId="{{productId}}"  href="/app/webpage/company2.html">
+                            <img src="{{getImgUrl picPath}}"/>
+                        </a>
+                    {{/isFirst}}
+                    {{#notFirst @index}}
+                        <a class="shop small" productId="{{productId}}" href="/app/webpage/shop2.html">
+                            <div class="shopImg">
+                                <img src="{{getImgUrl picPath}}"/>
+                            </div>
+                            <div class="text">
                                 <span class="description">
                                     {{description}}
                                 </span>
-                                    <span class="price">{{parsefloat price}}</span>
-                                </div>
-                            </a>
-                        {{/notFirst}}
-                    {{/isShow}}
-                {{/each}}
-            </div>
+                                <span class="price">{{parsefloat price}}</span>
+                            </div>
+                        </a>
+                    {{/notFirst}}
+                {{/isShow}}
+            {{/each}}
         </div>
-    {{/page-info-2}}
+    </div>
 </div>

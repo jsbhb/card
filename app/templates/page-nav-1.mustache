@@ -1,46 +1,46 @@
 <div class="page-nav-content">
-    {{#page-nav-1}}
-        <div class="page-nav-showCont">
-            <div class="contType inlineBlock {{renderCSS.contType}}">
-                <i class="fa fa-th fa-fw inlineBlock"></i>
-                <span class="classify inlineBlock">全部商品分类</span>
-                <ul>
-                    {{setULHeight showCont}}
-                    {{#each showCont}}
-                        <li>
-                                <span class="contTypeTitle">
-                                    <span>{{contTypeTitle}}</span>
-                                    <i class="fa fa-angle-right fa-fw"></i>
-                                </span>
-                            <div class="showContItemList">
-                                <ul>
-                                    {{#each showContItemList}}
-                                        <li>
-                                            <span class="title">{{title}}</span>
-                                            <div class="content">
-                                                {{#each content}}
-                                                    <a href="{{.}}">{{@key}}</a>
-                                                {{/each}}
-                                            </div>
-                                        </li>
-                                    {{/each}}
-                                </ul>
-                            </div>
-                        </li>
-                    {{/each}}
-                </ul>
-            </div>
-            <div class="contNav inlineBlock">
-                <a href="/app/webpage" class="inlineBlock {{renderCSS.index}}">首页</a>
-                <a href="/app/webpage/searchCompany.html"
-                   class="inlineBlock {{renderCSS.searchCompany}}">企业商城</a>
-                <a href="/app/webpage/searchShop.html"
-                   class="inlineBlock {{renderCSS.searchShop}}">商品商城</a>
-                <a href="#" class="inlineBlock">配件交易中心</a>
-                <a href="#" class="inlineBlock">大宗商品交易中心</a>
-                <a href="#" class="inlineBlock">板块五</a>
-                <a href="#" class="inlineBlock">板块六</a>
-            </div>
+    <div class="page-nav-showCont">
+        <div class="contType inlineBlock {{NAV.CONFIG.CONTTYPE}}">
+            <i class="fa fa-th fa-fw inlineBlock"></i>
+            <span class="classify inlineBlock">货源市场</span>
+            <ul>
+                {{setULHeight NAV.RESPONSEDATA}}
+                {{#each NAV.RESPONSEDATA}}
+                    <li navId="{{id}}">
+                        <span class="contTypeTitle">
+                            <span>{{industryName}}</span>
+                            <i class="fa fa-angle-right fa-fw"></i>
+                        </span>
+                        <div class="showContItemList">
+                            <ul>
+                                {{#each dictList}}
+                                    <li navId="{{id}}">
+                                        <span class="title">{{dictName}}</span>
+                                        <div class="content">
+                                            {{#each entryList}}
+                                                <a href="javascript:void(0)" navId="{{id}}">
+                                                    {{entryName}}
+                                                </a>
+                                            {{/each}}
+                                        </div>
+                                    </li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </li>
+                {{/each}}
+            </ul>
         </div>
-    {{/page-nav-1}}
+        <div class="contNav inlineBlock">
+            <a href="/app/webpage" class="inlineBlock {{NAV.CONFIG.INDEX}}">首页</a>
+            <a href="/app/webpage/searchCompany.html"
+               class="inlineBlock {{NAV.CONFIG.SEARCHCOMPANY}}">企业商城</a>
+            <a href="/app/webpage/searchShop.html"
+               class="inlineBlock {{NAV.CONFIG.SEARCHSHOP}}">商品商城</a>
+            <a href="#" class="inlineBlock">配件交易中心</a>
+            <a href="#" class="inlineBlock">大宗商品交易中心</a>
+            <a href="#" class="inlineBlock">板块五</a>
+            <a href="#" class="inlineBlock">板块六</a>
+        </div>
+    </div>
 </div>

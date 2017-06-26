@@ -17,10 +17,10 @@ define([
     return new Comm({
         queryAll: function(data){
             return this.sendRequest({
-                url: "http://192.168.2.224:8080/cardapi/1.0/commodityName",
-                type: "get",
-                data: data,
-                fixtrue: true
+                "urlPath":  "/1.0/commons/memberCategory",
+                "type":     "get",
+                "data":      data||null,
+                "fixture":   true
             })
         }
     });

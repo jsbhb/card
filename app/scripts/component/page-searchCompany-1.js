@@ -39,16 +39,22 @@ define([
         },
         events:{
             "[industrymap] click": function(element){
-                var hideElement = element.parents(".industryItem");
+                var hideElement = element.parents(".industryItem:first");
                 var typeText = hideElement.find(".classifyType").text();
                 var text = $(element).text();
                 this.scope.addSearch(typeText, text, "industryItem", hideElement);
             },
-            "[categorymap] click": function(element){
-                var hideElement = element.parents(".categoryItem");
+            "[dictmap] click": function(element){
+                var hideElement = element.parents(".dictItem:first");
                 var typeText = hideElement.find(".classifyType").text();
                 var text = $(element).text();
-                this.scope.addSearch(typeText, text, "categoryItem", hideElement);
+                this.scope.addSearch(typeText, text, "dictItem", hideElement);
+            },
+            "[entrymap] click": function(element){
+                var hideElement = element.parents(".entryItem:first");
+                var typeText = hideElement.find(".classifyType").text();
+                var text = $(element).text();
+                this.scope.addSearch(typeText, text, "entryItem", hideElement);
             },
             ".resultCategory>a .deleteIcon click": function(element){
                 var parent = element.parents("a:first");

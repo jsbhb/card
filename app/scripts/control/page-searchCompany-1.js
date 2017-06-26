@@ -8,11 +8,11 @@ define([
     "bower.jquery",
     "bower.underscore",
     "bower.can",
-    "comm.searchCompany.1",
+    "comm.searchCompany",
     "component.page.searchCompany.1",
     "bower.css!css.page.searchCompany.1",
     "fixture.test",
-], function($, _, can, comm){
+], function($, _, can, comm_searchCompany){
 
     /** @description:  调用数据、模板组件, 并渲染输出
      */
@@ -20,79 +20,116 @@ define([
 
         sendRequest: function(type){
             switch(type){
-                case "queryAll": return comm.queryAll(this.options.urlData);
-                case undefined:  return can.Deferred().resolve(new can.Model({}));
+                case "queryAll": return comm_searchCompany.queryAll(this.options.urlData);
+                case undefined:  return can.Deferred().resolve();
                 default:         return can.Deferred().reject();
             }
         },
 
-        render: function(data){
-            data && data.success && $.extend(true, this.options.renderData, data.obj);
+
+        setRenderData: function(responseData){
+            if(typeof this.options.config=="object"){
+                this.options.renderData.attr("CONFIG", this.options.config);
+            }
+            if(typeof responseData == "object"){
+                this.options.renderData.attr("RESPONSEDATA", responseData);
+            }
+        },
+
+
+        render: function(){
             this.options.templates = "<page-searchcompany-1></page-searchcompany-1>";
             this.element.html(
-                can.mustache(this.options.templates)({
-                    "page-searchCompany-1": this.options.renderData
-                })
+                can.mustache(this.options.templates)({ "SEARCHCOMPANY": this.options.renderData })
             );
         },
 
+
         init: function(){
-
-            this.options.directRender=  this.options.config && this.options.config.directRender || false;
-            this.options.renderData= this.options.config && this.options.config.renderData || {};
-            this.options.urlData= this.options.config && this.options.config.urlData || {};
-
-            if(this.options.directRender){
+            this.options.config = this.options.config || {};
+            this.options.urlData = this.options.urlData || {};
+            this.options.responseData = this.options.responseData || null;
+            this.options.renderData = new can.Model({ CONFIG:{}, RESPONSEDATA:{} });
+            if(this.options.responseData){
+                this.setRenderData(this.options.responseData);
                 this.render();
             }else{
                 can.when(this.sendRequest("queryAll"))
                     .done(
                         $.proxy(function(responseData){
-                            this.render(responseData);
+                            if(responseData && responseData.success){
+                                this.setRenderData(responseData.obj);
+                            }else{
+                                this.setRenderData(responseData);
+                            }
+                            this.render();
                         },this)
                     )
             }
         },
-
         "[industrymap] click": function(element){
             var index = element.attr("industrymap");
+            this.options.urlData["industryList[0].industry"] = index;
+            can.when(this.sendRequest("queryAll"))
+                .done(
+                    $.proxy(function(responseData){
+                        responseData &&
+                        responseData.success &&
+                        this.options.renderData.RESPONSEDATA.attr(
+                            "memberList", responseData.obj.memberList
+                        );
+                    },this)
+                )
+        },
+        "[dictmap] click": function(element){
+            var index = element.attr("entrymap");
             this.options.urlData["dictList[0].categoryDict"] = index;
             can.when(this.sendRequest("queryAll"))
                 .done(
                     $.proxy(function(responseData){
-                        responseData.obj &&
-                        this.options.renderData.attr("memberList", responseData.obj.memberList);
+                        responseData &&
+                        responseData.success &&
+                        this.options.renderData.RESPONSEDATA.attr(
+                            "memberList", responseData.obj.memberList
+                        );
                     },this)
                 )
         },
-
-        "[categorymap] click": function(element){
-            var index = element.attr("categorymap");
+        "[entrymap] click": function(element){
+            var index = element.attr("entrymap");
             this.options.urlData["entryList[0].categoryEntry"] = index;
             can.when(this.sendRequest("queryAll"))
                 .done(
                     $.proxy(function(responseData){
-                        responseData.obj &&
-                        this.options.renderData.attr("memberList", responseData.obj.memberList);
+                        responseData &&
+                        responseData.success &&
+                        this.options.renderData.RESPONSEDATA.attr(
+                            "memberList", responseData.obj.memberList
+                        );
                     },this)
                 )
         },
         ".resultCategory .deleteIcon click": function(element){
             var parent = element.parents("a:first");
             if(parent.hasClass("industryItem")){
+                delete this.options.urlData["industryList[0].industry"];
+            }else if(parent.hasClass("dictItem")){
                 delete this.options.urlData["dictList[0].categoryDict"];
-            }else if(parent.hasClass("categoryItem")){
+            }else if(parent.hasClass("entryItem")){
                 delete this.options.urlData["entryList[0].categoryEntry"];
             }
+            parent.next("i").remove();
+            parent.remove();
             can.when(this.sendRequest("queryAll"))
                 .done(
                     $.proxy(function(responseData){
-                        responseData.obj &&
-                        this.options.renderData.attr("memberList", responseData.obj.memberList);
+                        responseData &&
+                        responseData.success &&
+                        this.options.renderData.RESPONSEDATA.attr(
+                            "memberList", responseData.obj.memberList
+                        );
                     },this)
                 )
-            parent.next("i").remove();
-            parent.remove();
         },
         ".filter>.btn-group>a click": function(element){
             if(element.hasClass("filterDefault")){
@@ -110,8 +147,11 @@ define([
             can.when(this.sendRequest("queryAll"))
                 .done(
                     $.proxy(function(responseData){
-                        responseData.obj &&
-                        this.options.renderData.attr("memberList", responseData.obj.memberList);
+                        responseData &&
+                        responseData.success &&
+                        this.options.renderData.RESPONSEDATA.attr(
+                            "memberList", responseData.obj.memberList
+                        );
                     },this)
                 )
         },
@@ -132,19 +172,17 @@ define([
             can.when(this.sendRequest("queryAll"))
                 .done(
                     $.proxy(function(responseData){
-                        responseData.obj &&
-                        this.options.renderData.attr("memberList", responseData.obj.memberList);
+                        responseData &&
+                        responseData.success &&
+                        this.options.renderData.RESPONSEDATA.attr(
+                            "memberList", responseData.obj.memberList
+                        );
                     },this)
                 )
         },
         ".companyList>ul>li a click": function(element){
             var memberid = element.attr("memberid");
-            if(memberid == "1"){
-                location.href = "/app/webpage/company.html";
-            }
-            if(memberid == "2"){
-                location.href = "/app/webpage/company2.html";
-            }
+            location.href = encodeURI("/app/webpage/company.html?memberid="+memberid);
         }
     })
 });

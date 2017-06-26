@@ -68,28 +68,16 @@ page-shop-1{
             height: 50px;
             line-height: 20px;
             font-size: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
           }
           & > .price {
-            height: 32px;
-            line-height: 32px;
-            font-size: 16px;
+            height: 60px;
+            line-height: 60px;
+            font-size: 18px;
             padding: 0 15px;
-            background-color: $base_backgroundColor;
-            & > .priceColor {
-              text-decoration: line-through;
-            }
-          }
-          & > .promotion {
-            height: 32px;
-            line-height: 32px;
-            font-size: 16px;
-            padding: 0 15px;
-            background-color: $base_backgroundColor;
             margin-bottom: 20px;
-            & > .promotionColor {
-              color: $base_tangerine;
-            }
+            background-color: $base_backgroundColor;
+            color: $base_tangerine;
           }
           & > .size {
             height: 40px;
@@ -139,6 +127,24 @@ page-shop-1{
                     border-color: $base_tangerine;
                   }
                 }
+              }
+            }
+            & > span{
+              cursor: pointer;
+            }
+            & > span:not(:first-child) {
+              height: 30px;
+              line-height: 30px;
+              padding: 0 3px;
+              margin-top: 5px;
+              margin-right: 5px;
+              border: solid 1px $base_tangerine;
+              &.active {
+                background-color: $base_tangerine;
+                color: $white;
+              }
+              &:not(.active):hover {
+                color: $base_tangerine;
               }
             }
           }

@@ -1,4 +1,4 @@
-<div class="page-header-content {{page-header-1.renderCSS.shortHeight}}">
+<div class="page-header-content {{PAGEHEADER.CONFIG.SHORTHEIGHT}}">
     <div class="page-header-logo inlineBlock">
         <a href="/app/webpage">
             <img src="/app/images/logo.png">
@@ -8,9 +8,9 @@
         <div class="input-group">
             <div class="input-group-btn">
                 <button type="button" class="btn searchTypeBtn dropdown-toggle" data-toggle="dropdown">
-
-                        <span class="searchTypeText" searchType="{{page-header-1.renderCSS.SEARCH_TYPE}}">
-                            {{page-header-1.renderCSS.SEARCH_COMPANY}}</span>
+                        <span class="searchTypeText" searchType="{{PAGEHEADER.CONFIG.SEARCH_TYPE}}">
+                            {{PAGEHEADER.CONFIG.SEARCH_COMPANY}}
+                        </span>
                         <i class="fa fa-angle-down fa-fw"></i>
                 </button>
                 <ul class="dropdown-menu">
@@ -19,7 +19,7 @@
                 </ul>
             </div>
             <input type="text" class="form-control input-search"
-                   value="{{page-header-1.renderCSS.SEARCH_CONTENT}}">
+                   value="{{PAGEHEADER.CONFIG.SEARCH_CONTENT}}">
             <div class="input-group-btn">
                 <a class="btn btn-default btn-search">搜 索</a>
             </div>
@@ -29,7 +29,7 @@
         <span class="fa fa-qrcode fa-fw inlineBlock"></span>
         <span class="inlineBlock qrcodeText">扫码关注</span>
         <span class="inlineBlock qrcodeImg">
-                <img src="/app/images/qrcode.png"/>
-            </span>
+           <img src="/app/images/qrcode.png"/>
+        </span>
     </div>
 </div>

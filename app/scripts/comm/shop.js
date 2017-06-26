@@ -16,11 +16,17 @@ define([
      */
     return new Comm({
         queryAll: function(data){
+            if(!data){
+                data={};
+            }
+            if(!data.memberid){
+                data.memberid=" ";
+            }
             return this.sendRequest({
-                url: "http://192.168.2.224:8080/cardapi/1.0/members",
-                type: "get",
-                data: data,
-                fixtrue: true
+                "urlPath":  "/cardapi/1.0/"+data.memberid+"/commoditys",
+                "type":     "get",
+                "data":      data||null,
+                "fixture":   true
             })
         }
     });

@@ -8,38 +8,44 @@ define([
     "bower.jquery",
     "bower.underscore",
     "bower.can",
+    "config.path",
     "bower.fixture",
     "fixture.data"
-], function($, _, can, fixture, fixtureData) {
+], function($, _, can, path, fixture, fixtureData) {
 
-    //模拟REST
-    can.fixture({
-        'GET http://192.168.2.224:8080/cardapi/1.0/popularizations/index': function () {
-            var data = {};
-            $.extend(true, data, fixtureData.getDataIndex1);
-            return data;
-        },
-        'GET http://192.168.2.224:8080/cardapi/1.0/members': function () {
-            var data = {};
-            $.extend(true, data, fixtureData.getDataSearchCompany1);
-            return data;
-        },
-        'GET http://192.168.2.224:8080/cardapi/1.0/commodityName': function () {
-            var data = {};
-            $.extend(true, data, fixtureData.getDataSearchShop1);
-            return data;
-        },
-        'GET /card/getCompany/queryAll': function () {
-            var data = {};
-            $.extend(true, data, null);
-            return data;
-        },
-        'GET /card/getShop/queryAll': function () {
-            var data = {};
-            $.extend(true, data, null);
-            return data;
-        }
+    var options = {};
 
-    });
+    options['GET '+path.urlHost+'/1.0/commons/memberCategory'] = function(){
+        var data = {};
+        $.extend(true, data, fixtureData.getDataNav1);
+        return data;
+    };
+    options['GET '+path.urlHost+'/cardapi/1.0/popularizations/index'] = function(){
+        var data = {};
+        $.extend(true, data, fixtureData.getDataIndex1);
+        return data;
+    };
+    options['GET '+path.urlHost+'/cardapi/1.0/members'] = function(){
+        var data = {};
+        $.extend(true, data, fixtureData.getDataSearchCompany1);
+        return data;
+    };
+    options['GET '+path.urlHost+'/cardapi/1.0/members/{id}'] = function(a){
+        var data = {};
+        $.extend(true, data, fixtureData.getDataCompany1);
+        return data;
+    };
+    options['GET '+path.urlHost+'/cardapi/1.0/commoditys'] = function(){
+        var data = {};
+        $.extend(true, data, fixtureData.getDataSearchShop1);
+        return data;
+    };
+    options['GET '+path.urlHost+'/cardapi/1.0/{memberId}/commoditys'] = function(a){
+        var data = {};
+        $.extend(true, data, fixtureData.getDataShop1);
+        return data;
+    };
 
-})
+    can.fixture(options);
+
+});

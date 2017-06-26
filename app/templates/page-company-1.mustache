@@ -1,7 +1,12 @@
-<div class="page-company-content">
+<div class="page-company-content" memberId="{{COMPANY.RESPONSEDATA.memberId}}">
+    <div class="maxWidth">
+        <div class="companyLogo">
+            <img src="{{getImgUrl COMPANY.RESPONSEDATA.logoPath}}">
+        </div>
+    </div>
     <div class="companyHeader">
         <div class="maxWidth">
-            <span class="companyName">GXG服装有限公司</span>
+            <span class="companyName">{{COMPANY.RESPONSEDATA.memberName}}</span>
         </div>
     </div>
     <div class="maxWidth">
@@ -9,177 +14,108 @@
             <div class="companyContentLeft">
                 <div class="infoTitle"> 企业信息 </div>
                 <div class="infoDescription">
-                    <span class="one">经营者：</span><span class="two">罗永生</span>
-                    <span class="one">电话：</span><span class="two">0574-86081854</span>
-                    <span class="one">手机：</span><span class="two">18258766594</span>
-                    <span class="one">QQ号：</span><span class="two">100909@qq.com</span>
-                    <span class="one">微信号：</span><span class="two">weixin0001</span>
-                    <span class="one">商家信用:</span><span class="two">10000</span>
-                    <span class="one">经营类目：</span><span class="two">男装</span>
-                    <span class="one">商铺地址：</span><span class="two">浙江省宁波市北仑区柴桥镇</span>
-                    <span class="one">主营商品：</span><span class="two">男装、T恤、裤子、短裤、九分裤</span>
-                    <span class="one">营业执照 </span><span class="one pull-right">收藏店铺</span>
+                    <span class="one">经营者：</span><span class="two">{{COMPANY.RESPONSEDATA.operator}}</span>
+                    <span class="one">电话：</span><span class="two">{{COMPANY.RESPONSEDATA.mobile}}</span>
+                    <span class="one">手机：</span><span class="two">{{COMPANY.RESPONSEDATA.phone}}</span>
+                    <span class="one">邮箱：</span><span class="two">{{COMPANY.RESPONSEDATA.email}}</span>
+                    <span class="one">QQ号：</span><span class="two">{{COMPANY.RESPONSEDATA.qq}}</span>
+                    <span class="one">商家信用:</span><span class="two">{{COMPANY.RESPONSEDATA.reputation}}</span>
+                    <span class="one">经营类目:</span>
+                    <span class="two">
+                        {{#each COMPANY.RESPONSEDATA.industryList}}
+                            {{convertStr industryName "、"}}、
+                        {{/each}}
+                    </span>
+                    <span class="one">商铺地址:</span>
+                    <span class="two">
+                        {{#COMPANY.RESPONSEDATA}}
+                            {{province}}{{city}}{{area}}{{address}}
+                        {{/COMPANY.RESPONSEDATA}}
+                    </span>
+                    <span class="one">主营商品:</span>
+                    <span class="two">
+                        {{COMPANY.RESPONSEDATA.product}}
+                    </span>
+                    <span class="one" style="margin: 6px 0 10px 0px;">
+                        <a href="javascript:void(0)" class="licenseBtn" licensePath="{{licensePath}}">营业执照</a>
+                    </span>
+                    <span class="one pull-right" style="margin: 6px 0 10px 0px;">
+                        <a href="javascript:void(0)" class="collectionBtn">收藏店铺</a>
+                    </span>
                 </div>
                 <div class="pictrueTitle"> 企业相册 </div>
                 <div class="pictrueDescription">
-                    <a href="/app/webpage/shop.html">
-                        <img src="/app/images/test/test_a1.jpg">
-                        <div class="price">￥199.00</div>
-                    </a>
-                    <a href="/app/webpage/shop.html">
-                        <img src="/app/images/test/test_a4.jpg">
-                        <div class="price">￥199.00</div>
-                    </a>
-                    <a href="/app/webpage/shop.html">
-                        <img src="/app/images/test/test_a5.jpg">
-                        <div class="price">￥199.00</div>
-                    </a>
+                    {{#each COMPANY.RESPONSEDATA.queryShop.memberGoodCommodityList}}
+                        {{#setRenderRange @index 4}}
+                            <a href="javascript:void(0)" class="toCommodity" commodityId="{{commodityId}}">
+                                <img src="{{getImgUrl picture1}}">
+                                <div class="price">{{format_Money price}}</div>
+                            </a>
+                        {{/setRenderRange}}
+                    {{/each}}
                 </div>
             </div>
             <div class="companyContentRight">
                 <div class="companyImg">
-                    <img src="/app/images/test/test_company_1.jpg">
+                    {{#each COMPANY.RESPONSEDATA.fileList}}
+                        <img src="{{getImgUrl finalName suffix}}" index={{@index}} style="z-index:{{zIndexDesc @index 100}}">
+                    {{/each}}
+                    <span class="carousel_list">
+                        {{#each COMPANY.RESPONSEDATA.fileList}}
+                            <i class="carousel_i {{addElementClass @index 0 'showing'}}" index="{{@index}}"></i>
+                        {{/each}}
+                    </span>
+                    <a class="carousel prev"><</a>
+                    <a class="carousel next">></a>
                 </div>
                 <div class="companyDescription">
-                    商铺介绍: 您好！欢迎光临GXG服装店。我商行 创建于1989年,是一家具有现代销售概念和立体销售方式 的公司,以男装等服装为主营产品.产品款式新颖，价格实惠，在国内市场.礼品.促销及外贸方面享有极 高的声誉。海灵人凭借‘以客户为中心．信誉至上＂的经 营理念，为广大客户提供最优质的服务。详情请浏览网站 或联系网络销售人员。祝您购物愉快。谢谢 全国免费电话：400-608-0798 电话：13665839918 传真：0579-85583273
+                    {{COMPANY.RESPONSEDATA.aboutUs}}
                 </div>
                 <div class="companyShops">
-                    <div class="shopClassify">
-                        <div>流行男装:</div>
+                    <div class="shopClassify commodityCategory2">
+                        <div>主营类目:</div>
                         <div>
-                            <a href="javascript:void(0)" class="active">T恤</a>
-                            <a href="javascript:void(0)">休闲裤</a>
-                            <a href="javascript:void(0)">衬衫</a>
-                            <a href="javascript:void(0)">夹克</a>
-                            <a href="javascript:void(0)">牛仔裤</a>
-                            <a href="javascript:void(0)">西装</a>
-                            <a href="javascript:void(0)">卫衣</a>
-                            <a href="javascript:void(0)">风衣</a>
+                            {{#each COMPANY.RESPONSEDATA.queryShop.commodityCategory2}}
+                                <a href="javascript:void(0)" class="commodityCategory2Item">{{.}}</a>
+                            {{/each}}
                         </div>
                     </div>
-                    <div class="shopClassify">
-                        <div>选购热点:</div>
+                    <div class="shopClassify commodityCategory3">
+                        <div>类型分类:</div>
                         <div>
-                            <a href="javascript:void(0)">潮流</a>
-                            <a href="javascript:void(0)">修身款</a>
-                            <a href="javascript:void(0)">打底裤</a>
-                            <a href="javascript:void(0)">韩版</a>
-                            <a href="javascript:void(0)">纯棉</a>
-                            <a href="javascript:void(0)">专柜</a>
-                            <a href="javascript:void(0)">明星同款</a>
-                            <a href="javascript:void(0)">简约百搭</a>
-                            <a href="javascript:void(0)">薄款</a>
-                            <a href="javascript:void(0)">假两件</a>
-                        </div>
-                    </div>
-                    <div class="shopClassify">
-                        <div>领型:</div>
-                        <div>
-                            <a href="javascript:void(0)">圆领</a>
-                            <a href="javascript:void(0)">连帽</a>
-                            <a href="javascript:void(0)">V领</a>
-                            <a href="javascript:void(0)">高领</a>
-                            <a href="javascript:void(0)">衬衫领</a>
-                        </div>
-                    </div>
-                    <div class="shopClassify">
-                        <div>适用季节:</div>
-                        <div>
-                            <a href="javascript:void(0)">春季</a>
-                            <a href="javascript:void(0)">夏季</a>
-                            <a href="javascript:void(0)">秋季</a>
-                            <a href="javascript:void(0)">冬季</a>
-                            <a href="javascript:void(0)">四季</a>
+                            {{#each COMPANY.RESPONSEDATA.queryShop.commodityCategory3}}
+                                <a href="javascript:void(0)" class="commodityCategory3Item">{{.}}</a>
+                            {{/each}}
                         </div>
                     </div>
                 </div>
                 <div class="companySort">
                     <a href="javascript:void(0)" class="active">综合排序</a>
-                    <a href="javascript:void(0)">最新</a>
-                    <a href="javascript:void(0)">价格
+                    <a href="javascript:void(0)" class="filterHot">热销
+                        <i class="uFont font-base_directionDown" style="vertical-align:-2px;"></i>
+                    </a>
+                    <a href="javascript:void(0)" class="filterPrice">价格
                         <i class="uFont font-base_directionDown" style="vertical-align:-2px;"></i>
                     </a>
                 </div>
                 <div class="companyShow">
                     <ul>
-                        <li>
-                            <a href="/app/webpage/shop.html">
+                        {{#each COMPANY.RESPONSEDATA.queryShop.commoditySearchList}} <li>
+                            <a href="javascript:void(0)" class="toCommodity" commodityId="{{commodityId}}">
                                 <div class="imgShow">
-                                    <img src="/app/images/test/test_a1.jpg">
+                                    <img src="{{getImgUrl picture1}}">
                                 </div>
                                 <div class="description">
-                                    GXG男装 2017夏季男士百搭舒适白色纯棉圆领短袖T恤潮
+                                    <abbr title="{{commodityName}}">
+                                        {{commodityName}}
+                                    </abbr>
                                 </div>
                                 <div class="price">
-                                    ￥199.00
+                                   {{format_Money price}}
                                 </div>
                             </a>
                         </li>
-                        <li>
-                            <a href="/app/webpage/shop.html">
-                                <div class="imgShow">
-                                    <img src="/app/images/test/test_a4.jpg">
-                                </div>
-                                <div class="description">
-                                    GXG男装 2017夏季男士百搭舒适白色纯棉圆领短袖T恤潮
-                                </div>
-                                <div class="price">
-                                    ￥199.00
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/app/webpage/shop.html">
-                                <div class="imgShow">
-                                    <img src="/app/images/test/test_a2.jpg">
-                                </div>
-                                <div class="description">
-                                    GXG男装 2017夏季男士百搭舒适白色纯棉圆领短袖T恤潮
-                                </div>
-                                <div class="price">
-                                    ￥199.00
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/app/webpage/shop.html">
-                                <div class="imgShow">
-                                    <img src="/app/images/test/test_a5.jpg">
-                                </div>
-                                <div class="description">
-                                    GXG男装 2017夏季男士百搭舒适白色纯棉圆领短袖T恤潮
-                                </div>
-                                <div class="price">
-                                    ￥199.00
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/app/webpage/shop.html">
-                                <div class="imgShow">
-                                    <img src="/app/images/test/test_a3.jpg">
-                                </div>
-                                <div class="description">
-                                    GXG男装 2017夏季男士百搭舒适白色纯棉圆领短袖T恤潮
-                                </div>
-                                <div class="price">
-                                    ￥199.00
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/app/webpage/shop.html">
-                                <div class="imgShow">
-                                    <img src="/app/images/test/test_a6.jpg">
-                                </div>
-                                <div class="description">
-                                    GXG男装 2017夏季男士百搭舒适白色纯棉圆领短袖T恤潮
-                                </div>
-                                <div class="price">
-                                    ￥199.00
-                                </div>
-                            </a>
-                        </li>
+                        {{/each}}
                     </ul>
                 </div>
                 <div class="paging"></div>

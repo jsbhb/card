@@ -1,18 +1,15 @@
 <div class="page-banner-content">
     <div class="bannerImg">
-        {{#page-banner-1}}
-            {{#each INDEX_BANNER.modelList}}
-                <a href="{{href}}" class="inlineBlock" index="{{@index}}"
-                   style="background-image: url({{picPath}});
-                           z-index:{{getzIndex @index}}">
-                </a>
+        {{#each BANNER.RESPONSEDATA.modelList}}
+            <a href="{{href}}" class="inlineBlock" index="{{@index}}"
+               style="background-image: url({{getImgUrl picPath}});z-index:{{zIndexDesc @index}}">
+            </a>
+        {{/each}}
+        <span class="carousel_list">
+            {{#each BANNER.RESPONSEDATA.modelList}}
+                <i class="carousel_i {{addElementClass @index 0 'showing'}}" index="{{@index}}"></i>
             {{/each}}
-            <span class="carousel_list">
-                {{#each INDEX_BANNER.modelList}}
-                    <i class="carousel_i{{isFirst @index "showing"}}" index="{{@index}}"></i>
-                {{/each}}
-            </span>
-        {{/page-banner-1}}
+        </span>
     </div>
     <div class="bannerInfo">
         <div>

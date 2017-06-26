@@ -8,7 +8,8 @@ define([
     "bower.jquery",
     "bower.underscore",
     "bower.bootstrap.min",
-    "comm.index.1",
+    "config.helper",
+    "comm.index",
     "control.page.top.1",
     "control.page.header.1",
     "control.page.nav.1",
@@ -20,8 +21,8 @@ define([
     "bower.css!css.bootstrap.min",
     "bower.css!css.uFont",
 ], function(
-    $, _, bootstrap,
-    commIndex1,
+    $, _, bootstrap, helper,
+    comm_index,
     controlPageTop1,
     controlPageHeader1,
     controlPageNav1,
@@ -30,7 +31,7 @@ define([
     controlPageInfo2,
     controlPageFooter1){
 
-    can.when(commIndex1.queryAll())
+    can.when(comm_index.queryAll())
 
         .done(function(responseData){
 
@@ -56,10 +57,10 @@ define([
             var E_PAGE_BODY =     $("<div class='load-pageBody' style='min-height:396px'></div>");
             var E_PAGE_FOOTER =   $("<div class='load-pageFooter'></div>");
 
-            var E_PAGE_INFOA1 =   $("<div class='load-pageInfoA1'></div>");
-            var E_PAGE_INFOB1 =   $("<div class='load-pageInfoB1'></div>");
-            var E_PAGE_INFOA2 =   $("<div class='load-pageInfoA2'></div>");
-            var E_PAGE_INFOB2 =   $("<div class='load-pageInfoB1'></div>");
+            var E_PAGE_INFO1_1 =   $("<div class='load-pageInfo1-1'></div>");
+            var E_PAGE_INFO2_1 =   $("<div class='load-pageInfo2-1'></div>");
+            var E_PAGE_INFO1_2 =   $("<div class='load-pageInfo1-2'></div>");
+            var E_PAGE_INFO2_2 =   $("<div class='load-pageInfo2-2'></div>");
 
             $("body")
                 .addClass(C_SHORT)
@@ -71,98 +72,67 @@ define([
                 .append(E_PAGE_FOOTER);
 
             $("body").find($(E_PAGE_BODY))
-                .append(E_PAGE_INFOA1)
-                .append(E_PAGE_INFOB1)
-                .append(E_PAGE_INFOA2)
-                .append(E_PAGE_INFOB2);
+                .append(E_PAGE_INFO1_1)
+                .append(E_PAGE_INFO2_1)
+                .append(E_PAGE_INFO1_2)
+                .append(E_PAGE_INFO2_2);
 
 
             //生成页面top部分
             new controlPageTop1(".load-pageTop",{
-                config:{
-                    directRender: true,
-                    renderData: { CITY_POPULARIZE: CITY_POPULARIZE }
-                }
+                config: {},
+                responseData: CITY_POPULARIZE,
             });
 
             //生成页面header部分
             new controlPageHeader1(".load-pageHeader",{
-                config:{
-                    directRender: true,
-                    renderData: {
-                        renderCSS: {
-                            SEARCH_TYPE:1,
-                            SEARCH_COMPANY: "企业"
-                        }
-                    }
+                config: {
+                    SEARCH_TYPE: 1,
+                    SEARCH_COMPANY: "企业"
                 }
             });
 
             //生成页面nav部分
             new controlPageNav1(".load-pageNav",{
                 config:{
-                    directRender: false,
-                    renderData: {
-                        renderCSS: {
-                            index: "active",
-                            contType: "showed"
-                        }
-                    }
+                    INDEX: "active",
+                    CONTTYPE: "showed"
                 }
             });
 
             //生成页面banner部分
             new controlPageBanner1(".load-pageBanner",{
-                config:{
-                    directRender: true,
-                    renderData: { INDEX_BANNER: INDEX_BANNER }
-                }
+                config: {},
+                responseData: INDEX_BANNER,
             });
 
             //生成页面info-content部分
-            new controlPageInfo1(".load-pageInfoA1",{
-                config:{
-                    directRender: true,
-                    renderData: {
-                        MEMBER_PRODUCT_POPULARIZE_1: MEMBER_PRODUCT_POPULARIZE_1,
-                        MEMBER_POPULARIZE_1: MEMBER_POPULARIZE_1
-                    }
+            new controlPageInfo1(".load-pageInfo1-1",{
+                config: {},
+                responseData: {
+                    MEMBER_PRODUCT_POPULARIZE_1: MEMBER_PRODUCT_POPULARIZE_1,
+                    MEMBER_POPULARIZE_1: MEMBER_POPULARIZE_1
                 }
             });
-            new controlPageInfo2(".load-pageInfoB1",{
-                config:{
-                    directRender: true,
-                    renderData: {
-                        PRODUCT_POPULARIZE_1: PRODUCT_POPULARIZE_1
-                    }
+            new controlPageInfo2(".load-pageInfo2-1",{
+                config: {},
+                responseData: PRODUCT_POPULARIZE_1
+            });
+            new controlPageInfo1(".load-pageInfo1-2",{
+                config: {},
+                responseData: {
+                    MEMBER_PRODUCT_POPULARIZE_1: MEMBER_PRODUCT_POPULARIZE_1,
+                    MEMBER_POPULARIZE_1: MEMBER_POPULARIZE_1
                 }
             });
-            new controlPageInfo1(".load-pageInfoA2",{
-                config:{
-                    directRender: true,
-                    renderData: {
-                        MEMBER_PRODUCT_POPULARIZE_1: MEMBER_PRODUCT_POPULARIZE_1,
-                        MEMBER_POPULARIZE_1: MEMBER_POPULARIZE_1
-                    }
-                }
-            });
-            new controlPageInfo2(".load-pageInfoB2",{
-                config:{
-                    directRender: true,
-                    renderData: {
-                        PRODUCT_POPULARIZE_1: PRODUCT_POPULARIZE_1
-                    }
-                }
+            new controlPageInfo2(".load-pageInfo2-2",{
+                config: {},
+                responseData: PRODUCT_POPULARIZE_1
             });
 
 
             //生成页面footer部分
-            new controlPageFooter1(".load-pageFooter",{
-                config:{
-                    directRender: true,
-                    renderData: { }
-                }
-            });
+            new controlPageFooter1(".load-pageFooter");
 
         })
 

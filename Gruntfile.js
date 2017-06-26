@@ -54,9 +54,7 @@ module.exports = function(grunt) {
                     '<%=config.css%>/page-searchCompany-1.css':     '<%=config.scss%>/page-searchCompany-1.scss',
                     '<%=config.css%>/page-searchShop-1.css':        '<%=config.scss%>/page-searchShop-1.scss',
                     '<%=config.css%>/page-shop-1.css':              '<%=config.scss%>/page-shop-1.scss',
-                    '<%=config.css%>/page-shop-2.css':              '<%=config.scss%>/page-shop-2.scss',
                     '<%=config.css%>/page-company-1.css':           '<%=config.scss%>/page-company-1.scss',
-                    '<%=config.css%>/page-company-2.css':           '<%=config.scss%>/page-company-2.scss',
                 }
             }
         },

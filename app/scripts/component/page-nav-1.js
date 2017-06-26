@@ -17,7 +17,8 @@ define([
         template: can.view("templates.page.nav.1.mustache"),
         helpers: {
             setULHeight: function(cont){
-                this.attr("ulHeight", 50*cont.length+"px");
+                var length = typeof cont == "function"? cont().length: cont.length;
+                this.attr("ulHeight", 31*length+"px");
             }
         },
         scope: {
@@ -28,7 +29,7 @@ define([
             ul_mouseleave: function(){
                 var that = this;
                 var width = parseFloat($(".contType>ul").find(".showContItemList:first").css("width"));
-                if(width<2){
+                if(width<3){
                     that.ul_mouseleave_end = true;
                     $(".contType>ul").removeClass("hover");
                     $(".contType>ul>li").removeClass("hover");
@@ -42,7 +43,7 @@ define([
                 var that = this;
                 if(that.ul_mouseleave_end && !$(".contType").hasClass("showed")){
                     $(".contType>ul").css("overflow", "hidden");
-                    $(".contType>ul").stop(true, true).animate({height: "0px"}, 700);
+                    $(".contType>ul").stop(true, true).animate({height: "0px"}, 450);
                 }else if(!$(".contType").hasClass("showed")){
                     this.contType_timer=setTimeout(function(){ that.contType_mouseleave(); },200);
                 }

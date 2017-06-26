@@ -8,11 +8,11 @@ define([
     "bower.jquery",
     "bower.underscore",
     "bower.can",
-    "data.nav.1",
+    "comm.nav",
     "component.page.nav.1",
     "bower.css!css.page.nav.1",
     "fixture.test"
-], function($, _, can, nav){
+], function($, _, can, comm_nav){
 
     /** @description:  调用数据、模板组件, 并渲染输出
      */
@@ -20,34 +20,49 @@ define([
 
         sendRequest: function(type){
             switch(type){
-                case "queryAll":  return can.Deferred().resolve(nav);
-                case undefined:   return can.Deferred().resolve(new can.Model({}));
+                case "queryAll":  return comm_nav.queryAll();
+                case  undefined:  return can.Deferred().resolve();
                 default:          return can.Deferred().reject();
             }
         },
 
-        render: function(data){
-            data && data.success && $.extend(true, this.options.renderData, data.obj);
-            this.options.templates = "<page-nav-1 class='{{page-nav-1.renderCSS.border}}'></page-nav-1>";
+
+        setRenderData: function(responseData){
+            if(typeof this.options.config=="object"){
+                this.options.renderData.attr("CONFIG", this.options.config);
+            }
+            if(typeof responseData == "object"){
+                this.options.renderData.attr("RESPONSEDATA", responseData);
+            }
+        },
+
+
+        render: function(){
+            this.options.templates = "<page-nav-1 class='{{NAV.CONFIG.BORDER}}'></page-nav-1>";
             this.element.html(
-                can.mustache(this.options.templates)({
-                    "page-nav-1": this.options.renderData
-                })
+                can.mustache(this.options.templates)({  "NAV": this.options.renderData })
             );
         },
 
+
         init: function(){
-
-            this.options.directRender=  this.options.config && this.options.config.directRender || false;
-            this.options.renderData= this.options.config && this.options.config.renderData || {};
-
-            if(this.options.directRender){
+            this.options.config = this.options.config || {};
+            this.options.urlData = this.options.urlData || {};
+            this.options.responseData = this.options.responseData || null;
+            this.options.renderData = new can.Model({ CONFIG:{}, RESPONSEDATA:{} });
+            if(this.options.responseData){
+                this.setRenderData(this.options.responseData);
                 this.render();
             }else{
                 can.when(this.sendRequest("queryAll"))
                     .done(
                         $.proxy(function(responseData){
-                            this.render(responseData);
+                            if(responseData && responseData.success){
+                                this.setRenderData(responseData.obj);
+                            }else{
+                                this.setRenderData(responseData);
+                            }
+                            this.render();
                         },this)
                     )
             }

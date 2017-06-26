@@ -52,6 +52,8 @@ page-searchshop-1{
         line-height: 22px;
         &.searchText{
           font-size: 13px;
+          height: 22px;
+          line-height: 20px;
         }
       }
       &>a{
@@ -114,6 +116,7 @@ page-searchshop-1{
         font-style: normal;
         height: 22px;
         line-height: 22px;
+        margin: 0 3px;
         display: inline-block;
         vertical-align: top;
       }
@@ -156,6 +159,7 @@ page-searchshop-1{
           float: left;
           border-left: dashed 1px $base_borderColor;
           background-color: $white;
+          overflow: hidden;
           &>div{
             width: 1140px;
             min-height: 36px;
@@ -163,7 +167,6 @@ page-searchshop-1{
             padding-left: 10px;
             &>a{
               display: inline-block;
-              width: 110px;
               margin: 3.5px 10px;
               &>img{
                 height: 50px;
@@ -199,7 +202,7 @@ page-searchshop-1{
       font-size: 13px;
       line-height: 38px;
       margin-top: 10px;
-      padding: 5.2px 0px 0px 20px;
+      padding: 6px 0px 0px 20px;
       border: solid 1px $base_borderColor;
       background-color: $base_backgroundColor;
       &>.btn-group{
@@ -242,10 +245,49 @@ page-searchshop-1{
             font-weight: 500;
           }
         }
-        &>input{
+        &>input[type='checkbox']{
           width: 14px;
           height: 14px;
           display: none;
+        }
+      }
+      .priceRegion{
+        width: 270px;
+        margin-left:80px;
+        .input-group{
+          height: 24px;
+          line-height: 24px;
+          width: calc(100% - 60px);
+          display: inline-table;
+          background-color: transparent;
+          &>input[type='text']{
+            padding: 0 2px;
+            height: 24px;
+            line-height: 24px;
+            border-radius: 0px;
+            border: solid 1px $base_tangerine;
+            color: $base_tangerine;
+          }
+          &>span{
+            padding: 0 5px;
+            border: none;
+            color: $base_tangerine;
+          }
+        }
+        &>a{
+          height: 19px;
+          line-height: 19px;
+          font-size: 13px;
+          padding: 1px 5px;
+          margin-left: 5px;
+          display: inline-table;
+          vertical-align: top;
+          color:$white;
+          background-color: $base_tangerine;
+          &:hover:focus:active{
+            color:$white;
+            background-color: $base_tangerine;
+          }
         }
       }
       &>.region{
@@ -379,18 +421,10 @@ page-searchshop-1{
           &>.mark{
             padding: 0px;
             background-color: $white;
-            &>span{
-              width: 115px;
-              padding: 2px 5px;
-              height: 24px;
-              line-height: 24px;
-              color: $base_tangerine;
-              font-size: 13px;
-            }
             &>a{
-              text-align: right;
-              width: 130px;
-              padding: 2px 5px;
+              text-align: left;
+              width: 100%;
+              padding: 2px 10px;
               height: 24px;
               line-height: 24px;
               color: $base_tangerine;
@@ -417,7 +451,6 @@ page-searchshop-1{
       height: 120px;
       line-height: 120px;
       padding-left: 80px;
-      display: none;
       &>.description{
         font-size: 20px;
         color: $red;
@@ -429,12 +462,6 @@ page-searchshop-1{
       &>.text{
         font-size: 20px;
         color: $base_color;
-        &:before{
-          content:  '"';
-        }
-        &:after{
-          content:  '"';
-        }
       }
     }
   }

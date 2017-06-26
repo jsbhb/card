@@ -7,8 +7,9 @@
 define([
     "bower.jquery",
     "bower.underscore",
-    "bower.can"
-], function ($, _, can) {
+    "bower.can",
+    "config.path"
+], function ($, _, can, path) {
 
     /**
      * @description 创建Comm通讯基类
@@ -19,36 +20,25 @@ define([
          * @description 为Comm对象绑定参数
          */
         setData: function(param){
-            this.url = param.url   || this.url  || "";
-            this.type = param.type || this.type || "post";
-            this.data = param.data || this.data || null;
-            this.fixtrue = param.fixtrue || this.fixtrue || false;
-        },
-
-        /**
-         * @description 构建向服务端发起请求的数据
-         */
-        buildRequestData: function(){
-            // 构建请求的数据
-            var requestData = {};
-            // 扩展传入的参数
-            this.data && $.extend(true, requestData, this.data);
-            // 返回构建的数据
-            return requestData;
+            var tempUrl =  path.urlHost + param.urlPath;
+            this.url =     param.urlPath!=null?  tempUrl:       (this.url!=null?     this.url:    "");
+            this.type =    param.type!=null?     param.type:    (this.type!=null?    this.type:   "post");
+            this.data =    param.data!=null?     param.data:    (this.data!=null?    this.data:    {});
+            this.fixture = param.fixture!=null?  param.fixture: (this.fixture!=null? this.fixture: false);
         },
 
         /**
          * @description 发送请求,获得返回数据
          * @return {can.Deferred}
          */
-        request: function(data) {
+        request: function() {
             var def = can.Deferred();
             var that = this;
             can.ajax({
                 url: that.url,
                 type: that.type,
-                data: data,
-                fixture: that.fixtrue
+                data: that.data,
+                fixture: that.fixture
             }).done(function(response) {
                 def.resolve(new can.Model(response));
             }).fail(function(error) {
@@ -64,10 +54,8 @@ define([
         sendRequest: function(param) {
             //step1 设置参数
             this.setData(param);
-            //step2 构建向服务端发起请求的数据
-            var requestData = this.buildRequestData();
-            //step2 发送请求,获得返回数据
-            return this.request(requestData);
+            //step2 发送请求,返回数据
+            return this.request();
         },
 
         /**

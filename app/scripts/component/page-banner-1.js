@@ -7,7 +7,7 @@
 define([
     "bower.jquery",
     "bower.underscore",
-    "bower.can"
+    "bower.can",
 ], function($, _, can){
 
     /** @description: 模板组件
@@ -16,13 +16,6 @@ define([
         tag: "page-banner-1",
         template: can.view("templates.page.banner.1.mustache"),
         helpers: {
-            getzIndex: function(index){
-                var temp = 80;
-                return (temp-index()*1);
-            },
-            isFirst: function(index, value){
-                return index()==0? " "+value: "";
-            }
         },
         scope: {
             count: 6,

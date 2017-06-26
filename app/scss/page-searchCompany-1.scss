@@ -52,6 +52,8 @@ page-searchcompany-1{
         line-height: 22px;
         &.searchText{
           font-size: 13px;
+          height: 22px;
+          line-height: 20px;
         }
       }
       &>a{
@@ -74,7 +76,7 @@ page-searchcompany-1{
           border-bottom: none;
         }
         span{
-          max-width: 150px;
+          max-width: 108px;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -114,6 +116,7 @@ page-searchcompany-1{
         font-style: normal;
         height: 22px;
         line-height: 22px;
+        margin: 0 3px;
         display: inline-block;
         vertical-align: top;
       }
@@ -156,6 +159,7 @@ page-searchcompany-1{
           float: left;
           border-left: dashed 1px $base_borderColor;
           background-color: $white;
+          overflow: hidden;
           &>div{
             width: 1140px;
             min-height: 36px;
@@ -163,7 +167,6 @@ page-searchcompany-1{
             padding-left: 10px;
             &>a{
               display: inline-block;
-              width: 110px;
               margin: 3.5px 10px;
               &>img{
                 height: 50px;
@@ -368,7 +371,6 @@ page-searchcompany-1{
       height: 120px;
       line-height: 120px;
       padding-left: 80px;
-      display: none;
       &>.description{
         font-size: 20px;
         color: $red;
@@ -380,12 +382,6 @@ page-searchcompany-1{
       &>.text{
         font-size: 20px;
         color: $base_color;
-        &:before{
-          content:  '"';
-        }
-        &:after{
-          content:  '"';
-        }
       }
     }
   }
