@@ -39,7 +39,7 @@ define([
     controlPageFooter1){
 
 
-    /** @description:  新建元素
+    /** @description:  新建页面元素
      */
     var C_SHORT =         "SHORT";
     var E_TOP =           $("<div id='load-pageTop'></div>");
@@ -74,7 +74,7 @@ define([
 
 
 
-    /** @description:  设定数据初始值 --> 获取数据（异步） --> 各模块重新渲染模板数据
+    /** @description:  设定数据初始值 --> 获取数据, 各模块重新渲染数据（异步）
      */
     var searchCont =         "";
     var topResponseData =    { localCity: common.getRegion().localCity };
@@ -105,7 +105,7 @@ define([
 
 
 
-    /** @description:  加载页面模块（此时渲染模板数据为：初始值）
+    /** @description:  加载页面模块（此时渲染数据为：初始值）
      */
     var top = new controlPageTop1("#load-pageTop",{
         responseData: topResponseData
