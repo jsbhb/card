@@ -59,7 +59,7 @@ define([
     var searchCont =          "";
     var memberId =            common.getUrlParam("memberId");
     var topResponseData =     { localCity: common.getRegion().localCity };
-    var companyRequestData = { queryCompany:{}, queryShop:{} };
+    var companyRequestData =  { queryCompany:{}, queryShop:{} };
 
     if(memberId){
         companyRequestData.queryCompany.id = memberId;
