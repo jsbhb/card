@@ -16,9 +16,15 @@ define([
         tag: "page-banner-1",
         template: can.view("templates.page.banner.1.mustache"),
         helpers: {
+            getCount: function(thisValue){
+                var count = typeof thisValue == "function"? thisValue(): thisValue;
+                if(count){
+                    this.count = count.length;
+                }
+            }
         },
         scope: {
-            count: 6,
+            count: null,
             timer: null,
             toBanner: function($element, index, nextIndex, bool){
                 var that = this;
@@ -47,8 +53,9 @@ define([
         },
         events: {
             ".page-banner-content>.bannerImg mouseenter": function(){
+                var $element = this.element;
                 clearTimeout(this.scope.timer);
-                this.element.find("a[index]").stop(true,true);
+                $element.find("a[index]").stop(true,true);
                 clearTimeout(this.scope.timer);
             },
             ".page-banner-content>.bannerImg mouseleave": function(){
@@ -61,11 +68,19 @@ define([
                 }, 1500);
             },
             ".page-banner-content>.bannerImg .carousel_i:not(.showing) click": function(node){
+                var $element = this.element;
+                var $node = $(node);
                 clearTimeout(this.scope.timer);
-                this.element.find("a[index]").stop(true,true);
+                $element.find("a[index]").stop(true,true);
                 clearTimeout(this.scope.timer);
-                var nextIndex =  node.attr("index")*1;
-                this.scope.carouselClick(this.element, nextIndex);
+                var nextIndex = $node.attr("index")*1;
+                this.scope.carouselClick($element, nextIndex);
+            },
+            ".otherInfo>.notice,.otherInfo>.news mouseenter":function(node){
+                var $element = this.element;
+                var $node = $(node);
+                $node.parent().find(">.notice,>.news").removeClass("hover");
+                $node.addClass("hover");
             }
         },
         init: function(element){

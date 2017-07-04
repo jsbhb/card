@@ -1,10 +1,10 @@
 <div class="page-searchShop-content">
 
-    {{#SEARCHSHOP.RESPONSEDATA}}
+    {{#RESPONSEDATA}}
         <div class="resultCategory">
             <span class="inlineBlock">全部结果</span>
             <i class="rightIcon">></i>
-            <span class="inlineBlock searchText">{{SEARCHSHOP.CONFIG.searchText}}</span>
+            <span class="inlineBlock searchCont">{{CONFIG.searchCont}}</span>
         </div>
         <div class="classifyCategory">
             {{#if brand}}
@@ -109,13 +109,13 @@
                 <a href="javascript:void(0)" class="btn priceRegionBtn">确定</a>
             </div>
         </div>
-    {{/SEARCHSHOP.RESPONSEDATA}}
-    {{#if SEARCHSHOP.RESPONSEDATA.commoditySearchList}}
+    {{/RESPONSEDATA}}
+    {{#if RESPONSEDATA.commoditySearchList}}
         <div class="ShopList">
             <ul>
-                {{#each SEARCHSHOP.RESPONSEDATA.commoditySearchList}}
+                {{#each RESPONSEDATA.commoditySearchList}}
                     <li class="inlineBlock">
-                        <a href="javascript:void(0)" commodityId="{{commodityId}}">
+                        <a href="/app/webpage/shop.html?memberId={{memberId}}&commodityId={{commodityId}}">
                             <div class="imgBox">
                                 <img src="{{getImgUrl picture1}}">
                             </div>
@@ -128,24 +128,24 @@
                                 {{#if picture4}}<div class="box"><img src="{{getImgUrl picture4}}"></div>{{/if}}
                             </div>
                             <div class="showPrice">
-                                {{format_Money price}}
+                                ￥{{format_Money price}}
                             </div>
                             <div class="showText">
-                                <a href="javascript:void(0)" commodityId="{{commodityId}}">
+                                <a href="/app/webpage/shop.html?memberId={{memberId}}&commodityId={{commodityId}}" target="_blank">
                                     <abbr title="{{commodityName}}"> {{commodityName}}</abbr>
                                 </a>
                             </div>
                         </div>
                         <div class="mark">
-                            <a href="javascript:void(0)"
-                               class="inlineBlock" memberId="{{memberId}}">
+                            <a href="/app/webpage/company.html?memberId={{memberId}}" target="_blank"
+                               class="inlineBlock">
                                 <abbr title="{{memberName}}">{{memberName}}</abbr>
                             </a>
                         </div>
                     </li>
                 {{/each}}
             </ul>
-            <div class="pagination" style="margin-right: 15px;"></div>
+            <div class="load-pagePagination"></div>
         </div>
     {{else}}
         <div class="nothingError">

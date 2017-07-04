@@ -9,7 +9,8 @@
     "underscore": "^1.8.3",
     "text": "^2.0.15",
     "require-css": "^0.1.10",
-    "bootstrap-datetimepicker": "^0.0.11"
+    "bootstrap-datetimepicker": "^0.0.11",
+    "jQuery.dotdotdot": "jquery.dotdotdot#^1.8.3"
   },
   "version": "1.0.0",
   "description": "",

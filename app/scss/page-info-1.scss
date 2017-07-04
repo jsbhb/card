@@ -8,15 +8,14 @@
 page-info-1{
   @include page;
   &>.page-info-content{
-    @include pageContent(735px,19px,12px,$base_color);
+    @include pageContent(725px,19px,12px,$base_color);
     &>.header{
       height: 40px;
-      border-bottom: solid 2px $base_tangerine;
       &>.title{
         font-size: 25px;
-        line-height: 30px;
+        line-height: 40px;
         padding: 0 10px 0 30px;
-        color: $base_tangerine;
+        color: $red;
         float: left;
         display: inline-block;
         position: relative;
@@ -24,36 +23,53 @@ page-info-1{
           content: "";
           width: 10px;
           height: 10px;
-          background-color: $base_tangerine;
+          background-color: $red;
           position: absolute;
-          top: 12px;
-          left: 10px;
+          top: 16px;
+          left: 12px;
         }
       }
       &>.list{
-        height: 36px;
-        line-height:45px;
+        height: 40px;
+        line-height:52px;
         float: right;
         display: inline-block;
         &>a{
           color: $title_color;
-          font-size:13px;
+          font-size:14px;
           padding: 0 7px;
           cursor: pointer;
           &:hover,
           &:focus,
           &:active{
-            color: $base_tangerine;
+            color: $red;
+          }
+        }
+      }
+      &>.more{
+        height: 40px;
+        line-height:52px;
+        float: right;
+        display: inline-block;
+        &>a{
+          color: $red;
+          font-size:14px;
+          padding: 0 10px;
+          cursor: pointer;
+          &>span{
+            font-family: simsun;
+            font-weight: 600;
+            margin-left:2px;
           }
         }
       }
     }
     &>.body{
       width: 100%;
-      height: 630px;
+      height: 610px;
       &>.content{
         width: 100%;
-        height:540px;
+        height:520px;
         background-color: $white;
         &>.content-logoImg{
           width: 200px;
@@ -63,10 +79,10 @@ page-info-1{
           overflow: hidden;
           &>span{
             width: 100%;
-            height: 108px;
+            height: 104px;
             border-top: none;
             border-left: solid 1px $li_borderColor;
-            border-right: solid 1px $li_borderColor;
+            border-right: solid 1.5px $red;
             border-bottom: solid 1px $li_borderColor;
             display: block;
             text-align: center;
@@ -74,8 +90,8 @@ page-info-1{
             position: relative;
             &>img{
               width: auto;
-              height: 99%;
-              max-width: 99%;
+              height: 85%;
+              max-width: 85%;
               margin: auto;
               position: absolute;
               top: 0px;
@@ -84,17 +100,31 @@ page-info-1{
               right: 0px;
             }
             &.active{
-              border-width: 2px;
-              border-color: $base_tangerine;
+              border-width: 1.5px;
+              border-left-color: $red;
+              border-bottom-color: $red;
+              border-right-color: $white;
               &::before{
                 content: "";
                 width: calc(100% + 3px);
                 height: 1.5px;
-                top: -1.5px;
-                left: -1.5px;
-                background-color: $base_tangerine;
+                top: -1px;
+                left: -1px;
+                background-color: $red;
                 position: absolute;
               }
+              &::after{
+                content: "";
+                width: 1.5px;
+                height: calc(100% - 24px);
+                top: 11px;
+                right: -1.5px;
+                background-color: $red;
+                position: absolute;
+              }
+            }
+            &:first-child{
+              border-top: solid 1px $li_borderColor;
             }
           }
         }
@@ -106,7 +136,7 @@ page-info-1{
           position: relative;
           &>ul{
             width: 1000px;
-            height: 540px;
+            height: 520px;
             position: absolute;
             top: 0px;
             left: 0px;
@@ -117,7 +147,7 @@ page-info-1{
             }
             &>li{
               width: 200px;
-              height: 270px;
+              height: 260px;
               float:left;
               border-right: solid 1px $li_borderColor;
               border-bottom: solid 1px $li_borderColor;
@@ -125,9 +155,18 @@ page-info-1{
               &:first-child{
                 z-index: 100;
               }
+              &:nth-of-type(n+4){
+                border-bottom: solid 1.5px $red;
+              }
+              &:not(:nth-of-type(n+4)){
+                border-top: solid 1.5px $red;
+              }
+              &:nth-of-type(5n+3){
+                border-right: solid 1.5px $red;
+              }
               &.infoBanner{
                 width: 600px;
-                height: 270px;
+                height: 260px;
                 overflow: hidden;
                 &>a{
                   width: 100%;
@@ -139,27 +178,52 @@ page-info-1{
                   z-index: 99;
                   display: block;
                   background-color: $white;
-                  background-position: 99% 55%;
-                  background-repeat: no-repeat;
                   overflow: hidden;
                   &:first-child{
                     z-index: 100;
                   }
                   &>.text{
-                    width: 430px;
-                    height: 100%;
-                    font-size: 20px;
+                    width: 350px;
+                    height: 260px;
+                    float: left;
+                    &>span.sketch{
+                      font-size: 18px;
+                      width: 100%;
+                      padding: 10px 0 0 30px;
+                      height: 40px;
+                      line-height: 30px;
+                      white-space: nowrap;
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                      display: inline-block;
+                    }
+                    &>span.description {
+                      font-size: 14px;
+                      line-height: 26px;
+                      width: 100%;
+                      height: 180px;
+                      overflow: hidden;
+                      padding-left: 43px;
+                      text-indent: 28px;
+                      display: inline-block;
+                    }
+                  }
+                  &>.img{
+                    width: calc(100% - 350px);
+                    height: 260px;
                     float: left;
                     text-align: center;
                     position: relative;
-                    &>span{
-                      display: block;
-                      padding: 60px;
-                      &>.description{
-                        display: block;
-                        font-size: 18px;
-                        padding: 5px;
-                      }
+                    &>img{
+                      width: 95%;
+                      height: auto;
+                      max-height: 95%;
+                      position: absolute;
+                      left: 0px;
+                      right: 0px;
+                      top: 0px;
+                      bottom: 0px;
+                      margin: auto;
                     }
                   }
                 }
@@ -171,28 +235,23 @@ page-info-1{
                   position: absolute;
                   left: 0px;
                   right: 0px;
-                  bottom: 20px;
-                  z-index: 110;
+                  bottom: 10px;
+                  z-index: 150;
                   margin: 0 auto;
-                  border-radius: 13px;
-                  background-color:  rgba(230,230,230,.7);
                   i{
                     width: 12px;
                     height: 12px;
                     margin: 0 5px;
                     border-radius: 100%;
+                    background-color:  $carousel_i_backgroundColor;
                     display: inline-block;
-                    background-color:  $white;
                     cursor: pointer;
                     &.showing,
                     &.showing:hover{
-                      height: 5px;
-                      vertical-align: 3px;
-                      border-radius: 0px;
-                      background-color: $base_tangerine;
+                      background-color: $carousel_i_showing_hoverBackgroundColor;
                     }
                     &:hover{
-                      background-color: $banner_hoverBackgroundColor;
+                      background-color: $carousel_i_hoverBackgroundColor;
                     }
                   }
                 }
@@ -219,7 +278,7 @@ page-info-1{
                       line-height: 25px;
                       display: block;
                       font-size: 16px;
-                      color: $price_color
+                      color: $deepRed;
                     }
                   }
                   &>.img{
@@ -228,9 +287,9 @@ page-info-1{
                     display: block;
                     position: relative;
                     &>img{
-                      height: 95%;
+                      height: 90%;
                       width: auto;
-                      max-width: 95%;
+                      max-width: 90%;
                       position: absolute;
                       top: 0px;
                       bottom: 0px;
@@ -241,7 +300,7 @@ page-info-1{
                   }
                 }
                 &:hover{
-                  box-shadow: 0px 0px 15px 0px $fade_backgroundColor;
+                  box-shadow: 0px 0px 15px 0px $li_fadeBackgroundColor;
                 }
               }
             }
@@ -249,9 +308,9 @@ page-info-1{
         }
       }
       &>.banner-logoImg{
-        margin-top: 10px;
+        margin-top: 20px;
         width: 100%;
-        height: 95px;
+        height: 75px;
         background-color: $white;
         position: relative;
         &>div{
@@ -266,20 +325,24 @@ page-info-1{
             position: absolute;
             left: 0px;
             &>li{
-              width: 150px;
+              width: 120px;
               height: 100%;
               position: relative;
               border-left: solid 1px $li_borderColor;
               float: left;
               display: inline-block;
+              &:first-child{
+                border-left: none;
+              }
               &>a{
                 width: 100%;
                 height: 100%;
+                text-align: center;
                 display: block;
                 &>img{
                   width: auto;
-                  height: 99%;
-                  max-width: 99%;
+                  height: 80%;
+                  max-width: 80%;
                   margin: auto;
                   position: absolute;
                   top: 0px;
@@ -293,7 +356,7 @@ page-info-1{
                   content: "";
                   width: 100%;
                   height: 5px;
-                  background-color: $base_tangerine;
+                  background-color: $red;
                   position: absolute;
                   bottom: 0px;
                   left: 0px;
@@ -303,20 +366,20 @@ page-info-1{
             }
           }
         }
-        .carousel {
+        .carousel_btn {
           width: 20px;
-          height: 40px;
-          line-height: 40px;
+          height: 43px;
+          line-height: 43px;
           font-size: 21px;
-          font-weight: 400;
+          font-weight: 600;
           font-family: simsun;
           text-align: center;
           color: $white;
-          background-color: rgba(200, 200, 200, .3);
+          background-color: $carousel_btn_backgroundColor;
           position: absolute;
           top: 0px;
           bottom: 0px;
-          z-index: 101;
+          z-index: 150;
           opacity: 1;
           margin: auto 0;
           cursor: pointer;
@@ -325,17 +388,17 @@ page-info-1{
             left: 0px;
             right: auto;
             &:hover{
-              background-color: rgba(230,230,230,.5);
-              color: $base_tangerine;
+              background-color: $carousel_btn_hoverBackgroundColor;
+              color: $carousel_btn_hoverColor;
             }
           }
           &.next{
             font-weight: 500;
             left: auto;
-            right: 0px;
+            right: -1.5px;
             &:hover{
-              background-color: $logoBanner_color;
-              color: $base_tangerine;
+              background-color: $carousel_btn_hoverBackgroundColor;
+              color: $carousel_btn_hoverColor;
             }
           }
         }

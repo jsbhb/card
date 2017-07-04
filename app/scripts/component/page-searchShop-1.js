@@ -8,8 +8,6 @@ define([
     "bower.jquery",
     "bower.underscore",
     "bower.can",
-    "component.page.pagination",
-    "bower.css!css.page.pagination",
 ], function($, _, can){
 
     /** @description: 模板组件
@@ -38,107 +36,121 @@ define([
                     $html.find("abbr").attr("title", text);
                     $html.find(".classCont").text(text);
                     hideElement && hideElement.hide();
-                    $(".searchText").before($html);
+                    $(".searchCont").before($html);
                 }
             }
         },
         events:{
-            "[brand] click": function(element){
-                var hideElement = element.parents(".brand");
+            "[brand] click": function(node){
+                var $element = this.element;
+                var $node = $(node);
+                var hideElement = $node.parents(".brand");
                 var typeText = hideElement.find(".classifyType").text();
-                var text = $(element).text();
+                var text = $node.text();
                 this.scope.addSearch(typeText, text, "brand", hideElement);
             },
-            "[commodityCategory2] click": function(element){
-                var hideElement = element.parents(".commodityCategory2");
+            "[commodityCategory2] click": function(node){
+                var $element = this.element;
+                var $node = $(node);
+                var hideElement = $node.parents(".commodityCategory2");
                 var typeText = hideElement.find(".classifyType").text();
-                var text = $(element).text();
+                var text = $node.text();
                 this.scope.addSearch(typeText, text, "commodityCategory2", hideElement);
             },
-            "[commodityCategory3] click": function(element){
-                var hideElement = element.parents(".commodityCategory3");
+            "[commodityCategory3] click": function(node){
+                var $element = this.element;
+                var $node = $(node);
+                var hideElement = $node.parents(".commodityCategory3");
                 var typeText = hideElement.find(".classifyType").text();
-                var text = $(element).text();
+                var text = $node.text();
                 this.scope.addSearch(typeText, text, "commodityCategory3", hideElement);
             },
-            "[color] click": function(element){
-                var hideElement = element.parents(".color");
+            "[color] click": function(node){
+                var $element = this.element;
+                var $node = $(node);
+                var hideElement = $node.parents(".color");
                 var typeText = hideElement.find(".classifyType").text();
-                var text = $(element).text();
+                var text = $node.text();
                 this.scope.addSearch(typeText, text, "color", hideElement);
             },
-            "[size] click": function(element){
-                var hideElement = element.parents(".size");
+            "[size] click": function(node){
+                var $element = this.element;
+                var $node = $(node);
+                var hideElement = $node.parents(".size");
                 var typeText = hideElement.find(".classifyType").text();
-                var text = $(element).text();
+                var text = $node.text();
                 this.scope.addSearch(typeText, text, "size", hideElement);
             },
-            ".priceRegion .priceRegionBtn click": function(element){
+            ".priceRegion .priceRegionBtn click": function(node){
+                var $element = this.element;
+                var $node = $(node);
                 var hideElement = null;
                 var typeText="价格";
-                var text1 = $(element).parents(".priceRegion:first").find("input").eq(0).val();
-                var text2 = $(element).parents(".priceRegion:first").find("input").eq(1).val();
+                var text1 = $node.parents(".priceRegion:first").find("input").eq(0).val();
+                var text2 = $node.parents(".priceRegion:first").find("input").eq(1).val();
                 var text;
                 if(!text1 && !text2){
                     return;
                 }else if(!text1 && !!text2){
-                    $(element).parents(".priceRegion:first").find("input").eq(0).val("0");
+                    $node.parents(".priceRegion:first").find("input").eq(0).val("0");
                     text = "￥0-" + text2;
                 }else if(!!text1 && !text2){
                     text = "￥" + text1 + "以上";
                 }else if(!!text1 && !!text2 && text1*1>text2*1){
-                    $(element).parents(".priceRegion:first").find("input").eq(0).val(text2);
-                    $(element).parents(".priceRegion:first").find("input").eq(1).val(text1);
+                    $node.parents(".priceRegion:first").find("input").eq(0).val(text2);
+                    $node.parents(".priceRegion:first").find("input").eq(1).val(text1);
                     text = "￥" + text2 + "-" + text1;
                 }else if(!!text1 && !!text2 && text1*1<=text2*1){
                     text = "￥" + text1 + "-" + text2;
                 }
                 this.scope.addSearch(typeText, text, "priceRegion", hideElement);
             },
-            ".priceRegion input input": function(element){
-                var val = $(element).val().replace(/\D/gi,"");
-                $(element).val(val);
+            ".priceRegion input input": function(node){
+                var $element = this.element;
+                var $node = $(node);
+                var val = $node.val().replace(/\D/gi,"");
+                $node.val(val);
             },
-            ".priceRegion input propertychange": function(element){
-                var val = $(element).val().replace(/\D/gi,"");
-                $(element).val(val);
+            ".priceRegion input propertychange": function(node){
+                var $element = this.element;
+                var $node = $(node);
+                var val = $node.val().replace(/\D/gi,"");
+                $node.val(val);
             },
-            ".resultCategory>a .deleteIcon click": function(element){
-                var parent = element.parents("a:first");
+            ".resultCategory>a .deleteIcon click": function(node){
+                var $element = this.element;
+                var $node = $(node);
+                var parent = $node.parents("a:first");
                 var cls = parent.attr("class");
-                this.element.find(".classifyCategory").find(">."+cls).show();
-                if($(element).parents("a:first").hasClass("priceRegion")){
-                   $(".priceRegion input").val("");
+                $element.find(".classifyCategory").find(">."+cls).show();
+                if($node.parents("a:first").hasClass("priceRegion")){
+                    $node.parents("a:first").find("input").val("");
                 }
             },
-            ".filter>.btn-group>a click": function(element) {
-                if(!element.hasClass("active")){
-                    this.element.find(".filter>.btn-group>a").removeClass("active");
-                    element.addClass("active");
-                }else if(element.hasClass("filterHot")||element.hasClass("filterPrice")){
-                    if(element.find(">i").hasClass("font-base_directionDown")){
-                        element.find(">i").removeClass("font-base_directionDown");
-                        element.find(">i").addClass("font-base_directionUp");
+            ".filter>.btn-group>a click": function(node) {
+                var $element = this.element;
+                var $node = $(node);
+                if(!$node.hasClass("active")){
+                    $element.find(".filter>.btn-group>a").removeClass("active");
+                    $node.addClass("active");
+                }else if($node.hasClass("filterHot")||$node.hasClass("filterPrice")){
+                    if($node.find(">i").hasClass("font-base_directionDown")){
+                        $node.find(">i").removeClass("font-base_directionDown");
+                        $node.find(">i").addClass("font-base_directionUp");
                     }else{
-                        element.find(">i").addClass("font-base_directionDown");
-                        element.find(">i").removeClass("font-base_directionUp");
+                        $node.find(">i").addClass("font-base_directionDown");
+                        $node.find(">i").removeClass("font-base_directionUp");
                     }
                 }
             },
-            ".ShopList .showImg img mouseenter": function(element){
-                var src = element.attr("src");
-                this.element.find(".ShopList .showImg img").removeClass("active");
-                element.addClass("active");
-                element.parents("li:first").find(".imgBox img").attr("src", src);
+            ".ShopList .showImg img mouseenter": function(node){
+                var $element = this.element;
+                var $node = $(node);
+                var src = $node.attr("src");
+                $element.find(".ShopList .showImg img").removeClass("active");
+                $node.addClass("active");
+                $node.parents("li:first").find(".imgBox img").attr("src", src);
             }
         },
-        init: function(element){
-            this.scope.attr("$pagination", $(element).find(".pagination"));
-            this.scope.$pagination.pagination({
-                page:20,
-                total:1,
-                test:true
-            });
-        }
     })
 })

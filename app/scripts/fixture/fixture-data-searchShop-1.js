@@ -101,10 +101,10 @@ define(function(){
                 "pagination":
                     {
                         "numPerPage": 20,
-                        "currentPage": 1,
+                        "currentPage": 12,
                         "startRow": 0,
                         "endRow": 20,
-                        "totalPages": 1,
+                        "totalPages": 50,
                         "totalRows": 5
                     },
                 "commodityCategory3":

@@ -7,9 +7,7 @@
 define([
     "bower.jquery",
     "bower.underscore",
-    "bower.can",
-    "component.page.pagination",
-    "bower.css!css.page.pagination",
+    "bower.can"
 ], function($, _, can){
 
     /** @description: 模板组件
@@ -48,60 +46,74 @@ define([
             }
         },
         events:{
-            ".page-company-content .companyImg mouseenter": function(){
+            ".page-company-content .companyImg mouseenter": function(node){
+                var $element = this.element;
+                var $node = $(node);
+                $node.find(".carousel_btn").css("display","block");
                 clearTimeout(this.scope.timer);
-                this.element.find("img[index]").stop(true,true);
+                $node.find("img[index]").stop(true,true);
                 clearTimeout(this.scope.timer);
             },
-            ".page-company-content .companyImg mouseleave": function(){
-                var that = this;
+            ".page-company-content .companyImg mouseleave": function(node){
                 var $element = this.element;
-                var index = $element.find(".carousel_i.showing").attr("index")*1;
+                var $node = $(node);
+                var that = this;
+                var index = $node.find(".carousel_i.showing").attr("index")*1;
                 var nextIndex= index+1<this.scope.count? index+1: 0;
+                $node.find(".carousel_btn").css("display","none");
                 that.scope.timer = setTimeout(function(){
-                    that.scope.toBanner($element, index, nextIndex);
+                    that.scope.toBanner($node, index, nextIndex);
                 }, 1500);
             },
             ".page-company-content .companyImg .carousel_i:not(.showing) click": function(node){
+                var $element = this.element;
+                var $node = $(node);
                 clearTimeout(this.scope.timer);
-                this.element.find("img[index]").stop(true,true);
+                $element.find("img[index]").stop(true,true);
                 clearTimeout(this.scope.timer);
-                var nextIndex =  node.attr("index")*1;
-                this.scope.carouselClick(this.element, nextIndex);
-            },
-            ".page-company-content .companyImg .carousel click": function(node){
-                clearTimeout(this.scope.timer);
-                this.element.find("img[index]").stop(true,true);
-                clearTimeout(this.scope.timer);
-                var $element = this.element.find(".companyImg");
-                var index = $element.find(".carousel_i.showing").attr("index")*1;
-                if($(node).hasClass("prev")){
-                    var nextIndex= index-1>=0? index-1: this.scope.count-1;
-                }
-                if($(node).hasClass("next")){
-                    var nextIndex= index+1<this.scope.count? index+1: 0;
-                }
+                var nextIndex = $node.attr("index")*1;
                 this.scope.carouselClick($element, nextIndex);
             },
-            ".shopClassify a click": function(element){
-                var bool = $(element).hasClass("active");
-                $(element).parents(".shopClassify:first").find("a").removeClass("active");
+            ".page-company-content .companyImg .carousel_btn click": function(node){
+                var $element = this.element;
+                var $node = $(node);
+                var $companyImg = this.element.find(".companyImg");
+                clearTimeout(this.scope.timer);
+                $element.find("img[index]").stop(true,true);
+                clearTimeout(this.scope.timer);
+                var index = $companyImg.find(".carousel_i.showing").attr("index")*1;
+                if($node.hasClass("prev")){
+                    var nextIndex= index-1>=0? index-1: this.scope.count-1;
+                }
+                if($node.hasClass("next")){
+                    var nextIndex= index+1<this.scope.count? index+1: 0;
+                }
+                this.scope.carouselClick($companyImg, nextIndex);
+            },
+            ".shopClassify a click": function(node){
+                var $element = this.element;
+                var $node = $(node);
+                var bool = $node.hasClass("active");
+                console.log(bool);
+                $element.parents(".shopClassify:first").find("a").removeClass("active");
                 if(!bool){
-                    $(element).addClass("active");
+                    $node.addClass("active");
                 }
             },
-            ".companySort a click": function(element){
-                var b1 = $(element).hasClass("active");
-                var b2 = $(element).find("i").hasClass("font-base_directionDown");
-                $(".companySort a").removeClass("active");
-                $(element).addClass("active");
+            ".companySort a click": function(node){
+                var $element = this.element;
+                var $node = $(node);
+                var b1 = $node.hasClass("active");
+                var b2 = $node.find("i").hasClass("font-base_directionDown");
+                $node.parent().find("a").removeClass("active");
+                $node.addClass("active");
 
                 if(b1&&b2){
-                    $(element).find("i").removeClass("font-base_directionDown");
-                    $(element).find("i").addClass("font-base_directionUp");
+                    $node.find("i").removeClass("font-base_directionDown");
+                    $node.find("i").addClass("font-base_directionUp");
                 }else if(b1&&!b2){
-                    $(element).find("i").removeClass("font-base_directionUp");
-                    $(element).find("i").addClass("font-base_directionDown");
+                    $node.find("i").removeClass("font-base_directionUp");
+                    $node.find("i").addClass("font-base_directionDown");
                 }
             }
 
@@ -117,14 +129,6 @@ define([
                 }, 1500);
             }
             bannerInit(this, $(element).find(".companyImg"));
-
-            //分页
-            this.scope.attr("$pagination", $(element).find(".paging"));
-            this.scope.$pagination.pagination({
-                page:20,
-                total:1,
-                test:true
-            });
         }
     })
 })

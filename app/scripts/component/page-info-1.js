@@ -31,8 +31,8 @@ define([
                     return options.fn(options.context);
                 }
             },
-            parsefloat: function(val){
-                return "￥"+parseFloat(val()).toFixed(2);
+            setCSS_Width: function(count, options){
+                return typeof count == "function"? count().length*120+"px": count.length*120+"px";
             }
         },
         scope: {
@@ -64,25 +64,28 @@ define([
                 }
                 $element.find(".carousel_i[index]").removeClass("showing");
                 $element.find(".carousel_i[index='"+toIndex+"']").addClass("showing");
-                $element.find(".infoBanner>a[index='"+toIndex+"']").animate({left: "0px"}, 1500);
+                $element.find(".infoBanner>a[index='"+toIndex+"']").animate({left: "0px"}, 2000);
             }
         },
         events: {
             ".content-logoImg >span mouseenter": function(node){
-                var index = node.attr("index")*1;
-                this.element.find(".content-logoImg>span").removeClass("active");
-                this.element.find(".content-logoImg>span").eq(index).addClass("active");
-                this.element.find(".content-showInfo>ul").css("z-index","99");
-                this.element.find(".content-showInfo>ul").eq(index).css("z-index","101");
+                var $element = this.element;
+                var $node = $(node);
+                var index = $node.attr("index")*1;
+                $element.find(".content-logoImg>span").removeClass("active");
+                $element.find(".content-logoImg>span").eq(index).addClass("active");
+                $element.find(".content-showInfo>ul").css("z-index","99");
+                $element.find(".content-showInfo>ul").eq(index).css("z-index","101");
             },
             ".infoBanner .carousel_i:not(.showing) click": function(node){
                 var $element = this.element;
+                var $node = $(node);
                 var index = $element.find(".carousel_i.showing").attr("index")*1;
-                var toIndex =  node.attr("index")*1;
+                var toIndex = $node.attr("index")*1;
                 clearTimeout(this.scope.timer);
                 this.scope.carouselClick($element, index, toIndex);
             },
-            ".infoBanner mouseenter": function(element){
+            ".infoBanner mouseenter": function(){
                 clearTimeout(this.scope.timer);
             },
             ".infoBanner mouseleave": function(){
@@ -95,16 +98,17 @@ define([
                     $element.find(".infoBanner>a[index='"+index+"']").css({ "z-index":100, left: "0px" });
                     $element.find(".infoBanner>a[index='"+toIndex+"']").css({ "z-index":105, left: "600px" });
                     that.scope.toBanner($element, index, toIndex);
-                }, 2500);
+                }, 1300);
             },
-            ".carousel.prev,.carousel.next click": function(node){
+            ".carousel_btn click": function(node){
                 var that = this;
                 var $element = this.element;
+                var $node = $(node);
                 var left = $element.find(".bannerUl").css("left");
                 var width = $element.find(".bannerUl").css("width");
                 left = parseFloat(left);
                 width = parseFloat(width);
-                var range = node.hasClass("prev")? 600: -600;
+                var range = $node.hasClass("prev")? 600: -600;
                 if(left + range > 0){
                     $element.find(".bannerUl").animate({left: "0px"}, 300);
                 }else if(left + range < 1200-width){
@@ -115,10 +119,6 @@ define([
             },
         },
         init: function(element){
-            //logo轮播模块设置
-            var length = $(element).find(".bannerUl>li").length;
-            $(element).find(".bannerUl").css("width", 150*length+"px");
-
             //图片轮播初始化
             function bannerInit($this, $element){
                 var index = 0;
@@ -128,9 +128,12 @@ define([
                     $element.find(".infoBanner>a[index='"+index+"']").css({"z-index": 100, left: "0px"});
                     $element.find(".infoBanner>a[index='"+toIndex+"']").css({"z-index": 105, left: "600px"});
                     $this.scope.toBanner($element, index, toIndex);
-                }, 1500)
+                }, 2000)
             }
             bannerInit(this, $(element));
+
+            //文本省略
+            $(".infoBanner .text .description").dotdotdot({});
         }
     })
 })

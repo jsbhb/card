@@ -11,12 +11,12 @@ page-info-2{
     @include pageContent(630px,19px,12px,$base_color);
     &>.header{
       height: 40px;
-      border-bottom: solid 2px $base_tangerine;
+      border-bottom: solid 2px $red;
       &>.title{
         font-size: 25px;
-        line-height: 30px;
+        line-height: 40px;
         padding: 0 10px 0 30px;
-        color: $base_tangerine;
+        color: $red;
         float: left;
         display: inline-block;
         position: relative;
@@ -24,26 +24,43 @@ page-info-2{
           content: "";
           width: 10px;
           height: 10px;
-          background-color: $base_tangerine;
+          background-color: $red;
           position: absolute;
-          top: 12px;
-          left: 10px;
+          top: 16px;
+          left: 12px;
         }
       }
       &>.list{
-        height: 36px;
-        line-height:45px;
+        height: 40px;
+        line-height:52px;
         float: right;
         display: inline-block;
         &>a{
           color: $title_color;
-          font-size:13px;
+          font-size:14px;
           padding: 0 7px;
           cursor: pointer;
           &:hover,
           &:focus,
           &:active{
-            color: $base_tangerine;
+            color: $red;
+          }
+        }
+      }
+      &>.more{
+        height: 40px;
+        line-height:52px;
+        float: right;
+        display: inline-block;
+        &>a{
+          color: $red;
+          font-size:14px;
+          padding: 0 10px;
+          cursor: pointer;
+          &>span{
+            font-family: simsun;
+            font-weight: 600;
+            margin-left:2px;
           }
         }
       }
@@ -73,6 +90,9 @@ page-info-2{
             right: 0px;
             margin: auto;
           }
+          &:hover{
+            box-shadow: 0px 0px 15px 0px $red_transparent;
+          }
         }
         &>.shop.small{
           width: 230px;
@@ -84,7 +104,10 @@ page-info-2{
           float: left;
           position: relative;
           background-color: $white;
-          border: solid 1px $li_borderColor;
+          border: solid 1px $red;
+          &:not(:nth-of-type(n+5)){
+            border-top: none;
+          }
           &>.shopImg{
             width: 100%;
             height: 170px;
@@ -118,13 +141,13 @@ page-info-2{
               }
               &.price{
                 font-size: 13px;
-                color: $base_tangerine;
+                color: $red;
                 padding: 0 5px;
               }
             }
           }
           &:hover{
-            box-shadow: 0px 0px 15px 0px $fade_backgroundColor;
+            box-shadow: 0px 0px 15px 0px $red_transparent;
           }
         }
         &>.shop:nth-child(5n){

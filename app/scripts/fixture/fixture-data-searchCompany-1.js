@@ -165,11 +165,11 @@ define(function(){
             "pagination":
                 {
                     "numPerPage": 20,
-                    "currentPage": 1,
+                    "currentPage": 104,
                     "startRow": 0,
                     "endRow": 20,
-                    "totalPages": 1,
-                    "totalRows": 2
+                    "totalPages": 110,
+                    "totalRows": 50
                 }
         }
     }

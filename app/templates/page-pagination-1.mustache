@@ -1,0 +1,30 @@
+<div class="page-pagination-content">
+    <ul class ="pagination_ul {{CONFIG.direction}}">
+        <li class="pagination_page">
+            <a class="pagination_btn prevBtn">上一页</a>
+        </li>
+        {{#RESPONSEDATA}}
+            {{#pageList}}
+                {{#if jumpBtn}}
+                    <li class="pagination_page {{active}}">
+                        <a jumpBtn="{{jumpBtn}}" class="pagination_btn">{{page}}</a>
+                    </li>
+                {{/if}}
+                {{#if ellipsis}}
+                    <li class="pagination_page">
+                        <a class="pagination_ellipsis">...</a>
+                    </li>
+                {{/if}}
+            {{/pageList}}
+        {{/RESPONSEDATA}}
+        <li class="pagination_page">
+            <a class="pagination_btn nextBtn">下一页</a>
+        </li>
+        <li class="pagination_page">
+            <input type="text" class="pagination_searchText" value="{{RESPONSEDATA.currentPage}}" tempvalue="{{RESPONSEDATA.currentPage}}">
+        </li>
+        <li class="pagination_page">
+            <a class="pagination_btn searchBtn">确定</a>
+        </li>
+    </ul>
+</div>

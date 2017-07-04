@@ -1,23 +1,23 @@
 <div class="page-shop-content">
     <div class="maxWidth">
         <div class="shopImg">
-            <img src="{{SHOP.RESPONSEDATA.logoPath}}">
+            <img src="{{RESPONSEDATA.logoPath}}">
         </div>
     </div>
     <div class="shopInfo">
         <div class="maxWidth">
             <span>
-                {{#each SHOP.RESPONSEDATA.commoditySearchList}}
+                {{#each RESPONSEDATA.commoditySearchList}}
                     {{#setRenderRange @index 1}}{{commodityName}}{{/setRenderRange}}
                 {{/each}}
             </span>
             <span class="pull-right">
-                {{SHOP.RESPONSEDATA.memberName}}
+                {{RESPONSEDATA.memberName}}
             </span>
         </div>
     </div>
     <div class="maxWidth">
-        {{#each SHOP.RESPONSEDATA.commoditySearchList}}
+        {{#each RESPONSEDATA.commoditySearchList}}
             {{#setRenderRange @index 1}}
                 <div class="shopDetails">
                     <div class="imgs">
@@ -34,7 +34,7 @@
                     <div class="infos">
                         <div class="title">{{commodityName}}</div>
                         <div class="price"><span>价格：</span>
-                            <span class="priceColor">{{format_Money price}}</span>
+                            <span class="priceColor">￥{{format_Money price}}</span>
                         </div>
                         <div class="size"><span>尺码：</span>
                             <span class="inlineBlock active">{{size}}</span>
@@ -65,22 +65,16 @@
               </ul>
               <ul class="collect">
                     <span>热门收藏</span>
-                    <li><a href="/app/webpage/shop.html">
-                        <img src="/app/images/test/test_a1.jpg">
-                        <div class="price">￥199.00</div>
-                    </a></li>
-                    <li><a href="/app/webpage/shop.html">
-                        <img src="/app/images/test/test_a3.jpg">
-                        <div class="price">￥199.00</div>
-                    </a></li>
-                    <li><a href="/app/webpage/shop.html">
-                        <img src="/app/images/test/test_a4.jpg">
-                        <div class="price">￥199.00</div>
-                    </a></li>
-                    <li><a href="/app/webpage/shop.html">
-                        <img src="/app/images/test/test_a5.jpg">
-                        <div class="price">￥199.00</div>
-                    </a></li>
+                  {{#each RESPONSEDATA.commoditySearchList}}
+                      {{#setRenderRange @index 5}}
+                          <li>
+                              <a href="/app/webpage/shop.html?memberId={{memberId}}&commodityId={{commodityId}}" target="_blank">
+                                 <img src="{{getImgUrl picture1}}">
+                                 <div class="price">￥{{format_Money price}}</div>
+                              </a>
+                          </li>
+                      {{/setRenderRange}}
+                  {{/each}}
               </ul>
             </div>
             <div class="shopInfo-right">
@@ -88,7 +82,7 @@
                     <a class="shopITem">商品信息</a>
                 </div>
                 <div class="shopDescription">
-                    {{#each SHOP.RESPONSEDATA.commoditySearchList}}
+                    {{#each RESPONSEDATA.commoditySearchList}}
                         {{#setRenderRange @index 1}}
                             <ul>
                                 <li>

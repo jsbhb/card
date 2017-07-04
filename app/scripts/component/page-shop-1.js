@@ -21,19 +21,25 @@ define([
 
         },
         events:{
-            ".otherImg>img mouseenter": function(element){
-                var src = element.attr("src");
-                this.element.find(".otherImg>img").removeClass("active");
-                this.element.find(".showImg>img").attr("src", src);
-                element.addClass("active");
+            ".otherImg>img mouseenter": function(node){
+                var $element = this.element;
+                var $node = $(node);
+                var src = $node.attr("src");
+                $element.find(".otherImg>img").removeClass("active");
+                $element.find(".showImg>img").attr("src", src);
+                $node.addClass("active");
             },
-            ".color img click": function(element){
-                this.element.find(".color img").removeClass("active");
-                element.addClass("active");
+            ".color img click": function(node){
+                var $element = this.element;
+                var $node = $(node);
+                $element.find(".color img").removeClass("active");
+                $node.addClass("active");
             },
-            ".size span:not(:first-child) click": function(element){
-                this.element.find(".size span").removeClass("active");
-                element.addClass("active");
+            ".size span:not(:first-child) click": function(node){
+                var $element = this.element;
+                var $node = $(node);
+                $element.find(".size span").removeClass("active");
+                $node.addClass("active");
             }
         }
     })

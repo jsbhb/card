@@ -24,11 +24,11 @@ define([
             this.url =     param.urlPath!=null?  tempUrl:       (this.url!=null?     this.url:    "");
             this.type =    param.type!=null?     param.type:    (this.type!=null?    this.type:   "post");
             this.data =    param.data!=null?     param.data:    (this.data!=null?    this.data:    {});
-            this.fixture = param.fixture!=null?  param.fixture: (this.fixture!=null? this.fixture: false);
+            this.fixture = param.fixture!=null?  param.fixture: (this.fixture!=null? this.fixture: true);
         },
 
         /**
-         * @description 发送请求,获得返回数据
+         * @description 构建请求,获得返回数据
          * @return {can.Deferred}
          */
         request: function() {
@@ -48,7 +48,7 @@ define([
         },
 
         /**
-         * @description 构建请求
+         * @description 发送请求
          * @return {Object} can.Deferred
          */
         sendRequest: function(param) {

@@ -8,69 +8,49 @@ define([
     "bower.jquery",
     "bower.underscore",
     "bower.can",
-    "comm.searchShop",
+    "widget.common",
+    "config.render",
+    "control.page.pagination.1",
     "component.page.searchShop.1",
     "bower.css!css.page.searchShop.1",
-    "fixture.test",
-], function($, _, can, comm_searchShop){
+], function($, _, can, common, Render, controlPagePagination1){
 
-    /** @description:  调用数据、模板组件, 并渲染输出
-     */
-    return can.Control.extend({
-
-        sendRequest: function(type){
-            switch(type){
-                case "queryAll": return comm_searchShop.queryAll(this.options.urlData);
-                case undefined:  return can.Deferred().resolve();
-                default:         return can.Deferred().reject();
+    return Render.extend({
+        //子类扩展
+        requestType:   "querySearchShop",
+        templatesPath: "<page-searchshop-1></page-searchshop-1>",
+        requestData: {
+            querySearchShop: {
+                "numPerPage": 10,
+                "currentPage": 1
             }
         },
-
-
-        setRenderData: function(responseData){
-            if(typeof this.options.config=="object"){
-                this.options.renderData.attr("CONFIG", this.options.config);
-            }
-            if(typeof responseData == "object"){
-                this.options.renderData.attr("RESPONSEDATA", responseData);
-            }
+        renderAfterFun: function(){
+            this.pagination = new controlPagePagination1("page-searchshop-1 .load-pagePagination",{
+                config: { direction: "floatRight" },
+                parentObj: this,
+            });
+        },
+        callback: function(){
+            can.when(this.sendRequest(this.requestType))
+                .done(
+                    $.proxy(function(responseData){
+                        responseData &&
+                        responseData.success &&
+                        this.options.renderData.RESPONSEDATA.attr(
+                            "commoditySearchList", responseData.obj.commoditySearchList
+                        );
+                        this.pagination.dataProcessing(responseData.obj.pagination);
+                    },this)
+                )
         },
 
-
-        render: function(){
-            this.options.templates = "<page-searchshop-1></page-searchshop-1>";
-            this.element.html(
-                can.mustache(this.options.templates)({ "SEARCHSHOP": this.options.renderData })
-            );
-        },
-
-
-        init: function(){
-            this.options.config = this.options.config || {};
-            this.options.urlData = this.options.urlData || {};
-            this.options.responseData = this.options.responseData || null;
-            this.options.renderData = new can.Model({ CONFIG:{}, RESPONSEDATA:{} });
-            if(this.options.responseData){
-                this.setRenderData(this.options.responseData);
-                this.render();
-            }else{
-                can.when(this.sendRequest("queryAll"))
-                    .done(
-                        $.proxy(function(responseData){
-                            if(responseData && responseData.success){
-                                this.setRenderData(responseData.obj);
-                            }else{
-                                this.setRenderData(responseData);
-                            }
-                            this.render();
-                        },this)
-                    )
-            }
-        },
-        "[brand] click": function(element){
-            var text = element.find(">span").text();
-            this.options.urlData.brand = text;
-            can.when(this.sendRequest("queryAll"))
+        //事件
+        "[brand] click": function(node){
+            var $node = $(node);
+            var text = $node.find(">span").text();
+            this.options.requestData[this.requestType].brand = text;
+            can.when(this.sendRequest("querySearchShop"))
                 .done(
                     $.proxy(function(responseData){
                         responseData &&
@@ -81,10 +61,11 @@ define([
                     },this)
                 )
         },
-        "[commodityCategory2] click": function(element){
-            var text = element.find(">span").text();
-            this.options.urlData.commodityCategory2 = text;
-            can.when(this.sendRequest("queryAll"))
+        "[commodityCategory2] click": function(node){
+            var $node = $(node);
+            var text = $node.find(">span").text();
+            this.options.requestData[this.requestType].commodityCategory2 = text;
+            can.when(this.sendRequest("querySearchShop"))
                 .done(
                     $.proxy(function(responseData){
                         responseData &&
@@ -95,10 +76,11 @@ define([
                     },this)
                 )
         },
-        "[commodityCategory3] click": function(element){
-            var text = element.find(">span").text();
-            this.options.urlData.commodityCategory3 = text;
-            can.when(this.sendRequest("queryAll"))
+        "[commodityCategory3] click": function(node){
+            var $node = $(node);
+            var text = $node.find(">span").text();
+            this.options.requestData[this.requestType].commodityCategory3 = text;
+            can.when(this.sendRequest("querySearchShop"))
                 .done(
                     $.proxy(function(responseData){
                         responseData &&
@@ -109,10 +91,11 @@ define([
                     },this)
                 )
         },
-        "[color] click": function(element){
-            var text = element.find(">span").text();
-            this.options.urlData.color = text;
-            can.when(this.sendRequest("queryAll"))
+        "[color] click": function(node){
+            var $node = $(node);
+            var text = $node.find(">span").text();
+            this.options.requestData[this.requestType].color = text;
+            can.when(this.sendRequest("querySearchShop"))
                 .done(
                     $.proxy(function(responseData){
                         responseData &&
@@ -123,10 +106,11 @@ define([
                     },this)
                 )
         },
-        "[size] click": function(element){
-            var text = element.find(">span").text();
-            this.options.urlData.size = text;
-            can.when(this.sendRequest("queryAll"))
+        "[size] click": function(node){
+            var $node = $(node);
+            var text = $node.find(">span").text();
+            this.options.requestData[this.requestType].size = text;
+            can.when(this.sendRequest("querySearchShop"))
                 .done(
                     $.proxy(function(responseData){
                         responseData &&
@@ -137,12 +121,13 @@ define([
                     },this)
                 )
         },
-        ".priceRegion .priceRegionBtn click": function(element){
-            var priceMinText = $(element).parents(".priceRegion:first").find("input").eq(0).val();
-            var priceMaxText = $(element).parents(".priceRegion:first").find("input").eq(1).val();
-            this.options.urlData.priceMin = priceMinText;
-            this.options.urlData.priceMax = priceMaxText;
-            can.when(this.sendRequest("queryAll"))
+        ".priceRegion .priceRegionBtn click": function(node){
+            var $node = $(node);
+            var priceMinText = $node.parents(".priceRegion:first").find("input").eq(0).val();
+            var priceMaxText = $node.parents(".priceRegion:first").find("input").eq(1).val();
+            this.options.requestData[this.requestType].priceMin = priceMinText;
+            this.options.requestData[this.requestType].priceMax = priceMaxText;
+            can.when(this.sendRequest("querySearchShop"))
                 .done(
                     $.proxy(function(responseData){
                         responseData &&
@@ -153,25 +138,26 @@ define([
                     },this)
                 )
         },
-        ".resultCategory>a .deleteIcon click": function(element){
-            var parent = element.parents("a:first");
+        ".resultCategory>a .deleteIcon click": function(node){
+            var $node = $(node);
+            var parent = $node.parents("a:first");
             if(parent.hasClass("brand")){
-                delete this.options.urlData.brand;
+                delete this.options.requestData[this.requestType].brand;
             }else if(parent.hasClass("commodityCategory2")){
-                delete this.options.urlData.commodityCategory2;
+                delete this.options.requestData[this.requestType].commodityCategory2;
             }else if(parent.hasClass("commodityCategory3")){
-                delete this.options.urlData.commodityCategory3;
+                delete this.options.requestData[this.requestType].commodityCategory3;
             }else if(parent.hasClass("color")){
-                delete this.options.urlData.color;
+                delete this.options.requestData[this.requestType].color;
             }else if(parent.hasClass("size")){
-                delete this.options.urlData.size;
+                delete this.options.requestData[this.requestType].size;
             }else if(parent.hasClass("priceRegion")){
-                delete this.options.urlData.priceMin;
-                delete this.options.urlData.priceMax;
+                delete this.options.requestData[this.requestType].priceMin;
+                delete this.options.requestData[this.requestType].priceMax;
             }
             parent.next("i").remove();
             parent.remove();
-            can.when(this.sendRequest("queryAll"))
+            can.when(this.sendRequest("querySearchShop"))
                 .done(
                     $.proxy(function(responseData){
                         responseData &&
@@ -182,28 +168,29 @@ define([
                     },this)
                 )
         },
-        ".filter>.btn-group>a click": function(element) {
-            delete this.options.urlData.hotUp;
-            delete this.options.urlData.hotDown;
-            delete this.options.urlData.priceUp;
-            delete this.options.urlData.priceDown;
-            delete this.options.urlData.createTimeUp;
-            delete this.options.urlData.createTimeDown;
-            if(element.hasClass("filterHot")){
-                if(element.find(">i").hasClass("font-base_directionDown")){
-                    this.options.urlData.hotDown = 1;
-                }else if(element.find(">i").hasClass("font-base_directionUp")){
-                    this.options.urlData.hotUp = 1;
+        ".filter>.btn-group>a click": function(node) {
+            var $node = $(node);
+            delete this.options.requestData[this.requestType].hotUp;
+            delete this.options.requestData[this.requestType].hotDown;
+            delete this.options.requestData[this.requestType].priceUp;
+            delete this.options.requestData[this.requestType].priceDown;
+            delete this.options.requestData[this.requestType].createTimeUp;
+            delete this.options.requestData[this.requestType].createTimeDown;
+            if($node.hasClass("filterHot")){
+                if($node.find(">i").hasClass("font-base_directionDown")){
+                    this.options.requestData[this.requestType].hotDown = 1;
+                }else if($node.find(">i").hasClass("font-base_directionUp")){
+                    this.options.requestData[this.requestType].hotUp = 1;
                 }
             }
-            if(element.hasClass("filterPrice")){
-                if(element.find(">i").hasClass("font-base_directionDown")){
-                    this.options.urlData.priceDown = 1;
-                }else if(element.find(">i").hasClass("font-base_directionUp")){
-                    this.options.urlData.priceUp = 1;
+            if($node.hasClass("filterPrice")){
+                if($node.find(">i").hasClass("font-base_directionDown")){
+                    this.options.requestData[this.requestType].priceDown = 1;
+                }else if($node.find(">i").hasClass("font-base_directionUp")){
+                    this.options.requestData[this.requestType].priceUp = 1;
                 }
             }
-            can.when(this.sendRequest("queryAll"))
+            can.when(this.sendRequest("querySearchShop"))
                 .done(
                     $.proxy(function(responseData){
                         responseData &&
@@ -214,19 +201,6 @@ define([
                     },this)
                 )
         },
-        ".ShopList>ul>li a click": function(element){
-            var commodityid = element.attr("commodityid");
-            var memberid = element.attr("memberid");
-            if(commodityid == "1"){
-                location.href = "/app/webpage/shop.html";
-            }else if(commodityid == "2"){
-                location.href = "/app/webpage/shop2.html";
-            }else if(memberid == "1"){
-                location.href = "/app/webpage/company.html";
-            }
-            if(memberid == "2"){
-                location.href = "/app/webpage/company2.html";
-            }
-        }
+
     })
 });

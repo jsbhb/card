@@ -1,22 +1,67 @@
 <div class="page-banner-content">
     <div class="bannerImg">
-        {{#each BANNER.RESPONSEDATA.modelList}}
+        {{getCount RESPONSEDATA.modelList}}
+        {{#each RESPONSEDATA.modelList}}
             <a href="{{href}}" class="inlineBlock" index="{{@index}}"
                style="background-image: url({{getImgUrl picPath}});z-index:{{zIndexDesc @index}}">
             </a>
         {{/each}}
-        <span class="carousel_list">
-            {{#each BANNER.RESPONSEDATA.modelList}}
-                <i class="carousel_i {{addElementClass @index 0 'showing'}}" index="{{@index}}"></i>
-            {{/each}}
-        </span>
+        {{#if RESPONSEDATA.modelList}}
+            <span class="carousel_list">
+                {{#each RESPONSEDATA.modelList}}
+                    <i class="carousel_i {{addElementClass @index 0 'showing'}}" index="{{@index}}"></i>
+                {{/each}}
+            </span>
+        {{/if}}
     </div>
-    <div class="bannerInfo">
-        <div>
-            <span><i class="uFont font-company_1"></i>公平公正</span>
-            <span><i class="uFont font-company_2"></i>诚信为本</span>
-            <span><i class="uFont font-company_3"></i>全心服务</span>
-            <span><i class="uFont font-company_4"></i>合作共赢</span>
+    <div class="plateImg">
+        <a href="#" class="inlineBlock">
+          <img src="/app/images/test/plate_1.jpg">
+        </a>
+        <a href="#" class="inlineBlock">
+            <img src="/app/images/test/plate_2.jpg">
+        </a>
+        <a href="#" class="inlineBlock">
+            <img src="/app/images/test/plate_3.jpg">
+        </a>
+    </div>
+    <div class="infoPlate">
+        <div class="userInfo">
+            <img class="userImg" src="/app/images/logo2.png">
+            <div class="info">
+                <span>中国国际商贸城</span>
+                <br>
+                    <a class="inlineBlock after">登录</a>
+                    <a class="inlineBlock">注册</a>
+                {{#isShow}}
+                    <span class="inlineBlock" style="padding-left:2px;">你好,</span>
+                    <span class="inlineBlock"
+                          style="width:88px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+                        林鹏腾
+                    </span>
+                {{/isShow}}
+            </div>
+        </div>
+        <div class="otherInfo">
+            <div class="notice hover">
+                <span class="inlineBlock">公告</span>
+                <ul>
+                    <li><a href="#">木工常用工具盘点</a></li>
+                    <li><a href="#">装潢建材如何选择解析？</a></li>
+                    <li><a href="#">智能制造需要什么样的人才？</a></li>
+                    <li><a href="#">家用地毯选到底选什么材质？</a></li>
+                    <li><a href="#">办公屏风味道太过浓重,是什么原因造成的该怎么处理？</a></li>
+                    <li><a href="#">瞅瞅你家熊孩子玩的是哪一家的配件？</a></li>
+                    <li><a href="#">矿泉水与纯净水的区别在哪？</a></li>
+                </ul>
+            </div>
+            <div class="news">
+                <span class="inlineBlock">新闻</span>
+                <ul>
+                    <li><a href="#">平台操作指南</a></li>
+                    <li><a href="#">常规问题解答</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>

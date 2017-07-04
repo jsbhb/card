@@ -1,0 +1,106 @@
+@charset "utf-8";
+
+@import "page.param.1";
+
+/*
+ * page-pagination-1部分样式
+ */
+page-pagination-1{
+  @include page;
+  &>.page-pagination-content{
+    @include pageContent(50px,19px,12px,$base_color);
+    margin-top: 20px;
+    overflow: hidden;
+    &>ul.pagination_ul{
+      list-style: none;
+      float: left;
+      padding: 5px 5px 5px 10px;
+      margin: 0;
+      border-radius: 3px;
+      overflow: hidden;
+      display: block;
+      &.floatRight{
+        float: right;
+        margin-right: 20px;
+      }
+      &>li.pagination_page{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        float: left;
+        &>a{
+          min-width: 32px;
+          min-height: 28px;
+          line-height: 28px;
+          float: left;
+          font-size: 14px;
+          font-weight: normal;
+          text-align: center;
+          text-decoration: none;
+          padding: 0 7px;
+          margin: 0 6px 5px 0;
+          box-sizing: content-box;
+          cursor: pointer;
+          &.pagination_btn{
+            color: $pagination_btn_color;
+            background: $pagination_btn_backgroundColor;
+            border: 1px solid $pagination_btn_borderColor;
+            border-radius: 2px;
+            &:hover{
+              color: $pagination_btn_hoverColor;
+              text-decoration: none;
+              background: $pagination_btn_hoverBackgroundColor;
+              border: solid 1px $pagination_btn_hoverBorderColor;
+            }
+          }
+          &.pagination_ellipsis{
+            min-width: 14px;
+            min-height: 30px;
+            line-height: 30px;
+            float: left;
+            font-size: 14px;
+            font-weight: bold;
+            color: $pagination_ellipsis_color;
+            letter-spacing: 5px;
+            text-align: center;
+            margin: 0 4px 5px 0;
+            background: none;
+            border: none;
+            box-shadow: none;
+            box-sizing: content-box;
+            cursor: default;
+          }
+        }
+        &>input.pagination_searchText{
+          width: 40px;
+          height: 30px;
+          float: left;
+          font-size: 14px;
+          line-height: 30px;
+          font-weight: normal;
+          text-align: center;
+          padding: 0 1px;
+          margin: 0 5px 5px 0;
+          color: $pagination_searchText_color;
+          border: 1.5px solid $pagination_searchText_borderColor;
+          border-radius: 2px;
+          box-shadow: none;
+          background: transparent;
+          outline: 0;
+          cursor: text;
+          &:focus{
+            border: 1.5px solid $pagination_searchText_focusBorderColor;
+          }
+        }
+        &.active{
+          &>a.pagination_btn{
+            color: $pagination_btn_activeColor;
+            background: $pagination_btn_activeBackgroundColor;
+            border: solid 1px $pagination_btn_activeBorderColor;
+            cursor: default;
+          }
+        }
+      }
+    }
+  }
+}

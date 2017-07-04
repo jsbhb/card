@@ -1,12 +1,12 @@
-<div class="page-company-content" memberId="{{COMPANY.RESPONSEDATA.memberId}}">
+<div class="page-company-content" memberId="{{RESPONSEDATA.memberId}}">
     <div class="maxWidth">
         <div class="companyLogo">
-            <img src="{{getImgUrl COMPANY.RESPONSEDATA.logoPath}}">
+            <img src="{{getImgUrl RESPONSEDATA.logoPath}}">
         </div>
     </div>
     <div class="companyHeader">
         <div class="maxWidth">
-            <span class="companyName">{{COMPANY.RESPONSEDATA.memberName}}</span>
+            <span class="companyName">{{RESPONSEDATA.memberName}}</span>
         </div>
     </div>
     <div class="maxWidth">
@@ -14,27 +14,27 @@
             <div class="companyContentLeft">
                 <div class="infoTitle"> 企业信息 </div>
                 <div class="infoDescription">
-                    <span class="one">经营者：</span><span class="two">{{COMPANY.RESPONSEDATA.operator}}</span>
-                    <span class="one">电话：</span><span class="two">{{COMPANY.RESPONSEDATA.mobile}}</span>
-                    <span class="one">手机：</span><span class="two">{{COMPANY.RESPONSEDATA.phone}}</span>
-                    <span class="one">邮箱：</span><span class="two">{{COMPANY.RESPONSEDATA.email}}</span>
-                    <span class="one">QQ号：</span><span class="two">{{COMPANY.RESPONSEDATA.qq}}</span>
-                    <span class="one">商家信用:</span><span class="two">{{COMPANY.RESPONSEDATA.reputation}}</span>
+                    <span class="one">经营者：</span><span class="two">{{RESPONSEDATA.operator}}</span>
+                    <span class="one">电话：</span><span class="two">{{RESPONSEDATA.mobile}}</span>
+                    <span class="one">手机：</span><span class="two">{{RESPONSEDATA.phone}}</span>
+                    <span class="one">邮箱：</span><span class="two">{{RESPONSEDATA.email}}</span>
+                    <span class="one">QQ号：</span><span class="two">{{RESPONSEDATA.qq}}</span>
+                    <span class="one">商家信用:</span><span class="two">{{RESPONSEDATA.reputation}}</span>
                     <span class="one">经营类目:</span>
                     <span class="two">
-                        {{#each COMPANY.RESPONSEDATA.industryList}}
+                        {{#each RESPONSEDATA.industryList}}
                             {{convertStr industryName "、"}}、
                         {{/each}}
                     </span>
                     <span class="one">商铺地址:</span>
                     <span class="two">
-                        {{#COMPANY.RESPONSEDATA}}
+                        {{#RESPONSEDATA}}
                             {{province}}{{city}}{{area}}{{address}}
-                        {{/COMPANY.RESPONSEDATA}}
+                        {{/RESPONSEDATA}}
                     </span>
                     <span class="one">主营商品:</span>
                     <span class="two">
-                        {{COMPANY.RESPONSEDATA.product}}
+                        {{RESPONSEDATA.product}}
                     </span>
                     <span class="one" style="margin: 6px 0 10px 0px;">
                         <a href="javascript:void(0)" class="licenseBtn" licensePath="{{licensePath}}">营业执照</a>
@@ -45,11 +45,11 @@
                 </div>
                 <div class="pictrueTitle"> 企业相册 </div>
                 <div class="pictrueDescription">
-                    {{#each COMPANY.RESPONSEDATA.queryShop.memberGoodCommodityList}}
+                    {{#each RESPONSEDATA.queryShop.memberGoodCommodityList}}
                         {{#setRenderRange @index 4}}
-                            <a href="javascript:void(0)" class="toCommodity" commodityId="{{commodityId}}">
+                            <a href="/app/webpage/shop.html?memberId={{memberId}}&commodityId={{commodityId}}" target="_blank">
                                 <img src="{{getImgUrl picture1}}">
-                                <div class="price">{{format_Money price}}</div>
+                                <div class="price">￥{{format_Money price}}</div>
                             </a>
                         {{/setRenderRange}}
                     {{/each}}
@@ -57,25 +57,27 @@
             </div>
             <div class="companyContentRight">
                 <div class="companyImg">
-                    {{#each COMPANY.RESPONSEDATA.fileList}}
+                    {{#each RESPONSEDATA.fileList}}
                         <img src="{{getImgUrl finalName suffix}}" index={{@index}} style="z-index:{{zIndexDesc @index 100}}">
                     {{/each}}
-                    <span class="carousel_list">
-                        {{#each COMPANY.RESPONSEDATA.fileList}}
-                            <i class="carousel_i {{addElementClass @index 0 'showing'}}" index="{{@index}}"></i>
-                        {{/each}}
-                    </span>
-                    <a class="carousel prev"><</a>
-                    <a class="carousel next">></a>
+                    {{#if RESPONSEDATA.fileList}}
+                        <span class="carousel_list">
+                            {{#each RESPONSEDATA.fileList}}
+                                <i class="carousel_i {{addElementClass @index 0 'showing'}}" index="{{@index}}"></i>
+                            {{/each}}
+                        </span>
+                        <a class="carousel_btn prev"><</a>
+                        <a class="carousel_btn next">></a>
+                    {{/if}}
                 </div>
                 <div class="companyDescription">
-                    {{COMPANY.RESPONSEDATA.aboutUs}}
+                    {{RESPONSEDATA.aboutUs}}
                 </div>
                 <div class="companyShops">
                     <div class="shopClassify commodityCategory2">
                         <div>主营类目:</div>
                         <div>
-                            {{#each COMPANY.RESPONSEDATA.queryShop.commodityCategory2}}
+                            {{#each RESPONSEDATA.queryShop.commodityCategory2}}
                                 <a href="javascript:void(0)" class="commodityCategory2Item">{{.}}</a>
                             {{/each}}
                         </div>
@@ -83,7 +85,7 @@
                     <div class="shopClassify commodityCategory3">
                         <div>类型分类:</div>
                         <div>
-                            {{#each COMPANY.RESPONSEDATA.queryShop.commodityCategory3}}
+                            {{#each RESPONSEDATA.queryShop.commodityCategory3}}
                                 <a href="javascript:void(0)" class="commodityCategory3Item">{{.}}</a>
                             {{/each}}
                         </div>
@@ -100,25 +102,28 @@
                 </div>
                 <div class="companyShow">
                     <ul>
-                        {{#each COMPANY.RESPONSEDATA.queryShop.commoditySearchList}} <li>
-                            <a href="javascript:void(0)" class="toCommodity" commodityId="{{commodityId}}">
-                                <div class="imgShow">
-                                    <img src="{{getImgUrl picture1}}">
-                                </div>
-                                <div class="description">
-                                    <abbr title="{{commodityName}}">
-                                        {{commodityName}}
-                                    </abbr>
-                                </div>
-                                <div class="price">
-                                   {{format_Money price}}
-                                </div>
-                            </a>
-                        </li>
+                        {{#each RESPONSEDATA.queryShop.commoditySearchList}}
+                            {{#setRenderRange @index 5}}
+                                <li>
+                                    <a href="/app/webpage/shop.html?memberId={{memberId}}&commodityId={{commodityId}}" target="_blank">
+                                        <div class="imgShow">
+                                            <img src="{{getImgUrl picture1}}">
+                                        </div>
+                                        <div class="description">
+                                            <abbr title="{{commodityName}}">
+                                                {{commodityName}}
+                                            </abbr>
+                                        </div>
+                                        <div class="price">
+                                            ￥{{format_Money price}}
+                                        </div>
+                                    </a>
+                                </li>
+                            {{/setRenderRange}}
                         {{/each}}
                     </ul>
                 </div>
-                <div class="paging"></div>
+                <div class="load-pagePagination"></div>
             </div>
         </div>
     </div>

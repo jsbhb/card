@@ -1,0 +1,42 @@
+<div class="page-headerFixed-content">
+    <div class="page-headerFixed-logo inlineBlock">
+        <a href="/app/webpage">
+            <img src="/app/images/logo4.png">
+        </a>
+    </div>
+    <div  class="page-headerFixed-search inlineBlock">
+        <div class="input-group">
+            <div class="input-group-btn">
+                <button type="button" class="btn searchTypeBtn dropdown-toggle" data-toggle="dropdown">
+                    {{#CONFIG.searchList}}
+                        {{#if active}}
+                            <span class="searchTypeText" searchType="{{type}}">
+                                {{name}}
+                            </span>
+                        {{/if}}
+                    {{/CONFIG.searchList}}
+                    <i class="fa fa-angle-down fa-fw"></i>
+                </button>
+                <ul class="dropdown-menu">
+                    {{#CONFIG.searchList}}
+                        <li class="searchType">
+                            <a href="javascript:void(0);" searchType="{{type}}">{{name}}</a>
+                        </li>
+                    {{/CONFIG.searchList}}
+                </ul>
+            </div>
+            <input type="text" class="form-control input-search"
+                   value="{{CONFIG.searchCont}}">
+            <div class="input-group-btn">
+                <a class="btn btn-default btn-search">搜 索</a>
+            </div>
+        </div>
+    </div>
+    <div class="page-headerFixed-qrcode inlineBlock">
+        <span class="fa fa-qrcode fa-fw inlineBlock"></span>
+        <span class="inlineBlock qrcodeText">扫码关注</span>
+        <span class="inlineBlock qrcodeImg">
+           <img src="/app/images/qrcode.png"/>
+        </span>
+    </div>
+</div>

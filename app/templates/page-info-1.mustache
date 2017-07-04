@@ -1,20 +1,26 @@
 <div class="page-info-content">
     <div class="header">
-        {{#INFO.RESPONSEDATA.MEMBER_PRODUCT_POPULARIZE_1}}
+        {{#RESPONSEDATA.MEMBER_PRODUCT_POPULARIZE}}
             <div class="title">{{popularizeName}}</div>
-            <div class="list">
-                {{#each popularizeList}}
-                    {{#each items}}
-                        <a href="{{.}}">{{@key}}</a>
+            {{#if popularizeList}}
+                <div class="list">
+                    {{#each popularizeList}}
+                        {{#each items}}
+                            <a href="{{.}}">{{@key}}</a>
+                        {{/each}}
                     {{/each}}
-                {{/each}}
-            </div>
-        {{/INFO.RESPONSEDATA.MEMBER_PRODUCT_POPULARIZE_1}}
+                </div>
+            {{else}}
+                <div class="more">
+                    <a href="javascript:void(0)" toSearchShop={{popularizeName}}>更多商品<span>>></span></a>
+                </div>
+            {{/if}}
+        {{/RESPONSEDATA.MEMBER_PRODUCT_POPULARIZE}}
     </div>
     <div class="body">
         <div class="content">
             <div class="content-logoImg">
-                {{#each INFO.RESPONSEDATA.MEMBER_PRODUCT_POPULARIZE_1.modelList}}
+                {{#each RESPONSEDATA.MEMBER_PRODUCT_POPULARIZE.modelList}}
                     {{#isShow @index 5}}
                         <span index="{{../@index}}" class="{{isFirst ../@index "active"}}">
                                <img src="{{getImgUrl logoPath}}"/>
@@ -23,69 +29,80 @@
                 {{/each}}
             </div>
             <div class="content-showInfo">
-                {{#each INFO.RESPONSEDATA.MEMBER_PRODUCT_POPULARIZE_1.modelList}}
+                {{#each RESPONSEDATA.MEMBER_PRODUCT_POPULARIZE.modelList}}
                     {{#isShow @index 5}}
                         <ul index="{{../@index}}">
-                            <li class="infoBanner">
-                                <a href="/app/webpage/company.html" index="0" memberId="{{memberId}}"
-                                   style="background-image: url({{getImgUrl picPath1}})">
+                            <li class="infoBanner" style="z-index:99">
+                                <a href="/app/webpage/company.html?memberId={{memberId}}" target="_blank" index="0" >
                                     <div class="text">
+                                        <span class="sketch">{{sketch1}}</span>
                                         <span class="description">{{description1}}</span>
                                     </div>
-                                </a>
-                                <a href="/app/webpage/company.html" index="1" memberId="{{memberId}}"
-                                   style="background-image: url({{getImgUrl picPath2}})">
-                                    <div class="text">
-                                        <span class="description">{{description2}}</span>
+                                    <div class="img">
+                                        <img src="{{getImgUrl picPath1}}">
                                     </div>
                                 </a>
-                                <a href="/app/webpage/company.html" index="2" memberId="{{memberId}}"
-                                   style="background-image: url({{getImgUrl picPath3}})">
+                                <a href="/app/webpage/company.html?memberId={{memberId}}" target="_blank" index="1">
                                     <div class="text">
+                                        <span class="sketch">{{sketch2}}</span>
+                                        <span class="description">{{description2}}</span>
+                                    </div>
+                                    <div class="img">
+                                        <img src="{{getImgUrl picPath2}}">
+                                    </div>
+                                </a>
+                                <a href="/app/webpage/company.html?memberId={{memberId}}" target="_blank" index="2">
+                                    <div class="text">
+                                        <span class="sketch">{{sketch3}}</span>
                                         <span class="description">{{description3}}</span>
+                                    </div>
+                                    <div class="img">
+                                        <img src="{{getImgUrl picPath3}}">
                                     </div>
                                 </a>
                                 <span class="carousel_list">
-                                        <i class="carousel_i showing" index="0"></i>
-                                        <i class="carousel_i" index="1"></i>
-                                        <i class="carousel_i" index="2"></i>
-                                    </span>
+                                   <i class="carousel_i showing" index="0"></i>
+                                   <i class="carousel_i" index="1"></i>
+                                   <i class="carousel_i" index="2"></i>
+                                </span>
                             </li>
                             {{#each generalInfoList}}
-                                {{#isShow @index 7}}
-                                    <li class="generalInfo" productId="{{productId}}">
-                                        <a href="/app/webpage/shop.html">
+                                {{#setRenderRange @index 7}}
+                                    <li class="generalInfo" style="z-index:{{zIndexAsc ../@index 100}}">
+                                        <a href="/app/webpage/shop.html?memberId={{../memberId}}&commodityId={{productId}}"  target="_blank">
                                             <div class="text">
                                                 <i class="title">{{shortTitle}}</i>
-                                                <i class="price">{{parsefloat price}}</i>
+                                                <i class="price">￥{{format_Money price}}</i>
                                             </div>
                                             <div class="img">
                                                 <img src="{{getImgUrl picPath}}"/>
                                             </div>
                                         </a>
                                     </li>
-                                {{/isShow}}
+                                {{/setRenderRange}}
                             {{/each}}
                         </ul>
                     {{/isShow}}
                 {{/each}}
             </div>
         </div>
-        {{#if INFO.RESPONSEDATA.MEMBER_POPULARIZE_1}}
+        {{#if RESPONSEDATA.MEMBER_POPULARIZE}}
             <div class="banner-logoImg">
-                <div>
-                    <ul class="bannerUl" style="left:0px;">
-                        {{#INFO.RESPONSEDATA.MEMBER_POPULARIZE_1.modelList}}
-                            <li>
-                                <a href="/app/webpage/company.html" memberId="{{memberId}}">
-                                    <img src="{{getImgUrl logoPath}}"/>
-                                </a>
-                            </li>
-                        {{/INFO.RESPONSEDATA.MEMBER_POPULARIZE_1.modelList}}
-                    </ul>
-                </div>
-                <a class="carousel prev"><</a>
-                <a class="carousel next">></a>
+                {{#if RESPONSEDATA.MEMBER_POPULARIZE.modelList}}
+                    <div>
+                        <ul class="bannerUl" style="width:{{setCSS_Width RESPONSEDATA.MEMBER_POPULARIZE.modelList}}">
+                            {{#RESPONSEDATA.MEMBER_POPULARIZE.modelList}}
+                                <li>
+                                    <a href="/app/webpage/company.html?memberId={{memberId}}" target="_blank">
+                                        <img src="{{getImgUrl logoPath}}"/>
+                                    </a>
+                                </li>
+                            {{/RESPONSEDATA.MEMBER_POPULARIZE.modelList}}
+                        </ul>
+                    </div>
+                    <a class="carousel_btn prev"><</a>
+                    <a class="carousel_btn next">></a>
+                {{/if}}
             </div>
         {{/if}}
     </div>

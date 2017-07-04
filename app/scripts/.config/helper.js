@@ -17,9 +17,14 @@ define([
     can.mustache.registerHelper('getImgUrl', function(imgName, suffix) {
         var tempImgName = typeof imgName=='function'? imgName(): imgName;
         var tempSuffix =  typeof suffix=='function'? suffix(): typeof suffix=='string'? suffix: null;
-        return tempSuffix?
-            can.mustache.safeString( path.imgPrefix + tempImgName + "." + tempSuffix ):
-            can.mustache.safeString( path.imgPrefix + tempImgName );
+        var reg = new RegExp("^http");
+        if(reg.test(tempImgName)){
+            return can.mustache.safeString( tempImgName );
+        }else{
+            return tempSuffix?
+                can.mustache.safeString( path.imgPrefix + tempImgName + "." + tempSuffix ):
+                can.mustache.safeString( path.imgPrefix + tempImgName );
+        }
     });
 
 
@@ -32,7 +37,6 @@ define([
         return tempType?
             can.mustache.safeString( tempStr.replace(/\s+/gi,tempType) ):
             can.mustache.safeString( tempStr.replace(/\s+/gi,"/") );
-
     });
 
 
@@ -58,6 +62,16 @@ define([
 
 
     /**
+     *  @description  z-index 依次升序
+     */
+    can.mustache.registerHelper(
+        'zIndexAsc', function(index, zIndexVal, options) {
+            return typeof index=='function'? (zIndexVal-index()*1): (zIndexVal+index*1);
+        }
+    );
+
+
+    /**
      *  @description 判定父元素的第n个子元素添加class
      */
     can.mustache.registerHelper(
@@ -69,11 +83,11 @@ define([
 
 
     /**
-     *  @description 价格(从分转换为元, 并添加￥符号)
+     *  @description 价格(保留两位小数)
      */
     can.mustache.registerHelper('format_Money', function(price, options) {
         var temp = typeof price=='function'? price(): price;
-        return can.mustache.safeString( "￥" + (temp*1).toFixed(2) );
+        return can.mustache.safeString( (temp*1).toFixed(2) );
     });
 
 

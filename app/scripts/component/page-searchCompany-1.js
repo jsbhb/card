@@ -8,8 +8,6 @@ define([
     "bower.jquery",
     "bower.underscore",
     "bower.can",
-    "component.page.pagination",
-    "bower.css!css.page.pagination",
 ], function($, _, can){
 
     /** @description: 模板组件
@@ -34,55 +32,59 @@ define([
                 $html.find("abbr").attr("title", text);
                 $html.find(".classCont").text(text);
                 hideElement.hide();
-                $(".searchText").before($html);
+                $(".searchCont").before($html);
             }
         },
         events:{
-            "[industrymap] click": function(element){
-                var hideElement = element.parents(".industryItem:first");
+            "[industrymap] click": function(node){
+                var $element = this.element;
+                var $node = $(node);
+                var hideElement = $node.parents(".industryItem:first");
                 var typeText = hideElement.find(".classifyType").text();
-                var text = $(element).text();
+                var text = $node.text();
                 this.scope.addSearch(typeText, text, "industryItem", hideElement);
             },
-            "[dictmap] click": function(element){
-                var hideElement = element.parents(".dictItem:first");
+            "[dictmap] click": function(node){
+                var $element = this.element;
+                var $node = $(node);
+                var hideElement = $node.parents(".dictItem:first");
                 var typeText = hideElement.find(".classifyType").text();
-                var text = $(element).text();
+                var text = $node.text();
                 this.scope.addSearch(typeText, text, "dictItem", hideElement);
             },
-            "[entrymap] click": function(element){
-                var hideElement = element.parents(".entryItem:first");
+            "[entrymap] click": function(node){
+                var $element = this.element;
+                var $node = $(node);
+                var hideElement = $node.parents(".entryItem:first");
                 var typeText = hideElement.find(".classifyType").text();
-                var text = $(element).text();
+                var text = $node.text();
                 this.scope.addSearch(typeText, text, "entryItem", hideElement);
             },
-            ".resultCategory>a .deleteIcon click": function(element){
-                var parent = element.parents("a:first");
+            ".resultCategory>a .deleteIcon click": function(node){
+                var $element = this.element;
+                var $node = $(node);
+                var parent = $node.parents("a:first");
                 var cls = parent.attr("class");
-                this.element.find(".classifyCategory").find(">."+cls).show();
+                $element.find(".classifyCategory").find(">."+cls).show();
             },
-            ".filter>.btn-group>a click": function(element) {
-                this.element.find(".filter>.btn-group>a").removeClass("active");
-                element.addClass("active");
+            ".filter>.btn-group>a click": function(node) {
+                var $element = this.element;
+                var $node = $(node);
+                $element.find(".filter>.btn-group>a").removeClass("active");
+                $node.addClass("active");
             },
-            ".inputGroup>label click": function(element){
-                if(element.find(">i").hasClass("fa-square-o")){
-                    element.find(">i").addClass("fa-check-square-o");
-                    element.find(">i").removeClass("fa-square-o");
+            ".inputGroup>label click": function(node){
+                var $element = this.element;
+                var $node = $(node);
+                if($node.find(">i").hasClass("fa-square-o")){
+                    $node.find(">i").addClass("fa-check-square-o");
+                    $node.find(">i").removeClass("fa-square-o");
                 }
-                else if(element.find(">i").hasClass("fa-check-square-o")){
-                    element.find(">i").removeClass("fa-check-square-o");
-                    element.find(">i").addClass("fa-square-o");
+                else if($node.find(">i").hasClass("fa-check-square-o")){
+                    $node.find(">i").removeClass("fa-check-square-o");
+                    $node.find(">i").addClass("fa-square-o");
                 }
             }
         },
-        init: function(element){
-            this.scope.attr("$pagination", $(element).find(".pagination"));
-            this.scope.$pagination.pagination({
-                page:20,
-                total:1,
-                test:true
-            });
-        }
     })
 })

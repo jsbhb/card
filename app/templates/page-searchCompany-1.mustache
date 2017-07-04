@@ -1,9 +1,9 @@
 <div class="page-searchCompany-content">
-    {{#SEARCHCOMPANY.RESPONSEDATA.searchFilter}}
+    {{#RESPONSEDATA.searchFilter}}
         <div class="resultCategory">
             <span class="inlineBlock">全部结果</span>
             <i class="rightIcon">></i>
-            <span class="inlineBlock searchText">{{SEARCHCOMPANY.CONFIG.searchText}}</span>
+            <span class="inlineBlock searchCont">{{CONFIG.searchCont}}</span>
         </div>
         <div class="classifyCategory">
             {{#if industryMap}}
@@ -93,14 +93,14 @@
                 <input type="checkbox" id="company_guarantee">
             </div>
         </div>
-    {{/SEARCHCOMPANY.RESPONSEDATA.searchFilter}}
+    {{/RESPONSEDATA.searchFilter}}
 
-    {{#if SEARCHCOMPANY.RESPONSEDATA.memberList}}
+    {{#if RESPONSEDATA.memberList}}
         <div class="companyList">
             <ul>
-                {{#each SEARCHCOMPANY.RESPONSEDATA.memberList}}
+                {{#each RESPONSEDATA.memberList}}
                     <li class="inlineBlock">
-                        <a href="#" memberId="{{memberId}}">
+                        <a href="/app/webpage/company.html?memberId={{memberId}}" target="_blank">
                             <div class="imgBox">
                                 <img src="{{getImgUrl frontPicPath}}">
                             </div>
@@ -133,7 +133,7 @@
                     </li>
                 {{/each}}
             </ul>
-            <div class="pagination" style="margin-right: 15px;"></div>
+            <div class="load-pagePagination"></div>
         </div>
     {{else}}
         <div class="nothingError">

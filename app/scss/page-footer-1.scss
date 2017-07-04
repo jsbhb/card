@@ -7,8 +7,8 @@
  */
 page-footer-1{
   @include page;
-  background-color: $footer_backgroundColor;
-  border-top: solid 1.5px $base_tangerine;
+  margin-top: 15px;
+  background-color: $base_backgroundColor;
   &>.page-footer-content{
     @include pageContent(175px,19px,12px,$base_color);
     max-width: none;
@@ -39,7 +39,7 @@ page-footer-1{
             display: block;
             &:hover,
             &:active{
-              color: $base_tangerine;
+              color: $red;
             }
           }
         }

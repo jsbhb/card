@@ -10,19 +10,18 @@ page-banner-1{
   background-color: $white;
   &>.page-banner-content{
     @include pageContent(550px,19px,12px,$base_color);
-    box-shadow: 0px 0px 1.3px 0px $fade_backgroundColor;
-    max-width: none;
-    @at-root .SHORT &{
-      max-width: none;
-    }
     margin-bottom: 50px;
     &>.bannerImg{
-      width: 100%;
-      height: 500px;
-      position: relative;
+      width: 775px;
+      height: 360px;
+      position: absolute;
+      top: 0px;
+      left: 210px;
+      -webkit-box-shadow: 0px 0px 3px 0px $black_transparent;
+      box-shadow: 0px 0px 3px 0px $black_transparent;
       &>a{
         width: 100%;
-        height: 500px;
+        height: 360px;
         background-position: center;
         background-repeat: no-repeat;
         position: absolute;
@@ -30,59 +29,215 @@ page-banner-1{
         left: 0px;
       }
       &>.carousel_list{
-        max-width: 250px;
-        line-height: 19px;
-        padding: 7px 12px 2px 12px;
+        max-width: 700px;
+        line-height: 12px;
         text-align: center;
         position: absolute;
         left: 0px;
         right: 0px;
-        bottom: 35px;
+        bottom: 8px;
         z-index: 101;
         margin: 0 auto;
-        border-radius: 100px;
-        background-color: rgba(230, 230, 230, 0.7);
         i{
-          width: 18px;
-          height: 18px;
-          margin: 0 8px;
+          width: 12px;
+          height: 12px;
+          margin: 0 6px;
           border-radius: 100%;
           display: inline-block;
-          background-color:  $white;
+          background-color:  $gray;
           cursor: pointer;
           &.showing,
           &.showing:hover{
-            height: 9px;
-            vertical-align: 4.7px;
+            height: 5px;
+            vertical-align: 3.5px;
             border-radius: 0px;
-            background-color: $base_tangerine;
+            background-color: $red;
           }
           &:hover{
-            background-color: $banner_hoverBackgroundColor;
+            background-color: $tangerine;
           }
         }
       }
     }
-    &>.bannerInfo{
-      width: 100%;
-      height: 50px;
-      position: relative;
-      background-color: $white;
-      &>div{
-        max-width: 1200px;
-        margin: 0px auto;
-        &>span{
-          width: 296px;
-          text-align: center;
-          height: 50px;
-          line-height: 52px;
-          font-size: 18px;
-          color: $base_tangerine;
+    &>.plateImg {
+      width: 990px;
+      height: 360px;
+      position: absolute;
+      top: 370px;
+      left: 210px;
+      &>a{
+        width: 320px;
+        height: 130px;
+        text-align: center;
+        float: left;
+        position: relative;
+        display: inline-block;
+        -webkit-box-shadow: 0px 0px 3px 0px $black_transparent;
+        box-shadow: 0px 0px 3px 0px $black_transparent;
+        &:not(:last-child){
+           margin-right: 15px;
+        }
+        &>img{
+          height: 100%;
+          width: auto;
+          max-width: 100%;
+          position: absolute;
+          top: 0px;
+          bottom: 0px;
+          left: 0px;
+          right: 0px;
+          margin: auto;
+        }
+      }
+    }
+    &>.infoPlate {
+      width: 200px;
+      height: 360px;
+      position: absolute;
+      top: 0px;
+      left: 1000px;
+      background-color: $gray_transparent;;
+      -webkit-box-shadow: 0px 0px 3px 0px $black_transparent;
+      box-shadow: 0px 0px 3px 0px $black_transparent;
+      &>.userInfo{
+        width: 100%;
+        height: 80px;
+        position: relative;
+        &>.userImg{
+          height: 60px;
+          width: 60px;
+          border: solid 1.5px $red;
+          padding: 3px;
+          border-radius: 100%;
           display: inline-block;
-          &>i{
-            margin: 3px;
-            font-size: 24px;
-            vertical-align: middle;
+          position: absolute;
+          left: 5px;
+          top: 0px;
+          bottom: 0px;
+          margin: auto 0;
+        }
+        &>.info{
+          height: 60px;
+          width: 128px;
+          position: absolute;
+          top: 0px;
+          bottom: 0px;
+          left: 70px;
+          margin: auto 0;
+          padding: 5px 0 0 3px;
+          &>span{
+            font-size: 15px;
+            line-height:25px;
+            color: $red;
+          }
+          &>a{
+            font-size: 14px;
+            line-height:25px;
+            padding: 0 7px 0 10px;
+            color: $base_color;
+            cursor: pointer;
+            position: relative;
+            &:hover{
+              font-weight: 600;
+              color: $tangerine;
+            }
+            &.after::after{
+              content: "";
+              position: absolute;
+              width: 1px;
+              height: 14px;
+              background-color: #888;
+              top: 7px;
+              right: -3px;
+            }
+          }
+
+        }
+      }
+      &>.otherInfo{
+        width: 100%;
+        height: 280px;
+        position: relative;
+        overflow: hidden;
+        &>.notice,
+        &>.news{
+          width: 50%;
+          height: 35px;
+          float: left;
+          overflow: hidden;
+          border-top: solid 1.5px $base_borderColor;
+          border-bottom: solid 1.5px $base_borderColor;
+          &:not(:first-child){
+            border-left: solid 1.5px $base_borderColor;
+          }
+          &>span{
+            width: 80%;
+            height: 33px;
+            font-size: 14px;
+            line-height: 33px;
+            text-align: center;
+            margin-left: 10%;
+            position: relative;
+            cursor: pointer;
+          }
+          &>ul{
+            width: 200px;
+            height: 245px;
+            padding: 3px 7px;
+            position: absolute;
+            top: 35px;
+            left: 0px;
+            display: none;
+            &>li{
+              width: 100%;
+              height: 30px;
+              padding-left: 10px;
+              position: relative;
+              cursor: pointer;
+              &::before{
+                content: "";
+                width: 6px;
+                height: 6.5px;
+                background-color: $base_color;
+                position: absolute;
+                top: 12px;
+                left: 0px;
+              }
+              &:hover{
+                &>a{
+                  color: red;
+                }
+                &::before{
+                  background-color: red;
+                }
+              }
+              &>a{
+                width: 100%;
+                height: 30px;
+                font-size: 13px;
+                line-height: 30px;
+                color: $base_color;
+                white-space:nowrap;
+                overflow:hidden;
+                text-overflow:ellipsis;
+                display: inline-block;
+              }
+            }
+          }
+          &.hover{
+            overflow: visible;
+            &>span::after{
+              content: "";
+              width: 100%;
+              height: 1.5px;
+              position: absolute;
+              left: 0px;
+              bottom: -0.5px;
+              background-color: $red;
+            }
+            &>ul{
+              display: block;
+            }
           }
         }
       }

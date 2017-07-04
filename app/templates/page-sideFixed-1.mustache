@@ -1,0 +1,13 @@
+<div class="page-sideFixed-content">
+    <ul class ="ScrollMonitor">
+        {{#each CONFIG.list}}
+            <li><a monitor="#{{id}}" class="{{#toTop}}toTop{{/toTop}}">{{name}}</a></li>
+        {{/each}}
+        <li>
+            <a monitor class="bottom toTop">
+                <span class="fa fa-caret-up"></span>
+                顶部
+            </a>
+        </li>
+    </ul>
+</div>

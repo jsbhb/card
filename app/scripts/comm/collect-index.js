@@ -12,15 +12,15 @@ define([
     "fixture.test"
 ], function($, _, can, Comm){
 
-    /** @queryAll:  page-searchCompany-1数据
+    /** @queryAll:  page-index-1数据
      */
     return new Comm({
-        queryAll: function(data){
+        queryAll: function(data, fixture){
             return this.sendRequest({
-                "urlPath":  "/cardapi/1.0/commoditys",
+                "urlPath":  "/popularizations/index",
                 "type":     "get",
                 "data":      data||null,
-                "fixture":   true
+                "fixture":   fixture
             })
         }
     });

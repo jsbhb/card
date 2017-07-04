@@ -48,12 +48,12 @@ page-company-1{
             height: 45px;
             padding-left: 15px;
             line-height: 45px;
-            background-color: $base_tangerine;
+            background-color: $red;
             color: $white;
             font-size: 18px;
           }
           &>.infoDescription{
-            border: solid 1px $base_tangerine;
+            border: solid 1px $red;
             padding-left: 5px;
             padding-right: 7px;
             padding-top: 15px;
@@ -71,7 +71,7 @@ page-company-1{
                 padding-left:10px;
                 &>a.licenseBtn,
                 &>a.collectionBtn{
-                  color: $base_tangerine;
+                  color: $red;
                 }
               }
               &.two{
@@ -86,13 +86,13 @@ page-company-1{
             margin-top: 30px;
             padding-left: 15px;
             line-height: 45px;
-            background-color: $base_tangerine;
+            background-color: $red;
             color: $white;
             font-size: 18px;
           }
           &>.pictrueDescription{
             text-align: center;
-            border: solid 1px $base_tangerine;
+            border: solid 1px $red;
             padding-top: 15px;
             &>a{
               display: inline-block;
@@ -103,7 +103,7 @@ page-company-1{
               border: solid 1px $base_borderColor;
               position: relative;
               &:hover{
-                border: solid 1px $base_tangerine;
+                border: solid 1px $red;
               }
               &>img{
                 max-width: 95%;
@@ -113,10 +113,10 @@ page-company-1{
                 height: 25px;
                 line-height: 25px;
                 font-size: 15px;
-                color: $base_tangerine;
+                color: $red;
                 position: absolute;
                 bottom: 1px;
-                background-color: $logoBanner_color;
+                background-color: $darkGray_transparent;
               }
             }
           }
@@ -151,31 +151,29 @@ page-company-1{
               left: 0px;
               right: 0px;
               bottom: 18px;
-              z-index: 101;
+              z-index: 150;
               margin: 0 auto;
-              border-radius: 100px;
-              background-color: rgba(230, 230, 230, 0.7);
               i{
                 width: 14px;
                 height: 14px;
                 margin: 0 5px;
                 border-radius: 100%;
                 display: inline-block;
-                background-color: #fff;
+                background-color: $carousel_i_backgroundColor;
                 cursor: pointer;
                 &.showing,
                 &.showing:hover{
                   height: 7px;
                   vertical-align: 3.6px;
                   border-radius: 0px;
-                  background-color: #fe9223;
+                  background-color: $carousel_i_showing_hoverBackgroundColor;
                 }
                 &:hover{
-                  background-color: $banner_hoverBackgroundColor;
+                  background-color: $carousel_i_hoverBackgroundColor;
                 }
               }
             }
-            &>.carousel {
+            &>.carousel_btn {
               width: 36px;
               height: 88px;
               line-height: 88px;
@@ -184,11 +182,11 @@ page-company-1{
               font-family: simsun;
               text-align: center;
               color: $white;
-              background-color: rgba(200, 200, 200, .45);
+              background-color: $carousel_btn_backgroundColor;
               position: absolute;
               top: 0px;
               bottom: 0px;
-              z-index: 101;
+              z-index: 150;
               opacity: 1;
               margin: auto 0;
               cursor: pointer;
@@ -197,16 +195,16 @@ page-company-1{
                 left: 0px;
                 right: auto;
                 &:hover{
-                  background-color: rgba(230,230,230,.5);
-                  color: $base_tangerine;
+                  background-color: $carousel_btn_hoverBackgroundColor;
+                  color: $carousel_btn_hoverColor;
                 }
               }
               &.next{
                 left: auto;
                 right: 0px;
                 &:hover{
-                  background-color: $logoBanner_color;
-                  color: $base_tangerine;
+                  background-color: $carousel_btn_hoverBackgroundColor;
+                  color: $carousel_btn_hoverColor;
                 }
               }
             }
@@ -254,11 +252,11 @@ page-company-1{
                   color: $base_color;
                   display: inline-block;
                   &.active{
-                    background-color: $base_tangerine;
+                    background-color: $red;
                     color: $white;
                   }
                   &:not(.active):hover{
-                    color: $base_tangerine;
+                    color: $red;
                   }
                 }
               }
@@ -281,10 +279,10 @@ page-company-1{
               vertical-align: top;
               &.active{
                 color: $white;
-                background-color: $base_tangerine;
+                background-color: $red;
               }
               &:not(.active):hover{
-                color: $base_tangerine;
+                color: $red;
               }
             }
           }
@@ -333,13 +331,13 @@ page-company-1{
                   }
                   &>.price{
                     font-size: 15px;
-                    color: $base_tangerine;
+                    color: $red;
                     line-height: 16px;
                     padding: 3px 10px;
                   }
                 }
                 &:hover{
-                  border: solid 1px $base_tangerine;
+                  border: solid 1px $red;
                 }
               }
             }

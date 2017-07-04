@@ -24,8 +24,8 @@ define(function(){
                         "title":"伊丽莎白雅顿",
                         "shortTitle":"伊丽莎白雅顿",
                         "description":"伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水",
-                        "price":699.00,
-                        "productId":null,
+                        "price":699,
+                        "productId": "productid1",
                         "picPath":"test_b1.jpg",
                         "name":"热卖商品",
                         "popularizeCode":"PRODUCT_POPULARIZE_1"
@@ -36,7 +36,7 @@ define(function(){
                         "shortTitle":"伊丽莎白雅顿",
                         "description":"伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水",
                         "price":619.00,
-                        "productId":null,
+                        "productId": "productid1",
                         "picPath":"test_b2.jpg",
                         "name":"热卖商品",
                         "popularizeCode":"PRODUCT_POPULARIZE_1"
@@ -47,7 +47,7 @@ define(function(){
                         "shortTitle":"伊丽莎白雅顿",
                         "description":"伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水",
                         "price":577.00,
-                        "productId":null,
+                        "productId": "productid1",
                         "picPath":"test_b3.jpg",
                         "name":"热卖商品",
                         "popularizeCode":"PRODUCT_POPULARIZE_1"
@@ -58,7 +58,7 @@ define(function(){
                         "shortTitle":"伊丽莎白雅顿",
                         "description":"伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水",
                         "price":719.00,
-                        "productId":null,
+                        "productId": "productid1",
                         "picPath":"test_b4.jpg",
                         "name":"热卖商品",
                         "popularizeCode":"PRODUCT_POPULARIZE_1"
@@ -69,7 +69,7 @@ define(function(){
                         "shortTitle":"伊丽莎白雅顿",
                         "description":"伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水",
                         "price":449.00,
-                        "productId":null,
+                        "productId": "productid1",
                         "picPath":"test_b5.jpg",
                         "name":"热卖商品",
                         "popularizeCode":"PRODUCT_POPULARIZE_1"
@@ -80,7 +80,7 @@ define(function(){
                         "shortTitle":"伊丽莎白雅顿",
                         "description":"伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水",
                         "price":539.00,
-                        "productId":null,
+                        "productId": "productid1",
                         "picPath":"test_b6.jpg",
                         "name":"热卖商品",
                         "popularizeCode":"PRODUCT_POPULARIZE_1"
@@ -91,7 +91,7 @@ define(function(){
                         "shortTitle":"伊丽莎白雅顿",
                         "description":"伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水",
                         "price":609.00,
-                        "productId":null,
+                        "productId": "productid1",
                         "picPath":"test_b7.jpg",
                         "name":"热卖商品",
                         "popularizeCode":"PRODUCT_POPULARIZE_1"
@@ -102,7 +102,7 @@ define(function(){
                         "shortTitle":"伊丽莎白雅顿",
                         "description":"伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水",
                         "price":609.00,
-                        "productId":null,
+                        "productId": "productid1",
                         "picPath":"test_b2.jpg",
                         "name":"热卖商品",
                         "popularizeCode":"PRODUCT_POPULARIZE_1"
@@ -113,7 +113,7 @@ define(function(){
                         "shortTitle":"伊丽莎白雅顿",
                         "description":"伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水",
                         "price":609.00,
-                        "productId":null,
+                        "productId": "productid1",
                         "picPath":"test_b3.jpg",
                         "name":"热卖商品",
                         "popularizeCode":"PRODUCT_POPULARIZE_1"
@@ -127,7 +127,7 @@ define(function(){
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_1",
                         "logoPath":"test_logo1.jpg",
-                        "memberId":null,
+                        "memberId": "memberId1",
                         "picPath":"test_a1.jpg",
                         "description":"测试"
                     },
@@ -135,7 +135,7 @@ define(function(){
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_1",
                         "logoPath":"test_logo2.jpg",
-                        "memberId":null,
+                        "memberId": "memberId2",
                         "picPath":"test_a1.jpg",
                         "description":"测试"
                     },
@@ -143,7 +143,7 @@ define(function(){
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_1",
                         "logoPath":"test_logo3.jpg",
-                        "memberId":null,
+                        "memberId":"memberId3",
                         "picPath":"test_a1.jpg",
                         "description":"测试"
                     },
@@ -151,7 +151,7 @@ define(function(){
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_1",
                         "logoPath":"test_logo4.jpg",
-                        "memberId":null,
+                        "memberId":"memberId4",
                         "picPath":"test_a1.jpg",
                         "description":"测试"
                     },
@@ -159,7 +159,7 @@ define(function(){
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_1",
                         "logoPath":"test_logo5.jpg",
-                        "memberId":null,
+                        "memberId":"memberId5",
                         "picPath":"test_a1.jpg",
                         "description":"测试"
                     },
@@ -167,7 +167,7 @@ define(function(){
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_1",
                         "logoPath":"test_logo1.jpg",
-                        "memberId":null,
+                        "memberId":"memberId6",
                         "picPath":"test_a1.jpg",
                         "description":"测试"
                     },
@@ -175,7 +175,7 @@ define(function(){
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_1",
                         "logoPath":"test_logo2.jpg",
-                        "memberId":null,
+                        "memberId":"memberId7",
                         "picPath":"test_a1.jpg",
                         "description":"测试"
                     },
@@ -183,7 +183,7 @@ define(function(){
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_3",
                         "logoPath":"test_logo1.jpg",
-                        "memberId":null,
+                        "memberId":"memberId8",
                         "picPath":"test_a1.jpg",
                         "description":"测试"
                     },
@@ -191,7 +191,7 @@ define(function(){
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_4",
                         "logoPath":"test_logo1.jpg",
-                        "memberId":null,
+                        "memberId":"memberId9",
                         "picPath":"test_a1.jpg",
                         "description":"测试"
                     },
@@ -199,7 +199,7 @@ define(function(){
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_1",
                         "logoPath":"test_logo5.jpg",
-                        "memberId":null,
+                        "memberId":"memberId10",
                         "picPath":"test_a1.jpg",
                         "description":"测试"
                     },
@@ -207,7 +207,7 @@ define(function(){
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_1",
                         "logoPath":"test_logo1.jpg",
-                        "memberId":null,
+                        "memberId":"memberId11",
                         "picPath":"test_a1.jpg",
                         "description":"测试"
                     },
@@ -215,7 +215,7 @@ define(function(){
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_1",
                         "logoPath":"test_logo2.jpg",
-                        "memberId":null,
+                        "memberId":"memberId12",
                         "picPath":"test_a1.jpg",
                         "description":"测试"
                     },
@@ -223,14 +223,15 @@ define(function(){
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_1",
                         "logoPath":"test_logo3.jpg",
-                        "memberId":null,"picPath":"test_a1.jpg",
+                        "memberId":"memberId13",
+                        "picPath":"test_a1.jpg",
                         "description":"测试"
                     },
                     {
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_1",
                         "logoPath":"test_logo4.jpg",
-                        "memberId":null,
+                        "memberId":"memberId14",
                         "picPath":"test_a1.jpg",
                         "description":"测试"
                     },
@@ -238,7 +239,7 @@ define(function(){
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_1",
                         "logoPath":"test_logo5.jpg",
-                        "memberId":null,
+                        "memberId":"memberId15",
                         "picPath":"test_a1.jpg",
                         "description":"测试"
                     },
@@ -246,7 +247,7 @@ define(function(){
                         "name":"热门企业",
                         "popularizeCode":"MEMBER_POPULARIZE_1",
                         "logoPath":"test_logo1.jpg",
-                        "memberId":null,
+                        "memberId":"memberId16",
                         "picPath":"test_a1.jpg",
                         "description":"测试"
                     }
@@ -259,21 +260,22 @@ define(function(){
                         "name":"新品推荐",
                         "popularizeCode":"MEMBER_PRODUCT_POPULARIZE_1",
                         "logoPath":"test_logo1.jpg",
-                        "memberId":null,
+                        "memberId":"memberid1",
                         "picPath1":"test_a1.jpg",
                         "picPath2":"test_a2.jpg",
                         "picPath3":"test_a3.jpg",
-                        "description1":"时尚修身版",
-                        "description2":"时尚运动版",
-                        "description3":"时尚至尊版",
+                        "sketch1": "GXG服装有限公司",
+                        "description1":"GXG是宁波中哲慕尚控股有限公司旗下男装品牌。针对消费年龄段：22-38岁，设计类型：趋向年轻化，个性，有态度的细节廓形品牌。从2015年起，针对更多90-95后独立自我的新生代青年的时髦街头自由态度来改变设计风格，获得更多市场年起人的喜爱。2016年品牌与众多独立艺术家进行合作联名，gxg.jeans品牌更是与Bigbang所喜爱的潮流代表“KRUNK”进行跨界合作。",
+                        "description2":"GXG2016秋将更多生活舒适度与色彩、花型进行结合，通过更具生活感的简约造型，将年轻消费群体所需求的态度展现。更多廓形，趣味，运动，线条及暗黑街头运动的设计概念，符合当下年轻消费群体需求。",
+                        "description3":"2013年-2014年，GXG中国音乐之旅五月天、成龙、任贤齐、李宗盛、张震岳、邓紫棋共计开启22场演唱会记录，同年开启GXG为爱点亮一座城圣诞亮灯计划，并于2014年初开启GXG在国内时尚男装品类首场实景服装品牌秀；",
                         "generalInfoList":[
                             {
                                 "id":1,
                                 "title":"GXG男装,2021夏季新品",
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
-                                "price":120.00,
-                                "productId":null,
+                                "price":120,
+                                "productId": "productid1",
                                 "picPath":"test_a4.jpg"
                             },
                             {
@@ -282,7 +284,7 @@ define(function(){
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
                                 "price":110.00,
-                                "productId":null,
+                                "productId": "productid1",
                                 "picPath":"test_a5.jpg"
                             },
                             {
@@ -291,7 +293,7 @@ define(function(){
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
                                 "price":108.00,
-                                "productId":null,
+                                "productId": "productid1",
                                 "picPath":"test_a6.jpg"
                             },
                             {
@@ -300,7 +302,7 @@ define(function(){
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
                                 "price":151.00,
-                                "productId":null,
+                                "productId": "productid1",
                                 "picPath":"test_a4.jpg"
                             },
                             {
@@ -308,7 +310,7 @@ define(function(){
                                 "title":"GXG男装,2021夏季新品",
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
-                                "price":132.00,"productId":null,"picPath":"test_a5.jpg"
+                                "price":132.00,"productId": "productid1","picPath":"test_a5.jpg"
                             },
                             {
                                 "id":6,
@@ -316,7 +318,7 @@ define(function(){
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
                                 "price":108.00,
-                                "productId":null,
+                                "productId": "productid1",
                                 "picPath":"test_a6.jpg"
                             },
                             {
@@ -325,7 +327,7 @@ define(function(){
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
                                 "price":160.00,
-                                "productId":null,
+                                "productId": "productid1",
                                 "picPath":"test_a4.jpg"
                             }
                         ]
@@ -334,13 +336,13 @@ define(function(){
                         "name":"新品推荐",
                         "popularizeCode":"MEMBER_PRODUCT_POPULARIZE_1",
                         "logoPath":"test_logo2.jpg",
-                        "memberId":null,
+                        "memberId": "memberid2",
                         "picPath1":"test_a1.jpg",
                         "picPath2":"test_a2.jpg",
                         "picPath3":"test_a3.jpg",
-                        "description1":"时尚修身版",
-                        "description2":"时尚运动版",
-                        "description3":"时尚至尊版",
+                        "description1":"GXG是宁波中哲慕尚控股有限公司旗下男装品牌。针对消费年龄段：22-38岁，设计类型：趋向年轻化，个性，有态度的细节廓形品牌。从2015年起，针对更多90-95后独立自我的新生代青年的时髦街头自由态度来改变设计风格，获得更多市场年起人的喜爱。2016年品牌与众多独立艺术家进行合作联名，gxg.jeans品牌更是与Bigbang所喜爱的潮流代表“KRUNK”进行跨界合作。",
+                        "description2":"GXG2016秋将更多生活舒适度与色彩、花型进行结合，通过更具生活感的简约造型，将年轻消费群体所需求的态度展现。更多廓形，趣味，运动，线条及暗黑街头运动的设计概念，符合当下年轻消费群体需求。",
+                        "description3":"2013年-2014年，GXG中国音乐之旅五月天、成龙、任贤齐、李宗盛、张震岳、邓紫棋共计开启22场演唱会记录，同年开启GXG为爱点亮一座城圣诞亮灯计划，并于2014年初开启GXG在国内时尚男装品类首场实景服装品牌秀；",
                         "generalInfoList":[
                             {
                                 "id":8,
@@ -348,7 +350,7 @@ define(function(){
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
                                 "price":155.00,
-                                "productId":null,
+                                "productId": "productid1",
                                 "picPath":"test_a4.jpg"
                             },
                             {
@@ -357,7 +359,7 @@ define(function(){
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
                                 "price":104.00,
-                                "productId":null,
+                                "productId": "productid1",
                                 "picPath":"test_a5.jpg"
                             },
                             {
@@ -366,7 +368,7 @@ define(function(){
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
                                 "price":121.00,
-                                "productId":null,
+                                "productId": "productid1",
                                 "picPath":"test_a6.jpg"
                             },
                             {
@@ -375,7 +377,7 @@ define(function(){
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
                                 "price":104.00,
-                                "productId":null,
+                                "productId": "productid1",
                                 "picPath":"test_a4.jpg"
                             },
                             {
@@ -383,7 +385,7 @@ define(function(){
                                 "title":"GXG男装2018夏季新品",
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
-                                "price":180.00,"productId":null,"picPath":"test_a5.jpg"
+                                "price":180.00,"productId": "productid1","picPath":"test_a5.jpg"
                             },
                             {
                                 "id":13,
@@ -391,7 +393,7 @@ define(function(){
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
                                 "price":117.00,
-                                "productId":null,
+                                "productId": "productid1",
                                 "picPath":"test_a6.jpg"
                             },
                             {
@@ -400,7 +402,7 @@ define(function(){
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
                                 "price":132.00,
-                                "productId":null,
+                                "productId": "productid1",
                                 "picPath":"test_a4.jpg"
                             }
                         ]
@@ -409,13 +411,13 @@ define(function(){
                         "name":"新品推荐",
                         "popularizeCode":"MEMBER_PRODUCT_POPULARIZE_1",
                         "logoPath":"test_logo3.jpg",
-                        "memberId":null,
+                        "memberId": "memberid3",
                         "picPath1":"test_a1.jpg",
                         "picPath2":"test_a2.jpg",
                         "picPath3":"test_a3.jpg",
-                        "description1":"时尚修身版",
-                        "description2":"时尚运动版",
-                        "description3":"时尚至尊版",
+                        "description1":"GXG是宁波中哲慕尚控股有限公司旗下男装品牌。针对消费年龄段：22-38岁，设计类型：趋向年轻化，个性，有态度的细节廓形品牌。从2015年起，针对更多90-95后独立自我的新生代青年的时髦街头自由态度来改变设计风格，获得更多市场年起人的喜爱。2016年品牌与众多独立艺术家进行合作联名，gxg.jeans品牌更是与Bigbang所喜爱的潮流代表“KRUNK”进行跨界合作。",
+                        "description2":"GXG2016秋将更多生活舒适度与色彩、花型进行结合，通过更具生活感的简约造型，将年轻消费群体所需求的态度展现。更多廓形，趣味，运动，线条及暗黑街头运动的设计概念，符合当下年轻消费群体需求。",
+                        "description3":"2013年-2014年，GXG中国音乐之旅五月天、成龙、任贤齐、李宗盛、张震岳、邓紫棋共计开启22场演唱会记录，同年开启GXG为爱点亮一座城圣诞亮灯计划，并于2014年初开启GXG在国内时尚男装品类首场实景服装品牌秀；",
                         "generalInfoList":[
                             {
                                 "id":15,
@@ -423,7 +425,7 @@ define(function(){
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
                                 "price":111.00,
-                                "productId":null,
+                                "productId": "productid1",
                                 "picPath":"test_a4.jpg"
                             },
                             {
@@ -432,7 +434,7 @@ define(function(){
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
                                 "price":123.00,
-                                "productId":null,
+                                "productId": "productid1",
                                 "picPath":"test_a5.jpg"
                             },
                             {
@@ -441,7 +443,7 @@ define(function(){
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
                                 "price":111.00,
-                                "productId":null,
+                                "productId": "productid1",
                                 "picPath":"test_a6.jpg"
                             },
                             {
@@ -450,7 +452,7 @@ define(function(){
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
                                 "price":142.00,
-                                "productId":null,
+                                "productId": "productid1",
                                 "picPath":"test_a4.jpg"
                             },
                             {
@@ -459,7 +461,7 @@ define(function(){
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
                                 "price":118.00,
-                                "productId":null,
+                                "productId": "productid1",
                                 "picPath":"test_a5.jpg"
                             },
                             {
@@ -468,7 +470,7 @@ define(function(){
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
                                 "price":230.00,
-                                "productId":null,
+                                "productId": "productid1",
                                 "picPath":"test_a6.jpg"
                             },
                             {
@@ -477,7 +479,7 @@ define(function(){
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
                                 "price":430.00,
-                                "productId":null,
+                                "productId": "productid1",
                                 "picPath":"test_a4.jpg"
                             }
                         ]
@@ -486,13 +488,13 @@ define(function(){
                         "name":"新品推荐",
                         "popularizeCode":"MEMBER_PRODUCT_POPULARIZE_1",
                         "logoPath":"test_logo4.jpg",
-                        "memberId":null,
+                        "memberId": "memberid4",
                         "picPath1":"test_a1.jpg",
                         "picPath2":"test_a2.jpg",
                         "picPath3":"test_a3.jpg",
-                        "description1":"时尚修身版",
-                        "description2":"时尚运动版",
-                        "description3":"时尚至尊版",
+                        "description1":"GXG是宁波中哲慕尚控股有限公司旗下男装品牌。针对消费年龄段：22-38岁，设计类型：趋向年轻化，个性，有态度的细节廓形品牌。从2015年起，针对更多90-95后独立自我的新生代青年的时髦街头自由态度来改变设计风格，获得更多市场年起人的喜爱。2016年品牌与众多独立艺术家进行合作联名，gxg.jeans品牌更是与Bigbang所喜爱的潮流代表“KRUNK”进行跨界合作。",
+                        "description2":"GXG2016秋将更多生活舒适度与色彩、花型进行结合，通过更具生活感的简约造型，将年轻消费群体所需求的态度展现。更多廓形，趣味，运动，线条及暗黑街头运动的设计概念，符合当下年轻消费群体需求。",
+                        "description3":"2013年-2014年，GXG中国音乐之旅五月天、成龙、任贤齐、李宗盛、张震岳、邓紫棋共计开启22场演唱会记录，同年开启GXG为爱点亮一座城圣诞亮灯计划，并于2014年初开启GXG在国内时尚男装品类首场实景服装品牌秀；",
                         "generalInfoList":[
                             {
                                 "id":22,
@@ -500,7 +502,7 @@ define(function(){
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
                                 "price":165.00,
-                                "productId":null,
+                                "productId": "productid1",
                                 "picPath":"test_a4.jpg"
                             },
                             {
@@ -509,7 +511,7 @@ define(function(){
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
                                 "price":139.00,
-                                "productId":null,
+                                "productId": "productid1",
                                 "picPath":"test_a5.jpg"
                             },
                             {
@@ -518,7 +520,7 @@ define(function(){
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
                                 "price":121.00,
-                                "productId":null,
+                                "productId": "productid1",
                                 "picPath":"test_a6.jpg"
                             },
                             {
@@ -527,7 +529,7 @@ define(function(){
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
                                 "price":131.00,
-                                "productId":null,
+                                "productId": "productid1",
                                 "picPath":"test_a4.jpg"
                             },
                             {
@@ -536,7 +538,7 @@ define(function(){
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
                                 "price":247.00,
-                                "productId":null,
+                                "productId": "productid1",
                                 "picPath":"test_a5.jpg"
                             },
                             {
@@ -545,7 +547,7 @@ define(function(){
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
                                 "price":399.00,
-                                "productId":null,
+                                "productId": "productid1",
                                 "picPath":"test_a6.jpg"
                             },
                             {
@@ -554,7 +556,7 @@ define(function(){
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
                                 "price":268.00,
-                                "productId":null,
+                                "productId": "productid1",
                                 "picPath":"test_a4.jpg"
                             }
                         ]
@@ -563,13 +565,13 @@ define(function(){
                         "name":"新品推荐",
                         "popularizeCode":"MEMBER_PRODUCT_POPULARIZE_1",
                         "logoPath":"test_logo5.jpg",
-                        "memberId":null,
+                        "memberId": "memberid5",
                         "picPath1":"test_a1.jpg",
                         "picPath2":"test_a2.jpg",
                         "picPath3":"test_a3.jpg",
-                        "description1":"时尚修身版",
-                        "description2":"时尚运动版",
-                        "description3":"时尚至尊版",
+                        "description1":"GXG是宁波中哲慕尚控股有限公司旗下男装品牌。针对消费年龄段：22-38岁，设计类型：趋向年轻化，个性，有态度的细节廓形品牌。从2015年起，针对更多90-95后独立自我的新生代青年的时髦街头自由态度来改变设计风格，获得更多市场年起人的喜爱。2016年品牌与众多独立艺术家进行合作联名，gxg.jeans品牌更是与Bigbang所喜爱的潮流代表“KRUNK”进行跨界合作。",
+                        "description2":"GXG2016秋将更多生活舒适度与色彩、花型进行结合，通过更具生活感的简约造型，将年轻消费群体所需求的态度展现。更多廓形，趣味，运动，线条及暗黑街头运动的设计概念，符合当下年轻消费群体需求。",
+                        "description3":"2013年-2014年，GXG中国音乐之旅五月天、成龙、任贤齐、李宗盛、张震岳、邓紫棋共计开启22场演唱会记录，同年开启GXG为爱点亮一座城圣诞亮灯计划，并于2014年初开启GXG在国内时尚男装品类首场实景服装品牌秀；",
                         "generalInfoList":[
                             {
                                 "id":29,
@@ -577,7 +579,7 @@ define(function(){
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
                                 "price":100.00,
-                                "productId":null,
+                                "productId": "productid1",
                                 "picPath":"test_a4.jpg"
                             },
                             {
@@ -586,7 +588,7 @@ define(function(){
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
                                 "price":100.00,
-                                "productId":null,
+                                "productId": "productid1",
                                 "picPath":"test_a5.jpg"
                             },
                             {
@@ -595,7 +597,7 @@ define(function(){
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
                                 "price":100.00,
-                                "productId":null,
+                                "productId": "productid1",
                                 "picPath":"test_a6.jpg"
                             },
                             {
@@ -604,7 +606,7 @@ define(function(){
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
                                 "price":100.00,
-                                "productId":null,
+                                "productId": "productid1",
                                 "picPath":"test_a4.jpg"
                             },
                             {
@@ -612,7 +614,7 @@ define(function(){
                                 "title":"GXG男装,2021夏季新品",
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
-                                "price":100.00,"productId":null,"picPath":"test_a5.jpg"
+                                "price":100.00,"productId": "productid1","picPath":"test_a5.jpg"
                             },
                             {
                                 "id":34,
@@ -620,7 +622,7 @@ define(function(){
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
                                 "price":100.00,
-                                "productId":null,
+                                "productId": "productid1",
                                 "picPath":"test_a6.jpg"
                             },
                             {
@@ -629,7 +631,7 @@ define(function(){
                                 "shortTitle":"GXG男装",
                                 "description":"GXG男装",
                                 "price":100.00,
-                                "productId":null,
+                                "productId": "productid1",
                                 "picPath":"test_a4.jpg"
                             }
                         ]

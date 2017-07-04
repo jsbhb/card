@@ -3,29 +3,65 @@
 /**
  * 统一样式风格
  */
+
+
 $white: #fff;
-$white_transparent: rgba(255, 255, 255, .952);
-$red: #ff0004;
-$base_backgroundColor: #f3f3f3;
-$base_tangerine: #fe9223;
-$base_borderColor: #ddd;
-$base_color: #999;
-$title_color: #777;
-$title_border: #c3c3c3;
-$qrcode_Color: #ff8100;
-$banner_hoverBackgroundColor: #ffced8;
-$footer_backgroundColor: #fff;
-$ul_backgroundColor: #bbb;
-$li_backgroundColor: #e9e9e9;
-$li_borderColor: #ddd;
-$price_color: #FF5722;
-$logoBanner_color: rgba(230,230,230,.5);
-$img_hoverColor: rgba(230,230,230,.7);
-$fade_backgroundColor: rgba(0, 0, 0, 0.35);
-$nav_color: #666;
-$searchItem: #005aa0;
+$red: #ff4200;
+$deepRed: #d70b1c;
+$tangerine: #fe9223;
 $blue: #3e59ff;
 $black: #333;
+$lightBlack: #666;
+$brown: #b1aaaa;
+$lightBrown: #918888;
+$gray: #c5c5c5;
+$white_transparent: rgba(255, 255, 255, .952);
+$red_transparent: rgba(255, 0, 0, .35);
+$tangerine_transparent: rgba(255, 66, 0, .35);
+$gray_transparent: rgba(245, 245, 245, .952);
+$darkGray_transparent: rgba(200,200,200,.5);
+$black_transparent: rgba(0, 0, 0, .1);
+
+$base_color: #888;
+$base_backgroundColor: #f3f3f3;
+$base_borderColor: #ddd;
+
+$a_color: #333;
+$a_borderColor: #ddd;
+
+$ul_backgroundColor: #bbb;
+$li_backgroundColor: #e9e9e9;
+$li_borderColor: #c3c3c3;
+$li_fadeBackgroundColor: rgba(0, 0, 0, 0.35);
+
+$title_color: #777;
+$title_borderColor: #c3c3c3;
+
+$carousel_btn_backgroundColor: rgba(200, 200, 200, .5);
+$carousel_btn_hoverBackgroundColor: rgba(200,200,200,.7);
+$carousel_btn_hoverColor: #d70b1c;
+
+$carousel_i_backgroundColor: rgba(172, 172, 172, .5);
+$carousel_i_hoverBackgroundColor: #fe9223;
+$carousel_i_showing_hoverBackgroundColor: #d70b1c;
+
+$sideFixed_backgroundColor: #918888;
+$sideFixed_bottom_backgroundColor: #8e6c6c;
+$sideFixed_borderColor: #ffffff;
+
+$pagination_btn_color: #9f9f9f;
+$pagination_btn_hoverColor: #fff;
+$pagination_btn_activeColor: #fff;
+$pagination_btn_backgroundColor: #f3f3f3;
+$pagination_btn_hoverBackgroundColor: #ff4200;
+$pagination_btn_activeBackgroundColor: #ff4200;
+$pagination_btn_borderColor: #ddd;
+$pagination_btn_hoverBorderColor: #ff4200;
+$pagination_btn_activeBorderColor: #ff4200;
+$pagination_ellipsis_color: #c3c3c3;
+$pagination_searchText_color: #c5c5c5;
+$pagination_searchText_borderColor: #ddd;
+$pagination_searchText_focusBorderColor: #ff4200;
 
 @mixin page{
   width: 100%;
@@ -65,7 +101,7 @@ body{
   a:hover:active,
   a:hover:focus,
   a:hover:focus:active{
-    color: #333;
+    color: $a_color;
     text-decoration: none;
     background-color: transparent;
   }
@@ -97,15 +133,6 @@ body{
   }
   .floatRight{
     float: right!important;
-  }
-  .headerFixed{
-    margin: 0px auto;
-    box-shadow: 0px 1px 8px 0px rgba(115, 115, 115, 0.35);
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    z-index: 1111;
   }
 }
 

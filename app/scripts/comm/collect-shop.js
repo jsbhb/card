@@ -12,21 +12,18 @@ define([
     "fixture.test"
 ], function($, _, can, Comm){
 
-    /** @queryAll:  page-searchCompany-1数据
+    /** @queryAll:  page-shop-1数据
      */
     return new Comm({
-        queryAll: function(data){
-            if(!data){
-                data={};
-            }
-            if(!data.memberid){
-                data.memberid=" ";
+        queryAll: function(data, fixture){
+            if(!data || !data.memberId){
+                return
             }
             return this.sendRequest({
-                "urlPath":  "/cardapi/1.0/"+data.memberid+"/commoditys",
+                "urlPath":  "/"+data.memberId+"/commoditys",
                 "type":     "get",
                 "data":      data||null,
-                "fixture":   true
+                "fixture":   fixture
             })
         }
     });

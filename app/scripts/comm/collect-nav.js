@@ -12,15 +12,15 @@ define([
     "fixture.test"
 ], function($, _, can, Comm){
 
-    /** @queryAll:  page-searchCompany-1数据
+    /** @queryAll:  page-nav-1数据
      */
     return new Comm({
-        queryAll: function(data){
+        queryAll: function(data, fixture){
             return this.sendRequest({
-                "urlPath":  "/1.0/commons/memberCategory",
+                "urlPath":  "/commons/memberCategory",
                 "type":     "get",
                 "data":      data||null,
-                "fixture":   true
+                "fixture":   fixture
             })
         }
     });

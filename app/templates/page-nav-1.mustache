@@ -1,44 +1,62 @@
 <div class="page-nav-content">
     <div class="page-nav-showCont">
-        <div class="contType inlineBlock {{NAV.CONFIG.CONTTYPE}}">
+        <div class="contType inlineBlock {{CONFIG.showed}}">
             <i class="fa fa-th fa-fw inlineBlock"></i>
             <span class="classify inlineBlock">货源市场</span>
             <ul>
-                {{setULHeight NAV.RESPONSEDATA}}
-                {{#each NAV.RESPONSEDATA}}
-                    <li navId="{{id}}">
+                {{setULHeight RESPONSEDATA}}
+                {{#each RESPONSEDATA}}
+                    <li industry="{{id}}">
                         <span class="contTypeTitle">
                             <span>{{industryName}}</span>
                             <i class="fa fa-angle-right fa-fw"></i>
                         </span>
                         <div class="showContItemList">
-                            <ul>
-                                {{#each dictList}}
-                                    <li navId="{{id}}">
-                                        <span class="title">{{dictName}}</span>
-                                        <div class="content">
-                                            {{#each entryList}}
-                                                <a href="javascript:void(0)" navId="{{id}}">
-                                                    {{entryName}}
-                                                </a>
-                                            {{/each}}
-                                        </div>
-                                    </li>
-                                {{/each}}
-                            </ul>
+                            <div>
+                                <ul class="inlineBlock">
+                                    {{#each dictList}}
+                                        <li categoryDict="{{id}}">
+                                            <span class="title">{{dictName}}</span>
+                                            <div class="content">
+                                                {{#each entryList}}
+                                                    <a href="javascript:void(0)"
+                                                       categoryEntryId="{{id}}"
+                                                       categoryEntryName = {{entryName}}>
+                                                        {{entryName}}
+                                                    </a>
+                                                {{/each}}
+                                            </div>
+                                        </li>
+                                    {{/each}}
+                                </ul>
+                                <div class="recommend inlineBlock">
+                                    <a class="inlineBlock">
+                                        <img src="/app/images/test/test_logo1.jpg">
+                                    </a>
+                                    <a class="inlineBlock">
+                                        <img src="/app/images/test/test_logo2.jpg">
+                                    </a>
+                                    <a class="inlineBlock">
+                                        <img src="/app/images/test/test_logo3.jpg">
+                                    </a>
+                                    <a class="inlineBlock">
+                                        <img src="/app/images/test/test_logo4.jpg">
+                                    </a>
+                                    <a class="inlineBlock">
+                                        <img src="/app/images/test/test_logo5.jpg">
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </li>
                 {{/each}}
             </ul>
         </div>
         <div class="contNav inlineBlock">
-            <a href="/app/webpage" class="inlineBlock {{NAV.CONFIG.INDEX}}">首页</a>
-            <a href="/app/webpage/searchCompany.html"
-               class="inlineBlock {{NAV.CONFIG.SEARCHCOMPANY}}">企业商城</a>
-            <a href="/app/webpage/searchShop.html"
-               class="inlineBlock {{NAV.CONFIG.SEARCHSHOP}}">商品商城</a>
-            <a href="#" class="inlineBlock">配件交易中心</a>
-            <a href="#" class="inlineBlock">大宗商品交易中心</a>
+            <a href="#" class="inlineBlock">中国工业元配件交易中心</a>
+            <a href="#" class="inlineBlock">中国大宗商品交易中心</a>
+            <a href="#" class="inlineBlock">板块三</a>
+            <a href="#" class="inlineBlock">板块四</a>
             <a href="#" class="inlineBlock">板块五</a>
             <a href="#" class="inlineBlock">板块六</a>
         </div>

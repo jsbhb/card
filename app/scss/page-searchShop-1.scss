@@ -3,7 +3,7 @@
 @import "page.param.1";
 
 /*
- * page-search-1部分样式
+ * page-searchShop-1部分样式
  */
 page-searchshop-1{
   @include page;
@@ -43,14 +43,14 @@ page-searchshop-1{
     &>.resultCategory{
       height: 30px;
       font-size: 13px;
-      color: $nav_color;
+      color: $lightBlack;
       padding-left: 15px;
       margin-top: 23px;
       &>span{
         font-size: 14px;
         height: 22px;
         line-height: 22px;
-        &.searchText{
+        &.searchCont{
           font-size: 13px;
           height: 22px;
           line-height: 20px;
@@ -60,16 +60,11 @@ page-searchshop-1{
         height: 22px;
         line-height: 19px;
         padding: 0 27px 0 5px;
-        color: $nav_color;
+        color: $a_color;
         display: inline-block;
         background-color: $base_backgroundColor;
         border: solid 1px $base_borderColor;
         position: relative;
-        &.searchText{
-          border: none;
-          padding: 0 5px;
-          background-color: transparent;
-        }
         &>abbr{
           text-decoration: none;
           cursor: pointer;
@@ -179,15 +174,15 @@ page-searchshop-1{
                 height: 36px;
                 line-height: 36px;
                 padding-left: 10px;
-                color: $searchItem;
+                color: $blue;
                 display: inline-block;
               }
               &:hover{
                 &>img{
-                  border-color: $base_tangerine;
+                  border-color: $red;
                 }
                 &>span{
-                  color: $base_tangerine;
+                  color: $red;
                 }
               }
             }
@@ -212,12 +207,12 @@ page-searchshop-1{
           padding: 1px 5px 1px 7px;
           color: $base_color;
           background-color: $white;
-          border-color: $base_tangerine;
+          border-color: $red;
           &:hover{
-            color: $base_tangerine;
+            color: $red;
           }
           &.active{
-            background-color: $base_tangerine;
+            background-color: $red;
             color: $white;
           }
           &>i{
@@ -231,7 +226,7 @@ page-searchshop-1{
         line-height: 25px;
         font-size: 14px;
         margin-left: 13px;
-        color: $base_tangerine;
+        color: $red;
         &>label{
           font-size: 18px;
           vertical-align: top;
@@ -265,13 +260,13 @@ page-searchshop-1{
             height: 24px;
             line-height: 24px;
             border-radius: 0px;
-            border: solid 1px $base_tangerine;
-            color: $base_tangerine;
+            border: solid 1px $red;
+            color: $red;
           }
           &>span{
             padding: 0 5px;
             border: none;
-            color: $base_tangerine;
+            color: $red;
           }
         }
         &>a{
@@ -283,10 +278,10 @@ page-searchshop-1{
           display: inline-table;
           vertical-align: top;
           color:$white;
-          background-color: $base_tangerine;
+          background-color: $red;
           &:hover:focus:active{
             color:$white;
-            background-color: $base_tangerine;
+            background-color: $red;
           }
         }
       }
@@ -296,7 +291,7 @@ page-searchshop-1{
         line-height: 25px;
         font-size: 13px;
         margin-left: 18px;
-        color: $base_tangerine;
+        color: $red;
         &>span{
           width: 42px;
           height: 25px;
@@ -308,7 +303,7 @@ page-searchshop-1{
           height: 25px;
           padding: 1px 5px 1px 7px;
           font-size: 14px;
-          border-color: $base_tangerine;
+          border-color: $red;
         }
       }
     }
@@ -326,7 +321,7 @@ page-searchshop-1{
           margin: 9px 12px;
           border: solid 1px $base_borderColor;
           &:hover{
-            box-shadow: 0px 0px 15px 0px $fade_backgroundColor;
+            box-shadow: 0px 0px 15px 0px $li_fadeBackgroundColor;
           }
           &>a{
             width: 100%;
@@ -373,7 +368,7 @@ page-searchshop-1{
                   padding: 1px;
                   border: solid 1px $base_borderColor;
                   &.active{
-                    border: solid 1px $base_tangerine;
+                    border: solid 1px $red;
                   }
                 }
               }
@@ -383,7 +378,7 @@ page-searchshop-1{
               line-height: 36px;
               padding-left: 12px;
               font-size: 18px;
-              color: $base_tangerine;
+              color: $red;
             }
             &>.showText{
               width: 100%;
@@ -427,7 +422,7 @@ page-searchshop-1{
               padding: 2px 10px;
               height: 24px;
               line-height: 24px;
-              color: $base_tangerine;
+              color: $red;
               font-size: 13px;
               white-space: nowrap;
               overflow: hidden;

@@ -36,45 +36,55 @@ define([
                     $(".contType>ul>li .showContItemList").css("visibility", "hidden");
                 }else{
                     that.ul_mouseleave_end = false;
-                    this.ul_timer=setTimeout(function(){ that.ul_mouseleave(); },200);
+                    this.ul_timer=setTimeout(function(){ that.ul_mouseleave(); },150);
                 }
             },
             contType_mouseleave:function(){
                 var that = this;
                 if(that.ul_mouseleave_end && !$(".contType").hasClass("showed")){
                     $(".contType>ul").css("overflow", "hidden");
-                    $(".contType>ul").stop(true, true).animate({height: "0px"}, 450);
+                    $(".contType>ul").stop(true, true).animate({height: "0px"}, 200);
                 }else if(!$(".contType").hasClass("showed")){
-                    this.contType_timer=setTimeout(function(){ that.contType_mouseleave(); },200);
+                    this.contType_timer=setTimeout(function(){ that.contType_mouseleave(); },150);
                 }
             }
         },
         events: {
-            ".contType mouseenter": function(element){
+            ".contType mouseenter": function(node){
                 var that = this;
-                $(".contType>ul").stop(true, true);
+                var $element = this.element;
+                var $node = $(node);
+                $node.find(">ul").stop(true, true);
                 clearTimeout(that.scope.contType_timer);
-                $(".contType>ul").css({height: this.scope.ulHeight, overflow:"visible"});
+                $node.find(">ul").css({height: this.scope.ulHeight, overflow:"visible"});
             },
-            ".contType>ul mouseenter": function(element){
+            ".contType>ul mouseenter": function(node){
                 var that = this;
+                var $element = this.element;
+                var $node = $(node);
                 clearTimeout(that.scope.ul_timer);
-                $(element).addClass("hover");
+                $node.addClass("hover");
             },
-            ".contType>ul>li mouseenter": function(element){
-                $(".contType>ul>li").removeClass("hover");
-                $(".contType>ul>li .showContItemList").css("visibility", "hidden");
-                $(element).addClass("hover");
-                $(element).find(".showContItemList").css("visibility", "visible");
+            ".contType>ul>li mouseenter": function(node){
+                var $element = this.element;
+                var $node = $(node);
+                $node.parent().find(">li").removeClass("hover");
+                $node.parent().find(">li .showContItemList").css("visibility", "hidden");
+                $node.addClass("hover");
+                $node.find(".showContItemList").css("visibility", "visible");
             },
-            ".contType>ul mouseleave": function(){
+            ".contType>ul mouseleave": function(node){
                 var that = this;
+                var $element = this.element;
+                var $node = $(node);
                 this.scope.timer=setTimeout(function(){
                     that.scope.ul_mouseleave();
                 },200);
             },
-            ".contType mouseleave": function(){
+            ".contType mouseleave": function(node){
                 var that = this;
+                var $element = this.element;
+                var $node = $(node);
                 this.scope.timer=setTimeout(function(){
                     that.scope.contType_mouseleave();
                 },200);

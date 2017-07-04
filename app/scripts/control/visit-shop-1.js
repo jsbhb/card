@@ -8,8 +8,12 @@ define([
     "bower.jquery",
     "bower.underscore",
     "bower.bootstrap.min",
-    "config.util",
+    "bower.can",
+    "bower.dotdotdot.min",
+    "widget.common",
+    "widget.scrollMonitor",
     "config.helper",
+    "comm.collect",
     "control.page.top.1",
     "control.page.header.1",
     "control.page.nav.1",
@@ -19,71 +23,81 @@ define([
     "bower.css!css.bootstrap.min",
     "bower.css!css.uFont",
 ], function(
-    $, _, bootstrap, util, helper,
+    $, _, bootstrap, can, dot, common, scrollMonitor, helper, comm,
     controlPageTop1,
     controlPageHeader1,
     controlPageNav1,
     controlShop1,
     controlPageFooter1){
 
-    var CITY_POPULARIZE = { localCity: "浙江宁波" };
-    var memberid = util.getUrlParam("memberid");
-    var commodityid = util.getUrlParam("commodityid");
 
-    var C_SHORT =         "SHORT";
-    var E_PAGE_TOP =      $("<div class='load-pageTop'></div>");
-    var E_PAGE_HEADER =   $("<div class='load-pageHeader'></div>");
-    var E_PAGE_NAV =      $("<div class='load-pageNav'></div>");
-    var E_PAGE_BODY =     $("<div class='load-pageBody' style='min-height:375px'></div>");
-    var E_PAGE_FOOTER =   $("<div class='load-pageFooter'></div>");
-
-    var E_PAGE_SHOP1 =   $("<div class='load-pageShop1'></div>");
+    /** @description:  新建元素
+     */
+    var C_SHORT =    "SHORT";
+    var E_TOP =      $("<div id='load-pageTop'></div>");
+    var E_HEADER =   $("<div id='load-pageHeader'></div>");
+    var E_NAV =      $("<div id='load-pageNav'></div>");
+    var E_BODY =     $("<div id='load-pageBody' style='min-height:450px'></div>");
+    var E_FOOTER =   $("<div id='load-pageFooter'></div>");
+    var E_SHOP =     $("<div id='load-pageShop'></div>");
 
     $("body")
         .addClass(C_SHORT)
-        .append(E_PAGE_TOP)
-        .append(E_PAGE_HEADER)
-        .append(E_PAGE_NAV)
-        .append(E_PAGE_BODY)
-        .append(E_PAGE_FOOTER);
+        .append(E_TOP)
+        .append(E_HEADER)
+        .append(E_NAV)
+        .append(E_BODY)
+        .append(E_FOOTER);
 
-    $("body").find($(E_PAGE_BODY))
-        .append(E_PAGE_SHOP1);
+    $(E_BODY)
+        .append(E_SHOP);
 
 
-    //生成页面top部分
-    new controlPageTop1(".load-pageTop",{
-        responseData: CITY_POPULARIZE,
+
+    /** @description:  设定数据初始值 --> 获取数据（异步） --> 各模块重新渲染模板数据
+     */
+    var searchCont =       "";
+    var memberId =         common.getUrlParam("memberId");
+    var commodityId =      common.getUrlParam("commodityId");
+    var topResponseData =  { localCity: common.getRegion().localCity };
+    var shopRequestData =  { queryShop:{} };
+
+    if(memberId){
+        shopRequestData.queryShop.memberId = memberId;
+    }
+    if(commodityId){
+        shopRequestData.queryShop.commodityId = commodityId;
+    }
+
+
+
+    /** @description:  加载模块
+     */
+    var top = new controlPageTop1("#load-pageTop",{
+        responseData: topResponseData
     });
-
-
-    //生成页面header部分
-    new controlPageHeader1(".load-pageHeader",{
+    var header = new controlPageHeader1("#load-pageHeader",{
         config: {
-            SEARCH_TYPE:2,
-            SEARCH_COMPANY: "商品",
+            searchCont: searchCont,
+            SEARCH_List:[
+                { type: 1, name: "企业", active: "active" },
+                { type: 2, name: "商品", active: null }
+            ]
         }
     });
-
-
-    //生成页面nav部分
-    new controlPageNav1(".load-pageNav",{
-        config:{
-            SEARCHSHOP: "active",
-            BORDER: "border"
-        }
+    var nav = new controlPageNav1("#load-pageNav",{
+        config:{ border: "border" }
     });
-
-
-    //生成页面shop部分
-    new controlShop1(".load-pageShop1",{
-        urlData: {
-            "memberid": memberid,
-            "commodityid": commodityid,
-        }
+    var shop1 = new controlShop1("#load-pageShop",{
+        config: { searchCont: searchCont },
+        requestData: shopRequestData
     });
+    var footer = new controlPageFooter1("#load-pageFooter");
 
 
-    //生成页面footer部分
-    new controlPageFooter1(".load-pageFooter");
-})
+
+    /** @description:  绑定事件（模块交互、页面交互）
+     */
+
+
+});

@@ -12,9 +12,9 @@ define([
     return {
 
         /**
-         *  @description  url host部分的路径
+         *  @description  url部分的路径
          */
-        urlHost: "http://172.20.10.5:8080",
+        urlHost: "http://192.168.199.195:8080/cardapi/1.0",
 
 
         /**

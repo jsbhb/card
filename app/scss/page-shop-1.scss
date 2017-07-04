@@ -51,7 +51,7 @@ page-shop-1{
               height: 60px;
               margin: 0 7px;
               &.active {
-                border: solid 1px $base_tangerine;
+                border: solid 1px $red;
               }
             }
           }
@@ -77,7 +77,7 @@ page-shop-1{
             padding: 0 15px;
             margin-bottom: 20px;
             background-color: $base_backgroundColor;
-            color: $base_tangerine;
+            color: $red;
           }
           & > .size {
             height: 40px;
@@ -94,13 +94,13 @@ page-shop-1{
               padding: 0 3px;
               margin-top: 5px;
               margin-right: 5px;
-              border: solid 1px $base_tangerine;
+              border: solid 1px $red;
               &.active {
-                background-color: $base_tangerine;
+                background-color: $red;
                 color: $white;
               }
               &:not(.active):hover {
-                color: $base_tangerine;
+                color: $red;
               }
             }
           }
@@ -124,7 +124,7 @@ page-shop-1{
                   border: solid 1px $base_borderColor;
                   &.active,
                   &:hover{
-                    border-color: $base_tangerine;
+                    border-color: $red;
                   }
                 }
               }
@@ -138,13 +138,13 @@ page-shop-1{
               padding: 0 3px;
               margin-top: 5px;
               margin-right: 5px;
-              border: solid 1px $base_tangerine;
+              border: solid 1px $red;
               &.active {
-                background-color: $base_tangerine;
+                background-color: $red;
                 color: $white;
               }
               &:not(.active):hover {
-                color: $base_tangerine;
+                color: $red;
               }
             }
           }
@@ -161,14 +161,14 @@ page-shop-1{
             font-size: 16px;
             padding: 0 20px;
             margin-bottom: 20px;
-            border: solid 1px $base_tangerine;
+            border: solid 1px $red;
             vertical-align: sub;
             color: $red;
             margin-left: 25px;
             margin-right: 10px;
           }
           & > span > .collectionColor {
-            color: $base_tangerine;
+            color: $red;
           }
         }
       }
@@ -183,7 +183,7 @@ page-shop-1{
           float: left;
           & > ul.classify {
             margin-bottom: 20px;
-            border: solid 1px $base_tangerine;
+            border: solid 1px $red;
             & > span {
               width: 100%;
               height: 42px;
@@ -193,7 +193,7 @@ page-shop-1{
               display: inline-block;
               text-align: left;
               color: $white;
-              background-color: $base_tangerine;
+              background-color: $red;
               border-bottom: solid 1.5px $base_borderColor;
             }
             & > li {
@@ -212,14 +212,14 @@ page-shop-1{
               }
               &.active>a,
               &:hover>a{
-                color: $base_tangerine;
+                color: $red;
               }
 
             }
           }
           & > ul.collect {
             margin-bottom: 20px;
-            border: solid 1px $base_tangerine;
+            border: solid 1px $red;
             & > span {
               width: 100%;
               height: 42px;
@@ -229,7 +229,7 @@ page-shop-1{
               display: inline-block;
               text-align: left;
               color: $white;
-              background-color: $base_tangerine;
+              background-color: $red;
               border-bottom: solid 1.5px $base_borderColor;
             }
             & > li{
@@ -250,13 +250,13 @@ page-shop-1{
                   height: 25px;
                   line-height: 25px;
                   font-size: 15px;
-                  color: $base_tangerine;
+                  color: $red;
                   position: absolute;
                   bottom: 1px;
-                  background-color: $img_hoverColor;
+                  background-color: $darkGray_transparent;
                 }
                 &:hover{
-                  border: solid 1px $base_tangerine;
+                  border: solid 1px $red;
                 }
               }
             }
@@ -268,14 +268,14 @@ page-shop-1{
           &>.header{
             height: 42px;
             background-color: $base_backgroundColor;
-            border-bottom: solid 2px $base_tangerine;
+            border-bottom: solid 2px $red;
             &>a{
               display: inline-block;
               height: 42px;
               line-height: 42px;
               padding: 0 30px;
               color: $white;
-              background-color: $base_tangerine;
+              background-color: $red;
               font-size: 18px;
             }
           }
@@ -285,7 +285,7 @@ page-shop-1{
               width: 100%;
               overflow: hidden;
               padding-bottom: 10px;
-              border-bottom: dashed 1px $title_border;
+              border-bottom: dashed 1px $title_borderColor;
               &>li{
                 width: 25%;
                 float:left;

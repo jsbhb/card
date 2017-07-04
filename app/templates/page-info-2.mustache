@@ -1,27 +1,33 @@
 <div class="page-info-content">
     <div class="header">
-        {{#INFO}}
+        {{#RESPONSEDATA}}
             <div class="title">{{popularizeName}}</div>
-            <div class="list">
-                {{#each popularizeList}}
-                    {{#each items}}
-                        <a href="{{.}}">{{@key}}</a>
+            {{#if popularizeList}}
+                <div class="list">
+                    {{#each popularizeList}}
+                        {{#each items}}
+                            <a href="{{.}}">{{@key}}</a>
+                        {{/each}}
                     {{/each}}
-                {{/each}}
-            </div>
-        {{/INFO}}
+                </div>
+            {{else}}
+                <div class="more">
+                    <a href="javascript:void(0)" toSearchShop={{popularizeName}}>更多商品<span>>></span></a>
+                </div>
+            {{/if}}
+        {{/RESPONSEDATA}}
     </div>
     <div class="body">
         <div class="content">
-            {{#each INFO.RESPONSEDATA.modelList}}
-                {{#isShow @index 9}}
+            {{#each RESPONSEDATA.modelList}}
+                {{#setRenderRange @index 9}}
                     {{#isFirst @index}}
-                        <a class="shop big" productId="{{productId}}"  href="/app/webpage/company2.html">
+                        <a class="shop big">
                             <img src="{{getImgUrl picPath}}"/>
                         </a>
                     {{/isFirst}}
                     {{#notFirst @index}}
-                        <a class="shop small" productId="{{productId}}" href="/app/webpage/shop2.html">
+                        <a class="shop small" href="/app/webpage/shop.html?memberId= &commodityId={{productId}}" target="_blank">
                             <div class="shopImg">
                                 <img src="{{getImgUrl picPath}}"/>
                             </div>
@@ -29,11 +35,11 @@
                                 <span class="description">
                                     {{description}}
                                 </span>
-                                <span class="price">{{parsefloat price}}</span>
+                                <span class="price">￥{{format_Money price}}</span>
                             </div>
                         </a>
                     {{/notFirst}}
-                {{/isShow}}
+                {{/setRenderRange}}
             {{/each}}
         </div>
     </div>

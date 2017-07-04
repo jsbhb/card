@@ -8,8 +8,12 @@ define([
     "bower.jquery",
     "bower.underscore",
     "bower.bootstrap.min",
-    "config.util",
+    "bower.can",
+    "bower.dotdotdot.min",
+    "widget.common",
+    "widget.scrollMonitor",
     "config.helper",
+    "comm.collect",
     "control.page.top.1",
     "control.page.header.1",
     "control.page.nav.1",
@@ -19,71 +23,78 @@ define([
     "bower.css!css.bootstrap.min",
     "bower.css!css.uFont",
 ], function(
-    $, _, bootstrap, util, helper,
+    $, _, bootstrap, can, dot, common, scrollMonitor, helper, comm,
     controlPageTop1,
     controlPageHeader1,
     controlPageNav1,
     controlCompany1,
     controlPageFooter1){
 
-    var CITY_POPULARIZE = { localCity: "浙江宁波" };
-    var memberid = util.getUrlParam("memberid");
 
-    var C_SHORT =         "SHORT";
-    var E_PAGE_TOP =      $("<div class='load-pageTop'></div>");
-    var E_PAGE_HEADER =   $("<div class='load-pageHeader'></div>");
-    var E_PAGE_NAV =      $("<div class='load-pageNav'></div>");
-    var E_PAGE_BODY =     $("<div class='load-pageBody' style='min-height:375px'></div>");
-    var E_PAGE_FOOTER =   $("<div class='load-pageFooter'></div>");
-
-    var E_PAGE_COMPANY1 =   $("<div class='load-pageCompany1'></div>");
+    /** @description:  新建元素
+     */
+    var C_SHORT =     "SHORT";
+    var E_TOP =       $("<div id='load-pageTop'></div>");
+    var E_HEADER =    $("<div id='load-pageHeader'></div>");
+    var E_NAV =       $("<div id='load-pageNav'></div>");
+    var E_BODY =      $("<div id='load-pageBody' style='min-height:450px'></div>");
+    var E_FOOTER =    $("<div id='load-pageFooter'></div>");
+    var E_COMPANY =   $("<div id='load-pageCompany'></div>");
 
     $("body")
         .addClass(C_SHORT)
-        .append(E_PAGE_TOP)
-        .append(E_PAGE_HEADER)
-        .append(E_PAGE_NAV)
-        .append(E_PAGE_BODY)
-        .append(E_PAGE_FOOTER);
+        .append(E_TOP)
+        .append(E_HEADER)
+        .append(E_NAV)
+        .append(E_BODY)
+        .append(E_FOOTER);
 
-    $("body")
-        .find($(E_PAGE_BODY))
-        .append(E_PAGE_COMPANY1);
+    $(E_BODY)
+        .append(E_COMPANY);
 
 
-    //生成页面top部分
-    new controlPageTop1(".load-pageTop",{
-        responseData: CITY_POPULARIZE,
+
+    /** @description:  设定数据初始值 --> 获取数据（异步） --> 各模块重新渲染模板数据
+     */
+    var searchCont =          "";
+    var memberId =            common.getUrlParam("memberId");
+    var topResponseData =     { localCity: common.getRegion().localCity };
+    var companyRequestData = { queryCompany:{}, queryShop:{} };
+
+    if(memberId){
+        companyRequestData.queryCompany.id = memberId;
+        companyRequestData.queryShop.memberId = memberId;
+    }
+
+
+
+    /** @description:  加载模块
+     */
+    var top = new controlPageTop1("#load-pageTop",{
+        responseData: topResponseData
     });
-
-
-    //生成页面header部分
-    new controlPageHeader1(".load-pageHeader",{
+    var header = new controlPageHeader1("#load-pageHeader",{
         config: {
-            SEARCH_TYPE: 1,
-            SEARCH_COMPANY: "企业"
+            searchCont: searchCont,
+            SEARCH_List:[
+                { type: 1, name: "企业", active: "active" },
+                { type: 2, name: "商品", active: null }
+            ]
         }
     });
-
-
-    //生成页面nav部分
-    new controlPageNav1(".load-pageNav",{
-        config:{
-            SEARCHCOMPANY: "active",
-            BORDER: "border"
-        }
+    var nav = new controlPageNav1("#load-pageNav",{
+        config:{ border: "border" }
     });
-
-
-    //生成页面company部分
-    new controlCompany1(".load-pageCompany1",{
-        urlData: {
-            "memberid": memberid,
-        }
+    var company = new controlCompany1("#load-pageCompany",{
+        config: { searchCont: searchCont },
+        requestData: companyRequestData
     });
+    var footer = new controlPageFooter1("#load-pageFooter");
 
 
-    //生成页面footer部分
-    new controlPageFooter1(".load-pageFooter");
 
-})
+    /** @description:  绑定事件（模块交互、页面交互）
+     */
+
+
+});
