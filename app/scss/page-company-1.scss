@@ -9,7 +9,7 @@ page-company-1{
   @include page;
   &>.page-company-content{
     @include pageContent(auto,19px,12px,$base_color);
-    @at-root .SHORT &{
+    @at-root .short &{
       max-width: none
     }
     .companyHeader{

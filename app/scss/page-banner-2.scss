@@ -11,7 +11,7 @@ page-banner-2{
   &>.page-banner-content{
     @include pageContent(550px,19px,12px,$base_color);
     max-width: none;
-    @at-root .SHORT &{
+    @at-root .short &{
       max-width: none;
     }
     margin-bottom: 50px;

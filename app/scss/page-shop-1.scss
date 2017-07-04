@@ -9,7 +9,7 @@ page-shop-1{
   @include page;
   &>.page-shop-content{
     @include pageContent(auto,19px,12px,$base_color);
-    @at-root .SHORT &{
+    @at-root .short &{
       max-width: none;
     }
     .maxWidth {

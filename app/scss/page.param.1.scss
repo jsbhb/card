@@ -67,7 +67,7 @@ $pagination_searchText_focusBorderColor: #ff4200;
   width: 100%;
   min-width:1390px;
   display: block;
-  @at-root .SHORT &{
+  @at-root .short &{
     width: 100%;
     min-width:1200px;
     display: block;
@@ -82,7 +82,7 @@ $pagination_searchText_focusBorderColor: #ff4200;
   font-size: $fontSize;
   color: $color;
   position: relative;
-  @at-root .SHORT &{
+  @at-root .short &{
     max-width:1200px;
   }
 }

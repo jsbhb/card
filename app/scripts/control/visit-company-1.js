@@ -33,7 +33,7 @@ define([
 
     /** @description:  新建页面元素
      */
-    var C_SHORT =     "SHORT";
+    var C_SHORT =     "short";
     var E_TOP =       $("<div id='load-pageTop'></div>");
     var E_HEADER =    $("<div id='load-pageHeader'></div>");
     var E_NAV =       $("<div id='load-pageNav'></div>");
