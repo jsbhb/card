@@ -11,8 +11,7 @@ define([
     "widget.common",
     "config.render",
     "control.page.pagination.1",
-    "component.page.searchShop.1",
-    "bower.css!css.page.searchShop.1",
+    "component.page.searchShop.1"
 ], function($, _, can, common, Render, controlPagePagination1){
 
     return Render.extend({

@@ -10,8 +10,7 @@ define([
     "bower.can",
     "widget.common",
     "config.render",
-    "component.page.nav.1",
-    "bower.css!css.page.nav.1",
+    "component.page.nav.1"
 ], function($, _, can, common, Render){
 
     return Render.extend({

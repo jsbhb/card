@@ -11,8 +11,7 @@ define([
     "widget.common",
     "config.render",
     "control.page.pagination.1",
-    "component.page.company.1",
-    "bower.css!css.page.company.1",
+    "component.page.company.1"
 ], function($, _, can, common, Render, controlPagePagination1){
 
     /** @description:  调用数据、模板组件, 并渲染输出

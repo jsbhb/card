@@ -8,7 +8,8 @@ define([
     "bower.jquery",
     "bower.underscore",
     "bower.can",
-    "widget.common"
+    "widget.common",
+    "bower.css!css.page.nav.1"
 ], function($, _, can, common){
 
     /** @description: 模板组件
