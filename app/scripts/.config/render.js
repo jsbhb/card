@@ -28,7 +28,7 @@ define([
         config:          {},
         templatesPath:   "",
         requestType:     null,
-        requestData:         {},
+        requestData:     {},
         renderBeforeFun: function(){},
         renderAfterFun:  function(){},
 
