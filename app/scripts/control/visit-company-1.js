@@ -31,7 +31,7 @@ define([
     controlPageFooter1){
 
 
-    /** @description:  新建页面元素
+    /** @description:  新建页面元素（确认需要哪些模块）
      */
     var C_SHORT =     "short";
     var E_TOP =       $("<div id='load-pageTop'></div>");
