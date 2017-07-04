@@ -54,7 +54,7 @@ define([
 
 
 
-    /** @description:  设定数据初始值 --> 获取数据, 各模块重新渲染数据（异步）
+    /** @description:  设定各模块的初始数据 --> 获取数据, 各模块重新渲染数据（异步）
      */
     var searchCont =             "";
     var commodityName =          common.getUrlParam("commodityName");
@@ -70,7 +70,7 @@ define([
 
 
 
-    /** @description:  加载页面模块（此时渲染数据为：初始值）
+    /** @description:  加载页面模块（此时渲染数据为：初始数据）
      */
     var top = new controlPageTop1("#load-pageTop",{
         responseData: topResponseData
