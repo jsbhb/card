@@ -102,9 +102,9 @@
             </div>
             <div class="inputGroup inlineBlock priceRegion">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="￥">
+                    <input type="text" class="form-control" placeholder="">
                     <span class="input-group-addon">-</span>
-                    <input type="text" class="form-control" placeholder="￥">
+                    <input type="text" class="form-control" placeholder="">
                 </div>
                 <a href="javascript:void(0)" class="btn priceRegionBtn">确定</a>
             </div>
@@ -128,7 +128,7 @@
                                 {{#if picture4}}<div class="box"><img src="{{getImgUrl picture4}}"></div>{{/if}}
                             </div>
                             <div class="showPrice">
-                                ￥{{format_Money price}}
+                                {{format_Money price}}
                             </div>
                             <div class="showText">
                                 <a href="/app/webpage/shop.html?memberId={{memberId}}&commodityId={{commodityId}}" target="_blank">

@@ -49,7 +49,7 @@
                         {{#setRenderRange @index 4}}
                             <a href="/app/webpage/shop.html?memberId={{memberId}}&commodityId={{commodityId}}" target="_blank">
                                 <img src="{{getImgUrl picture1}}">
-                                <div class="price">￥{{format_Money price}}</div>
+                                <div class="price">{{format_Money price}}</div>
                             </a>
                         {{/setRenderRange}}
                     {{/each}}
@@ -115,7 +115,7 @@
                                             </abbr>
                                         </div>
                                         <div class="price">
-                                            ￥{{format_Money price}}
+                                            {{format_Money price}}
                                         </div>
                                     </a>
                                 </li>

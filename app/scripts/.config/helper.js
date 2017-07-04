@@ -83,11 +83,11 @@ define([
 
 
     /**
-     *  @description 价格(保留两位小数)
+     *  @description 价格(使用￥符号, 保留两位小数)
      */
     can.mustache.registerHelper('format_Money', function(price, options) {
         var temp = typeof price=='function'? price(): price;
-        return can.mustache.safeString( (temp*1).toFixed(2) );
+        return can.mustache.safeString( "￥"+(temp*1).toFixed(2) );
     });
 
 

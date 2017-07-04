@@ -34,7 +34,7 @@
                     <div class="infos">
                         <div class="title">{{commodityName}}</div>
                         <div class="price"><span>价格：</span>
-                            <span class="priceColor">￥{{format_Money price}}</span>
+                            <span class="priceColor">{{format_Money price}}</span>
                         </div>
                         <div class="size"><span>尺码：</span>
                             <span class="inlineBlock active">{{size}}</span>
@@ -70,7 +70,7 @@
                           <li>
                               <a href="/app/webpage/shop.html?memberId={{memberId}}&commodityId={{commodityId}}" target="_blank">
                                  <img src="{{getImgUrl picture1}}">
-                                 <div class="price">￥{{format_Money price}}</div>
+                                 <div class="price">{{format_Money price}}</div>
                               </a>
                           </li>
                       {{/setRenderRange}}
