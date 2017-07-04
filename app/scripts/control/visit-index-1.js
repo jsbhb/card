@@ -167,7 +167,7 @@ define([
 
 
 
-    /** @description:  为模块绑定事件（模块间的交互、页面的跳转等）
+    /** @description:  为模块绑定事件（模块之间的交互、页面的跳转等）
      */
     $(headerFixed.element).add(header.element)
         .on("input propertychange", ".input-search", function(){
