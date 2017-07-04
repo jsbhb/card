@@ -56,7 +56,8 @@ define([
 
 
 
-    /** @description:  设定各模块的初始数据 --> 获取数据, 各模块重新渲染数据（异步）
+    /** @description:   1、获取数据(无需访问后台), 设定模块的初始数据
+     *                  2、如需访问后台数据, 异步查询并获取, 此后模块重新渲染数据
      */
     var searchCont =                "";
     var memberName =                common.getUrlParam("memberName");
