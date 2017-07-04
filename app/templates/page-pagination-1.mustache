@@ -3,7 +3,7 @@
         <li class="pagination_page">
             <a class="pagination_btn prevBtn">上一页</a>
         </li>
-        {{#RESPONSEDATA}}
+        {{#dataProcessing RESPONSEDATA}}
             {{#pageList}}
                 {{#if jumpBtn}}
                     <li class="pagination_page {{active}}">
@@ -16,7 +16,7 @@
                     </li>
                 {{/if}}
             {{/pageList}}
-        {{/RESPONSEDATA}}
+        {{/dataProcessing}}
         <li class="pagination_page">
             <a class="pagination_btn nextBtn">下一页</a>
         </li>

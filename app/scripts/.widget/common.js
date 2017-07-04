@@ -37,9 +37,13 @@ define([
             if(matchArr!= null){
                 newUrl= url.replace(matchArr[0], param);
             }else{
-                if(url.match("[\?]")){
+                if(url.match("\\?.")){
                     newUrl= url + "&" + param;
-                }else{
+                }
+                else if(url.match("\\?")){
+                    newUrl= url + param;
+                }
+                else{
                     newUrl= url + "?" + param;
                 }
             }

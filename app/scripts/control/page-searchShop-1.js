@@ -40,7 +40,7 @@ define([
                         this.options.renderData.RESPONSEDATA.attr(
                             "commoditySearchList", responseData.obj.commoditySearchList
                         );
-                        this.pagination.dataProcessing(responseData.obj.pagination);
+                        this.pagination.setRenderData(responseData.obj.pagination);
                     },this)
                 )
         },

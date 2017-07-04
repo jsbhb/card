@@ -63,8 +63,8 @@ define([
     var companyRequestData =  { queryCompany:{}, queryShop:{} };
 
     if(memberId){
-        companyRequestData.queryCompany.id = memberId;
-        companyRequestData.queryShop.memberId = memberId;
+        companyRequestData.queryCompany["id"] = memberId;
+        companyRequestData.queryShop["memberId"] = memberId;
     }
 
 

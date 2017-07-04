@@ -69,13 +69,13 @@ define([
 
     if(memberName){
         searchCont = memberName;
-        searchCompanyRequestData.querySearchCompany.currentPage = currentPage||1;
-        searchCompanyRequestData.querySearchCompany.memberName = memberName;
+        searchCompanyRequestData.querySearchCompany["currentPage"] = currentPage||1;
+        searchCompanyRequestData.querySearchCompany["memberName"] = memberName;
     }
     if(categoryEntryId){
         searchCont = categoryEntryName;
-        searchCompanyRequestData.querySearchCompany.currentPage = currentPage||1;
-        searchCompanyRequestData.querySearchCompany.entryList[0].categoryEntry = categoryEntryId;
+        searchCompanyRequestData.querySearchCompany["currentPage"] = currentPage||1;
+        searchCompanyRequestData.querySearchCompany["entryList[0].categoryEntry"] = categoryEntryId;
     }
 
 

@@ -64,10 +64,10 @@ define([
     var shopRequestData =  { queryShop:{} };
 
     if(memberId){
-        shopRequestData.queryShop.memberId = memberId;
+        shopRequestData.queryShop["memberId"] = memberId;
     }
     if(commodityId){
-        shopRequestData.queryShop.commodityId = commodityId;
+        shopRequestData.queryShop["commodityId"] = commodityId;
     }
 
 

@@ -65,8 +65,8 @@ define([
 
     if(commodityName){
         searchCont = commodityName;
-        searchShopRequestData.querySearchShop.currentPage = currentPage||1;
-        searchShopRequestData.querySearchShop.commoditys = commodityName;
+        searchShopRequestData.querySearchShop["currentPage"] = currentPage||1;
+        searchShopRequestData.querySearchShop["commoditys"] = commodityName;
     }
 
 

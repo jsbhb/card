@@ -39,7 +39,7 @@ define([
                             this.options.renderData.RESPONSEDATA.attr(
                                 "memberList", responseData.obj.memberList
                             );
-                            this.pagination.dataProcessing(responseData.obj.pagination);
+                            this.pagination.setRenderData(responseData.obj.pagination);
                         }
                     },this)
                 )
