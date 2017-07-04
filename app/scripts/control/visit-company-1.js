@@ -31,7 +31,7 @@ define([
     controlPageFooter1){
 
 
-    /** @description:  设定数据初始值 --> 获取数据, 各模块重新渲染数据（异步）
+    /** @description:  新建页面元素
      */
     var C_SHORT =     "SHORT";
     var E_TOP =       $("<div id='load-pageTop'></div>");
