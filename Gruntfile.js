@@ -100,8 +100,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
 
 
-    //加载任务代码：执行默认任务中的所有方法
-    grunt.registerTask('default', ['sass', 'imagemin', 'connect', 'watch']);
+    //执行任务：grunt执行默认任务中的所有方法
+    //注意事项：单独执行sass、imagemin任务, 以减少 grunt 启动项目的时间
+    grunt.registerTask('default', ['connect', 'watch']);
 
-}
+};
 
