@@ -16,12 +16,6 @@ define([
     return Render.extend({
         //子类扩展
         templatesPath: "<page-pagination-1></page-pagination-1>",
-        renderBeforeFun: function(){
-            this.options.parentRequestType = this.options.parentObj.requestType;
-            this.options.parentRequestData = this.options.parentObj.options.requestData;
-            this.options.parentResponseData = this.options.parentObj.options.renderData.RESPONSEDATA;
-            this.options.responseData = this.options.parentResponseData.pagination;
-        },
 
         //事件
         "li.pagination_page>a.pagination_btn click": function(node){
@@ -40,9 +34,7 @@ define([
                 currentPage = $node.attr("jumpBtn");
             }
             if(activePage != currentPage){
-                var requestType = { currentPage: currentPage };
-                $.extend(true, this.options.parentRequestData[this.options.parentRequestType], requestType);
-                this.options.parentObj.callback();
+                this.options.parentObj.callback(currentPage);
             }
         },
         "li.pagination_page>input.pagination_searchText keydown": function(node,e){

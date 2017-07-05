@@ -187,6 +187,7 @@ define([
             header_config.attr("searchCont", searchCont);
             headerFixed_config.attr("searchCont", searchCont);
         });
+
     $(headerFixed.element).add(header.element)
         .on("click", ".searchType>[searchType]", function(){
             var $node = $(this);
@@ -207,6 +208,22 @@ define([
                     map.attr("active", null);
                 }
             })
+        });
+
+    $(headerFixed.element).add(header.element)
+        .on("click", ".btn-search", function(){
+            var $node = $(this);
+            var type = $node.parent().parent().parent().find(".active[searchType]").attr("searchType");
+            var cont = $node.parent().parent().parent().find(".input-search").val().trim();
+            if(type == "1"){
+                if(location.pathname!= "/app/webpage/searchCompany.html"){
+                    location.href = encodeURI("/app/webpage/searchCompany.html?memberName="+cont);
+                }
+            }else if(type == "2"){
+                if(location.pathname!= "/app/webpage/searchShop.html"){
+                    location.href = encodeURI("/app/webpage/searchShop.html?commodityName="+cont);
+                }
+            }
         });
 
 });

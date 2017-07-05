@@ -7,6 +7,14 @@
  */
 page-pagination-1{
   @include page;
+  width: 100%;
+  min-width: 100%;
+  display: block;
+  @at-root .short &{
+    width: 100%;
+    min-width: 100%;
+    display: block;
+  }
   &>.page-pagination-content{
     @include pageContent(50px,19px,12px,$base_color);
     margin-top: 20px;

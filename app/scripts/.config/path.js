@@ -14,7 +14,7 @@ define([
         /**
          *  @description  url部分的路径
          */
-        urlHost: "http://192.168.199.195:8080/cardapi/1.0",
+        urlHost: "http://192.168.199.194:8080/cardapi/1.0",
 
 
         /**

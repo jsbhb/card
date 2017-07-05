@@ -66,7 +66,7 @@ define([
     if(commodityName){
         searchCont = commodityName;
         searchShopRequestData.querySearchShop["currentPage"] = currentPage||1;
-        searchShopRequestData.querySearchShop["commoditys"] = commodityName;
+        searchShopRequestData.querySearchShop["commodityName"] = commodityName;
     }
 
 
@@ -79,9 +79,9 @@ define([
     var header = new controlPageHeader1("#load-pageHeader",{
         config: {
             searchCont: searchCont,
-            SEARCH_List:[
-                { type: 1, name: "企业", active: "active" },
-                { type: 2, name: "商品", active: null }
+            searchList:[
+                { type: 1, name: "企业", active: null },
+                { type: 2, name: "商品", active: "active" }
             ]
         }
     });
@@ -98,6 +98,23 @@ define([
 
     /** @description:  为模块绑定事件（模块之间的交互、页面的跳转等）
      */
+    $(header.element)
+        .on("click", ".btn-search", function(){
+            var $node = $(this);
+            var type = $node.parent().parent().parent().find(".active[searchType]").attr("searchType");
+            var cont = $node.parent().parent().parent().find(".input-search").val().trim();
+            if(type == "1"){
+                if(location.pathname!= "/app/webpage/searchCompany.html"){
+                    location.href = encodeURI("/app/webpage/searchCompany.html?memberName="+cont);
+                }
+            }else if(type == "2"){
+                if(location.pathname!= "/app/webpage/searchShop.html"){
+                    location.href = encodeURI("/app/webpage/searchShop.html?commodityName="+cont);
+                }else{
+                    searchShop.toRender(null, searchShop.requestType);
+                }
+            }
+        });
 
 
 

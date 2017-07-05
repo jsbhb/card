@@ -28,9 +28,88 @@ define(function(){
                             "commodityName": "海信（Hisense）LED55EC780UC 55英寸 曲面4K智能平板电视 HDR动态显示 64位14核处理",
                             "brand": "海信（Hisense）",
                             "price": 4599,
+                            "priceList":
+                                [
+                                    {
+                                        "commodityId": null,
+                                        "quantityStart": 1,
+                                        "quantityEnd": 10,
+                                        "price": 10.2,
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    },
+                                    {
+                                        "commodityId": null,
+                                        "quantityStart": 11,
+                                        "quantityEnd": 100,
+                                        "price": 10.1,
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    },
+                                    {
+                                        "commodityId": null,
+                                        "quantityStart": 101,
+                                        "quantityEnd": null,
+                                        "price": 10,
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    }
+                                ],
                             "quantity": 100,
                             "color": "绿色",
+                            "colorList":
+                                [
+                                    {
+                                        "commodityId": null,
+                                        "color": "green",
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    },
+                                    {
+                                        "commodityId": null,
+                                        "color": "red",
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    },
+                                    {
+                                        "commodityId": null,
+                                        "color": "blue",
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    }
+                                ],
                             "size": "59英寸",
+                            "sizeList":
+                                [
+                                    {
+                                        "commodityId": null,
+                                        "size": "100x100",
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    },
+                                    {
+                                        "commodityId": null,
+                                        "size": "150x150",
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    }
+                                ],
                             "saleState": "10",
                             "goodFlg": 0,
                             "hotFlg": 0,
@@ -64,9 +143,88 @@ define(function(){
                             "commodityName": "海信（Hisense）LED55EC780UC 55英寸 曲面4K智能平板电视 HDR动态显示 64位14核处理",
                             "brand": "海信（Hisense）",
                             "price": 4599,
+                            "priceList":
+                                [
+                                    {
+                                        "commodityId": null,
+                                        "quantityStart": 1,
+                                        "quantityEnd": 10,
+                                        "price": 10.2,
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    },
+                                    {
+                                        "commodityId": null,
+                                        "quantityStart": 11,
+                                        "quantityEnd": 100,
+                                        "price": 10.1,
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    },
+                                    {
+                                        "commodityId": null,
+                                        "quantityStart": 101,
+                                        "quantityEnd": null,
+                                        "price": 10,
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    }
+                                ],
                             "quantity": 100,
                             "color": "黑色",
+                            "colorList":
+                                [
+                                    {
+                                        "commodityId": null,
+                                        "color": "green",
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    },
+                                    {
+                                        "commodityId": null,
+                                        "color": "red",
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    },
+                                    {
+                                        "commodityId": null,
+                                        "color": "blue",
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    }
+                                ],
                             "size": "58英寸",
+                            "sizeList":
+                                [
+                                    {
+                                        "commodityId": null,
+                                        "size": "100x100",
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    },
+                                    {
+                                        "commodityId": null,
+                                        "size": "150x150",
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    }
+                                ],
                             "saleState": "10",
                             "goodFlg": 0,
                             "hotFlg": 0,
@@ -100,9 +258,88 @@ define(function(){
                             "commodityName": "海信（Hisense）LED55EC780UC 55英寸 曲面4K智能平板电视 HDR动态显示 64位14核处理",
                             "brand": "海信（Hisense）",
                             "price": 4599,
+                            "priceList":
+                                [
+                                    {
+                                        "commodityId": null,
+                                        "quantityStart": 1,
+                                        "quantityEnd": 10,
+                                        "price": 10.2,
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    },
+                                    {
+                                        "commodityId": null,
+                                        "quantityStart": 11,
+                                        "quantityEnd": 100,
+                                        "price": 10.1,
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    },
+                                    {
+                                        "commodityId": null,
+                                        "quantityStart": 101,
+                                        "quantityEnd": null,
+                                        "price": 10,
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    }
+                                ],
                             "quantity": 100,
                             "color": "白色",
+                            "colorList":
+                                [
+                                    {
+                                        "commodityId": null,
+                                        "color": "green",
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    },
+                                    {
+                                        "commodityId": null,
+                                        "color": "red",
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    },
+                                    {
+                                        "commodityId": null,
+                                        "color": "blue",
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    }
+                                ],
                             "size": "57英寸",
+                            "sizeList":
+                                [
+                                    {
+                                        "commodityId": null,
+                                        "size": "100x100",
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    },
+                                    {
+                                        "commodityId": null,
+                                        "size": "150x150",
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    }
+                                ],
                             "saleState": "10",
                             "goodFlg": 0,
                             "hotFlg": 0,
@@ -136,9 +373,88 @@ define(function(){
                             "commodityName": "海信（Hisense）LED55EC780UC 55英寸 曲面4K智能平板电视 HDR动态显示 64位14核处理",
                             "brand": "海信（Hisense）",
                             "price": 4599,
+                            "priceList":
+                                [
+                                    {
+                                        "commodityId": null,
+                                        "quantityStart": 1,
+                                        "quantityEnd": 10,
+                                        "price": 10.2,
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    },
+                                    {
+                                        "commodityId": null,
+                                        "quantityStart": 11,
+                                        "quantityEnd": 100,
+                                        "price": 10.1,
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    },
+                                    {
+                                        "commodityId": null,
+                                        "quantityStart": 101,
+                                        "quantityEnd": null,
+                                        "price": 10,
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    }
+                                ],
                             "quantity": 100,
                             "color": "金色",
+                            "colorList":
+                                [
+                                    {
+                                        "commodityId": null,
+                                        "color": "green",
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    },
+                                    {
+                                        "commodityId": null,
+                                        "color": "red",
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    },
+                                    {
+                                        "commodityId": null,
+                                        "color": "blue",
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    }
+                                ],
                             "size": "55英寸",
+                            "sizeList":
+                                [
+                                    {
+                                        "commodityId": null,
+                                        "size": "100x100",
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    },
+                                    {
+                                        "commodityId": null,
+                                        "size": "150x150",
+                                        "createTime": null,
+                                        "createOpt": null,
+                                        "updateTime": null,
+                                        "updateOpt": null
+                                    }
+                                ],
                             "saleState": "10",
                             "goodFlg": 1,
                             "hotFlg": 0,
@@ -312,6 +628,15 @@ define(function(){
                             "returnGoods": 0
                         }
                     ],
+                "pagination":
+                    {
+                        "numPerPage": 20,
+                        "currentPage": 1,
+                        "startRow": 0,
+                        "endRow": 20,
+                        "totalPages": 1,
+                        "totalRows": 1
+                    },
                 "commodityCategory3":
                     [
                         "空气净化器",

@@ -20,7 +20,7 @@ define([
         var reg = new RegExp("^http");
         if(reg.test(tempImgName)){
             return can.mustache.safeString( tempImgName );
-        }else{
+        }else if(tempImgName){
             return tempSuffix?
                 can.mustache.safeString( path.imgPrefix + tempImgName + "." + tempSuffix ):
                 can.mustache.safeString( path.imgPrefix + tempImgName );
@@ -29,26 +29,31 @@ define([
 
 
     /**
-     *  @description 将string类型的字符串的空白转换为"/"
-     */
-    can.mustache.registerHelper('convertStr', function(str, type) {
-        var tempStr = typeof str=='function'? str().trim(): str.trim();
-        var tempType =  typeof type=='function'? type(): typeof type=='string'? type: null;
-        return tempType?
-            can.mustache.safeString( tempStr.replace(/\s+/gi,tempType) ):
-            can.mustache.safeString( tempStr.replace(/\s+/gi,"/") );
-    });
-
-
-    /**
      *  @description 限制渲染范围
      */
     can.mustache.registerHelper(
         'setRenderRange', function(index, count, options) {
-            var bool = typeof index=='function'? index()>count-1: index>count-1;
-            return bool? options.inverse(options.context): options.fn(options.context);
+            var index = typeof index=='function'? index(): index;
+            if(index && count){
+                var bool = index>count-1;
+                return bool? options.inverse(options.context): options.fn(options.context);
+            }
         }
     );
+
+
+    /**
+     *  @description 将string类型的字符串的空白转换为"/"
+     */
+    can.mustache.registerHelper('convertStr', function(str, type) {
+        var tempStr = typeof str=='function'? str(): str;
+        var tempType = typeof type=='function'? type(): typeof type=='string'? type: null;
+        if(tempStr){
+            return tempType?
+                can.mustache.safeString( tempStr.trim().replace(/\s+/gi,tempType) ):
+                can.mustache.safeString( tempStr.trim().replace(/\s+/gi,"/")) ;
+        }
+    });
 
 
     /**
@@ -56,7 +61,10 @@ define([
      */
     can.mustache.registerHelper(
         'zIndexDesc', function(index, zIndexVal, options) {
-            return typeof index=='function'? (zIndexVal-index()*1): (zIndexVal-index*1);
+            var index = typeof index=='function'? index(): index;
+            if(index && zIndexVal){
+                return zIndexVal-index*1;
+            }
         }
     );
 
@@ -66,7 +74,10 @@ define([
      */
     can.mustache.registerHelper(
         'zIndexAsc', function(index, zIndexVal, options) {
-            return typeof index=='function'? (zIndexVal-index()*1): (zIndexVal+index*1);
+            var index = typeof index=='function'? index(): index;
+            if(index && zIndexVal){
+                return zIndexVal+index*1;
+            }
         }
     );
 
@@ -76,8 +87,10 @@ define([
      */
     can.mustache.registerHelper(
         'addElementClass', function(index, number, className, options) {
-            var bool = typeof index=='function'? index()==number: index==number;
-            return bool? className: null;
+            var index = typeof index=='function'? index(): index;
+            if(index && number && className){
+                return index == number? className: null;
+            }
         }
     );
 
@@ -87,7 +100,9 @@ define([
      */
     can.mustache.registerHelper('format_Money', function(price, options) {
         var temp = typeof price=='function'? price(): price;
-        return can.mustache.safeString( "￥"+(temp*1).toFixed(2) );
+        if(temp){
+            return can.mustache.safeString( "￥"+(temp*1).toFixed(2) );
+        }
     });
 
 

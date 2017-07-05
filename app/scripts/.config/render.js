@@ -23,7 +23,7 @@ define([
          * @requestType:      请求类型（用于子类扩展）
          * @requestData:      请求参数（用于子类扩展）
          * @renderBeforeFun:  渲染前事件（用于子类扩展）
-         * @renderAfterFun:   渲染后的事件（用于子类扩展）
+         * @renderAfterFun:   渲染后事件（用于子类扩展）
          */
         config:          {},
         templatesPath:   "",
@@ -33,32 +33,35 @@ define([
         renderAfterFun:  function(){},
 
 
+
         /**
-         * @description 发起请求 --> 构建渲染数据 --> 渲染模板 --> 处理渲染后事件
+         * @description  1、若type为 responseData： 构建渲染数据 --> 渲染模板
+         *               2、若type为 requestType：  向后台发起请求 --> 构建渲染数据 --> 渲染模板
          */
-        toRender: function(responseData,requestType){
-            if(responseData){
-                this.setRenderData(responseData);
-                this.render();
-                this.renderAfterFun();
-            }else{
-                if(requestType!=null && typeof requestType=="object"){
-                    requestType = requestType[0];
-                }
-                can.when(this.sendRequest(requestType))
+        toRender: function(){
+            var deferred = can.Deferred();
+            if(this.options.responseData){
+                this.setRenderData(this.options.responseData);
+                this.render(deferred);
+            }
+            else if(this.options.requestType){
+                can.when(this.sendRequest(this.options.requestType))
                     .done(
                         $.proxy(function(responseData){
                             if(responseData && responseData.success){
                                 this.setRenderData(responseData.obj);
-                            }else{
-                                this.setRenderData(responseData);
+                                this.render(deferred);
                             }
-                            this.render();
-                            this.renderAfterFun();
                         },this)
                     )
             }
+            else{
+                this.setRenderData();
+                this.render(deferred);
+            }
+            return deferred;
         },
+
 
 
         /**
@@ -72,32 +75,37 @@ define([
                 return comm[type](this.options.requestData[type]||{});
             }
             else{
-                can.Deferred().reject();
+                return can.Deferred().reject();
             }
         },
+
 
 
         /**
          * @description 构建渲染数据
          */
-        setRenderData: function(responseData){
-            if(typeof this.options.config=="object"){
-                this.options.renderData.attr("CONFIG", this.options.config);
-            }
-            if(typeof responseData == "object"){
-                this.options.renderData.attr("RESPONSEDATA", responseData);
-            }
+        setRenderData: function(renderData, nodes){
+            var renderNode = this.options.renderData;
+            nodes? nodes.unshift(["RESPONSEDATA"]): nodes = ["RESPONSEDATA"];
+            this.options.renderData.attr("CONFIG", this.options.config);
+            $.each(nodes, function(){
+                if(nodes.length>1){ renderNode = renderNode[nodes.shift()]; }
+                if(nodes.length==1){ renderNode.attr(nodes[0], renderData); }
+            })
         },
+
 
 
         /**
          * @description 渲染模板
          */
-        render: function(){
+        render: function(deferred){
             this.element.html(
                 can.mustache(this.options.templates)(this.options.renderData)
             );
+            deferred.resolve();
         },
+
 
 
         /**
@@ -110,6 +118,7 @@ define([
          *   this.options.renderData：    渲染模板的数据（通过 this.setRenderData()进行构建）
          *   this.renderBeforeFun:       渲染前的事件
          *   this.toRender：             发起请求 --> 构建渲染数据 --> 渲染模板
+         *   this.renderAfterFun:        渲染后的事件
          */
         init: function(){
             this.options.config = $.extend(true, {}, this.config, this.options.config);
@@ -119,7 +128,10 @@ define([
             this.options.responseData = this.options.responseData || null;
             this.options.renderData = new can.Model({ CONFIG:{}, RESPONSEDATA:{} });
             this.renderBeforeFun();
-            this.toRender(this.options.responseData,this.options.requestType);
+            can.when(this.toRender())
+                .done(
+                    $.proxy(function(){ this.renderAfterFun() }, this)
+                );
         }
     })
 
