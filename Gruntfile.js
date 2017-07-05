@@ -22,21 +22,6 @@ module.exports = function(grunt) {
         // 项目默认配置
         config: config,
 
-        // 服务器参数设置
-        connect: {
-            options: {
-                hostname: '127.0.0.1',
-                port: 8000,
-                livereload: 35730
-            },
-            server: {
-                options: {
-                    open: true,
-                    base: './'
-                }
-            }
-        },
-
         //编译scss文件
         sass:{
             output : {
@@ -73,6 +58,21 @@ module.exports = function(grunt) {
             }
         },
 
+        // 服务器参数设置
+        connect: {
+            options: {
+                hostname: '127.0.0.1',
+                port: 8000,
+                livereload: 35730
+            },
+            server: {
+                options: {
+                    open: true,
+                    base: './'
+                }
+            }
+        },
+
         //监听文件变动
         watch: {
             watchsass : {
@@ -101,7 +101,7 @@ module.exports = function(grunt) {
 
 
     //加载任务代码：执行默认任务中的所有方法
-    grunt.registerTask('default', ['connect', 'sass', 'imagemin', 'watch']);
+    grunt.registerTask('default', ['sass', 'imagemin', 'connect', 'watch']);
 
 }
 
