@@ -66,8 +66,8 @@ module.exports = function(grunt) {
                     {
                         expand: true,
                         cwd: '<%=config.images%>',
-                        src: ['**/*.{png,jpg,jpeg}'], // 优化 img 目录下所有 png/jpg/jpeg 图片
-                        dest: '<%=config.images%>' // 优化后的图片保存位置，覆盖旧图片，并且不作提示
+                        src: ['**/*.{png,jpg,jpeg,gif,PNG,JPG,JPEG,GIF}'],
+                        dest: '<%=config.images%>'
                     }
                 ]
             }
