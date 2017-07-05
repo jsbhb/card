@@ -1,5 +1,5 @@
-//grunt 全部包裹在modele.exports = function(grunt){}中
 
+//grunt 全部包裹在 modele.exports = function(grunt){} 中
 module.exports = function(grunt) {
 
     //路径配置
@@ -43,23 +43,33 @@ module.exports = function(grunt) {
                 options: {
                     style: 'expanded'
                 },
-                files: {
-                    '<%=config.css%>/page-top-1.css':               '<%=config.scss%>/page-top-1.scss',
-                    '<%=config.css%>/page-header-1.css':            '<%=config.scss%>/page-header-1.scss',
-                    '<%=config.css%>/page-headerFixed-1.css':       '<%=config.scss%>/page-headerFixed-1.scss',
-                    '<%=config.css%>/page-nav-1.css':               '<%=config.scss%>/page-nav-1.scss',
-                    '<%=config.css%>/page-banner-1.css':            '<%=config.scss%>/page-banner-1.scss',
-                    '<%=config.css%>/page-banner-2.css':            '<%=config.scss%>/page-banner-2.scss',
-                    '<%=config.css%>/page-footer-1.css':            '<%=config.scss%>/page-footer-1.scss',
-                    '<%=config.css%>/page-sideFixed-1.css':         '<%=config.scss%>/page-sideFixed-1.scss',
-                    '<%=config.css%>/page-info-1.css':              '<%=config.scss%>/page-info-1.scss',
-                    '<%=config.css%>/page-info-2.css':              '<%=config.scss%>/page-info-2.scss',
-                    '<%=config.css%>/page-searchCompany-1.css':     '<%=config.scss%>/page-searchCompany-1.scss',
-                    '<%=config.css%>/page-searchShop-1.css':        '<%=config.scss%>/page-searchShop-1.scss',
-                    '<%=config.css%>/page-shop-1.css':              '<%=config.scss%>/page-shop-1.scss',
-                    '<%=config.css%>/page-company-1.css':           '<%=config.scss%>/page-company-1.scss',
-                    '<%=config.css%>/page-pagination-1.css':        '<%=config.scss%>/page-pagination-1.scss',
-                }
+                files: [
+                    {
+                        expand: true,
+                        cwd: '<%=config.scss%>',
+                        src: ['**/*.scss'],
+                        dest: '<%=config.css%>',
+                        extDot: "last",
+                        ext:  '.css'
+                    }
+                ]
+            }
+        },
+
+        //压缩图片大小
+        imagemin: {
+            dist: {
+                options: {
+                    optimizationLevel: 3 //定义 PNG 图片优化水平
+                },
+                files: [
+                    {
+                        expand: true,
+                        cwd: '<%=config.images%>',
+                        src: ['**/*.{png,jpg,jpeg}'], // 优化 img 目录下所有 png/jpg/jpeg 图片
+                        dest: '<%=config.images%>' // 优化后的图片保存位置，覆盖旧图片，并且不作提示
+                    }
+                ]
             }
         },
 
@@ -84,13 +94,14 @@ module.exports = function(grunt) {
     });
 
     //插件加载代码
-    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
 
     //加载任务代码：执行默认任务中的所有方法
-    grunt.registerTask('default', ['sass','connect','watch']);
+    grunt.registerTask('default', ['connect', 'sass', 'imagemin', 'watch']);
 
 }
 
