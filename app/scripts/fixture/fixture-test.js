@@ -72,7 +72,7 @@ define([
 
     options['GET '+path.urlHost+'/{memberId}/commoditys'] = function(requestData){
         var responseData = {};
-        $.extend(true, responseData, fixtureData.getDataShop1)
+        $.extend(true, responseData, fixtureData.getDataShop1);
         console.log("--- comm_shop: requestData ---");
         console.log(requestData);
         console.log("--- comm_shop: responseData ---");
