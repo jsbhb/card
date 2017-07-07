@@ -36,7 +36,7 @@ define([
 
         /**
          * @description  1、若 responseData 存在：  构建渲染数据 --> 渲染模板
-         *               2、若 responseData 没有：  根据 requestType 获取 responseData --> 构建渲染数据 --> 渲染模板
+         *               2、若 responseData 没有：  根据requestType, 获取responseData --> 构建渲染数据 --> 渲染模板
          */
         toRender: function(){
             var deferred = can.Deferred();
