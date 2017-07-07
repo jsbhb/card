@@ -21,16 +21,16 @@
         <div class="content">
             <div class="content-logoImg">
                 {{#each RESPONSEDATA.MEMBER_PRODUCT_POPULARIZE.modelList}}
-                    {{#isShow @index 5}}
+                    {{#setRenderRange @index 5}}
                         <span index="{{../@index}}" class="{{isFirst ../@index "active"}}">
                                <img src="{{getImgUrl logoPath}}"/>
                             </span>
-                    {{/isShow}}
+                    {{/setRenderRange}}
                 {{/each}}
             </div>
             <div class="content-showInfo">
                 {{#each RESPONSEDATA.MEMBER_PRODUCT_POPULARIZE.modelList}}
-                    {{#isShow @index 5}}
+                    {{#setRenderRange @index 5}}
                         <ul index="{{../@index}}">
                             <li class="infoBanner" style="z-index:99">
                                 <a href="/app/webpage/company.html?memberId={{memberId}}" target="_blank" index="0" >
@@ -82,7 +82,7 @@
                                 {{/setRenderRange}}
                             {{/each}}
                         </ul>
-                    {{/isShow}}
+                    {{/setRenderRange}}
                 {{/each}}
             </div>
         </div>

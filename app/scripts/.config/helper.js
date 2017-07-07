@@ -18,7 +18,7 @@ define([
         var tempImgName = typeof imgName=='function'? imgName(): imgName;
         var tempSuffix =  typeof suffix=='function'? suffix(): typeof suffix=='string'? suffix: null;
         var reg = new RegExp("^http");
-        if(reg.test(tempImgName)){
+        if(tempImgName && reg.test(tempImgName)){
             return can.mustache.safeString( tempImgName );
         }else if(tempImgName){
             return tempSuffix?
@@ -34,7 +34,7 @@ define([
     can.mustache.registerHelper(
         'setRenderRange', function(index, count, options) {
             var index = typeof index=='function'? index(): index;
-            if(index && count){
+            if((index||index == 0) && count){
                 var bool = index>count-1;
                 return bool? options.inverse(options.context): options.fn(options.context);
             }
@@ -48,7 +48,7 @@ define([
     can.mustache.registerHelper('convertStr', function(str, type) {
         var tempStr = typeof str=='function'? str(): str;
         var tempType = typeof type=='function'? type(): typeof type=='string'? type: null;
-        if(tempStr){
+        if(tempStr||tempStr == 0){
             return tempType?
                 can.mustache.safeString( tempStr.trim().replace(/\s+/gi,tempType) ):
                 can.mustache.safeString( tempStr.trim().replace(/\s+/gi,"/")) ;
@@ -62,7 +62,7 @@ define([
     can.mustache.registerHelper(
         'zIndexDesc', function(index, zIndexVal, options) {
             var index = typeof index=='function'? index(): index;
-            if(index && zIndexVal){
+            if((index||index == 0) && zIndexVal){
                 return zIndexVal-index*1;
             }
         }
@@ -75,7 +75,7 @@ define([
     can.mustache.registerHelper(
         'zIndexAsc', function(index, zIndexVal, options) {
             var index = typeof index=='function'? index(): index;
-            if(index && zIndexVal){
+            if((index||index == 0) && zIndexVal){
                 return zIndexVal+index*1;
             }
         }
@@ -88,7 +88,7 @@ define([
     can.mustache.registerHelper(
         'addElementClass', function(index, number, className, options) {
             var index = typeof index=='function'? index(): index;
-            if(index && number && className){
+            if((index||index == 0) && (number||number == 0) && className){
                 return index == number? className: null;
             }
         }
@@ -100,7 +100,7 @@ define([
      */
     can.mustache.registerHelper('format_Money', function(price, options) {
         var temp = typeof price=='function'? price(): price;
-        if(temp){
+        if(temp||temp == 0){
             return can.mustache.safeString( "￥"+(temp*1).toFixed(2) );
         }
     });

@@ -25,14 +25,6 @@ define([
                     return null;
                 }
             },
-            isShow: function(val, count, options){
-                if(val()>count-1){
-                    return options.inverse(options.context);
-                }
-                else{
-                    return options.fn(options.context);
-                }
-            },
             setCSS_Width: function(count, options){
                 return typeof count == "function"? count().length*120+"px": count.length*120+"px";
             }
