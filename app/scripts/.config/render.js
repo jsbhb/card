@@ -39,27 +39,24 @@ define([
          *               2、若 responseData 没有：  根据requestType, 获取responseData --> 构建渲染数据 --> 渲染模板
          */
         toRender: function(){
-            var deferred = can.Deferred();
             if(this.options.responseData){
                 this.setRenderData(this.options.responseData);
-                this.render(deferred);
+                this.render();
             }
-            else if(this.options.requestType){
+            else{
                 can.when(this.sendRequest(this.options.requestType))
                     .done(
                         $.proxy(function(responseData){
                             if(responseData && responseData.success){
                                 this.setRenderData(responseData.obj);
-                                this.render(deferred);
+                                this.render();
+                            }else{
+                                this.setRenderData();
+                                this.render();
                             }
                         },this)
                     )
             }
-            else{
-                this.setRenderData();
-                this.render(deferred);
-            }
-            return deferred;
         },
 
 
@@ -89,24 +86,22 @@ define([
             nodes? nodes.unshift(["RESPONSEDATA"]): nodes = ["RESPONSEDATA"];
             this.options.renderData.attr("CONFIG", this.options.config);
             $.each(nodes, function(){
-                if(nodes.length>1){ renderNode = renderNode[nodes.shift()]; }
-                if(nodes.length==1){ renderNode.attr(nodes[0], renderData); }
+                if(nodes.length>1){
+                    renderNode = renderNode[nodes.shift()];
+                }else if(renderData){
+                    renderNode.attr(nodes[0], renderData);
+                }
             })
         },
 
 
 
         /**
-         * @description 渲染模板
+         * @description 渲染模板 --> 渲染后的事件
          */
-        render: function(deferred){
-            this.element.html(
-                can.mustache(this.options.templates)(this.options.renderData)
-            );
-            deferred &&
-            typeof deferred == "object" &&
-            typeof deferred.resolve == "function" &&
-            deferred.resolve();
+        render: function(){
+            this.element.html(can.mustache(this.options.templates)(this.options.renderData));
+            this.renderAfterFun();
         },
 
 
@@ -121,7 +116,6 @@ define([
          *   this.options.renderData：    渲染模板的数据（通过 this.setRenderData()进行构建）
          *   this.renderBeforeFun:       渲染前的事件
          *   this.toRender：             发起请求（若response数据不存在） --> 构建渲染数据 --> 渲染模板
-         *   this.renderAfterFun:       渲染后的事件
          */
         init: function(){
             this.options.config = $.extend(true, {}, this.config, this.options.config);
@@ -131,10 +125,7 @@ define([
             this.options.responseData = this.options.responseData || null;
             this.options.renderData = new can.Model({ CONFIG:{}, RESPONSEDATA:{} });
             this.renderBeforeFun();
-            can.when(this.toRender())
-                .done(
-                    $.proxy(function(){ this.renderAfterFun() }, this)
-                );
+            this.toRender();
         }
     })
 
