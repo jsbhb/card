@@ -103,6 +103,9 @@ define([
             this.element.html(
                 can.mustache(this.options.templates)(this.options.renderData)
             );
+            deferred &&
+            typeof deferred == "object" &&
+            typeof deferred.resolve == "function" &&
             deferred.resolve();
         },
 
