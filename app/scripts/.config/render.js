@@ -20,8 +20,8 @@ define([
         /**
          * @config:           模板参数（用于子类扩展）
          * @templatesPath:    模板路径（用于子类扩展）
-         * @requestType:      请求类型（用于子类扩展）
-         * @requestData:      请求参数（用于子类扩展）
+         * @requestType:      向服务器发送的请求类别（用于子类扩展）
+         * @requestData:      向服务器发送的请求参数（用于子类扩展）
          * @renderBeforeFun:  渲染前事件（用于子类扩展）
          * @renderAfterFun:   渲染后事件（用于子类扩展）
          */
@@ -115,13 +115,13 @@ define([
          * @description 初始化
          *   this.options.config:         模板参数
          *   this.options.templates:      templates路径
-         *   this.options.requestType：   comm请求类别
-         *   this.options.requestData：   向服务器发送请求参数
+         *   this.options.requestType：   向服务器发送的请求类别
+         *   this.options.requestData：   向服务器发送的请求参数
          *   this.options.responseData：  response数据（若存在，则不再向服务器发送请求）
          *   this.options.renderData：    渲染模板的数据（通过 this.setRenderData()进行构建）
          *   this.renderBeforeFun:       渲染前的事件
-         *   this.toRender：             发起请求 --> 构建渲染数据 --> 渲染模板
-         *   this.renderAfterFun:        渲染后的事件
+         *   this.toRender：             发起请求（若response数据不存在） --> 构建渲染数据 --> 渲染模板
+         *   this.renderAfterFun:       渲染后的事件
          */
         init: function(){
             this.options.config = $.extend(true, {}, this.config, this.options.config);
