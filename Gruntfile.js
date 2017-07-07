@@ -34,7 +34,7 @@ module.exports = function(grunt) {
                         cwd: '<%=config.scss%>',
                         src: ['**/*.scss'],
                         dest: '<%=config.css%>',
-                        extDot: "last",
+                        extDot: 'last',
                         ext:  '.css'
                     }
                 ]
@@ -100,7 +100,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
 
 
-    //执行任务：grunt执行默认任务中的所有方法（注意：单独执行sass、imagemin任务, 以减少启动项目的时间）
+    //执行任务：grunt执行默认任务中的所有方法（注意：单独执行sass、imagemin任务, 以减少项目启动时间）
     grunt.registerTask('default', ['connect', 'watch']);
 
 };
