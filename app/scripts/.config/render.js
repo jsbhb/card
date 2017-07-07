@@ -84,7 +84,7 @@ define([
         setRenderData: function(renderData, nodes){
             var renderNode = this.options.renderData;
             nodes? nodes.unshift(["RESPONSEDATA"]): nodes = ["RESPONSEDATA"];
-            this.options.renderData.attr("CONFIG", this.options.config);
+            renderNode.attr("CONFIG", this.options.config);
             $.each(nodes, function(){
                 if(nodes.length>1){
                     renderNode = renderNode[nodes.shift()];
