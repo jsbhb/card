@@ -19,41 +19,43 @@ define([
     return Render.extend({
         //子类扩展
         templates: "<page-company-1></page-company-1>",
-        requestType: [
-            {type: "queryCompany", path: "RESPONSE", dynamic: true}
-        ],
+        requestType: ["queryCompany", "queryShop/queryShop"],
         requestData: {
             queryCompany: {},
-            queryShop: {}
+            queryShop: {
+                "numPerPage": 6,
+                "currentPage": 1
+            }
         },
-        renderAfterTime: 0,
-        renderBeforeFunc: function(){
-            can.when(this.sendRequest("queryShop"))
-                .done(
-                    $.proxy(function(responseData){
-                        console.log(123)
-                        if(responseData && responseData.success){
-                            this.setRenderData(responseData.obj, ["queryShop"]);
-                        }
-                        if(this.options.renderData.RESPONSE.pagination){
-                            this.pagination = new pagePagination1("page-company-1 .load-pagePagination",{
-                                config: { direction: "floatRight" },
-                                responseData: this.options.renderData.RESPONSE.queryShop.pagination,
-                                parentObj: this
-                            });
-                        }
-                    },this)
-                )
+        renderAfterFunc: function(){
+            var pagination = this.options.renderData.RESPONSE.queryShop.pagination;
+            if(pagination && pagination.totalPages>0){
+                this.pagination = new pagePagination1("page-company-1 #load-pagePagination",{
+                    config: { direction: "floatRight" },
+                    responseData: pagination || null,
+                    parentObj: this
+                });
+            }
         },
 
         //自定义方法
-        callback: function(){
+        callback: function(currentPage){
+            this.options.requestData.queryShop.currentPage = currentPage;
             can.when(this.sendRequest("queryShop"))
                 .done(
                     $.proxy(function(responseData){
                         if(responseData && responseData.success){
-                            this.setRenderData(responseData.obj.commoditySearchList, ["queryShop", "commoditySearchList"]);
-                            this.pagination.setRenderData(responseData.obj.pagination);
+                            this.setRenderData(
+                                responseData.obj.commoditySearchList, "queryShop/commoditySearchList"
+                            );
+                            var pagination = responseData.obj.pagination;
+                            if(pagination && pagination.totalPages>0){
+                                this.pagination = new pagePagination1("page-company-1 #load-pagePagination",{
+                                    config: { direction: "floatRight" },
+                                    responseData: pagination || null,
+                                    parentObj: this
+                                });
+                            }
                         }
                     },this)
                 )
@@ -75,8 +77,18 @@ define([
                 .done(
                     $.proxy(function(responseData){
                         if(responseData && responseData.success){
-                            this.setRenderData(responseData.obj.commoditySearchList, ["queryShop", "commoditySearchList"]);
-                        }
+                            this.setRenderData(
+                                responseData.obj.commoditySearchList, "queryShop/commoditySearchList"
+                            );
+                            var pagination = responseData.obj.pagination;
+                            if(pagination && pagination.totalPages>0){
+                                this.pagination = new pagePagination1("page-company-1 #load-pagePagination",{
+                                    config: { direction: "floatRight" },
+                                    responseData: pagination || null,
+                                    parentObj: this
+                                });
+                            }
+                         }
                     },this)
                 )
         },
@@ -105,8 +117,16 @@ define([
             can.when(this.sendRequest("queryShop"))
                 .done(
                     $.proxy(function(responseData){
-                        if(responseData && responseData.success){
-                            this.setRenderData(responseData.obj.commoditySearchList, ["queryShop", "commoditySearchList"]);
+                        this.setRenderData(
+                            responseData.obj.commoditySearchList, "queryShop/commoditySearchList"
+                        );
+                        var pagination = responseData.obj.pagination;
+                        if(pagination && pagination.totalPages>0){
+                            this.pagination = new pagePagination1("page-company-1 #load-pagePagination",{
+                                config: { direction: "floatRight" },
+                                responseData: pagination || null,
+                                parentObj: this
+                            });
                         }
                     },this)
                 )

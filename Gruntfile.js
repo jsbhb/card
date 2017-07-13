@@ -61,7 +61,7 @@ module.exports = function(grunt) {
         // 服务器参数设置
         connect: {
             options: {
-                hostname: '127.0.0.1',
+                hostname: '0.0.0.0',
                 port: 8000
             },
             server: {

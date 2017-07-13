@@ -150,14 +150,14 @@ page-searchcompany-1{
         }
         &>div:last-child{
           width: calc(100% - 110px);
-          min-height: 38px;
+          min-height: 43px;
           float: left;
           border-left: dashed 1px $base_borderColor;
           background-color: $white;
           overflow: hidden;
           &>div{
             width: 1140px;
-            min-height: 36px;
+            min-height: 43px;
             float: left;
             padding-left: 10px;
             &>a{

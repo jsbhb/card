@@ -219,7 +219,7 @@ define([
                 var $headerFixed = headerFixed.element;
                 var header_config = header.options.renderData.CONFIG;
                 var headerFixed_config = headerFixed.options.renderData.CONFIG;
-                if(searchCont!=""){
+                if(searchCont!==""){
                     $($header,$headerFixed).find(".placeholderIcon").css("display","none");
                 }
                 else{
@@ -238,7 +238,7 @@ define([
                 var header_config = header.options.renderData.CONFIG;
                 var headerFixed_config = headerFixed.options.renderData.CONFIG;
                 $.each(header_config.searchList, function(i, map){
-                    if(searchType === map.attr("type")){
+                    if(searchType == map.attr("type")){
                         map.attr("active", "active")
                     }
                     else{

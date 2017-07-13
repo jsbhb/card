@@ -46,21 +46,22 @@
                 <div class="pictrueTitle"> 企业相册 </div>
                 <div class="pictrueDescription">
                     {{#each RESPONSE.queryShop.memberGoodCommodityList}}
-                        {{#setRenderRange @index 4}}
-                            <a href="/app/webpage/shop.html?memberId={{memberId}}&commodityId={{commodityId}}" target="_blank">
-                                <img src="{{getImgUrl picture1}}">
-                                <div class="price">{{format_Money price}}</div>
-                            </a>
-                        {{/setRenderRange}}
+                        <a href="/app/webpage/shop.html?memberId={{memberId}}&commodityId={{commodityId}}" target="_blank">
+                            <img src="{{getImgUrl picture1 null "default_search.jpg"}}">
+                            <div class="price">{{format_Money price}}</div>
+                        </a>
                     {{/each}}
                 </div>
             </div>
             <div class="companyContentRight">
                 <div class="companyImg">
                     {{#each RESPONSE.fileList}}
-                        <img src="{{getImgUrl finalName suffix}}" index={{@index}} style="z-index:{{zIndexDesc @index 100}}">
+                        <img src="{{getImgUrl finalName suffix "default_companyLogo.jpg"}}" index={{@index}} style="z-index:{{zIndexDesc @index 100}}">
                     {{/each}}
-                    {{#if RESPONSE.fileList}}
+                    {{#noImg RESPONSE.fileList}}
+                        <img src="/app/images/default_companyLogo.jpg">
+                    {{/noImg}}
+                    {{#length RESPONSE.fileList}}
                         <span class="carousel_list">
                             {{#each RESPONSE.fileList}}
                                 <i class="carousel_i {{addElementClass @index 0 'showing'}}" index="{{@index}}"></i>
@@ -68,11 +69,13 @@
                         </span>
                         <a class="carousel_btn prev"><</a>
                         <a class="carousel_btn next">></a>
-                    {{/if}}
+                    {{/length}}
                 </div>
-                <div class="companyDescription">
-                    {{RESPONSE.aboutUs}}
-                </div>
+                {{#RESPONSE.aboutUs}}
+                    <div class="companyDescription">
+                        {{RESPONSE.aboutUs}}
+                    </div>
+                {{/RESPONSE.aboutUs}}
                 <div class="companyShops">
                     {{#isExist RESPONSE.queryShop.commodityCategory2}}
                         <div class="shopClassify commodityCategory2">
@@ -104,14 +107,14 @@
                         <i class="uFont font-base_directionDown" style="vertical-align:-2px;"></i>
                     </a>
                 </div>
-                <div class="companyShow">
-                    <ul>
-                        {{#each RESPONSE.queryShop.commoditySearchList}}
-                            {{#setRenderRange @index 5}}
+                {{#isExist RESPONSE.queryShop.commoditySearchList}}
+                    <div class="companyShow">
+                        <ul>
+                            {{#each RESPONSE.queryShop.commoditySearchList}}
                                 <li>
                                     <a href="/app/webpage/shop.html?memberId={{memberId}}&commodityId={{commodityId}}" target="_blank">
                                         <div class="imgShow">
-                                            <img src="{{getImgUrl picture1}}">
+                                            <img src="{{getImgUrl picture1 null "default_search.jpg"}}">
                                         </div>
                                         <div class="description">
                                             <abbr title="{{commodityName}}">
@@ -123,11 +126,17 @@
                                         </div>
                                     </a>
                                 </li>
-                            {{/setRenderRange}}
-                        {{/each}}
-                    </ul>
-                </div>
-                <div id="load-pagePagination"></div>
+                            {{/each}}
+                        </ul>
+                    </div>
+                    <div id="load-pagePagination"></div>
+                {{/isExist}}
+                {{^isExist RESPONSE.queryShop.commoditySearchList}}
+                    <div class="nothingError">
+                        <span class="description"><i class="fa fa-warning fa-fw"></i>抱歉没有找到</span>
+                        <span class="description">相关商品!</span>
+                    </div>
+                {{/isExist}}
             </div>
         </div>
     </div>

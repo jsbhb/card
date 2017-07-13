@@ -342,6 +342,23 @@ page-company-1{
               }
             }
           }
+          &>.nothingError{
+            height: 70px;
+            line-height: 70px;
+            padding-left: 30px;
+            &>.description{
+              font-size: 20px;
+              color: $red;
+              &>i{
+                font-size: 25px;
+                color: yellow;
+              }
+            }
+            &>.text{
+              font-size: 20px;
+              color: $base_color;
+            }
+          }
         }
       }
     }

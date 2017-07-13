@@ -76,9 +76,11 @@
                         <div>
                             <div>
                                 {{#each brand}}
-                                    <a href="javascript:void(0)" brand>
-                                        <span>{{convertStr .}}</span>
-                                    </a>
+                                    {{#if .}}
+                                        <a href="javascript:void(0)" brand>
+                                            <span>{{convertStr .}}</span>
+                                        </a>
+                                    {{/if}}
                                 {{/each}}
                             </div>
                         </div>
@@ -94,9 +96,11 @@
                         <div>
                             <div>
                                 {{#each commodityCategory2}}
-                                    <a href="javascript:void(0)" commodityCategory2>
-                                        <span>{{convertStr .}}</span>
-                                    </a>
+                                    {{#if .}}
+                                        <a href="javascript:void(0)" commodityCategory2>
+                                            <span>{{convertStr .}}</span>
+                                        </a>
+                                    {{/if}}
                                 {{/each}}
                             </div>
                         </div>
@@ -112,9 +116,11 @@
                         <div>
                             <div>
                                 {{#each commodityCategory3}}
-                                    <a href="javascript:void(0)" commodityCategory3>
-                                        <span>{{convertStr .}}</span>
-                                    </a>
+                                    {{#if .}}
+                                        <a href="javascript:void(0)" commodityCategory3>
+                                            <span>{{convertStr .}}</span>
+                                        </a>
+                                    {{/if}}
                                 {{/each}}
                             </div>
                         </div>
@@ -130,9 +136,11 @@
                         <div>
                             <div>
                                 {{#each color}}
-                                    <a href="javascript:void(0)" color>
-                                        <span>{{convertStr .}}</span>
-                                    </a>
+                                    {{#if .}}
+                                        <a href="javascript:void(0)" color>
+                                            <span>{{convertStr .}}</span>
+                                        </a>
+                                    {{/if}}
                                 {{/each}}
                             </div>
                         </div>
@@ -148,9 +156,11 @@
                         <div>
                             <div>
                                 {{#each size}}
-                                    <a href="javascript:void(0)" size>
-                                        <span>{{convertStr .}}</span>
-                                    </a>
+                                    {{#if .}}
+                                        <a href="javascript:void(0)" size>
+                                            <span>{{convertStr .}}</span>
+                                        </a>
+                                    {{/if}}
                                 {{/each}}
                             </div>
                         </div>
@@ -193,9 +203,9 @@
             </div>
             <div class="inputGroup inlineBlock priceRegion">
                 <div class="input-group">
-                    <input type="text" class="form-control price-input" placeholder="" value="{{CONFIG.priceMin}}">
+                    <input type="text" class="form-control" placeholder="" value="{{CONFIG.priceMin}}">
                     <span class="input-group-addon">-</span>
-                    <input type="text" class="form-control price-input" placeholder="" value="{{CONFIG.priceMax}}">
+                    <input type="text" class="form-control" placeholder="" value="{{CONFIG.priceMax}}">
                 </div>
                 <a href="javascript:void(0)" class="btn priceRegionBtn">确定</a>
             </div>
@@ -208,7 +218,7 @@
                     <li class="inlineBlock">
                         <a href="/app/webpage/shop.html?memberId={{memberId}}&commodityId={{commodityId}}">
                             <div class="imgBox">
-                                <img src="{{getImgUrl picture1}}">
+                                <img src="{{getImgUrl picture1 null "default_search.jpg"}}">
                             </div>
                         </a>
                         <div class="info">

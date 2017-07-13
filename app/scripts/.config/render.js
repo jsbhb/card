@@ -45,6 +45,7 @@ define([
          *     --> 5.执行渲染后事件
          */
         toRender: function(types){
+            common.logOutput(this.options.eId, "执行渲染过程");
             var that = this;
             var deferreds = [];
             this.isFinish = $.Deferred();
@@ -113,9 +114,6 @@ define([
             if(path[0]!=="RESPONSE"){
                 path = ["RESPONSE"].concat(path);
             }
-            if(this.isDynamic.toUpperCase() === "YES"){
-                this.options.renderData = new can.Map({ CONFIG:{}, RESPONSE:{} });
-            }
             $.each(path, function(index){
                 if(index === 0){
                     cfg = that.options.config;
@@ -164,7 +162,9 @@ define([
             this.options.requestType = this.options.requestType || this.requestType;
             this.options.requestData = $.extend(true, {}, this.requestData, this.options.requestData);
             this.options.responseData = this.options.responseData || null;
-            this.options.renderData = { CONFIG:{}, RESPONSE:{} };
+            this.isDynamic.toUpperCase() === "YES"?
+                this.options.renderData = new can.Map({ CONFIG:{}, RESPONSE:{} }):
+                this.options.renderData = { CONFIG:{}, RESPONSE:{} };
             this.toRender(this.options.responseData||this.options.requestType);
         }
     })

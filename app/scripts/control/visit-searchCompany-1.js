@@ -122,14 +122,14 @@ define([
         footer.isFinish
     ).done(function(){
         common.logOutput("visit-searchCompany", "启用页面事件...");
-        enableEvents(top, header, nav, searchCompany, footer);
+        enableEvents(header, searchCompany);
     });
 
 
 
     /** @description:   定义页面层事件（模块交互、页面跳转等）
      */
-    function enableEvents(top, header, nav, searchCompany, footer){
+    function enableEvents(header, searchCompany){
 
         /** @description:
          *     1、设置历史状态（数据）

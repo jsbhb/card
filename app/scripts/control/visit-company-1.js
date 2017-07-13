@@ -35,6 +35,7 @@ define([
 
     /** @description:   新建页面元素（确认页面所需模块）
      */
+    common.logOutput("visit-company", "新建页面元素");
     var C_SHORT =     "short";
     var E_TOP =       $("<div id='load-pageTop'></div>");
     var E_HEADER =    $("<div id='load-pageHeader'></div>");
@@ -55,55 +56,18 @@ define([
 
 
 
-    /** @description:   定义页面层事件（模块交互、页面跳转等）
+    /** @description:
+     *       --> 获取页面数据
+     *       --> 加载页面模块
+     *       --> 启用页面事件
      */
-    function enableEvents(header){
+    common.logOutput("visit-company", "获取页面数据");
+    var LOCAL_CITY = common.getRegion().LOCAL_CITY;
+    var memberId =   common.getUrlParam("memberId");
 
-        $(header.element)
-            .on("input propertychange", ".input-search", function(){
-                var $node = $(this);
-                var searchCont = $node.val();
-                var $header = header.element;
-                var header_config = header.options.renderData.CONFIG;
-                if(searchCont!=""){
-                    $($header).find(".placeholderIcon").css("display","none");
-                }else{
-                    $($header).find(".placeholderIcon").css("display","block");
-                }
-                header_config.attr("searchCont", searchCont);
-            });
-
-        $(header.element)
-            .on("click", ".btn-search", function(){
-                var $node = $(this);
-                var type = $node.parent().parent().parent().find(".active[searchType]").attr("searchType");
-                var cont = $node.parent().parent().parent().find(".input-search").val().trim();
-                if(type == "1"){
-                    if(location.pathname!= "/app/webpage/searchCompany.html"){
-                        location.href = encodeURI("/app/webpage/searchCompany.html?memberName="+cont);
-                    }
-                }else if(type == "2"){
-                    if(location.pathname!= "/app/webpage/searchShop.html"){
-                        location.href = encodeURI("/app/webpage/searchShop.html?commodityName="+cont);
-                    }
-                }
-            });
-    }
-
-
-
-
-    /** @description:   获取模块所需数据 --> 加载相应的页面模块 --> 为页面模块绑定事件
-     */
-
-    // 1、获取模块所需数据
-    var memberId = common.getUrlParam("memberId");
-
-
-    // 2、加载相应的页面模块
     var top = new pageTop1("#load-pageTop",{
         responseData: {
-            localCity: common.getRegion().localCity
+            LOCAL_CITY: LOCAL_CITY
         }
     });
     var header = new pageHeader1("#load-pageHeader",{
@@ -121,9 +85,6 @@ define([
         }
     });
     var company = new pageCompany1("#load-pageCompany",{
-        config: {
-            searchCont: ""
-        },
         requestData: {
             queryCompany:{ id: memberId },
             queryShop:{ memberId: memberId }
@@ -131,7 +92,94 @@ define([
     });
     var footer = new pageFooter1("#load-pageFooter");
 
+    $.when(
+        top.isFinish,
+        header.isFinish,
+        nav.isFinish,
+        company.isFinish,
+        footer.isFinish
+    ).done(function(){
+        common.logOutput("visit-searchCompany", "启用页面事件...");
+        enableEvents(header, company);
+    });
 
-    // 3、为页面模块绑定事件（模块之间的交互、页面的跳转等）
+
+
+    /** @description:   定义页面层事件（模块交互、页面跳转等）
+     */
+    function enableEvents(header, company){
+
+        /** @description: 操作游览器历史纪录
+         */
+        var historyState = {
+            config: {
+            },
+            requestData: {
+            }
+        };
+        function getHistoryState(state){
+        }
+        function setHistoryState(state, type){
+        }
+        window.onpopstate = function(e) {
+            if( e && e.state && e.state.config && e.state.requestData ){
+                getHistoryState(e.state);
+                setHistoryState(e.state,"cover");
+            }
+        };
+
+
+        /** @description:   模块触发交互事件
+         */
+        $(header.element)
+            .on("input propertychange", ".input-search", function(){
+                var $node = $(this);
+                var searchCont = $node.val();
+                var $header = header.element;
+                var header_config = header.options.renderData.CONFIG;
+                if(searchCont!==""){
+                    $($header).find(".placeholderIcon").css("display","none");
+                }
+                else{
+                    $($header).find(".placeholderIcon").css("display","block");
+                }
+                header.options.config.searchCont = searchCont;
+                header_config.attr("searchCont", searchCont);
+            });
+
+        $(header.element)
+            .on("click", ".searchType>[searchType]", function(){
+                var $node = $(this);
+                var searchType = $node.attr("searchType");
+                var header_config = header.options.renderData.CONFIG;
+                $.each(header_config.searchList, function(i, map){
+                    if(searchType == map.attr("type")){
+                        map.attr("active", "active")
+                    }
+                    else{
+                        map.attr("active", null)
+                    }
+                });
+            });
+
+        $(header.element)
+            .on("click", ".btn-search", function(){
+                var $node = $(this);
+                var type = $node.parent().parent().parent().find(".active[searchType]").attr("searchType");
+                var cont = $node.parent().parent().parent().find(".input-search").val().trim();
+                if(type == "1"){
+                    if(location.pathname!= "/app/webpage/searchCompany.html"){
+                        location.href = encodeURI("/app/webpage/searchCompany.html?memberName="+cont);
+                    }
+                }
+                else if(type == "2"){
+                    if(location.pathname!= "/app/webpage/searchShop.html"){
+                        location.href = encodeURI("/app/webpage/searchShop.html?commodityName="+cont);
+                    }
+                }
+            });
+
+
+    }
 
 });

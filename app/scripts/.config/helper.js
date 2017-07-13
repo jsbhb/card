@@ -96,16 +96,18 @@ define([
     /**
      *  @description 获取储存图片的区域，与图片名称生成完整的图片路径
      */
-    can.mustache.registerHelper('getImgUrl', function(imgName, suffix) {
+    can.mustache.registerHelper('getImgUrl', function(imgName, suffix, other) {
         var tempImgName = typeof imgName=='function'? imgName(): imgName;
         var tempSuffix =  typeof suffix=='function'? suffix(): typeof suffix=='string'? suffix: null;
         var reg = new RegExp("^http");
         if(tempImgName && reg.test(tempImgName)){
-            return can.mustache.safeString( tempImgName );
+            return can.mustache.safeString(tempImgName);
         }else if(tempImgName){
             return tempSuffix?
                 can.mustache.safeString( imgPrefix + tempImgName + "." + tempSuffix ):
                 can.mustache.safeString( imgPrefix + tempImgName );
+        }else if(typeof other === "string"){
+            return can.mustache.safeString( "/app/images/"+ other );
         }
     });
 

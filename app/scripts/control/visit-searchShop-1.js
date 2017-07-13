@@ -35,6 +35,7 @@ define([
 
     /** @description:   新建页面元素（确认页面所需模块）
      */
+    common.logOutput("visit-searchShop", "新建页面元素");
     var E_TOP =          $("<div id='load-pageTop'></div>");
     var E_HEADER =       $("<div id='load-pageHeader'></div>");
     var E_HEADER_FIXED = $("<div id='load-pageHeaderFixed'></div>");
@@ -55,8 +56,12 @@ define([
 
 
 
-    /** @description:   获取页面数据 --> 加载页面模块  -->  启用页面事件（所有页面模块渲染完成）
+    /** @description:
+     *       --> 获取页面数据
+     *       --> 加载页面模块
+     *       --> 启用页面事件
      */
+    common.logOutput("visit-searchShop", "获取页面数据");
     var LOCAL_CITY =       common.getRegion().LOCAL_CITY;
     var commodityName =    common.getUrlParam("commodityName");
     var currentPage =      common.getUrlParam("currentPage");
@@ -156,7 +161,7 @@ define([
                 e.state.requestData
             ){
                 getHistoryState(e.state);
-                searchShop.toRender("querySearchCompany");
+                searchShop.toRender("querySearchShop");
                 $.when(searchShop.isFinish).done(function(){
                     setHistory(e.state, "cover");
                 });
@@ -214,10 +219,11 @@ define([
                             commodityName: header.options.renderData.CONFIG.searchCont
                         };
                         searchShop.toRender("querySearchShop");
-                        $.when(searchShop.isFinish).done(function(){
-                            setHistoryState();
-                            setHistory(historyState, "add");
-                        })
+                        can.when(searchShop.isFinish)
+                            .done(function(){
+                                setHistoryState();
+                                setHistory(historyState, "add");
+                            })
                     }
                 }
             });
@@ -234,13 +240,10 @@ define([
                 ".filter>.btn-group>a," +
                 ".inputGroup>label," +
                 "li.pagination_page>a.pagination_btn", function(){
-                    can.when()
+                    can.when(searchShop.isFinish)
                         .done(function(){
-                            searchShop.toRender("querySearchShop");
-                            $.when(searchShop.isFinish).done(function(){
-                                setHistoryState();
-                                setHistory(historyState, "add");
-                            })
+                            setHistoryState();
+                            setHistory(historyState, "add");
                         })
                 });
 
