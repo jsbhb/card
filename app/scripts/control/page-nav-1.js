@@ -15,16 +15,15 @@ define([
 
     return Render.extend({
         //子类扩展
-        requestType:   "queryNav",
-        templatesPath: "<page-nav-1 class='{{CONFIG.border}}'></page-nav-1>",
+        templates: "<page-nav-1 class='{{CONFIG.border}}'></page-nav-1>",
+        isDynamic: "NO",
+        requestType: "queryNav",
 
         //事件
         "a[categoryEntryId] click": function(node){
             var $node = $(node);
-            var type = $node.attr("categoryEntryId");
             var cont = $node.attr("categoryEntryName");
-            window.open(encodeURI("/app/webpage/searchCompany.html?categoryEntryId="+type+"&categoryEntryName="+cont));
-            /* window.open(encodeURI("/app/webpage/searchShop.html?categoryEntryId="+type+"&categoryEntryName="+cont)); */
+            window.open(encodeURI("/app/webpage/searchCompany.html?memberName="+cont));
         }
     })
 

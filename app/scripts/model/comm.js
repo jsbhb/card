@@ -7,12 +7,12 @@
 define([
     "bower.jquery",
     "bower.underscore",
-    "comm.collect.index",
-    "comm.collect.nav",
-    "comm.collect.searchCompany",
-    "comm.collect.searchShop",
-    "comm.collect.company",
-    "comm.collect.shop",
+    "model.comm.index",
+    "model.comm.nav",
+    "model.comm.searchCompany",
+    "model.comm.searchShop",
+    "model.comm.company",
+    "model.comm.shop"
 ], function(
     $, _,
     comm_index,

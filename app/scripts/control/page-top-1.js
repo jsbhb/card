@@ -15,7 +15,8 @@ define([
 
     return Render.extend({
         //子类扩展
-        templatesPath: "<page-top-1></page-top-1>"
+        templates: "<page-top-1></page-top-1>",
+        isDynamic: "NO"
     })
 
 });

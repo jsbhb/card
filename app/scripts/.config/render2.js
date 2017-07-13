@@ -21,17 +21,14 @@ define([
         /**
          * @config:            模板参数（用于子类扩展）
          * @templates:         模板路径（用于子类扩展）
-         * @isDynamic:         是否动态渲染（用于子类扩展）
-         * @isFinish:          是否加载完成（用于子类扩展）
          * @requestType:       向服务器发送的请求类别（用于子类扩展）
          * @requestData:       向服务器发送的请求参数（用于子类扩展）
          * @renderBeforeFunc:  渲染前事件（用于子类扩展）
          * @renderAfterFunc:   渲染后事件（用于子类扩展）
+         * @renderAfterTime:   延时时间（用于子类扩展）
          */
         config:            {},
         templates:         "",
-        isDynamic:         "YES",
-        isFinish:          $.Deferred(),
         requestType:       undefined,
         requestData:       {},
         renderBeforeFunc:  function(){},
@@ -48,30 +45,30 @@ define([
             var that = this;
             var deferreds = [];
             this.isFinish = $.Deferred();
-            $.each([].concat(types), function(index, value){
-                var notExist = typeof value === "undefined";
-                var isObject = typeof value === "object";
-                var isString = typeof value === "string" && value.trim()!=="";
-                var pathArr = isString? value.split("/"): [];
-                var sendType = (isObject||notExist)? undefined: isString? pathArr.shift(): "none";
-                var pathStr = pathArr? pathArr.join("/"): undefined;
-                deferreds[index] = that.sendRequest(sendType)
+            $.each([].concat(types), function(key, map){
+                var typeIsString = typeof map.type === "string";
+                var dataIsExist =  typeof map.type !== "undefined";
+                var pathIsString = typeof map.path === "string";
+                var dynamicIsUndefined = typeof map.dynamic === "undefined";
+                map.type = dataIsExist? undefined: typeIsString? map.type: "none";
+                map.dynamic = dynamicIsUndefined? true: !!map.dynamic;
+                map.path = pathIsString? map.path: undefined;
+                deferreds[i] = that.sendRequest(map.type)
                     .done(function(responseData){
                         var isSuccess = responseData && responseData.success;
-                        var dataObj = isSuccess? responseData.obj: null;
-                        var data = isObject? value: dataObj;
-                        common.logOutput(that.options.eId, "构建渲染数据: "+(sendType||"No need to query"));
-                        that.setRenderData(data, pathStr);
-                        common.logOutput(that.options.eId, "已构建渲染数据");
+                        map.data = dataIsExist? map.data: isSuccess? responseData.obj: null;
+                        common.logOutput(that.elementId, "构建渲染数据: "+map.type||"noQuery");
+                        that.setRenderData(map);
+                        common.logOutput(that.elementId, "已构建渲染数据");
                     })
             });
             can.when.apply(null, deferreds)
                 .always(function() {
-                    common.logOutput(that.options.eId, "执行渲染前事件");
+                    common.logOutput(that.elementId, "执行渲染前事件");
                     that.renderBeforeFunc();
-                    common.logOutput(that.options.eId, "渲染模板至DOM元素内");
+                    common.logOutput(that.elementId, "渲染模板至DOM元素内");
                     that.render();
-                    common.logOutput(that.options.eId, "执行渲染后事件");
+                    common.logOutput(that.elementId, "执行渲染后事件");
                     that.renderAfterFunc();
                     that.isFinish.resolve();
                 });
@@ -82,14 +79,10 @@ define([
          * @description  发送请求, 等待返回响应数据
          */
         sendRequest: function(type){
-            this.options.requestData = $.extend(
-                true, {},
-                this.requestData, this.options.requestData
-            );
             if(type === undefined){
                 return can.Deferred().resolve();
             }
-            else if(typeof comm[type] === "function"){
+            else if(typeof comm[type] == "function"){
                 return comm[type](this.options.requestData[type]);
             }
             else{
@@ -101,36 +94,25 @@ define([
         /**
          * @description  构建(刷新)渲染数据
          */
-        setRenderData: function(data, pathStr){
-            var that = this;
-            var cfg;
-            var path = pathStr? pathStr.split("/"): ["RESPONSE"];
-            var node;
-            this.options.config = $.extend(
-                true, {},
-                this.config, this.options.config
-            );
-            if(path[0]!=="RESPONSE"){
-                path = ["RESPONSE"].concat(path);
-            }
-            if(this.isDynamic.toUpperCase() === "YES"){
-                this.options.renderData = new can.Map({ CONFIG:{}, RESPONSE:{} });
-            }
-            $.each(path, function(index){
-                if(index === 0){
-                    cfg = that.options.config;
-                    node = that.options.renderData;
-                    that.isDynamic.toUpperCase() === "YES"?
-                        node.attr("CONFIG", cfg):
-                        node["CONFIG"] = cfg;
+        setRenderData: function(map){
+            var cfg = this.options.config;
+            var node = this.options.renderData;
+            var name = map? map.split("/"): ["RESPONSE"];
+            $.each(name, function(index){
+                if(name[0] != "RESPONSE"){
+                    name = ["RESPONSE"].concat(name);
                 }
-                if(path.length>1){
-                    node=node[path.shift()];
+                if(index == 0){
+                    node.attr("CONFIG", cfg);
                 }
-                if(path.length === 1){
-                    that.isDynamic.toUpperCase() === "YES"?
-                        node.attr(path[0], data):
-                        node[path[0]] = data;
+                if(name.length>1){
+                    node=node[name.shift()];
+                }
+                if(name.length == 0 && map.dynamic){
+                    node.attr(name[0], map.data);
+                }
+                if(name.length == 0 && !map.dynamic){
+                    node[name[0]] = map.data;
                 }
             });
         },
@@ -149,8 +131,9 @@ define([
 
         /**
          * @description
-         *     this.options.eId:            参数 --> DOM元素ID
-         *     this.options.config:         参数 --> 模板默认参数
+         *     this.isFinish：              参数 --> 模块完成？
+         *     this.elementId:              参数 --> DOM元素ID
+         *     this.options.config:         参数 --> 模板配置参数
          *     this.options.templates:      参数 --> templates路径
          *     this.options.requestType：   参数 --> 向服务器发送的请求类别
          *     this.options.requestData：   参数 --> 向服务器发送的请求参数
@@ -158,13 +141,14 @@ define([
          *     this.options.renderData：    参数 --> 渲染模板的数据（通过 this.setRenderData()进行构建）
          */
         init: function(){
-            this.options.eId = this.element.attr("id");
+            this.isFinish = $.Deferred();
+            this.elementId = this.element.attr("id");
             this.options.config = $.extend(true, {}, this.config, this.options.config);
             this.options.templates = this.options.templates || this.templates;
             this.options.requestType = this.options.requestType || this.requestType;
             this.options.requestData = $.extend(true, {}, this.requestData, this.options.requestData);
             this.options.responseData = this.options.responseData || null;
-            this.options.renderData = { CONFIG:{}, RESPONSE:{} };
+            this.options.renderData = can.Model.extend().model({ CONFIG:{}, RESPONSE:{} });
             this.toRender(this.options.responseData||this.options.requestType);
         }
     })

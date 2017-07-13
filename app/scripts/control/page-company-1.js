@@ -12,34 +12,41 @@ define([
     "config.render",
     "control.page.pagination.1",
     "component.page.company.1"
-], function($, _, can, common, Render, controlPagePagination1){
+], function($, _, can, common, Render, pagePagination1){
 
     /** @description:  调用数据、模板组件, 并渲染输出
      */
     return Render.extend({
         //子类扩展
-        requestType:   "queryCompany",
-        templatesPath: "<page-company-1></page-company-1>",
+        templates: "<page-company-1></page-company-1>",
+        requestType: [
+            {type: "queryCompany", path: "RESPONSE", dynamic: true}
+        ],
         requestData: {
             queryCompany: {},
             queryShop: {}
         },
-        renderAfterFun: function(){
+        renderAfterTime: 0,
+        renderBeforeFunc: function(){
             can.when(this.sendRequest("queryShop"))
                 .done(
                     $.proxy(function(responseData){
+                        console.log(123)
                         if(responseData && responseData.success){
                             this.setRenderData(responseData.obj, ["queryShop"]);
                         }
-                        console.log(this)
-                        this.pagination = new controlPagePagination1("page-company-1 .load-pagePagination",{
-                            config: { direction: "floatRight" },
-                            responseData: this.options.renderData.RESPONSEDATA.queryShop.pagination,
-                            parentObj: this,
-                        });
+                        if(this.options.renderData.RESPONSE.pagination){
+                            this.pagination = new pagePagination1("page-company-1 .load-pagePagination",{
+                                config: { direction: "floatRight" },
+                                responseData: this.options.renderData.RESPONSE.queryShop.pagination,
+                                parentObj: this
+                            });
+                        }
                     },this)
                 )
         },
+
+        //自定义方法
         callback: function(){
             can.when(this.sendRequest("queryShop"))
                 .done(

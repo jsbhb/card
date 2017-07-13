@@ -34,7 +34,7 @@ module.exports = function(grunt) {
                         cwd: '<%=config.scss%>',
                         src: ['**/*.scss'],
                         dest: '<%=config.css%>',
-                        extDot: 'last',
+                        extDot: "last",
                         ext:  '.css'
                     }
                 ]
@@ -62,13 +62,14 @@ module.exports = function(grunt) {
         connect: {
             options: {
                 hostname: '127.0.0.1',
-                port: 8000,
-                livereload: 35730
+                port: 8000
             },
             server: {
                 options: {
                     open: true,
-                    base: './'
+                    keepalive: true,
+                    livereload: false,
+                    base: '<%=config.root%>'
                 }
             }
         },
@@ -87,10 +88,11 @@ module.exports = function(grunt) {
                 },
                 files: [
                     '<%=config.root%>/{,**/}*.{html,htm}',
-                    '<%=config.css%>/{,**/}*.css'
+                    '<%=config.css%>/{,**/}*.css',
+                    '<%=config.js%>/{,**/}*.js'
                 ]
             }
-        },
+        }
     });
 
     //插件加载代码
@@ -100,8 +102,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
 
 
-    //执行任务：grunt执行默认任务中的所有方法（注意：单独执行sass、imagemin任务, 以减少项目启动时间）
-    grunt.registerTask('default', ['connect', 'watch']);
+    //执行任务：grunt执行默认任务中的所有方法
+    //   注意：单独执行sass、imagemin、watch任务, 以减少启动项目的时间
+    grunt.registerTask('default', ['connect']);
 
 };
 

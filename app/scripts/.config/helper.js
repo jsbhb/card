@@ -7,25 +7,13 @@
 define([
     "bower.jquery",
     "bower.underscore",
-    "bower.can",
-    "config.path"
-], function ($, _, can, path) {
+    "bower.can"
+], function ($, _, can) {
 
     /**
-     *  @description 获取储存图片的区域，与图片名称生成完整的图片路径
+     *  @description  储存图片的区域
      */
-    can.mustache.registerHelper('getImgUrl', function(imgName, suffix) {
-        var tempImgName = typeof imgName=='function'? imgName(): imgName;
-        var tempSuffix =  typeof suffix=='function'? suffix(): typeof suffix=='string'? suffix: null;
-        var reg = new RegExp("^http");
-        if(tempImgName && reg.test(tempImgName)){
-            return can.mustache.safeString( tempImgName );
-        }else if(tempImgName){
-            return tempSuffix?
-                can.mustache.safeString( path.imgPrefix + tempImgName + "." + tempSuffix ):
-                can.mustache.safeString( path.imgPrefix + tempImgName );
-        }
-    });
+    var imgPrefix = "/app/images/test/";
 
 
     /**
@@ -40,6 +28,16 @@ define([
             }
         }
     );
+
+
+    /**
+     *  @description 判断是否存在
+     */
+    can.mustache.registerHelper('isExist', function(content, options) {
+        var tempContent = typeof content=='function'? content(): content;
+        var bool = tempContent?((tempContent.length>0||tempContent.length==undefined)?true:false):false;
+        return bool? options.fn(options.context): options.inverse(options.context);
+    });
 
 
     /**
@@ -93,6 +91,23 @@ define([
             }
         }
     );
+
+
+    /**
+     *  @description 获取储存图片的区域，与图片名称生成完整的图片路径
+     */
+    can.mustache.registerHelper('getImgUrl', function(imgName, suffix) {
+        var tempImgName = typeof imgName=='function'? imgName(): imgName;
+        var tempSuffix =  typeof suffix=='function'? suffix(): typeof suffix=='string'? suffix: null;
+        var reg = new RegExp("^http");
+        if(tempImgName && reg.test(tempImgName)){
+            return can.mustache.safeString( tempImgName );
+        }else if(tempImgName){
+            return tempSuffix?
+                can.mustache.safeString( imgPrefix + tempImgName + "." + tempSuffix ):
+                can.mustache.safeString( imgPrefix + tempImgName );
+        }
+    });
 
 
     /**

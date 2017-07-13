@@ -12,147 +12,173 @@ define([
     "config.render",
     "control.page.pagination.1",
     "component.page.searchCompany.1"
-], function($, _, can, common, Render, controlPagePagination1){
+], function($, _, can, common, Render, pagePagination1){
 
     return Render.extend({
         //子类扩展
+        config: {
+            industryName: null,
+            dictName: null,
+            entryName: null,
+            filterDefault: { active:true, down: true },
+            filterReputation: { active:null, down: true },
+            filterCalendar:{ active:null, down: true },
+            highQuality: false,
+            sincerity: false,
+            returnGoods: false,
+            guarantee: false
+        },
+        templates: "<page-searchcompany-1></page-searchcompany-1>",
         requestType:   "querySearchCompany",
-        templatesPath: "<page-searchcompany-1></page-searchcompany-1>",
         requestData: {
             querySearchCompany: {
-                "numPerPage": 3,
+                "numPerPage": 10,
                 "currentPage": 1
             }
         },
-        renderAfterFun: function(){
-            this.pagination = new controlPagePagination1("page-searchcompany-1 .load-pagePagination",{
-                config: { direction: "floatRight" },
-                responseData: this.options.renderData.RESPONSEDATA.pagination,
-                parentObj: this,
-            });
+        renderAfterFunc: function(){
+            var pagination = this.options.renderData.RESPONSE.pagination;
+            if(pagination && pagination.totalPages>0){
+                this.pagination = new pagePagination1("page-searchcompany-1 #load-pagePagination",{
+                    config: { direction: "floatRight" },
+                    responseData: pagination || null,
+                    parentObj: this
+                });
+            }
         },
 
 
+        //自定义方法
         callback: function(currentPage){
             this.options.requestData.querySearchCompany.currentPage = currentPage;
-            can.when(this.sendRequest("querySearchCompany"))
-                .done(
-                    $.proxy(function(responseData){
-                        if(responseData && responseData.success){
-                            this.setRenderData(responseData.obj.memberList, ["memberList"]);
-                            this.pagination.setRenderData(responseData.obj.pagination);
-                        }
-                    },this)
-                )
+            this.toRender("querySearchCompany");
         },
 
+
         //事件
-        "[industrymap] click": function(node){
+        "[industryMap] click": function(node){
             var $node = $(node);
-            var index = $node.attr("industrymap");
+            var index = $node.attr("industryMap");
+            var content = $node.find(">span").text();
+            this.options.config["industryName"] = content;
+            this.options.requestData.querySearchCompany["currentPage"] = 1;
             this.options.requestData.querySearchCompany["industryList[0].industry"] = index;
-            can.when(this.sendRequest("querySearchCompany"))
-                .done(
-                    $.proxy(function(responseData){
-                        if(responseData && responseData.success){
-                            this.setRenderData(responseData.obj.memberList, ["memberList"]);
-                        }
-                    },this)
-                )
+            this.toRender("querySearchCompany");
         },
-        "[dictmap] click": function(node){
+        "[dictMap] click": function(node){
             var $node = $(node);
-            var index = $node.attr("dictmap");
+            var index = $node.attr("dictMap");
+            var content = $node.find(">span").text();
+            this.options.config["dictName"] = content;
+            this.options.requestData.querySearchCompany["currentPage"] = 1;
             this.options.requestData.querySearchCompany["dictList[0].categoryDict"] = index;
-            can.when(this.sendRequest("querySearchCompany"))
-                .done(
-                    $.proxy(function(responseData){
-                        if(responseData && responseData.success){
-                            this.setRenderData(responseData.obj.memberList, ["memberList"]);
-                        }
-                    },this)
-                )
+            this.toRender("querySearchCompany");
         },
-        "[entrymap] click": function(node){
+        "[entryMap] click": function(node){
             var $node = $(node);
-            var index = $node.attr("entrymap");
+            var index = $node.attr("entryMap");
+            var content = $node.find(">span").text();
+            this.options.config["entryName"] = content;
+            this.options.requestData.querySearchCompany["currentPage"] = 1;
             this.options.requestData.querySearchCompany["entryList[0].categoryEntry"] = index;
-            can.when(this.sendRequest("querySearchCompany"))
-                .done(
-                    $.proxy(function(responseData){
-                        if(responseData && responseData.success){
-                            this.setRenderData(responseData.obj.memberList, ["memberList"]);
-                        }
-                    },this)
-                )
+            this.toRender("querySearchCompany");
         },
         ".resultCategory .deleteIcon click": function(node){
             var $node = $(node);
             var parent = $node.parents("a:first");
-            if(parent.hasClass("industryItem")){
+            this.options.requestData.querySearchCompany["currentPage"] = 1;
+            if(parent.hasClass("industry")){
+                this.options.config["industryName"] = null;
                 delete this.options.requestData.querySearchCompany["industryList[0].industry"];
-            }else if(parent.hasClass("dictItem")){
+            }
+            if(parent.hasClass("dict")){
+                this.options.config["dictName"] = null;
                 delete this.options.requestData.querySearchCompany["dictList[0].categoryDict"];
-            }else if(parent.hasClass("entryItem")){
+            }
+            if(parent.hasClass("entry")){
+                this.options.config["entryName"] = null;
                 delete this.options.requestData.querySearchCompany["entryList[0].categoryEntry"];
             }
-            parent.next("i").remove();
-            parent.remove();
-            can.when(this.sendRequest("querySearchCompany"))
-                .done(
-                    $.proxy(function(responseData){
-                        if(responseData && responseData.success){
-                            this.setRenderData(responseData.obj.memberList, ["memberList"]);
-                        }
-                    },this)
-                )
+            this.toRender("querySearchCompany");
         },
         ".filter>.btn-group>a click": function(node){
             var $node = $(node);
+            this.options.requestData.querySearchCompany["currentPage"] = 1;
             if($node.hasClass("filterDefault")){
                 delete this.options.requestData.querySearchCompany["sortList[0].sortField"];
                 delete this.options.requestData.querySearchCompany["sortList[0].sortRule"];
+                this.options.config.filterDefault.active = true;
+                this.options.config.filterReputation.active = false;
+                this.options.config.filterCalendar.active = false;
             }
             if($node.hasClass("filterReputation")){
+                if(this.options.config.filterReputation.active){
+                    this.options.config.filterReputation.down = !this.options.config.filterReputation.down;
+                }
+                this.options.config.filterReputation.down?
+                    this.options.requestData.querySearchCompany["sortList[0].sortRule"] = "desc":
+                    this.options.requestData.querySearchCompany["sortList[0].sortRule"] = "asc";
                 this.options.requestData.querySearchCompany["sortList[0].sortField"] = "reputation";
-                this.options.requestData.querySearchCompany["sortList[0].sortRule"] = "desc";
+                this.options.config.filterDefault.active = false;
+                this.options.config.filterReputation.active = true;
+                this.options.config.filterCalendar.active = false;
             }
             if($node.hasClass("filterCalendar")){
+                if(this.options.config.filterCalendar.active){
+                    this.options.config.filterCalendar.down = !this.options.config.filterCalendar.down;
+                }
+                this.options.config.filterCalendar.down?
+                    this.options.requestData.querySearchCompany["sortList[0].sortRule"] = "desc":
+                    this.options.requestData.querySearchCompany["sortList[0].sortRule"] = "asc";
                 this.options.requestData.querySearchCompany["sortList[0].sortField"] = "enterTime";
-                this.options.requestData.querySearchCompany["sortList[0].sortRule"] = "desc";
+                this.options.config.filterDefault.active = false;
+                this.options.config.filterReputation.active = false;
+                this.options.config.filterCalendar.active = true;
             }
-            can.when(this.sendRequest("querySearchCompany"))
-                .done(
-                    $.proxy(function(responseData){
-                        if(responseData && responseData.success){
-                            this.setRenderData(responseData.obj.memberList, ["memberList"]);
-                        }
-                    },this)
-                )
+            this.toRender("querySearchCompany");
         },
         ".inputGroup>label click": function(node){
             var $node = $(node);
             var $input = $node.next("input");
             var id = $input.attr("id");
+            this.options.requestData.querySearchCompany["currentPage"] = 1;
             if($input.is(":checked")){
-                id == "company_highQuality" && (delete this.options.requestData.querySearchCompany.highQuality);
-                id == "company_guarantee" && (delete this.options.requestData.querySearchCompany.guarantee);
-                id == "company_returnGoods" && (delete this.options.requestData.querySearchCompany.returnGoods);
-                id == "company_sincerity" && (delete this.options.requestData.querySearchCompany.sincerity);
-            }else{
-                id == "company_highQuality" && (this.options.requestData.querySearchCompany.highQuality=1);
-                id == "company_guarantee" && (this.options.requestData.querySearchCompany.guarantee=1);
-                id == "company_returnGoods" && (this.options.requestData.querySearchCompany.returnGoods=1);
-                id == "company_sincerity" && (this.options.requestData.querySearchCompany.sincerity=1);
+                if(id == "company_highQuality"){
+                    this.options.config.highQuality = false;
+                    delete this.options.requestData.querySearchCompany.highQuality
+                }
+                if(id == "company_guarantee"){
+                    this.options.config.guarantee = false;
+                    delete this.options.requestData.querySearchCompany.guarantee;
+                }
+                if(id == "company_returnGoods"){
+                    this.options.config.returnGoods = false;
+                    delete this.options.requestData.querySearchCompany.returnGoods;
+                }
+                if(id == "company_sincerity"){
+                    this.options.config.sincerity = false;
+                    delete this.options.requestData.querySearchCompany.sincerity;
+                }
             }
-            can.when(this.sendRequest("querySearchCompany"))
-                .done(
-                    $.proxy(function(responseData){
-                        if(responseData && responseData.success){
-                            this.setRenderData(responseData.obj.memberList, ["memberList"]);
-                        }
-                    },this)
-                )
-        },
+            else{
+                if(id == "company_highQuality"){
+                    this.options.config.highQuality = true;
+                    this.options.requestData.querySearchCompany.highQuality=1;
+                }
+                if(id == "company_guarantee"){
+                    this.options.config.guarantee = true;
+                    this.options.requestData.querySearchCompany.guarantee=1;
+                }
+                if(id == "company_returnGoods"){
+                    this.options.config.returnGoods = true;
+                    this.options.requestData.querySearchCompany.returnGoods=1;
+                }
+                if(id == "company_sincerity"){
+                    this.options.config.sincerity = true;
+                    this.options.requestData.querySearchCompany.sincerity=1;
+                }
+            }
+            this.toRender("querySearchCompany");
+        }
     })
 });

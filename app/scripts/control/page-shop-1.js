@@ -15,8 +15,8 @@ define([
 
     return Render.extend({
         //子类扩展
+        templates: "<page-shop-1></page-shop-1>",
         requestType:   "queryShop",
-        templatesPath: "<page-shop-1></page-shop-1>",
         requestData: {
             queryShop: {}
         }

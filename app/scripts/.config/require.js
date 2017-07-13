@@ -44,6 +44,7 @@ requirejs.config({
         "css.page.company.1":          "app/css/page-company-1",
         "css.page.pagination.1":       "app/css/page-pagination-1",
 
+
         /** JS --框架/工具
          */
         "bower.jquery":                "bower_components/jquery/dist/jquery.min",
@@ -55,34 +56,28 @@ requirejs.config({
         "bower.text":                  "bower_components/text/text",
         "bower.css":                   "bower_components/require-css/css",
 
-        /** JS --自定义方法/插件
-         */
-        "widget.common":            "app/scripts/.widget/common",
-        "widget.scrollMonitor":        "app/scripts/.widget/scrollMonitor",
 
         /** JS --配置信息
          */
-        "config.require":              "app/scripts/.config/require",
-        "config.comm":                 "app/scripts/.config/comm",
-        "config.render":               "app/scripts/.config/render",
-        "config.helper":               "app/scripts/.config/helper",
-        "config.path":                 "app/scripts/.config/path",
+        "config.require":                   "app/scripts/.config/require",
+        "config.system":                    "app/scripts/.config/system",
+        "config.comm":                      "app/scripts/.config/comm",
+        "config.render":                    "app/scripts/.config/render",
+        "config.helper":                    "app/scripts/.config/helper",
 
-        /** JS --数据块
+
+        /** JS --数据模块
          */
-        "data.region":                 "app/scripts/.data/region",
+        "data.region":                      "app/scripts/.data/region",
 
-        /** JS --通讯交互
+
+        /** JS --自定义方法/插件
          */
-        "comm.collect":                "app/scripts/comm/collect",
-        "comm.collect.index":          "app/scripts/comm/collect-index",
-        "comm.collect.searchCompany":  "app/scripts/comm/collect-searchCompany",
-        "comm.collect.searchShop":     "app/scripts/comm/collect-searchShop",
-        "comm.collect.shop":           "app/scripts/comm/collect-shop",
-        "comm.collect.company":        "app/scripts/comm/collect-company",
-        "comm.collect.nav":            "app/scripts/comm/collect-nav",
+        "widget.common":               "app/scripts/.widget/common",
+        "widget.scrollMonitor":        "app/scripts/.widget/scrollMonitor",
 
-        /** JS --组件
+
+        /** JS --组件模块
          */
         "component.page.top.1":              "app/scripts/component/page-top-1",
         "component.page.header.1":           "app/scripts/component/page-header-1",
@@ -100,7 +95,8 @@ requirejs.config({
         "component.page.company.1":          "app/scripts/component/page-company-1",
         "component.page.pagination.1":       "app/scripts/component/page-pagination-1",
 
-        /** JS --业务
+
+        /** JS --业务模块
          *    control.page:   将页面各部分拆分为模块（拥有独自的样式、事件、以及通讯交互）
          *    control.visit： 加载指定的页面模块（即 control.page）, 以生成完整的HTML
          */
@@ -118,23 +114,36 @@ requirejs.config({
         "control.page.searchShop.1":        "app/scripts/control/page-searchShop-1",
         "control.page.shop.1":              "app/scripts/control/page-shop-1",
         "control.page.company.1":           "app/scripts/control/page-company-1",
-        "control.page.pagination.1":           "app/scripts/control/page-pagination-1",
+        "control.page.pagination.1":        "app/scripts/control/page-pagination-1",
         "control.visit.index.1":            "app/scripts/control/visit-index-1",
         "control.visit.searchCompany.1":    "app/scripts/control/visit-searchCompany-1",
         "control.visit.searchShop.1":       "app/scripts/control/visit-searchShop-1",
         "control.visit.shop.1":             "app/scripts/control/visit-shop-1",
         "control.visit.company.1":          "app/scripts/control/visit-company-1",
 
+
+        /** JS --通讯模块
+         */
+        "model.comm":                       "app/scripts/model/comm",
+        "model.comm.index":                 "app/scripts/model/comm-index",
+        "model.comm.searchCompany":         "app/scripts/model/comm-searchCompany",
+        "model.comm.searchShop":            "app/scripts/model/comm-searchShop",
+        "model.comm.shop":                  "app/scripts/model/comm-shop",
+        "model.comm.company":               "app/scripts/model/comm-company",
+        "model.comm.nav":                   "app/scripts/model/comm-nav",
+
+
         /** JS --测试模块
          */
-        "fixture.test":                     "app/scripts/fixture/fixture-test",
-        "fixture.data":                     "app/scripts/fixture/fixture-data",
-        "fixture.data.index.1":             "app/scripts/fixture/fixture-data-index-1",
-        "fixture.data.nav.1":               "app/scripts/fixture/fixture-data-nav-1",
-        "fixture.data.searchCompany.1":     "app/scripts/fixture/fixture-data-searchCompany-1",
-        "fixture.data.searchShop.1":        "app/scripts/fixture/fixture-data-searchShop-1",
-        "fixture.data.company.1":           "app/scripts/fixture/fixture-data-company-1",
-        "fixture.data.shop.1":              "app/scripts/fixture/fixture-data-shop-1",
+        "test.main":                        "app/scripts/test/main",
+        "test.data":                        "app/scripts/test/data",
+        "test.data.index.1":                "app/scripts/test/data-index-1",
+        "test.data.nav.1":                  "app/scripts/test/data-nav-1",
+        "test.data.searchCompany.1":        "app/scripts/test/data-searchCompany-1",
+        "test.data.searchShop.1":           "app/scripts/test/data-searchShop-1",
+        "test.data.company.1":              "app/scripts/test/data-company-1",
+        "test.data.shop.1":                 "app/scripts/test/data-shop-1",
+
 
         /** TEMPLATE --模板模块
          */

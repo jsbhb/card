@@ -15,9 +15,10 @@ define([
 
     return Render.extend({
         //子类扩展
-        templatesPath: "<page-sidefixed-1></page-sidefixed-1>",
+        templates: "<page-sidefixed-1></page-sidefixed-1>",
+        isDynamic: "NO",
         active_offset: 0,
-        renderAfterFun: function() {
+        renderAfterFunc: function() {
             var that = this;
             that.setElementCSS();
             var activeOffset = that.options.active_offset || that.active_offset;
@@ -30,7 +31,10 @@ define([
                 that.setElementCSS()
             });
         },
-        "setElementCSS": function(){
+
+
+        //自定义方法
+        setElementCSS: function(){
             var bodyWidth = $("body").width();
             var windowHeight = window.innerHeight;
             var thisHeight = this.element.height();

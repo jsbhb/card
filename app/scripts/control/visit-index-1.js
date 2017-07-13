@@ -2,7 +2,7 @@
  * Created by linpengteng on 2017/5/23.
  */
 
-
+'use strict';
 
 define([
     "bower.jquery",
@@ -12,8 +12,8 @@ define([
     "bower.dotdotdot.min",
     "widget.common",
     "widget.scrollMonitor",
-    "config.helper",
-    "comm.collect",
+    "config.system",
+    "model.comm",
     "control.page.top.1",
     "control.page.header.1",
     "control.page.headerFixed.1",
@@ -25,23 +25,28 @@ define([
     "control.page.footer.1",
     "bower.css!css.font.awesome.min",
     "bower.css!css.bootstrap.min",
-    "bower.css!css.uFont",
+    "bower.css!css.uFont"
 ], function(
-    $, _, bootstrap, can, dot, common, scrollMonitor, helper, comm,
-    controlPageTop1,
-    controlPageHeader1,
-    controlPageHeaderFixed1,
-    controlPageNav1,
-    controlPageBanner1,
-    controlPageInfo1,
-    controlPageInfo2,
-    controlPageSideFixed1,
-    controlPageFooter1){
+    $, _, bootstrap, can, dot,
+    common, scrollMonitor,
+    system,
+    comm,
+    pageTop1,
+    pageHeader1,
+    pageHeaderFixed1,
+    pageNav1,
+    pageBanner1,
+    pageInfo1,
+    pageInfo2,
+    pageSideFixed1,
+    pageFooter1){
 
 
-    /** @description:  新建页面元素（确认需要哪些模块）
+    /** @description:   新建页面元素（确认页面所需模块）
      */
+    common.logOutput("visit-index", "新建页面元素");
     var C_SHORT =         "short";
+    var E_HTML =          "body";
     var E_TOP =           $("<div id='load-pageTop'></div>");
     var E_HEADER =        $("<div id='load-pageHeader'></div>");
     var E_HEADER_FIXED =  $("<div id='load-pageHeaderFixed'></div>");
@@ -55,7 +60,7 @@ define([
     var E_INFO3 =         $("<div id='load-pageInfo3'></div>");
     var E_INFO4 =         $("<div id='load-pageInfo4'></div>");
 
-    $("body")
+    $(E_HTML)
         .addClass(C_SHORT)
         .append(E_TOP)
         .append(E_HEADER)
@@ -65,7 +70,6 @@ define([
         .append(E_BODY)
         .append(E_SideFixed)
         .append(E_FOOTER);
-
     $(E_BODY)
         .append(E_INFO1)
         .append(E_INFO2)
@@ -74,156 +78,200 @@ define([
 
 
 
-    /** @description:   1、获取数据(无需访问后台), 设定模块的初始数据
-     *                  2、如需访问后台数据, 异步查询并获取, 此后模块重新渲染数据
+    /** @description:
+     *       --> 获取页面数据
+     *       --> 加载页面模块
+     *       --> 启用页面事件
      */
-    var searchCont =         "";
-    var topResponseData =    { localCity: common.getRegion().localCity };
-    var bannerResponseData = {};
-    var infoResponseData1 =  { "MEMBER_PRODUCT_POPULARIZE":{}, "MEMBER_POPULARIZE": {} };
-    var infoResponseData2 =  {};
-    var infoResponseData3 =  { "MEMBER_PRODUCT_POPULARIZE":{}, "MEMBER_POPULARIZE": {} };
-    var infoResponseData4 =  {};
+    common.logOutput("visit-index", "获取页面数据");
+    can.when(comm.queryIndex()).done(function(responseData){
+        if (responseData && responseData.success) {
+            var dataObj = responseData.obj;
+            var LOCAL_CITY = common.getRegion().LOCAL_CITY;
+            var INDEX_BANNER = dataObj.INDEX_BANNER;
+            var MEMBER_PRODUCT_POPULARIZE = dataObj.MEMBER_PRODUCT_POPULARIZE_1;
+            var MEMBER_POPULARIZE = dataObj.MEMBER_POPULARIZE_1;
+            var PRODUCT_POPULARIZE = dataObj.PRODUCT_POPULARIZE_1;
 
-    can.when(comm.queryIndex())
-        .done(function(responseData) {
-            if (responseData && responseData.success) {
-                var data = responseData.obj;
-                bannerResponseData = data.INDEX_BANNER;
-                infoResponseData1["MEMBER_PRODUCT_POPULARIZE"] = data.MEMBER_PRODUCT_POPULARIZE_1;
-                infoResponseData1["MEMBER_POPULARIZE"] = data.MEMBER_POPULARIZE_1;
-                infoResponseData2 = data.PRODUCT_POPULARIZE_1;
-                infoResponseData3["MEMBER_PRODUCT_POPULARIZE"] = data.MEMBER_PRODUCT_POPULARIZE_1;
-                infoResponseData3["MEMBER_POPULARIZE"] = data.MEMBER_POPULARIZE_1;
-                infoResponseData4 = data.PRODUCT_POPULARIZE_1;
-            }
-            if(banner){ banner.setRenderData(bannerResponseData) }
-            if(info1){ info1.setRenderData(infoResponseData1) }
-            if(info2){ info2.setRenderData(infoResponseData2) }
-            if(info3){ info3.setRenderData(infoResponseData3) }
-            if(info4){ info4.setRenderData(infoResponseData4) }
-        });
+            common.logOutput("visit-index", "加载页面模块...");
 
+            var top = new pageTop1("#load-pageTop",{
+                responseData: {
+                    LOCAL_CITY: LOCAL_CITY
+                }
+            });
+            var header = new pageHeader1("#load-pageHeader",{
+                config: {
+                    searchCont: "",
+                    searchList:[
+                        { type: 1, name: "企业", active: "active" },
+                        { type: 2, name: "商品", active: null }
+                    ]
+                }
+            });
+            var headerFixed = new pageHeaderFixed1("#load-pageHeaderFixed",{
+                config: {
+                    searchCont: "",
+                    searchList:[
+                        { type: 1, name: "企业", active: "active" },
+                        { type: 2, name: "商品", active: null }
+                    ]
+                }
+            });
+            var nav = new pageNav1("#load-pageNav",{
+                config:{
+                    showed: "showed"
+                }
+            });
+            var banner = new pageBanner1("#load-pageBanner",{
+                responseData: {
+                    INDEX_BANNER: INDEX_BANNER
+                }
+            });
+            var info1 = new pageInfo1("#load-pageInfo1",{
+                responseData: {
+                    MEMBER_PRODUCT_POPULARIZE: MEMBER_PRODUCT_POPULARIZE,
+                    MEMBER_POPULARIZE: MEMBER_POPULARIZE
+                }
+            });
+            var info2 = new pageInfo2("#load-pageInfo2",{
+                responseData: {
+                    PRODUCT_POPULARIZE: PRODUCT_POPULARIZE
+                }
+            });
+            var info3 = new pageInfo1("#load-pageInfo3",{
+                responseData: {
+                    MEMBER_PRODUCT_POPULARIZE: MEMBER_PRODUCT_POPULARIZE,
+                    MEMBER_POPULARIZE: MEMBER_POPULARIZE
+                }
+            });
+            var info4 = new pageInfo2("#load-pageInfo4",{
+                responseData: {
+                    PRODUCT_POPULARIZE: PRODUCT_POPULARIZE
+                }
+            });
+            var sideFixed = new pageSideFixed1("#load-pageSideFixed",{
+                config: {
+                    list: [
+                        {"name":"货源市场", "id":"load-pageNav", "toTop": true},
+                        {"name":"安防消防", "id":"load-pageInfo1"},
+                        {"name":"电子行业", "id":"load-pageInfo2"},
+                        {"name":"酒店家具", "id":"load-pageInfo3"},
+                        {"name":"五金建材", "id":"load-pageInfo4"},
+                    ]
+                },
+                position_offset: 60
+            });
+            var footer = new pageFooter1("#load-pageFooter",{});
 
-
-    /** @description:  加载页面模块（此时渲染数据为：初始数据）
-     */
-    var top = new controlPageTop1("#load-pageTop",{
-        responseData: topResponseData
-    });
-    var header = new controlPageHeader1("#load-pageHeader",{
-        config: {
-            searchCont: searchCont,
-            searchList:[
-                { type: 1, name: "企业", active: "active" },
-                { type: 2, name: "商品", active: null }
-            ]
+            $.when(
+                top.isFinish,
+                header.isFinish,
+                headerFixed.isFinish,
+                nav.isFinish,
+                banner.isFinish,
+                info1.isFinish,
+                info2.isFinish,
+                info3.isFinish,
+                info4.isFinish,
+                sideFixed.isFinish,
+                footer.isFinish
+            ).done(function(){
+                common.logOutput("visit-index", "启用页面事件...");
+                enableEvents(header, headerFixed);
+            });
         }
     });
-    var headerFixed = new controlPageHeaderFixed1("#load-pageHeaderFixed",{
-        config: {
-            searchCont: searchCont,
-            searchList:[
-                { type: 1, name: "企业", active: "active" },
-                { type: 2, name: "商品", active: null }
-            ]
-        }
-    });
-    var nav = new controlPageNav1("#load-pageNav",{
-        config:{ showed: "showed" }
-    });
-    var banner = new controlPageBanner1("#load-pageBanner",{
-        config: {},
-        responseData: bannerResponseData,
-    });
-    var info1 = new controlPageInfo1("#load-pageInfo1",{
-        config: {},
-        responseData: infoResponseData1
-    });
-    var info2 = new controlPageInfo2("#load-pageInfo2",{
-        config: {},
-        responseData: infoResponseData2
-    });
-    var info3 = new controlPageInfo1("#load-pageInfo3",{
-        config: {},
-        responseData: infoResponseData3
-    });
-    var info4 = new controlPageInfo2("#load-pageInfo4",{
-        config: {},
-        responseData: infoResponseData4
-    });
-    var sideFixed = new controlPageSideFixed1("#load-pageSideFixed",{
-        config: {
-            list: [
-                {"name":"货源市场", "id":"load-pageNav", "toTop": true},
-                {"name":"安防消防", "id":"load-pageInfo1"},
-                {"name":"电子行业", "id":"load-pageInfo2"},
-                {"name":"酒店家具", "id":"load-pageInfo3"},
-                {"name":"五金建材", "id":"load-pageInfo4"},
-            ]
-        },
-        position_offset: 60
-    });
-    var footer = new controlPageFooter1("#load-pageFooter");
 
 
 
-    /** @description:  为模块绑定事件（模块之间的交互、页面的跳转等）
+    /** @description:   定义页面层事件（模块交互、页面跳转等）
      */
-    $(headerFixed.element).add(header.element)
-        .on("input propertychange", ".input-search", function(){
-            var $node = $(this);
-            var searchCont = $node.val();
-            var $header = header.element;
-            var $headerFixed = headerFixed.element;
-            var header_config = header.options.renderData.CONFIG;
-            var headerFixed_config = headerFixed.options.renderData.CONFIG;
+    function enableEvents(header, headerFixed){
 
-            if(searchCont!=""){
-                $($header,$headerFixed).find(".placeholderIcon").css("display","none");
-            }else{
-                $($header,$headerFixed).find(".placeholderIcon").css("display","block");
+        /** @description: 操作游览器历史纪录
+         */
+        var historyState = {
+            config: {
+            },
+            requestData: {
             }
-            header_config.attr("searchCont", searchCont);
-            headerFixed_config.attr("searchCont", searchCont);
-        });
+        };
+        function getHistoryState(state){
+        }
+        function setHistoryState(state, type){
+        }
+        window.onpopstate = function(e) {
+            if( e && e.state && e.state.config && e.state.requestData ){
+                getHistoryState(e.state);
+                setHistoryState(e.state,"cover");
+            }
+        };
 
-    $(headerFixed.element).add(header.element)
-        .on("click", ".searchType>[searchType]", function(){
-            var $node = $(this);
-            var searchType = $node.attr("searchType");
-            var header_config = header.options.renderData.CONFIG;
-            var headerFixed_config = headerFixed.options.renderData.CONFIG;
-            $.each(header_config.searchList, function(i, map){
-                if(searchType == map.attr("type")){
-                    map.attr("active", "active")
-                }else{
-                    map.attr("active", null)
+
+        /** @description:   模块触发交互事件
+         */
+        $(header.element).add(headerFixed.element)
+            .on("input propertychange", ".input-search", function(){
+                var $node = $(this);
+                var searchCont = $node.val();
+                var $header = header.element;
+                var $headerFixed = headerFixed.element;
+                var header_config = header.options.renderData.CONFIG;
+                var headerFixed_config = headerFixed.options.renderData.CONFIG;
+                if(searchCont!=""){
+                    $($header,$headerFixed).find(".placeholderIcon").css("display","none");
+                }
+                else{
+                    $($header,$headerFixed).find(".placeholderIcon").css("display","block");
+                }
+                header.options.config.searchCont = searchCont;
+                headerFixed.options.config.searchCont = searchCont;
+                header_config.attr("searchCont", searchCont);
+                headerFixed_config.attr("searchCont", searchCont);
+            });
+
+        $(header.element).add(headerFixed.element)
+            .on("click", ".searchType>[searchType]", function(){
+                var $node = $(this);
+                var searchType = $node.attr("searchType");
+                var header_config = header.options.renderData.CONFIG;
+                var headerFixed_config = headerFixed.options.renderData.CONFIG;
+                $.each(header_config.searchList, function(i, map){
+                    if(searchType === map.attr("type")){
+                        map.attr("active", "active")
+                    }
+                    else{
+                        map.attr("active", null)
+                    }
+                })
+                $.each(headerFixed_config.searchList, function(i, map){
+                    if(searchType == map.attr("type")){
+                        map.attr("active", "active");
+                    }
+                    else{
+                        map.attr("active", null);
+                    }
+                })
+            });
+
+        $(header.element).add(headerFixed.element)
+            .on("click", ".btn-search", function(){
+                var $node = $(this);
+                var type = $node.parent().parent().parent().find(".active[searchType]").attr("searchType");
+                var cont = $node.parent().parent().parent().find(".input-search").val().trim();
+                if(type == "1"){
+                    if(location.pathname!= "/app/webpage/searchCompany.html"){
+                        location.href = encodeURI("/app/webpage/searchCompany.html?memberName="+cont);
+                    }
+                }
+                else if(type == "2"){
+                    if(location.pathname!= "/app/webpage/searchShop.html"){
+                        location.href = encodeURI("/app/webpage/searchShop.html?commodityName="+cont);
+                    }
                 }
             })
-            $.each(headerFixed_config.searchList, function(i, map){
-                if(searchType == map.attr("type")){
-                    map.attr("active", "active");
-                }else{
-                    map.attr("active", null);
-                }
-            })
-        });
 
-    $(headerFixed.element).add(header.element)
-        .on("click", ".btn-search", function(){
-            var $node = $(this);
-            var type = $node.parent().parent().parent().find(".active[searchType]").attr("searchType");
-            var cont = $node.parent().parent().parent().find(".input-search").val().trim();
-            if(type == "1"){
-                if(location.pathname!= "/app/webpage/searchCompany.html"){
-                    location.href = encodeURI("/app/webpage/searchCompany.html?memberName="+cont);
-                }
-            }else if(type == "2"){
-                if(location.pathname!= "/app/webpage/searchShop.html"){
-                    location.href = encodeURI("/app/webpage/searchShop.html?commodityName="+cont);
-                }
-            }
-        });
+    }
 
 });

@@ -15,7 +15,9 @@ define([
 
     return Render.extend({
         //子类扩展
-        templatesPath: "<page-info-1></page-info-1>",
+        templates: "<page-info-1></page-info-1>",
+        isDynamic: "NO",
+
 
         //事件
         "a[toSearchCompany] click": function(node){

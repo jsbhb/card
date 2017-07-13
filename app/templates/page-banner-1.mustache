@@ -1,14 +1,14 @@
 <div class="page-banner-content">
     <div class="bannerImg">
-        {{getCount RESPONSEDATA.modelList}}
-        {{#each RESPONSEDATA.modelList}}
+        {{getCount RESPONSE.INDEX_BANNER.modelList}}
+        {{#each RESPONSE.INDEX_BANNER.modelList}}
             <a href="{{href}}" class="inlineBlock" index="{{@index}}"
                style="background-image: url({{getImgUrl picPath}});z-index:{{zIndexDesc @index}}">
             </a>
         {{/each}}
-        {{#if RESPONSEDATA.modelList}}
+        {{#if RESPONSE.INDEX_BANNER.modelList}}
             <span class="carousel_list">
-                {{#each RESPONSEDATA.modelList}}
+                {{#each RESPONSE.INDEX_BANNER.modelList}}
                     <i class="carousel_i {{addElementClass @index 0 'showing'}}" index="{{@index}}"></i>
                 {{/each}}
             </span>

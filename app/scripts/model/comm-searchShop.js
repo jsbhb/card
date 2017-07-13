@@ -8,24 +8,22 @@ define([
     "bower.jquery",
     "bower.underscore",
     "bower.can",
-    "config.comm",
-    "fixture.test"
+    "config.comm"
 ], function($, _, can, Comm){
 
-    /** @queryAll:  page-shop-1数据
+    /** @queryAll:  page-searchShop-1数据
      */
-    return new Comm({
+    return Comm.extend({
+
         queryAll: function(data, fixture){
-            if(!data || !data.memberId){
-                return
-            }
             return this.sendRequest({
-                "urlPath":  "/"+data.memberId+"/commoditys",
+                "urlPath":  "/commoditys",
                 "type":     "get",
                 "data":      data||null,
                 "fixture":   fixture
             })
         }
-    });
+
+    },{});
 
 });

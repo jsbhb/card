@@ -8,9 +8,9 @@ define([
     "bower.jquery",
     "bower.underscore",
     "bower.can",
-    "widget.common",
+    "config.helper",
     "bower.css!css.page.headerFixed.1"
-], function($, _, can, common){
+], function($, _, can){
 
     /** @description: 模板组件
      */

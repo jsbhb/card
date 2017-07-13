@@ -1,59 +1,95 @@
 <div class="page-searchCompany-content">
-    {{#RESPONSEDATA.searchFilter}}
+    {{#RESPONSE.searchFilter}}
         <div class="resultCategory">
             <span class="inlineBlock">全部结果</span>
             <i class="rightIcon">></i>
+            {{#CONFIG.industryName}}
+                <a href="javascript:void(0)" class="industry">
+                    <abbr title="{{CONFIG.industryName}}">
+                        <span class="classifyType">所属行业</span>
+                        <span class="classCont">{{CONFIG.industryName}}</span>
+                        <span class="deleteIcon"></span>
+                    </abbr>
+                </a>
+                <i class="rightIcon">></i>
+            {{/CONFIG.industryName}}
+            {{#CONFIG.dictName}}
+                <a href="javascript:void(0)" class="dict">
+                    <abbr title="{{CONFIG.dictName}}">
+                        <span class="classifyType">主营类目</span>
+                        <span class="classCont">{{CONFIG.dictName}}</span>
+                        <span class="deleteIcon"></span>
+                    </abbr>
+                </a>
+                <i class="rightIcon">></i>
+            {{/CONFIG.dictName}}
+            {{#CONFIG.entryName}}
+                <a href="javascript:void(0)" class="entry">
+                    <abbr title="{{CONFIG.entryName}}">
+                        <span class="classifyType">其他分类</span>
+                        <span class="classCont">{{CONFIG.entryName}}</span>
+                        <span class="deleteIcon"></span>
+                    </abbr>
+                </a>
+                <i class="rightIcon">></i>
+            {{/CONFIG.entryName}}
             <span class="inlineBlock searchCont">{{CONFIG.searchCont}}</span>
         </div>
         <div class="classifyCategory">
-            {{#if industryMap}}
-                <div class="industryItem">
-                    <div>
-                        <span class="classifyType">所属行业</span>
-                    </div>
-                    <div>
+            {{^CONFIG.industryName}}
+                {{#isExist industryMap}}
+                    <div class="industryItem">
                         <div>
-                            {{#each industryMap}}
-                                <a href="javascript:void(0)" industryMap="{{@key}}">
-                                    <span>{{convertStr .}}</span>
-                                </a>
-                            {{/each}}
+                            <span class="classifyType">所属行业</span>
+                        </div>
+                        <div>
+                            <div>
+                                {{#each industryMap}}
+                                    <a href="javascript:void(0)" industryMap="{{@key}}">
+                                        <span>{{convertStr .}}</span>
+                                    </a>
+                                {{/each}}
+                            </div>
                         </div>
                     </div>
-                </div>
-            {{/if}}
-            {{#if dictMap}}
-                <div class="dictItem">
-                    <div>
-                        <span class="classifyType">主营类目</span>
-                    </div>
-                    <div>
+                {{/isExist}}
+            {{/CONFIG.industryName}}
+            {{^CONFIG.dictName}}
+                {{#isExist dictMap}}
+                    <div class="dictItem">
                         <div>
-                            {{#each dictMap}}
-                                <a href="javascript:void(0)" dictMap="{{@key}}">
-                                    <span>{{convertStr .}}</span>
-                                </a>
-                            {{/each}}
+                            <span class="classifyType">主营类目</span>
+                        </div>
+                        <div>
+                            <div>
+                                {{#each dictMap}}
+                                    <a href="javascript:void(0)" dictMap="{{@key}}">
+                                        <span>{{convertStr .}}</span>
+                                    </a>
+                                {{/each}}
+                            </div>
                         </div>
                     </div>
-                </div>
-            {{/if}}
-            {{#if entryMap}}
-                <div class="entryItem">
-                    <div>
-                        <span class="classifyType">其他分类</span>
-                    </div>
-                    <div>
+                {{/isExist}}
+            {{/CONFIG.dictName}}
+            {{^CONFIG.entryName}}
+                {{#isExist entryMap}}
+                    <div class="entryItem">
                         <div>
-                            {{#each entryMap}}
-                                <a href="javascript:void(0)" entryMap="{{@key}}">
-                                    <span>{{convertStr .}}</span>
-                                </a>
-                            {{/each}}
+                            <span class="classifyType">其他分类</span>
+                        </div>
+                        <div>
+                            <div>
+                                {{#each entryMap}}
+                                    <a href="javascript:void(0)" entryMap="{{@key}}">
+                                        <span>{{convertStr .}}</span>
+                                    </a>
+                                {{/each}}
+                            </div>
                         </div>
                     </div>
-                </div>
-            {{/if}}
+                {{/isExist}}
+            {{/CONFIG.entryName}}
         </div>
         <div class="reminder">
             <span>温馨提示：企业简介处带有</span>
@@ -64,41 +100,90 @@
         </div>
         <div class="filter">
             <div class="btn-group inlineBlock">
-                <a href="javascript:void(0)" class="btn btn-default inlineBlock filterDefault active">默认
-                    <i class="uFont font-base_directionDown"></i>
+                <a href="javascript:void(0)" class="btn btn-default inlineBlock filterDefault
+                   {{#if CONFIG.filterDefault.active}}active{{/if}}">默认
+                    <i class="uFont
+                      {{#if CONFIG.filterDefault.down}}
+                      font-base_directionDown
+                      {{else}}
+                      font-base_directionUp
+                      {{/if}}">
+                    </i>
                 </a>
-                <a href="javascript:void(0)" class="btn btn-default inlineBlock filterReputation">信誉度
-                    <i class="uFont font-base_directionDown"></i>
+                <a href="javascript:void(0)" class="btn btn-default inlineBlock filterReputation
+                   {{#if CONFIG.filterReputation.active}}active{{/if}}">信誉度
+                    <i class="uFont
+                      {{#if CONFIG.filterReputation.down}}
+                      font-base_directionDown
+                      {{else}}
+                      font-base_directionUp
+                      {{/if}}">
+                    </i>
                 </a>
-                <a href="javascript:void(0)" class="btn btn-default inlineBlock filterCalendar">入驻时间
-                    <i class="uFont font-base_directionDown"></i>
+                <a href="javascript:void(0)" class="btn btn-default inlineBlock filterCalendar
+                   {{#if CONFIG.filterCalendar.active}}active{{/if}}">入驻时间
+                    <i class="uFont
+                      {{#if CONFIG.filterCalendar.down}}
+                      font-base_directionDown
+                      {{else}}
+                      font-base_directionUp
+                      {{/if}}">
+                    </i>
                 </a>
             </div>
             <div class="inputGroup inlineBlock">
                 <label for="company_highQuality">
-                    <i class="fa fa-square-o fa-fw"></i><span>优质企业</span>
+                    <i class="fa
+                       {{#if CONFIG.highQuality}}
+                          fa-check-square-o
+                       {{else}}
+                          fa-square-o
+                       {{/if}}
+                       fa-fw">
+                    </i><span>优质企业</span>
                 </label>
-                <input type="checkbox" id="company_highQuality">
+                <input type="checkbox" id="company_highQuality" {{#if CONFIG.highQuality}}checked{{/if}}>
                 <label for="company_sincerity">
-                    <i class="fa fa-square-o fa-fw"></i><span>诚信企业</span>
+                    <i class="fa
+                       {{#if CONFIG.sincerity}}
+                          fa-check-square-o
+                       {{else}}
+                          fa-square-o
+                       {{/if}}
+                       fa-fw">
+                    </i><span>诚信企业</span>
                 </label>
-                <input type="checkbox" id="company_sincerity">
+                <input type="checkbox" id="company_sincerity" {{#if CONFIG.sincerity}}checked{{/if}}>
                 <label for="company_returnGoods">
-                    <i class="fa fa-square-o fa-fw"></i><span>支持退货处理</span>
+                    <i class="fa
+                       {{#if CONFIG.returnGoods}}
+                          fa-check-square-o
+                       {{else}}
+                          fa-square-o
+                       {{/if}}
+                       fa-fw">
+                    </i><span>支持退货处理</span>
                 </label>
-                <input type="checkbox" id="company_returnGoods">
+                <input type="checkbox" id="company_returnGoods" {{#if CONFIG.returnGoods}}checked{{/if}}>
                 <label for="company_guarantee">
-                    <i class="fa fa-square-o fa-fw"></i><span>本平台担保</span>
+                    <i class="fa
+                       {{#if CONFIG.guarantee}}
+                          fa-check-square-o
+                       {{else}}
+                          fa-square-o
+                       {{/if}}
+                       fa-fw">
+                    </i><span>本平台担保</span>
                 </label>
-                <input type="checkbox" id="company_guarantee">
+                <input type="checkbox" id="company_guarantee" {{#if CONFIG.guarantee}}checked{{/if}}>
             </div>
         </div>
-    {{/RESPONSEDATA.searchFilter}}
+    {{/RESPONSE.searchFilter}}
 
-    {{#if RESPONSEDATA.memberList}}
+    {{#if RESPONSE.memberList}}
         <div class="companyList">
             <ul>
-                {{#each RESPONSEDATA.memberList}}
+                {{#each RESPONSE.memberList}}
                     <li class="inlineBlock">
                         <a href="/app/webpage/company.html?memberId={{memberId}}" target="_blank">
                             <div class="imgBox">
@@ -107,11 +192,15 @@
                             <div class="info">
                                <span class="name inlineBlock">
                                   <span class="inlineBlock">公司名称：</span>
-                                  <span class="contnet inlineBlock">{{memberName}}</span>
+                                  <span class="contnet inlineBlock">{{{memberName}}}</span>
+                               </span>
+                                <span class="name inlineBlock">
+                                  <span class="inlineBlock">公司地址：</span>
+                                  <span class="contnet inlineBlock">{{province}}{{city}}{{area}}</span>
                                </span>
                                 <span class="description inlineBlock">
                                     <span class="inlineBlock">经营方向：</span>
-                                    <span class="contnet inlineBlock"> {{product}} </span>
+                                    <span class="contnet inlineBlock">{{{product}}}</span>
                                </span>
                             </div>
                             <div class="mark">
@@ -133,7 +222,7 @@
                     </li>
                 {{/each}}
             </ul>
-            <div class="load-pagePagination"></div>
+            <div id="load-pagePagination"></div>
         </div>
     {{else}}
         <div class="nothingError">

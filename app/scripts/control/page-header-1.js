@@ -15,7 +15,7 @@ define([
 
     return Render.extend({
         //子类扩展
-        templatesPath: "<page-header-1></page-header-1>",
+        templates: "<page-header-1></page-header-1>",
     })
 
 });

@@ -15,14 +15,14 @@ define([
 
     return Render.extend({
         //子类扩展
-        templatesPath: "<page-pagination-1></page-pagination-1>",
+        templates: "<page-pagination-1></page-pagination-1>",
+
 
         //事件
         "li.pagination_page>a.pagination_btn click": function(node){
-            var that = this;
             var $node = $(node);
-            var currentPage = this.options.renderData.RESPONSEDATA.currentPage*1;
-            var totalPages = this.options.renderData.RESPONSEDATA.totalPages*1;
+            var currentPage = this.options.renderData.RESPONSE.currentPage*1;
+            var totalPages = this.options.renderData.RESPONSE.totalPages*1;
             var activePage = $node.parent().parent().find(">li.active>a[jumpbtn]").attr("jumpbtn");
             if($node.hasClass("prevBtn")){
                 currentPage = currentPage > 1? currentPage-1: currentPage;
@@ -48,7 +48,7 @@ define([
         "li.pagination_page>input.pagination_searchText input": function(node) {
             var $node = $(node);
             var val = $node.val();
-            var totalPages = this.options.renderData.RESPONSEDATA.totalPages*1;
+            var totalPages = this.options.renderData.RESPONSE.totalPages*1;
             var tempVal = val ? val.replace(/\D+/gi, "") : "";
 
             if (tempVal == "" || tempVal < 1 ) {
@@ -56,12 +56,12 @@ define([
             }else if (tempVal > totalPages) {
                 tempVal = totalPages;
             }
-            this.options.renderData.RESPONSEDATA.attr("currentPage", tempVal);
+            this.options.renderData.RESPONSE.attr("currentPage", tempVal);
         },
         "li.pagination_page>input.pagination_searchText propertychange": function(node) {
             var $node = $(node);
             var val = $node.val();
-            var totalPages = this.options.renderData.RESPONSEDATA.totalPages*1;
+            var totalPages = this.options.renderData.RESPONSE.totalPages*1;
             var tempVal = val ? val.replace(/\D+/gi, "") : "";
 
             if (tempVal == "" || tempVal < 1 ) {
@@ -69,9 +69,7 @@ define([
             }else if (tempVal > totalPages) {
                 tempVal = totalPages;
             }
-            this.options.renderData.RESPONSEDATA.attr("currentPage", tempVal);
+            this.options.renderData.RESPONSE.attr("currentPage", tempVal);
         }
-
     })
-
 });

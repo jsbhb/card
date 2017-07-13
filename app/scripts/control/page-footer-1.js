@@ -17,7 +17,8 @@ define([
      */
     return Render.extend({
         //子类扩展
-        templatesPath: "<page-footer-1></page-footer-1>",
+        templates: "<page-footer-1></page-footer-1>",
+        isDynamic: "NO"
     })
 
 });

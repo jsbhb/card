@@ -11,9 +11,8 @@ define([
     "bower.can",
     "bower.dotdotdot.min",
     "widget.common",
-    "widget.scrollMonitor",
-    "config.helper",
-    "comm.collect",
+    "config.system",
+    "model.comm",
     "control.page.top.1",
     "control.page.header.1",
     "control.page.nav.1",
@@ -21,17 +20,20 @@ define([
     "control.page.footer.1",
     "bower.css!css.font.awesome.min",
     "bower.css!css.bootstrap.min",
-    "bower.css!css.uFont",
+    "bower.css!css.uFont"
 ], function(
-    $, _, bootstrap, can, dot, common, scrollMonitor, helper, comm,
-    controlPageTop1,
-    controlPageHeader1,
-    controlPageNav1,
+    $, _, bootstrap, can, dot,
+    common,
+    system,
+    comm,
+    pageTop1,
+    pageHeader1,
+    pageNav1,
     controlShop1,
-    controlPageFooter1){
+    pageFooter1){
 
 
-    /** @description:  新建页面元素（确认需要哪些模块）
+    /** @description:   新建页面元素（确认页面所需模块）
      */
     var C_SHORT =    "short";
     var E_TOP =      $("<div id='load-pageTop'></div>");
@@ -48,9 +50,13 @@ define([
         .append(E_NAV)
         .append(E_BODY)
         .append(E_FOOTER);
-
     $(E_BODY)
         .append(E_SHOP);
+
+
+
+    /** @description:   定义页面层事件（模块交互、页面跳转等）
+     */
 
 
 
@@ -74,10 +80,10 @@ define([
 
     /** @description:  加载页面模块（此时渲染数据为：初始数据）
      */
-    var top = new controlPageTop1("#load-pageTop",{
+    var top = new pageTop1("#load-pageTop",{
         responseData: topResponseData
     });
-    var header = new controlPageHeader1("#load-pageHeader",{
+    var header = new pageHeader1("#load-pageHeader",{
         config: {
             searchCont: searchCont,
             SEARCH_List:[
@@ -86,14 +92,14 @@ define([
             ]
         }
     });
-    var nav = new controlPageNav1("#load-pageNav",{
+    var nav = new pageNav1("#load-pageNav",{
         config:{ border: "border" }
     });
     var shop1 = new controlShop1("#load-pageShop",{
         config: { searchCont: searchCont },
         requestData: shopRequestData
     });
-    var footer = new controlPageFooter1("#load-pageFooter");
+    var footer = new pageFooter1("#load-pageFooter");
 
 
 

@@ -8,8 +8,9 @@ define([
     "bower.jquery",
     "bower.underscore",
     "bower.can",
-    "config.path"
-], function ($, _, can, path) {
+    "config.system",
+    "test.main"
+], function ($, _, can, system) {
 
     /**
      * @description 创建Comm通讯基类
@@ -20,11 +21,11 @@ define([
          * @description 为Comm对象绑定参数
          */
         setData: function(param){
-            var tempUrl =  path.urlHost + param.urlPath;
+            var tempUrl =  system.urlHost + param.urlPath;
             this.url =     param.urlPath!=null?  tempUrl:       (this.url!=null?     this.url:    "");
             this.type =    param.type!=null?     param.type:    (this.type!=null?    this.type:   "post");
             this.data =    param.data!=null?     param.data:    (this.data!=null?    this.data:    {});
-            this.fixture = param.fixture!=null?  param.fixture: (this.fixture!=null? this.fixture: true);
+            this.fixture = param.fixture!=null?  param.fixture: (this.fixture!=null? this.fixture: system.fixture);
         },
 
         /**
@@ -40,7 +41,7 @@ define([
                 data: that.data,
                 fixture: that.fixture
             }).done(function(response) {
-                def.resolve(new can.Model(response));
+                def.resolve(response);
             }).fail(function(error) {
                 def.reject(error);
             });
@@ -66,6 +67,6 @@ define([
             this.setData(param);
         }
 
-    })
+    },{})
 
 });

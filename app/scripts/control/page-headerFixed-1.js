@@ -15,18 +15,21 @@ define([
 
     return Render.extend({
         //子类扩展
-        templatesPath: "<page-headerfixed-1></page-headerfixed-1>",
-        timer: null,
-        renderAfterFun: function() {
+        templates: "<page-headerfixed-1></page-headerfixed-1>",
+        renderAfterTime: 0,
+        renderAfterFunc: function() {
             var that = this;
             that.setElementCSS();
             that.isHeaderFixed();
             $(window).on("scroll", function(){ that.isHeaderFixed(); })
         },
-        "setElementCSS": function(){
+
+
+        //自定义方法
+        setElementCSS: function(){
             this.element.css({
                 "width": "100%",
-                height:  "52px",
+                "height":  "52px",
                 "position": "fixed",
                 "top": "0px",
                 "left": "0px",
@@ -38,9 +41,8 @@ define([
                 "-webkit-box-shadow": "0 2px 4px rgba(0, 0, 0,.15)",
             });
         },
-        "isHeaderFixed": function(){
+        isHeaderFixed: function(){
             var that = this;
-            clearTimeout(this.timer);
             this.element.stop(true, true);
             this.element.css({
                 "top": "-54px" ,

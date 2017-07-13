@@ -8,9 +8,9 @@ define([
     "bower.jquery",
     "bower.underscore",
     "bower.can",
-    "widget.common",
+    "config.helper",
     "bower.css!css.page.pagination.1"
-], function($, _, can, common){
+], function($, _, can){
 
     /** @description: 模板组件
      */
@@ -23,8 +23,6 @@ define([
                 var pageList = [];
                 var currentPage = data.currentPage*1;
                 var totalPages = data.totalPages*1;
-                var newUrl = common.setUrlParam("currentPage", currentPage);
-                history.replaceState({"currentPage": currentPage}, "", newUrl);
                 if(totalPages<13){
                     for(var i=0;i<totalPages;i++){
                         pageList[i] = {

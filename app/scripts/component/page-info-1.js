@@ -8,9 +8,9 @@ define([
     "bower.jquery",
     "bower.underscore",
     "bower.can",
-    "widget.common",
+    "config.helper",
     "bower.css!css.page.info.1"
-], function($, _, can, common){
+], function($, _, can){
 
     /** @description: 模板组件
      */
@@ -18,13 +18,6 @@ define([
         tag: "page-info-1",
         template: can.view("templates.page.info.1.mustache"),
         helpers: {
-            isFirst: function(val, type, options){
-                if(val()==0){
-                    return type;
-                }else{
-                    return null;
-                }
-            },
             setCSS_Width: function(count, options){
                 return typeof count == "function"? count().length*120+"px": count.length*120+"px";
             }

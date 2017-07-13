@@ -1,6 +1,6 @@
 <div class="page-info-content">
     <div class="header">
-        {{#RESPONSEDATA}}
+        {{#RESPONSE.PRODUCT_POPULARIZE}}
             <div class="title">{{popularizeName}}</div>
             {{#if popularizeList}}
                 <div class="list">
@@ -15,11 +15,11 @@
                     <a href="javascript:void(0)" toSearchShop={{popularizeName}}>更多商品<span>>></span></a>
                 </div>
             {{/if}}
-        {{/RESPONSEDATA}}
+        {{/RESPONSE.PRODUCT_POPULARIZE}}
     </div>
     <div class="body">
         <div class="content">
-            {{#each RESPONSEDATA.modelList}}
+            {{#each RESPONSE.PRODUCT_POPULARIZE.modelList}}
                 {{#setRenderRange @index 9}}
                     {{#isFirst @index}}
                         <a class="shop big">

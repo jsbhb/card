@@ -1,23 +1,23 @@
 <div class="page-shop-content">
     <div class="maxWidth">
         <div class="shopImg">
-            <img src="{{RESPONSEDATA.logoPath}}">
+            <img src="{{RESPONSE.logoPath}}">
         </div>
     </div>
     <div class="shopInfo">
         <div class="maxWidth">
             <span>
-                {{#each RESPONSEDATA.commoditySearchList}}
+                {{#each RESPONSE.commoditySearchList}}
                     {{#setRenderRange @index 1}}{{commodityName}}{{/setRenderRange}}
                 {{/each}}
             </span>
             <span class="pull-right">
-                {{RESPONSEDATA.memberName}}
+                {{RESPONSE.memberName}}
             </span>
         </div>
     </div>
     <div class="maxWidth">
-        {{#each RESPONSEDATA.commoditySearchList}}
+        {{#each RESPONSE.commoditySearchList}}
             {{#setRenderRange @index 1}}
                 <div class="shopDetails">
                     <div class="imgs">
@@ -65,7 +65,7 @@
               </ul>
               <ul class="collect">
                     <span>热门收藏</span>
-                  {{#each RESPONSEDATA.commoditySearchList}}
+                  {{#each RESPONSE.commoditySearchList}}
                       {{#setRenderRange @index 5}}
                           <li>
                               <a href="/app/webpage/shop.html?memberId={{memberId}}&commodityId={{commodityId}}" target="_blank">
@@ -82,7 +82,7 @@
                     <a class="shopITem">商品信息</a>
                 </div>
                 <div class="shopDescription">
-                    {{#each RESPONSEDATA.commoditySearchList}}
+                    {{#each RESPONSE.commoditySearchList}}
                         {{#setRenderRange @index 1}}
                             <ul>
                                 <li>

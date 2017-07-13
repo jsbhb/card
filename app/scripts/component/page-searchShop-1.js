@@ -8,9 +8,9 @@ define([
     "bower.jquery",
     "bower.underscore",
     "bower.can",
-    "widget.common",
+    "config.helper",
     "bower.css!css.page.searchShop.1"
-], function($, _, can, common){
+], function($, _, can){
 
     /** @description: 模板组件
      */
@@ -43,107 +43,17 @@ define([
             }
         },
         events:{
-            "[brand] click": function(node){
+            ".priceRegion .price-input input": function(node){
                 var $element = this.element;
                 var $node = $(node);
-                var hideElement = $node.parents(".brand");
-                var typeText = hideElement.find(".classifyType").text();
-                var text = $node.text();
-                this.scope.addSearch(typeText, text, "brand", hideElement);
-            },
-            "[commodityCategory2] click": function(node){
-                var $element = this.element;
-                var $node = $(node);
-                var hideElement = $node.parents(".commodityCategory2");
-                var typeText = hideElement.find(".classifyType").text();
-                var text = $node.text();
-                this.scope.addSearch(typeText, text, "commodityCategory2", hideElement);
-            },
-            "[commodityCategory3] click": function(node){
-                var $element = this.element;
-                var $node = $(node);
-                var hideElement = $node.parents(".commodityCategory3");
-                var typeText = hideElement.find(".classifyType").text();
-                var text = $node.text();
-                this.scope.addSearch(typeText, text, "commodityCategory3", hideElement);
-            },
-            "[color] click": function(node){
-                var $element = this.element;
-                var $node = $(node);
-                var hideElement = $node.parents(".color");
-                var typeText = hideElement.find(".classifyType").text();
-                var text = $node.text();
-                this.scope.addSearch(typeText, text, "color", hideElement);
-            },
-            "[size] click": function(node){
-                var $element = this.element;
-                var $node = $(node);
-                var hideElement = $node.parents(".size");
-                var typeText = hideElement.find(".classifyType").text();
-                var text = $node.text();
-                this.scope.addSearch(typeText, text, "size", hideElement);
-            },
-            ".priceRegion .priceRegionBtn click": function(node){
-                var $element = this.element;
-                var $node = $(node);
-                var hideElement = null;
-                var typeText="价格";
-                var text1 = $node.parents(".priceRegion:first").find("input").eq(0).val();
-                var text2 = $node.parents(".priceRegion:first").find("input").eq(1).val();
-                var text;
-                if(!text1 && !text2){
-                    return;
-                }else if(!text1 && !!text2){
-                    $node.parents(".priceRegion:first").find("input").eq(0).val("0");
-                    text = "￥0-" + text2;
-                }else if(!!text1 && !text2){
-                    text = "￥" + text1 + "以上";
-                }else if(!!text1 && !!text2 && text1*1>text2*1){
-                    $node.parents(".priceRegion:first").find("input").eq(0).val(text2);
-                    $node.parents(".priceRegion:first").find("input").eq(1).val(text1);
-                    text = "￥" + text2 + "-" + text1;
-                }else if(!!text1 && !!text2 && text1*1<=text2*1){
-                    text = "￥" + text1 + "-" + text2;
-                }
-                this.scope.addSearch(typeText, text, "priceRegion", hideElement);
-            },
-            ".priceRegion input input": function(node){
-                var $element = this.element;
-                var $node = $(node);
-                var val = $node.val().replace(/\D/gi,"");
+                var val = $node.val().replace(/\D/i,"");
                 $node.val(val);
             },
-            ".priceRegion input propertychange": function(node){
+            ".priceRegion .price-input propertychange": function(node){
                 var $element = this.element;
                 var $node = $(node);
-                var val = $node.val().replace(/\D/gi,"");
+                var val = $node.val().replace(/\D/i,"");
                 $node.val(val);
-            },
-            ".resultCategory>a .deleteIcon click": function(node){
-                var $element = this.element;
-                var $node = $(node);
-                var parent = $node.parents("a:first");
-                var cls = parent.attr("class");
-                $element.find(".classifyCategory").find(">."+cls).show();
-                if($node.parents("a:first").hasClass("priceRegion")){
-                    $node.parents("a:first").find("input").val("");
-                }
-            },
-            ".filter>.btn-group>a click": function(node) {
-                var $element = this.element;
-                var $node = $(node);
-                if(!$node.hasClass("active")){
-                    $element.find(".filter>.btn-group>a").removeClass("active");
-                    $node.addClass("active");
-                }else if($node.hasClass("filterHot")||$node.hasClass("filterPrice")){
-                    if($node.find(">i").hasClass("font-base_directionDown")){
-                        $node.find(">i").removeClass("font-base_directionDown");
-                        $node.find(">i").addClass("font-base_directionUp");
-                    }else{
-                        $node.find(">i").addClass("font-base_directionDown");
-                        $node.find(">i").removeClass("font-base_directionUp");
-                    }
-                }
             },
             ".ShopList .showImg img mouseenter": function(node){
                 var $element = this.element;
@@ -153,6 +63,6 @@ define([
                 $node.addClass("active");
                 $node.parents("li:first").find(".imgBox img").attr("src", src);
             }
-        },
+        }
     })
 })

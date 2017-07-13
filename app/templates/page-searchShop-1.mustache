@@ -1,119 +1,210 @@
 <div class="page-searchShop-content">
 
-    {{#RESPONSEDATA}}
+    {{#RESPONSE}}
         <div class="resultCategory">
             <span class="inlineBlock">全部结果</span>
             <i class="rightIcon">></i>
+            {{#CONFIG.brand}}
+                <a href="javascript:void(0)" class="brand">
+                    <abbr title="{{CONFIG.brand}}">
+                        <span class="classifyType">品牌</span>
+                        <span class="classCont">{{CONFIG.brand}}</span>
+                        <span class="deleteIcon"></span>
+                    </abbr>
+                </a>
+                <i class="rightIcon">></i>
+            {{/CONFIG.brand}}
+            {{#CONFIG.commodityCategory2}}
+                <a href="javascript:void(0)" class="commodityCategory2">
+                    <abbr title="{{CONFIG.commodityCategory2}}">
+                        <span class="classifyType">产品</span>
+                        <span class="classCont">{{CONFIG.commodityCategory2}}</span>
+                        <span class="deleteIcon"></span>
+                    </abbr>
+                </a>
+                <i class="rightIcon">></i>
+            {{/CONFIG.commodityCategory2}}
+            {{#CONFIG.commodityCategory3}}
+                <a href="javascript:void(0)" class="commodityCategory3">
+                    <abbr title="{{CONFIG.commodityCategory3}}">
+                        <span class="classifyType">类型</span>
+                        <span class="classCont">{{CONFIG.commodityCategory3}}</span>
+                        <span class="deleteIcon"></span>
+                    </abbr>
+                </a>
+                <i class="rightIcon">></i>
+            {{/CONFIG.commodityCategory3}}
+            {{#CONFIG.color}}
+                <a href="javascript:void(0)" class="color">
+                    <abbr title="{{CONFIG.color}}">
+                        <span class="classifyType">颜色</span>
+                        <span class="classCont">{{CONFIG.color}}</span>
+                        <span class="deleteIcon"></span>
+                    </abbr>
+                </a>
+                <i class="rightIcon">></i>
+            {{/CONFIG.color}}
+            {{#CONFIG.size}}
+                <a href="javascript:void(0)" class="size">
+                    <abbr title="{{CONFIG.size}}">
+                        <span class="classifyType">规格</span>
+                        <span class="classCont">{{CONFIG.size}}</span>
+                        <span class="deleteIcon"></span>
+                    </abbr>
+                </a>
+                <i class="rightIcon">></i>
+            {{/CONFIG.size}}
+            {{#CONFIG.priceRegion}}
+                <a href="javascript:void(0)" class="priceRegion">
+                    <abbr title="{{CONFIG.priceRegion}}">
+                        <span class="classifyType">价格</span>
+                        <span class="classCont">{{CONFIG.priceRegion}}</span>
+                        <span class="deleteIcon"></span>
+                    </abbr>
+                </a>
+                <i class="rightIcon">></i>
+            {{/CONFIG.priceRegion}}
             <span class="inlineBlock searchCont">{{CONFIG.searchCont}}</span>
         </div>
         <div class="classifyCategory">
-            {{#if brand}}
-                <div class="brand">
-                    <div>
-                        <span class="classifyType">品牌</span>
-                    </div>
-                    <div>
+            {{^CONFIG.brand}}
+                {{#isExist brand}}
+                    <div class="brand">
                         <div>
-                            {{#each brand}}
-                                <a href="javascript:void(0)" brand>
-                                    <span>{{convertStr .}}</span>
-                                </a>
-                            {{/each}}
+                            <span class="classifyType">品牌</span>
+                        </div>
+                        <div>
+                            <div>
+                                {{#each brand}}
+                                    <a href="javascript:void(0)" brand>
+                                        <span>{{convertStr .}}</span>
+                                    </a>
+                                {{/each}}
+                            </div>
                         </div>
                     </div>
-                </div>
-            {{/if}}
-            {{#if commodityCategory2}}
-                <div class="commodityCategory2">
-                    <div>
-                        <span class="classifyType">产品</span>
-                    </div>
-                    <div>
+                {{/isExist}}
+            {{/CONFIG.brand}}
+            {{^CONFIG.commodityCategory2}}
+                {{#isExist commodityCategory2}}
+                    <div class="commodityCategory2">
                         <div>
-                            {{#each commodityCategory2}}
-                                <a href="javascript:void(0)" commodityCategory2>
-                                    <span>{{convertStr .}}</span>
-                                </a>
-                            {{/each}}
+                            <span class="classifyType">产品</span>
+                        </div>
+                        <div>
+                            <div>
+                                {{#each commodityCategory2}}
+                                    <a href="javascript:void(0)" commodityCategory2>
+                                        <span>{{convertStr .}}</span>
+                                    </a>
+                                {{/each}}
+                            </div>
                         </div>
                     </div>
-                </div>
-            {{/if}}
-            {{#if commodityCategory3}}
-                <div class="commodityCategory3">
-                    <div>
-                        <span class="classifyType">类型</span>
-                    </div>
-                    <div>
+                {{/isExist}}
+            {{/CONFIG.commodityCategory2}}
+            {{^CONFIG.commodityCategory3}}
+                {{#isExist commodityCategory3}}
+                    <div class="commodityCategory3">
                         <div>
-                            {{#each commodityCategory3}}
-                                <a href="javascript:void(0)" commodityCategory3>
-                                    <span>{{convertStr .}}</span>
-                                </a>
-                            {{/each}}
+                            <span class="classifyType">类型</span>
+                        </div>
+                        <div>
+                            <div>
+                                {{#each commodityCategory3}}
+                                    <a href="javascript:void(0)" commodityCategory3>
+                                        <span>{{convertStr .}}</span>
+                                    </a>
+                                {{/each}}
+                            </div>
                         </div>
                     </div>
-                </div>
-            {{/if}}
-            {{#if color}}
-                <div class="color">
-                    <div>
-                        <span class="classifyType">颜色</span>
-                    </div>
-                    <div>
+                {{/isExist}}
+            {{/CONFIG.commodityCategory3}}
+            {{^CONFIG.color}}
+                {{#isExist color}}
+                    <div class="color">
                         <div>
-                            {{#each color}}
-                                <a href="javascript:void(0)" color>
-                                    <span>{{convertStr .}}</span>
-                                </a>
-                            {{/each}}
+                            <span class="classifyType">颜色</span>
+                        </div>
+                        <div>
+                            <div>
+                                {{#each color}}
+                                    <a href="javascript:void(0)" color>
+                                        <span>{{convertStr .}}</span>
+                                    </a>
+                                {{/each}}
+                            </div>
                         </div>
                     </div>
-                </div>
-            {{/if}}
-            {{#if size}}
-                <div class="size">
-                    <div>
-                        <span class="classifyType">规格</span>
-                    </div>
-                    <div>
+                {{/isExist}}
+            {{/CONFIG.color}}
+            {{^CONFIG.size}}
+                {{#isExist size}}
+                    <div class="size">
                         <div>
-                            {{#each size}}
-                                <a href="javascript:void(0)" size>
-                                    <span>{{convertStr .}}</span>
-                                </a>
-                            {{/each}}
+                            <span class="classifyType">规格</span>
+                        </div>
+                        <div>
+                            <div>
+                                {{#each size}}
+                                    <a href="javascript:void(0)" size>
+                                        <span>{{convertStr .}}</span>
+                                    </a>
+                                {{/each}}
+                            </div>
                         </div>
                     </div>
-                </div>
-            {{/if}}
+                {{/isExist}}
+            {{/CONFIG.size}}
         </div>
         <div class="filter">
             <div class="btn-group inlineBlock">
-                <a href="javascript:void(0)" class="btn btn-default inlineBlock filterDefault active">默认
-                    <i class="uFont font-base_directionDown"></i>
+                <a href="javascript:void(0)" class="btn btn-default inlineBlock filterDefault
+                   {{#if CONFIG.filterDefault.active}}active{{/if}}">默认
+                    <i class="uFont
+                      {{#if CONFIG.filterDefault.down}}
+                      font-base_directionDown
+                      {{else}}
+                      font-base_directionUp
+                      {{/if}}">
+                    </i>
                 </a>
-                <a href="javascript:void(0)" class="btn btn-default inlineBlock filterHot">热销
-                    <i class="uFont font-base_directionDown"></i>
+                <a href="javascript:void(0)" class="btn btn-default inlineBlock filterHot
+                   {{#if CONFIG.filterHot.active}}active{{/if}}">热销
+                    <i class="uFont
+                      {{#if CONFIG.filterHot.down}}
+                      font-base_directionDown
+                      {{else}}
+                      font-base_directionUp
+                      {{/if}}">
+                    </i>
                 </a>
-                <a href="javascript:void(0)" class="btn btn-default inlineBlock filterPrice">价格
-                    <i class="uFont font-base_directionDown"></i>
+                <a href="javascript:void(0)" class="btn btn-default inlineBlock filterPrice
+                   {{#if CONFIG.filterPrice.active}}active{{/if}}">价格
+                    <i class="uFont
+                      {{#if CONFIG.filterPrice.down}}
+                      font-base_directionDown
+                      {{else}}
+                      font-base_directionUp
+                      {{/if}}">
+                    </i>
                 </a>
             </div>
             <div class="inputGroup inlineBlock priceRegion">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="">
+                    <input type="text" class="form-control price-input" placeholder="" value="{{CONFIG.priceMin}}">
                     <span class="input-group-addon">-</span>
-                    <input type="text" class="form-control" placeholder="">
+                    <input type="text" class="form-control price-input" placeholder="" value="{{CONFIG.priceMax}}">
                 </div>
                 <a href="javascript:void(0)" class="btn priceRegionBtn">确定</a>
             </div>
         </div>
-    {{/RESPONSEDATA}}
-    {{#if RESPONSEDATA.commoditySearchList}}
+    {{/RESPONSE}}
+    {{#if RESPONSE.commoditySearchList}}
         <div class="ShopList">
             <ul>
-                {{#each RESPONSEDATA.commoditySearchList}}
+                {{#each RESPONSE.commoditySearchList}}
                     <li class="inlineBlock">
                         <a href="/app/webpage/shop.html?memberId={{memberId}}&commodityId={{commodityId}}">
                             <div class="imgBox">
@@ -145,7 +236,7 @@
                     </li>
                 {{/each}}
             </ul>
-            <div class="load-pagePagination"></div>
+            <div id="load-pagePagination"></div>
         </div>
     {{else}}
         <div class="nothingError">

@@ -1,6 +1,6 @@
 <div class="page-info-content">
     <div class="header">
-        {{#RESPONSEDATA.MEMBER_PRODUCT_POPULARIZE}}
+        {{#RESPONSE.MEMBER_PRODUCT_POPULARIZE}}
             <div class="title">{{popularizeName}}</div>
             {{#if popularizeList}}
                 <div class="list">
@@ -15,21 +15,21 @@
                     <a href="javascript:void(0)" toSearchShop={{popularizeName}}>更多商品<span>>></span></a>
                 </div>
             {{/if}}
-        {{/RESPONSEDATA.MEMBER_PRODUCT_POPULARIZE}}
+        {{/RESPONSE.MEMBER_PRODUCT_POPULARIZE}}
     </div>
     <div class="body">
         <div class="content">
             <div class="content-logoImg">
-                {{#each RESPONSEDATA.MEMBER_PRODUCT_POPULARIZE.modelList}}
+                {{#each RESPONSE.MEMBER_PRODUCT_POPULARIZE.modelList}}
                     {{#setRenderRange @index 5}}
-                        <span index="{{../@index}}" class="{{isFirst ../@index "active"}}">
+                        <span index="{{../@index}}" class="{{addElementClass ../@index 0 "active"}}">
                                <img src="{{getImgUrl logoPath}}"/>
                             </span>
                     {{/setRenderRange}}
                 {{/each}}
             </div>
             <div class="content-showInfo">
-                {{#each RESPONSEDATA.MEMBER_PRODUCT_POPULARIZE.modelList}}
+                {{#each RESPONSE.MEMBER_PRODUCT_POPULARIZE.modelList}}
                     {{#setRenderRange @index 5}}
                         <ul index="{{../@index}}">
                             <li class="infoBanner" style="z-index:99">
@@ -86,18 +86,18 @@
                 {{/each}}
             </div>
         </div>
-        {{#if RESPONSEDATA.MEMBER_POPULARIZE}}
+        {{#if RESPONSE.MEMBER_POPULARIZE}}
             <div class="banner-logoImg">
-                {{#if RESPONSEDATA.MEMBER_POPULARIZE.modelList}}
+                {{#if RESPONSE.MEMBER_POPULARIZE.modelList}}
                     <div>
-                        <ul class="bannerUl" style="width:{{setCSS_Width RESPONSEDATA.MEMBER_POPULARIZE.modelList}}">
-                            {{#RESPONSEDATA.MEMBER_POPULARIZE.modelList}}
+                        <ul class="bannerUl" style="width:{{setCSS_Width RESPONSE.MEMBER_POPULARIZE.modelList}}">
+                            {{#RESPONSE.MEMBER_POPULARIZE.modelList}}
                                 <li>
                                     <a href="/app/webpage/company.html?memberId={{memberId}}" target="_blank">
                                         <img src="{{getImgUrl logoPath}}"/>
                                     </a>
                                 </li>
-                            {{/RESPONSEDATA.MEMBER_POPULARIZE.modelList}}
+                            {{/RESPONSE.MEMBER_POPULARIZE.modelList}}
                         </ul>
                     </div>
                     <a class="carousel_btn prev"><</a>

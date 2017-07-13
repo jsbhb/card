@@ -8,9 +8,9 @@ define([
     "bower.jquery",
     "bower.underscore",
     "bower.can",
-    "widget.common",
+    "config.helper",
     "bower.css!css.page.info.2"
-], function($, _, can, common){
+], function($, _, can){
 
     /** @description: 模板组件
      */
@@ -19,21 +19,16 @@ define([
         template: can.view("templates.page.info.2.mustache"),
         helpers: {
             isFirst: function(val, options){
-                if(val()==0){
-                    return options.fn(options.context)
-                }else{
-                    return null;
-                }
+                var tempVal = typeof val=='function'? val(): val;
+                return tempVal===0? options.fn(options.context): null;
             },
             notFirst: function(val, options){
-                if(val()!=0){
-                    return options.fn(options.context)
-                }else{
-                    return null;
-                }
+                var tempVal = typeof val==='function'? val(): val;
+                return tempVal!==0? options.fn(options.context): null;
             },
             parsefloat: function(val){
-                return "￥"+parseFloat(val()).toFixed(2);
+                var tempVal = typeof val=='function'? val(): val;
+                return "￥"+parseFloat(tempVal).toFixed(2);
             }
         },
         scope: {
