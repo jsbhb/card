@@ -6,9 +6,8 @@
 
 define([
     "bower.jquery",
-    "bower.underscore",
     "bower.can"
-], function ($, _, can) {
+], function ($, can) {
 
     /**
      *  @description  储存图片的区域
@@ -106,7 +105,7 @@ define([
             return tempSuffix?
                 can.mustache.safeString( imgPrefix + tempImgName + "." + tempSuffix ):
                 can.mustache.safeString( imgPrefix + tempImgName );
-        }else if(typeof other === "string"){
+        }else if(typeof other){
             return can.mustache.safeString( "/app/images/"+ other );
         }
     });

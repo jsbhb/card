@@ -4,10 +4,7 @@
 
 'use strict';
 
-define([
-    "bower.jquery",
-    "bower.underscore",
-], function($, _){
+define(["bower.jquery"], function($){
 
     $.fn.scrollMonitor  = Plugin;
 

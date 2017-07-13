@@ -5,8 +5,6 @@
 'use strict';
 
 define([
-    "bower.jquery",
-    "bower.underscore",
     "model.comm.index",
     "model.comm.nav",
     "model.comm.searchCompany",
@@ -14,7 +12,6 @@ define([
     "model.comm.company",
     "model.comm.shop"
 ], function(
-    $, _,
     comm_index,
     comm_nav,
     comm_searchCompany,

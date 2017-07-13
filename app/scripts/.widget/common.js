@@ -6,9 +6,8 @@
 
 define([
     "bower.jquery",
-    "bower.underscore",
     "config.system"
-], function($, _, system){
+], function($, system){
 
     return {
 

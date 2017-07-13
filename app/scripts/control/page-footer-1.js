@@ -6,12 +6,11 @@
 
 define([
     "bower.jquery",
-    "bower.underscore",
     "bower.can",
     "widget.common",
     "config.render",
     "component.page.footer.1"
-], function($, _, can, common, Render){
+], function($, can, common, Render){
 
     /** @description:  调用数据、模板组件, 并渲染输出
      */

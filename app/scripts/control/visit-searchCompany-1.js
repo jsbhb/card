@@ -6,7 +6,6 @@
 
 define([
     "bower.jquery",
-    "bower.underscore",
     "bower.bootstrap.min",
     "bower.can",
     "bower.dotdotdot.min",
@@ -23,7 +22,7 @@ define([
     "bower.css!css.bootstrap.min",
     "bower.css!css.uFont"
 ], function(
-    $, _, bootstrap, can, dot,
+    $, bootstrap, can, dot,
     common,
     system,
     comm,

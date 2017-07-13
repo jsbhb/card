@@ -10,7 +10,6 @@ requirejs.config({
     //依赖关系
     shim: {
         'bower.jquery':              { deps: [],                            exports: '$' },
-        'bower.underscore':          { deps: [],                            exports: '_' },
         "bower.bootstrap.min":       { deps: ['bower.jquery'],              exports: 'bootstrap' },
         "bower.dotdotdot.min":       { deps: ['bower.jquery'],              exports: 'dot' },
         'bower.can':                 { deps: ["bower.jquery"],              exports: 'can' },
@@ -48,7 +47,6 @@ requirejs.config({
         /** JS --框架/工具
          */
         "bower.jquery":                "bower_components/jquery/dist/jquery.min",
-        "bower.underscore":            "bower_components/underscore/underscore-min",
         "bower.bootstrap.min":         "bower_components/bootstrap/dist/js/bootstrap",
         "bower.dotdotdot.min":         "bower_components/jQuery.dotdotdot/src/jquery.dotdotdot.min",
         "bower.can":                   "bower_components/CanJS/can.jquery",

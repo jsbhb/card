@@ -6,12 +6,11 @@
 
 define([
     "bower.jquery",
-    "bower.underscore",
     "bower.can",
     "widget.common",
     "config.system",
     "model.comm"
-], function($, _, can, common, system, comm){
+], function($, can, common, system, comm){
 
     /**
      * @description:  创建render基类

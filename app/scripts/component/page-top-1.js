@@ -6,11 +6,10 @@
 
 define([
     "bower.jquery",
-    "bower.underscore",
     "bower.can",
     "config.helper",
     "bower.css!css.page.top.1"
-], function($, _, can){
+], function($, can){
 
     /** @description: 模板组件
      */

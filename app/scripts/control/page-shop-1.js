@@ -6,12 +6,11 @@
 
 define([
     "bower.jquery",
-    "bower.underscore",
     "bower.can",
     "widget.common",
     "config.render",
     "component.page.shop.1"
-], function($, _, can, common, Render){
+], function($, can, common, Render){
 
     return Render.extend({
         //子类扩展

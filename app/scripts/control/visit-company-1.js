@@ -6,7 +6,6 @@
 
 define([
     "bower.jquery",
-    "bower.underscore",
     "bower.bootstrap.min",
     "bower.can",
     "bower.dotdotdot.min",
@@ -22,7 +21,7 @@ define([
     "bower.css!css.bootstrap.min",
     "bower.css!css.uFont"
 ], function(
-    $, _, bootstrap, can, dot,
+    $, bootstrap, can, dot,
     common,
     system,
     comm,
@@ -73,9 +72,9 @@ define([
     var header = new pageHeader1("#load-pageHeader",{
         config: {
             searchCont: "",
-            SEARCH_List:[
-                { type: 1, name: "企业", active: "active" },
-                { type: 2, name: "商品", active: null }
+            searchList:[
+                { type: 1, name: "企业", active: null },
+                { type: 2, name: "商品", active: "active" }
             ]
         }
     });

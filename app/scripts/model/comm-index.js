@@ -4,12 +4,7 @@
 
 'use strict';
 
-define([
-    "bower.jquery",
-    "bower.underscore",
-    "bower.can",
-    "config.comm"
-], function($, _, can, Comm){
+define(["config.comm"], function(Comm){
 
     /** @queryAll:  page-index-1数据
      */

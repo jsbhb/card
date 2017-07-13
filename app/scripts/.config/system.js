@@ -4,10 +4,7 @@
 
 'use strict';
 
-define([
-    "bower.jquery",
-    "bower.underscore"
-], function($, _){
+define(function(){
 
     return {
 
@@ -19,7 +16,7 @@ define([
          *     fixture:    是否启用本地测试
          */
         urlHost:    "http://120.27.225.133:8080/cardapi/1.0/",
-        logOutput:  true,
+        logOutput:  false,
         fixture:    false
 
     }

@@ -6,11 +6,9 @@
 
 define([
     "bower.jquery",
-    "bower.underscore",
     "bower.can",
-    "config.system",
-    "test.main"
-], function ($, _, can, system) {
+    "config.system"
+], function ($, can, system) {
 
     /**
      * @description 创建Comm通讯基类
