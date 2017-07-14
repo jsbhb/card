@@ -12,6 +12,7 @@ define([
     "widget.common",
     "widget.scrollMonitor",
     "config.system",
+    "config.helper",
     "model.comm",
     "control.page.top.1",
     "control.page.header.1",
@@ -28,7 +29,7 @@ define([
 ], function(
     $, bootstrap, can, dot,
     common, scrollMonitor,
-    system,
+    system, helper,
     comm,
     pageTop1,
     pageHeader1,

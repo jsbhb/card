@@ -6,9 +6,7 @@
 
 define([
     "bower.jquery",
-    "bower.can",
-    "config.helper",
-    "bower.css!css.page.banner.1"
+    "bower.can"
 ], function($, can){
 
     /** @description: 模板组件

@@ -10,7 +10,9 @@ define([
     "widget.common",
     "config.render",
     "control.page.pagination.1",
-    "component.page.searchCompany.1"
+    "component.page.searchCompany.1",
+    "bower.text!templates.page.searchCompany.1.mustache",
+    "bower.css!css.page.searchCompany.1"
 ], function($, can, common, Render, pagePagination1){
 
     return Render.extend({

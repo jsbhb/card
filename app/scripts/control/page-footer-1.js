@@ -9,7 +9,9 @@ define([
     "bower.can",
     "widget.common",
     "config.render",
-    "component.page.footer.1"
+    "component.page.footer.1",
+    "bower.text!templates.page.footer.1.mustache",
+    "bower.css!css.page.footer.1"
 ], function($, can, common, Render){
 
     /** @description:  调用数据、模板组件, 并渲染输出

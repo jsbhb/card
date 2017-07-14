@@ -9,7 +9,9 @@ define([
     "bower.can",
     "widget.common",
     "config.render",
-    "component.page.banner.1"
+    "component.page.banner.1",
+    "bower.text!templates.page.banner.1.mustache",
+    "bower.css!css.page.banner.1"
 ], function($, can, common, Render) {
 
     return Render.extend({
