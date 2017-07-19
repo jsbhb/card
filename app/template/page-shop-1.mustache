@@ -24,7 +24,7 @@
             <div class="shopDetails">
                 <div class="imgs">
                     <div class="showImg">
-                        <img src="{{#if picture1}}{{getImgUrl picture1}}{{/if}}">
+                        {{#if picture1}}<img src="{{getImgUrl picture1}}">{{/if}}
                     </div>
                     <div class="otherImg">
                         {{#if picture1}}<img src="{{getImgUrl picture1}}" class="active">{{/if}}
@@ -42,7 +42,7 @@
                             <td>{{format_Money price}}</td>
                         </tr>
                         <tr style="height:38px">
-                            <td class="">起批价:</td>
+                            <td class="">起批量:</td>
                             <td style="padding-left:15px;"> 面议 </td>
                         </tr>
                         </tbody>
@@ -153,7 +153,7 @@
                 <div class="shopDescriptionHtml">
                     {{#each RESPONSE.commoditySearchList}}
                         {{#setRenderRange @index 1}}
-                            {{{showPageSource}}}
+                            {{{ImgSrc showPageSource}}}
                         {{/setRenderRange}}
                     {{/each}}
                 </div>

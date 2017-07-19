@@ -326,6 +326,7 @@ page-shop-1{
           &>.shopDescription{
             margin-top: 15px;
             &>.shopDescriptionTable{
+              width: 100%;
               border: solid 1px $base_borderColor;
               margin-bottom: 20px;
               &>tbody>tr>td{
@@ -342,6 +343,11 @@ page-shop-1{
           }
           &>.shopDescriptionHtml{
             width: 100%;
+            & img{
+              max-width: 44%;
+              margin: 0 3%;
+              height: auto;
+            }
           }
         }
 
