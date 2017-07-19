@@ -11,11 +11,11 @@ define([
     "config.render",
     "control.page.pagination.1",
     "component.page.searchShop.1",
-    "bower.text!templates.page.searchShop.1.mustache",
     "bower.css!css.page.searchShop.1"
 ], function($, can, common, Render, pagePagination1){
 
     return Render.extend({
+        template: "<page-searchshop-1></page-searchshop-1>",
         //子类扩展
         config: {
             brand: null,
@@ -30,41 +30,53 @@ define([
             filterHot: { active:null, down: true },
             filterPrice:{ active:null, down: true }
         },
-        templates: "<page-searchshop-1></page-searchshop-1>",
-        requestType: "querySearchShop",
+        region: {
+            searchShop: {
+                path: "RESPONSE",
+                dynamic: true,
+                afterFunc: function(that){
+                    var pagination = that.options.renderData.RESPONSE.pagination;
+                    if(pagination && pagination.totalPages>0){
+                        that.pagination = new pagePagination1("page-searchshop-1 #load-pagePagination",{
+                            config: {
+                                direction: "floatRight"
+                            },
+                            response: {
+                                data: pagination || null,
+                                region: "pagination"
+                            },
+                            parentObj: that
+                        });
+                    }
+                }
+            }
+        },
         requestData: {
             querySearchShop: {
                 "numPerPage": 10,
                 "currentPage": 1
             }
         },
-        renderAfterFunc: function(){
-            var pagination = this.options.renderData.RESPONSE.pagination;
-            if(pagination && pagination.totalPages>0){
-                this.pagination = new pagePagination1("page-searchshop-1 #load-pagePagination",{
-                    config: { direction: "floatRight" },
-                    responseData: pagination || null,
-                    parentObj: this
-                });
-            }
-        },
+        requestType: [
+            "querySearchShop/searchShop"
+        ],
 
 
         //自定义方法
         callback: function(currentPage){
             this.options.requestData.querySearchShop.currentPage = currentPage;
-            this.toRender("querySearchShop");
+            this.toRender("querySearchShop/searchShop");
         },
 
 
-        //事件
+        //自定义事件
         "[brand] click": function(node){
             var $node = $(node);
             var content = $node.find(">span").text();
             this.options.config.brand = content;
             this.options.requestData.querySearchShop["currentPage"] = 1;
             this.options.requestData.querySearchShop["brand"] = content;
-            this.toRender("querySearchShop");
+            this.toRender("querySearchShop/searchShop");
         },
         "[commodityCategory2] click": function(node){
             var $node = $(node);
@@ -72,7 +84,7 @@ define([
             this.options.config.commodityCategory2 = content;
             this.options.requestData.querySearchShop["currentPage"] = 1;
             this.options.requestData.querySearchShop["commodityCategory2"] = content;
-            this.toRender("querySearchShop");
+            this.toRender("querySearchShop/searchShop");
         },
         "[commodityCategory3] click": function(node){
             var $node = $(node);
@@ -80,7 +92,7 @@ define([
             this.options.config.commodityCategory3 = content;
             this.options.requestData.querySearchShop["currentPage"] = 1;
             this.options.requestData.querySearchShop["commodityCategory3"] = content;
-            this.toRender("querySearchShop");
+            this.toRender("querySearchShop/searchShop");
         },
         "[color] click": function(node){
             var $node = $(node);
@@ -88,7 +100,7 @@ define([
             this.options.config.color = content;
             this.options.requestData.querySearchShop["currentPage"] = 1;
             this.options.requestData.querySearchShop.color = content;
-            this.toRender("querySearchShop");
+            this.toRender("querySearchShop/searchShop");
         },
         "[size] click": function(node){
             var $node = $(node);
@@ -96,7 +108,7 @@ define([
             this.options.config.size = content;
             this.options.requestData.querySearchShop["currentPage"] = 1;
             this.options.requestData.querySearchShop.size = content;
-            this.toRender("querySearchShop");
+            this.toRender("querySearchShop/searchShop");
         },
         ".priceRegion .priceRegionBtn click": function(node){
             var $node = $(node);
@@ -134,7 +146,7 @@ define([
             priceMax!=null?
                 this.options.requestData.querySearchShop.priceMax = priceMax:
                 delete this.options.requestData.querySearchShop.priceMax;
-            this.toRender("querySearchShop");
+            this.toRender("querySearchShop/searchShop");
         },
         ".resultCategory>a .deleteIcon click": function(node){
             var $node = $(node);
@@ -160,7 +172,7 @@ define([
                 delete this.options.requestData.querySearchShop.priceMin;
                 delete this.options.requestData.querySearchShop.priceMax;
             }
-            this.toRender("querySearchShop");
+            this.toRender("querySearchShop/searchShop");
         },
         ".filter>.btn-group>a click": function(node) {
             var $node = $(node);
@@ -197,8 +209,9 @@ define([
                 this.options.config.filterHot.active = false;
                 this.options.config.filterPrice.active = true;
             }
-            this.toRender("querySearchShop");
+            this.toRender("querySearchShop/searchShop");
         }
 
     })
+
 });

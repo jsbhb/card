@@ -7511,4 +7511,4 @@ define(function(){
         ]
     }
 
-})
+});

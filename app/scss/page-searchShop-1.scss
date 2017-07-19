@@ -325,12 +325,12 @@ page-searchshop-1{
           }
           &>a{
             width: 100%;
-            height: 190px;
+            height: 205px;
             text-align: center;
             display: inline-block;
             &>.imgBox{
               width: 230px;
-              height: 188px;
+              height: 205px;
               margin: auto;
               border-bottom: dashed 1px $base_borderColor;
               position: relative;
@@ -348,8 +348,8 @@ page-searchshop-1{
             }
           }
           &>.info{
-            height: 95px;
-            margin: 5px auto 0 auto;
+            height: 85px;
+            margin: 0 auto;
             border-bottom: dashed 1px $base_borderColor;
             &>.showImg{
               width: 100%;
@@ -381,15 +381,15 @@ page-searchshop-1{
               }
             }
             &>.showPrice{
-              height: 30px;
-              line-height: 36px;
+              height: 27px;
+              line-height: 34px;
               padding-left: 12px;
               font-size: 18px;
               color: $red;
             }
             &>.showText{
               width: 100%;
-              padding: 3px 10px;
+              padding: 3px 10px 3px 10px;
               white-space: nowrap;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -426,9 +426,9 @@ page-searchshop-1{
             &>a{
               text-align: left;
               width: 100%;
-              padding: 2px 10px;
-              height: 24px;
-              line-height: 24px;
+              padding: 1.5px 10px;
+              height: 20px;
+              line-height: 20px;
               color: $red;
               font-size: 13px;
               white-space: nowrap;

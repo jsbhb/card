@@ -6,14 +6,15 @@
 
 define([
     "bower.jquery",
-    "bower.can"
-], function($, can){
+    "bower.can",
+    "bower.text!template.page.banner.1.mustache"
+], function($, can, template){
 
     /** @description: 模板组件
      */
     return can.Component.extend({
         tag: "page-banner-1",
-        template: can.view("templates.page.banner.1.mustache"),
+        template: template,
         helpers: {
             getCount: function(thisValue){
                 var count = typeof thisValue == "function"? thisValue(): thisValue;
@@ -96,4 +97,4 @@ define([
         }
     })
 
-})
+});

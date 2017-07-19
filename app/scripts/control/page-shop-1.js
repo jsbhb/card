@@ -10,17 +10,35 @@ define([
     "widget.common",
     "config.render",
     "component.page.shop.1",
-    "bower.text!templates.page.shop.1.mustache",
     "bower.css!css.page.shop.1"
 ], function($, can, common, Render){
 
     return Render.extend({
         //子类扩展
-        templates: "<page-shop-1></page-shop-1>",
-        requestType:   "queryShop",
+        template: "<page-shop-1></page-shop-1>",
+        config: {},
+        region: {
+            shop: {
+                path: "RESPONSE",
+                dynamic: true
+            }
+        },
         requestData: {
-            queryShop: {}
-        }
+            queryShop: {
+                "numPerPage": 10,
+                "currentPage": 1
+            }
+        },
+        requestType: [
+            "queryShop/shop"
+        ],
+
+
+        //自定义方法
+
+
+        //自定义事件
+
     })
 
 });

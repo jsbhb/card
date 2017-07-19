@@ -6,14 +6,15 @@
 
 define([
     "bower.jquery",
-    "bower.can"
-], function($, can){
+    "bower.can",
+    "bower.text!template.page.info.2.mustache"
+], function($, can, template){
 
     /** @description: 模板组件
      */
     return can.Component.extend({
         tag: "page-info-2",
-        template: can.view("templates.page.info.2.mustache"),
+        template: template,
         helpers: {
             isFirst: function(val, options){
                 var tempVal = typeof val=='function'? val(): val;
@@ -33,4 +34,4 @@ define([
         events: {
         }
     })
-})
+});

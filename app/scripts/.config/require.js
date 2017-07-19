@@ -44,6 +44,25 @@ requirejs.config({
         "css.page.pagination.1":       "app/css/page-pagination-1",
 
 
+        /** TEMPLATE --模板模块
+         */
+        "template.page.top.1":              "app/template/page-top-1",
+        "template.page.header.1":           "app/template/page-header-1",
+        "template.page.headerFixed.1":      "app/template/page-headerFixed-1",
+        "template.page.nav.1":              "app/template/page-nav-1",
+        "template.page.banner.1":           "app/template/page-banner-1",
+        "template.page.banner.2":           "app/template/page-banner-2",
+        "template.page.footer.1":           "app/template/page-footer-1",
+        "template.page.sideFixed.1":        "app/template/page-sideFixed-1",
+        "template.page.info.1":             "app/template/page-info-1",
+        "template.page.info.2":             "app/template/page-info-2",
+        "template.page.searchCompany.1":    "app/template/page-searchCompany-1",
+        "template.page.searchShop.1":       "app/template/page-searchShop-1",
+        "template.page.shop.1":             "app/template/page-shop-1",
+        "template.page.company.1":          "app/template/page-company-1",
+        "template.page.pagination.1":       "app/template/page-pagination-1",
+
+
         /** JS --框架/工具
          */
         "bower.jquery":                "bower_components/jquery/dist/jquery.min",
@@ -55,6 +74,12 @@ requirejs.config({
         "bower.css":                   "bower_components/require-css/css",
 
 
+        /** JS --自定义方法/插件
+         */
+        "widget.common":               "app/scripts/widget/common",
+        "widget.scrollMonitor":        "app/scripts/widget/scrollMonitor",
+
+
         /** JS --配置信息
          */
         "config.require":                   "app/scripts/.config/require",
@@ -64,34 +89,15 @@ requirejs.config({
         "config.helper":                    "app/scripts/.config/helper",
 
 
-        /** JS --数据模块
+        /** JS --通讯模块
          */
-        "data.region":                      "app/scripts/.data/region",
-
-
-        /** JS --自定义方法/插件
-         */
-        "widget.common":               "app/scripts/.widget/common",
-        "widget.scrollMonitor":        "app/scripts/.widget/scrollMonitor",
-
-
-        /** JS --组件模块
-         */
-        "component.page.top.1":              "app/scripts/component/page-top-1",
-        "component.page.header.1":           "app/scripts/component/page-header-1",
-        "component.page.headerFixed.1":      "app/scripts/component/page-headerFixed-1",
-        "component.page.nav.1":              "app/scripts/component/page-nav-1",
-        "component.page.banner.1":           "app/scripts/component/page-banner-1",
-        "component.page.banner.2":           "app/scripts/component/page-banner-2",
-        "component.page.footer.1":           "app/scripts/component/page-footer-1",
-        "component.page.sideFixed.1":        "app/scripts/component/page-sideFixed-1",
-        "component.page.info.1":             "app/scripts/component/page-info-1",
-        "component.page.info.2":             "app/scripts/component/page-info-2",
-        "component.page.searchCompany.1":    "app/scripts/component/page-searchCompany-1",
-        "component.page.searchShop.1":       "app/scripts/component/page-searchShop-1",
-        "component.page.shop.1":             "app/scripts/component/page-shop-1",
-        "component.page.company.1":          "app/scripts/component/page-company-1",
-        "component.page.pagination.1":       "app/scripts/component/page-pagination-1",
+        "model.comm":                       "app/scripts/model/comm",
+        "model.comm.index":                 "app/scripts/model/comm-index",
+        "model.comm.searchCompany":         "app/scripts/model/comm-searchCompany",
+        "model.comm.searchShop":            "app/scripts/model/comm-searchShop",
+        "model.comm.shop":                  "app/scripts/model/comm-shop",
+        "model.comm.company":               "app/scripts/model/comm-company",
+        "model.comm.nav":                   "app/scripts/model/comm-nav",
 
 
         /** JS --业务模块
@@ -120,46 +126,35 @@ requirejs.config({
         "control.visit.company.1":          "app/scripts/control/visit-company-1",
 
 
-        /** JS --通讯模块
+        /** JS --组件模块
          */
-        "model.comm":                       "app/scripts/model/comm",
-        "model.comm.index":                 "app/scripts/model/comm-index",
-        "model.comm.searchCompany":         "app/scripts/model/comm-searchCompany",
-        "model.comm.searchShop":            "app/scripts/model/comm-searchShop",
-        "model.comm.shop":                  "app/scripts/model/comm-shop",
-        "model.comm.company":               "app/scripts/model/comm-company",
-        "model.comm.nav":                   "app/scripts/model/comm-nav",
+        "component.page.top.1":              "app/scripts/component/page-top-1",
+        "component.page.header.1":           "app/scripts/component/page-header-1",
+        "component.page.headerFixed.1":      "app/scripts/component/page-headerFixed-1",
+        "component.page.nav.1":              "app/scripts/component/page-nav-1",
+        "component.page.banner.1":           "app/scripts/component/page-banner-1",
+        "component.page.banner.2":           "app/scripts/component/page-banner-2",
+        "component.page.footer.1":           "app/scripts/component/page-footer-1",
+        "component.page.sideFixed.1":        "app/scripts/component/page-sideFixed-1",
+        "component.page.info.1":             "app/scripts/component/page-info-1",
+        "component.page.info.2":             "app/scripts/component/page-info-2",
+        "component.page.searchCompany.1":    "app/scripts/component/page-searchCompany-1",
+        "component.page.searchShop.1":       "app/scripts/component/page-searchShop-1",
+        "component.page.shop.1":             "app/scripts/component/page-shop-1",
+        "component.page.company.1":          "app/scripts/component/page-company-1",
+        "component.page.pagination.1":       "app/scripts/component/page-pagination-1",
 
 
         /** JS --测试模块
          */
-        "test.main":                        "app/scripts/test/main",
-        "test.data":                        "app/scripts/test/data",
-        "test.data.index.1":                "app/scripts/test/data-index-1",
-        "test.data.nav.1":                  "app/scripts/test/data-nav-1",
-        "test.data.searchCompany.1":        "app/scripts/test/data-searchCompany-1",
-        "test.data.searchShop.1":           "app/scripts/test/data-searchShop-1",
-        "test.data.company.1":              "app/scripts/test/data-company-1",
-        "test.data.shop.1":                 "app/scripts/test/data-shop-1",
-
-
-        /** TEMPLATE --模板模块
-         */
-        "templates.page.top.1":             "app/templates/page-top-1",
-        "templates.page.header.1":          "app/templates/page-header-1",
-        "templates.page.headerFixed.1":     "app/templates/page-headerFixed-1",
-        "templates.page.nav.1":             "app/templates/page-nav-1",
-        "templates.page.banner.1":          "app/templates/page-banner-1",
-        "templates.page.banner.2":          "app/templates/page-banner-2",
-        "templates.page.footer.1":          "app/templates/page-footer-1",
-        "templates.page.sideFixed.1":       "app/templates/page-sideFixed-1",
-        "templates.page.info.1":            "app/templates/page-info-1",
-        "templates.page.info.2":            "app/templates/page-info-2",
-        "templates.page.searchCompany.1":   "app/templates/page-searchCompany-1",
-        "templates.page.searchShop.1":      "app/templates/page-searchShop-1",
-        "templates.page.shop.1":            "app/templates/page-shop-1",
-        "templates.page.company.1":         "app/templates/page-company-1",
-        "templates.page.pagination.1":      "app/templates/page-pagination-1",
+        "fixture.test":                      "app/scripts/.fixture/test",
+        "fixture.data":                      "app/scripts/.fixture/data",
+        "fixture.data.index.1":              "app/scripts/.fixture/data-index-1",
+        "fixture.data.nav.1":                "app/scripts/.fixture/data-nav-1",
+        "fixture.data.searchCompany.1":      "app/scripts/.fixture/data-searchCompany-1",
+        "fixture.data.searchShop.1":         "app/scripts/.fixture/data-searchShop-1",
+        "fixture.data.company.1":            "app/scripts/.fixture/data-company-1",
+        "fixture.data.shop.1":               "app/scripts/.fixture/data-shop-1"
 
     }
 

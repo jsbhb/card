@@ -5,6 +5,9 @@
 
 
 define([
+    "bower.css!css.font.awesome.min",
+    "bower.css!css.bootstrap.min",
+    "bower.css!css.uFont",
     "bower.jquery",
     "bower.bootstrap.min",
     "bower.can",
@@ -18,11 +21,9 @@ define([
     "control.page.headerFixed.1",
     "control.page.nav.1",
     "control.page.searchCompany.1",
-    "control.page.footer.1",
-    "bower.css!css.font.awesome.min",
-    "bower.css!css.bootstrap.min",
-    "bower.css!css.uFont"
+    "control.page.footer.1"
 ], function(
+    cssAwesome, cssBootstrap, cssUFont,
     $, bootstrap, can, dot,
     common,
     system, helper,
@@ -65,7 +66,7 @@ define([
      *       --> 启用页面事件
      */
     common.logOutput("visit-searchCompany", "获取页面数据");
-    var LOCAL_CITY =          common.getRegion().LOCAL_CITY;
+    var localCity =           common.getRegion().localCity;
     var memberName =          common.getUrlParam("memberName");
     var categoryEntryId =     common.getUrlParam("categoryEntryId");
     var categoryEntryName =   common.getUrlParam("categoryEntryName");
@@ -74,20 +75,20 @@ define([
     var querySearchCompany =  {};
     if(memberName){
         searchCont = memberName;
-        querySearchCompany["currentPage"] = currentPage||1;
+        querySearchCompany["currentPage"] = currentPage>0?currentPage:1;
         querySearchCompany["memberName"] = memberName;
     }
     if(categoryEntryId){
         searchCont = categoryEntryName;
-        querySearchCompany["currentPage"] = currentPage||1;
+        querySearchCompany["currentPage"] =  currentPage>0?currentPage:1;
         querySearchCompany["entryList[0].categoryEntry"] = categoryEntryId;
     }
 
     common.logOutput("visit-searchCompany", "加载页面模块...");
 
     var top = new pageTop1("#load-pageTop",{
-        responseData: {
-            LOCAL_CITY: LOCAL_CITY
+        config: {
+            localCity: localCity
         }
     });
     var header = new pageHeader1("#load-pageHeader",{
@@ -100,7 +101,7 @@ define([
         }
     });
     var nav = new pageNav1("#load-pageNav",{
-        config:{
+        config: {
             border: "border"
         }
     });
@@ -115,11 +116,11 @@ define([
     var footer = new pageFooter1("#load-pageFooter",{});
 
     $.when(
-        top.isFinish,
-        header.isFinish,
-        nav.isFinish,
-        searchCompany.isFinish,
-        footer.isFinish
+        top.state,
+        header.state,
+        nav.state,
+        searchCompany.state,
+        footer.state
     ).done(function(){
         common.logOutput("visit-searchCompany", "启用页面事件...");
         enableEvents(header, searchCompany);
@@ -153,13 +154,14 @@ define([
         function getHistoryState(state){
             header.options.config = state.config.header || {};
             header.options.requestData = state.requestData.header|| {};
+            header.options.renderData.CONFIG.attr("searchCont", state.config.header.searchCont);
             searchCompany.options.config = state.config.searchCompany || {};
             searchCompany.options.requestData = state.requestData.searchCompany|| {};
         }
         function setHistory(state, type){
             var memberName = searchCompany.options.requestData.querySearchCompany.memberName;
             var pagination = searchCompany.options.renderData.RESPONSE.pagination;
-            var currentPage = pagination && pagination.currentPage;
+            var currentPage = pagination && pagination.currentPage || 1;
             common.setUrlParam(
                 { "memberName":  memberName, "currentPage":  currentPage },
                 type,
@@ -178,8 +180,8 @@ define([
                 e.state.requestData
             ){
                 getHistoryState(e.state);
-                searchCompany.toRender("querySearchCompany");
-                $.when(searchCompany.isFinish).done(function(){
+                searchCompany.toRender("querySearchCompany/searchCompany");
+                $.when(searchCompany.state).done(function(){
                     setHistory(e.state, "cover");
                 });
             }
@@ -208,24 +210,22 @@ define([
                 var $node = $(this);
                 var type = $node.parent().parent().parent().find(".active[searchType]").attr("searchType");
                 var cont = $node.parent().parent().parent().find(".input-search").val().trim();
-                if(type == "1"){
+                if(type == 1){
                     if(location.pathname!= "/app/webpage/searchCompany.html"){
                         location.href = encodeURI("/app/webpage/searchCompany.html?memberName="+cont);
                     }
                     else{
-                        searchCompany.config = {
+                        searchCompany.options.config = {
                             industryName: null,
                             dictName: null,
                             entryName: null,
                             filterDefault: { active:true, down: true },
                             filterReputation: { active:null, down: true },
-                            filterCalendar: { active:null, down: true },
+                            filterCalendar:{ active:null, down: true },
                             highQuality: false,
                             sincerity: false,
                             returnGoods: false,
-                            guarantee: false
-                        };
-                        searchCompany.options.config = {
+                            guarantee: false,
                             searchCont: header.options.renderData.CONFIG.searchCont
                         };
                         searchCompany.options.requestData.querySearchCompany = {
@@ -233,13 +233,13 @@ define([
                             numPerPage: 10,
                             memberName: header.options.renderData.CONFIG.searchCont
                         };
-                        searchCompany.toRender("querySearchCompany");
-                        $.when(searchCompany.isFinish).done(function(){
+                        searchCompany.toRender("querySearchCompany/searchCompany");
+                        $.when(searchCompany.state).done(function(){
                             setHistoryState();
                             setHistory(historyState, "add");
                         })
                     }
-                }else if(type == "2"){
+                }else if(type == 2){
                     if(location.pathname!= "/app/webpage/searchShop.html"){
                         location.href = encodeURI("/app/webpage/searchShop.html?commodityName="+cont);
                     }
@@ -255,7 +255,7 @@ define([
                 ".filter>.btn-group>a," +
                 ".inputGroup>label," +
                 "li.pagination_page>a.pagination_btn", function(){
-                    can.when(searchCompany.isFinish)
+                    can.when(searchCompany.state)
                         .done(function(){
                             setHistoryState();
                             setHistory(historyState, "add");
@@ -263,5 +263,5 @@ define([
             });
 
     }
-
 });
+

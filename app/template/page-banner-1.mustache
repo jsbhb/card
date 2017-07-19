@@ -31,15 +31,14 @@
             <div class="info">
                 <span>中国国际商贸城</span>
                 <br>
+                {{#notShow}}
                     <a class="inlineBlock after">登录</a>
                     <a class="inlineBlock">注册</a>
-                {{#isShow}}
-                    <span class="inlineBlock" style="padding-left:2px;">你好,</span>
-                    <span class="inlineBlock"
-                          style="width:88px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
-                        林鹏腾
-                    </span>
-                {{/isShow}}
+                {{/notShow}}
+                <span class="inlineBlock" style="padding-left:2px;">你好,</span>
+                <span class="inlineBlock" style="width:88px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+                    欢迎访问！
+                </span>
             </div>
         </div>
         <div class="otherInfo">

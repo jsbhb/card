@@ -12,10 +12,10 @@ define(["config.comm"], function(Comm){
 
         queryAll: function(data, fixture){
             if(!data || !data.id){
-                return
+                return  can.Deferred().reject();
             }
             return this.sendRequest({
-                "urlPath":  "/members/"+data.id,
+                "apiPath":  "/members/"+data.id,
                 "type":     "get",
                 "data":      data||null,
                 "fixture":   fixture

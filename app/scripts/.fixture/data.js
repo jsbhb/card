@@ -5,12 +5,12 @@
 'use strict';
 
 define([
-    "test.data.index.1",
-    "test.data.nav.1",
-    "test.data.searchCompany.1",
-    "test.data.searchShop.1",
-    "test.data.company.1",
-    "test.data.shop.1"
+    "fixture.data.index.1",
+    "fixture.data.nav.1",
+    "fixture.data.searchCompany.1",
+    "fixture.data.searchShop.1",
+    "fixture.data.company.1",
+    "fixture.data.shop.1"
 ], function(
     dataIndex1,
     dataNav1,
@@ -28,4 +28,4 @@ define([
         getShop1:               dataShop1
     }
 
-})
+});

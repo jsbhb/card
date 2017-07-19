@@ -6,14 +6,15 @@
 
 define([
     "bower.jquery",
-    "bower.can"
-], function($, can){
+    "bower.can",
+    "bower.text!template.page.nav.1.mustache"
+], function($, can, template){
 
     /** @description: 模板组件
      */
     return can.Component.extend({
         tag: "page-nav-1",
-        template: can.view("templates.page.nav.1.mustache"),
+        template: template,
         helpers: {
             setULHeight: function(cont){
                 var length = typeof cont == "function"? cont().length: cont.length;
@@ -90,4 +91,4 @@ define([
             }
         }
     })
-})
+});

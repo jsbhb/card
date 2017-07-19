@@ -10,22 +10,30 @@ define([
     "widget.common",
     "config.render",
     "component.page.nav.1",
-    "bower.text!templates.page.nav.1.mustache",
     "bower.css!css.page.nav.1"
 ], function($, can, common, Render){
 
     return Render.extend({
         //子类扩展
-        templates: "<page-nav-1 class='{{CONFIG.border}}'></page-nav-1>",
-        isDynamic: "NO",
-        requestType: "queryNav",
+        template: "<page-nav-1 class='{{CONFIG.border}}'></page-nav-1>",
+        config: {},
+        region: {},
+        requestData: {},
+        requestType: [
+            "queryNav"
+        ],
 
-        //事件
+
+        //自定义方法
+
+
+        //自定义事件
         "a[categoryEntryId] click": function(node){
             var $node = $(node);
             var cont = $node.attr("categoryEntryName");
             window.open(encodeURI("/app/webpage/searchCompany.html?memberName="+cont));
         }
+
     })
 
 });

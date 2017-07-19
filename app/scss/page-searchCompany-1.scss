@@ -342,10 +342,20 @@ page-searchcompany-1{
                 &>span{
                   width: 65px;
                   float: left;
-                  &.contnet{
+                  &.content{
+                    width: calc(100% - 68px);
                     font-size: 12px;
                     line-height: 20px;
-                    width: calc(100% - 68px);
+                    &>abbr{
+                      width: 100%;
+                      text-decoration: none;
+                      cursor: pointer;
+                      border-bottom: none;
+                      white-space: nowrap;
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                      display: block;
+                    }
                   }
                 }
               }

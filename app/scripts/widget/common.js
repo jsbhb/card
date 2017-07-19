@@ -14,8 +14,10 @@ define([
         /**
          *  @description  按时间输出log信息
          */
-        logOutput: function(id, info){
+        logOutput: function(elementId, logInfo){
             if(system.logOutput){
+                var id = elementId;
+                var info = logInfo;
                 var now = new Date();
                 var hour = now.getHours();
                 var minute = now.getMinutes();
@@ -40,6 +42,12 @@ define([
          */
         isArray: function(o){
             return Object.prototype.toString.call(o) === '[object Array]';
+        },
+        arrayExist: function(o){
+            return Object.prototype.toString.call(o) === '[object Array]' && o.length>0;
+        },
+        notArray: function(o){
+            return Object.prototype.toString.call(o) !== '[object Array]';
         },
 
 
@@ -152,10 +160,10 @@ define([
          */
         getRegion: function(){
             return {
-                LOCAL_NATIONALITY: "中国",
-                LOCAL_PROVINCE: "浙江",
-                LOCAL_CITY: "宁波",
-                LOCAL_AREA: "北仑"
+                localNationality: "中国",
+                localProvince: "浙江",
+                localCity: "宁波",
+                localArea: "北仑"
             }
         }
 

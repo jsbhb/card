@@ -41,6 +41,11 @@ page-top-1{
           left:42px;
         }
       }
+      &>.welcome{
+        &>a{
+          color: $tangerine;
+        }
+      }
       &>.iconMapMarker{
         font-size: 13px;
         color: $tangerine;

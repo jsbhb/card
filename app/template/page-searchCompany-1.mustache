@@ -192,15 +192,19 @@
                             <div class="info">
                                <span class="name inlineBlock">
                                   <span class="inlineBlock">公司名称：</span>
-                                  <span class="contnet inlineBlock">{{{memberName}}}</span>
+                                  <span class="content inlineBlock">
+                                      <abbr title="{{removeFontTag memberName}}">
+                                          {{{memberName}}}
+                                      </abbr>
+                                  </span>
                                </span>
                                 <span class="name inlineBlock">
                                   <span class="inlineBlock">公司地址：</span>
-                                  <span class="contnet inlineBlock">{{province}}{{city}}{{area}}</span>
+                                  <span class="content inlineBlock">{{province}}{{city}}</span>
                                </span>
                                 <span class="description inlineBlock">
                                     <span class="inlineBlock">经营方向：</span>
-                                    <span class="contnet inlineBlock">{{{product}}}</span>
+                                    <span class="content inlineBlock">{{{product}}}</span>
                                </span>
                             </div>
                             <div class="mark">

@@ -10,20 +10,24 @@ define([
     "widget.common",
     "config.render",
     "component.page.headerFixed.1",
-    "bower.text!templates.page.headerFixed.1.mustache",
     "bower.css!css.page.headerFixed.1"
 ], function($, can, common, Render){
 
     return Render.extend({
         //子类扩展
-        templates: "<page-headerfixed-1></page-headerfixed-1>",
-        renderAfterTime: 0,
-        renderAfterFunc: function() {
-            var that = this;
-            that.setElementCSS();
-            that.isHeaderFixed();
-            $(window).on("scroll", function(){ that.isHeaderFixed(); })
+        template: "<page-headerfixed-1></page-headerfixed-1>",
+        config: {},
+        region: {
+            RESPONSE: {
+                afterFunc: function(that) {
+                    that.setElementCSS();
+                    that.isHeaderFixed();
+                    $(window).on("scroll", function(){ that.isHeaderFixed(); })
+                }
+            }
         },
+        requestData: {},
+        requestType: [],
 
 
         //自定义方法
@@ -59,7 +63,10 @@ define([
                     that.element.animate({ "top": "0px" }, 550);
                 }
             }, 300)
-        },
+        }
+
+
+        //自定义事件
 
     })
 

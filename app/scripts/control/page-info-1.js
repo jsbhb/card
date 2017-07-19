@@ -10,17 +10,22 @@ define([
     "widget.common",
     "config.render",
     "component.page.info.1",
-    "bower.text!templates.page.info.1.mustache",
     "bower.css!css.page.info.1"
 ], function($, can, common, Render){
 
     return Render.extend({
         //子类扩展
-        templates: "<page-info-1></page-info-1>",
-        isDynamic: "NO",
+        template: "<page-info-1></page-info-1>",
+        config: {},
+        region: {},
+        requestData: {},
+        requestType: [],
 
 
-        //事件
+        //自定义方法
+
+
+        //自定义事件
         "a[toSearchCompany] click": function(node){
             var $node = $(node);
             var searchText = $node.attr("toSearchCompany");
@@ -31,5 +36,7 @@ define([
             var searchText = $node.attr("toSearchShop");
             window.open(encodeURI("/app/webpage/searchShop.html?commodityName="+searchText));
         }
+
     })
+
 });

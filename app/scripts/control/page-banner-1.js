@@ -10,14 +10,23 @@ define([
     "widget.common",
     "config.render",
     "component.page.banner.1",
-    "bower.text!templates.page.banner.1.mustache",
     "bower.css!css.page.banner.1"
 ], function($, can, common, Render) {
 
     return Render.extend({
         //子类扩展
-        templates: "<page-banner-1></page-banner-1>",
-        isDynamic: "NO"
+        template: "<page-banner-1></page-banner-1>",
+        config: {},
+        region: {},
+        requestData: {},
+        requestType: []
+
+
+        //自定义方法
+
+
+        //自定义事件
+
     })
 
 });

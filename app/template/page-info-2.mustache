@@ -27,13 +27,13 @@
                         </a>
                     {{/isFirst}}
                     {{#notFirst @index}}
-                        <a class="shop small" href="/app/webpage/shop.html?memberId= &commodityId={{productId}}" target="_blank">
+                        <a class="shop small" href="/app/webpage/shop.html?memberId={{id}}&commodityId={{productId}}" target="_blank">
                             <div class="shopImg">
                                 <img src="{{getImgUrl picPath}}"/>
                             </div>
                             <div class="text">
                                 <span class="description">
-                                    {{description}}
+                                    <abbr title="{{description}}">{{description}}</abbr>
                                 </span>
                                 <span class="price">{{format_Money price}}</span>
                             </div>

@@ -2,13 +2,18 @@
     <div class="floatLeft">
         <span class="inlineBlock iconMapMarker">
             <i class="fa fa-map-marker"></i>
-            {{RESPONSE.LOCAL_CITY}}
+            {{CONFIG.localCity}}
             <span class="caret"></span>
         </span>
-        <span class="inlineBlock login">
-            <a href="#" class="inlineBlock">请登录</a>
-            <a href="#" class="inlineBlock">免费注册</a>
-        </span>
+        {{#notShow}}
+            <span class="inlineBlock login">
+              <a href="#" class="inlineBlock">请登录</a>
+              <a href="#" class="inlineBlock">免费注册</a>
+            </span>
+        {{/notShow}}
+            <span class="inlineBlock welcome">
+              <a>欢迎来到中国国际商贸城</a>
+            </span>
     </div>
     <div class="floatRight">
             <span>

@@ -43,15 +43,17 @@
                         <a href="javascript:void(0)" class="collectionBtn">收藏店铺</a>
                     </span>
                 </div>
-                <div class="pictrueTitle"> 企业相册 </div>
-                <div class="pictrueDescription">
-                    {{#each RESPONSE.queryShop.memberGoodCommodityList}}
-                        <a href="/app/webpage/shop.html?memberId={{memberId}}&commodityId={{commodityId}}" target="_blank">
-                            <img src="{{getImgUrl picture1 null "default_search.jpg"}}">
-                            <div class="price">{{format_Money price}}</div>
-                        </a>
-                    {{/each}}
-                </div>
+                {{#isExist RESPONSE.queryShop.memberGoodCommodityList}}
+                    <div class="pictrueTitle"> 优质商品推荐 </div>
+                    <div class="pictrueDescription">
+                        {{#each RESPONSE.queryShop.memberGoodCommodityList}}
+                            <a href="/app/webpage/shop.html?memberId={{memberId}}&commodityId={{commodityId}}" target="_blank">
+                                <img src="{{getImgUrl picture1 null "default_search.jpg"}}">
+                                <div class="price">{{format_Money price}}</div>
+                            </a>
+                        {{/each}}
+                    </div>
+                {{/isExist}}
             </div>
             <div class="companyContentRight">
                 <div class="companyImg">

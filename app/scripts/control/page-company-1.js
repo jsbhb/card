@@ -11,7 +11,6 @@ define([
     "config.render",
     "control.page.pagination.1",
     "component.page.company.1",
-    "bower.text!templates.page.company.1.mustache",
     "bower.css!css.page.company.1"
 ], function($, can, common, Render, pagePagination1){
 
@@ -19,50 +18,60 @@ define([
      */
     return Render.extend({
         //子类扩展
-        templates: "<page-company-1></page-company-1>",
-        requestType: ["queryCompany", "queryShop/queryShop"],
+        template: "<page-company-1></page-company-1>",
+        config: {},
+        region: {
+            company: {
+                path: "RESPONSE",
+                dynamic: false,
+                beforeFunc: true,
+                afterFunc: false
+            },
+            shop: {
+                path: "RESPONSE/queryShop",
+                dynamic: true,
+                beforeFunc: false,
+                afterFunc: function(that){
+                    var queryShop = that.options.renderData.RESPONSE.queryShop;
+                    var pagination = queryShop && queryShop.pagination;
+                    if(pagination && pagination.totalPages>0){
+                        that.pagination = new pagePagination1("page-company-1 #load-pagePagination",{
+                            config: {
+                                direction: "floatRight"
+                            },
+                            response: {
+                                data: pagination || null,
+                                region: "pagination"
+                            },
+                            parentObj: that
+                        });
+                    }
+                }
+            }
+        },
         requestData: {
-            queryCompany: {},
+            queryCompany: {
+
+            },
             queryShop: {
                 "numPerPage": 6,
                 "currentPage": 1
             }
         },
-        renderAfterFunc: function(){
-            var pagination = this.options.renderData.RESPONSE.queryShop.pagination;
-            if(pagination && pagination.totalPages>0){
-                this.pagination = new pagePagination1("page-company-1 #load-pagePagination",{
-                    config: { direction: "floatRight" },
-                    responseData: pagination || null,
-                    parentObj: this
-                });
-            }
-        },
+        requestType: [
+            "queryCompany/company",
+            "queryShop/shop"
+        ],
+
 
         //自定义方法
         callback: function(currentPage){
             this.options.requestData.queryShop.currentPage = currentPage;
-            can.when(this.sendRequest("queryShop"))
-                .done(
-                    $.proxy(function(responseData){
-                        if(responseData && responseData.success){
-                            this.setRenderData(
-                                responseData.obj.commoditySearchList, "queryShop/commoditySearchList"
-                            );
-                            var pagination = responseData.obj.pagination;
-                            if(pagination && pagination.totalPages>0){
-                                this.pagination = new pagePagination1("page-company-1 #load-pagePagination",{
-                                    config: { direction: "floatRight" },
-                                    responseData: pagination || null,
-                                    parentObj: this
-                                });
-                            }
-                        }
-                    },this)
-                )
+            this.toRender("queryShop/shop/commoditySearchList");
         },
 
-        //事件
+
+        //自定义事件
         ".shopClassify a click": function(node){
             var $node = $(node);
             var $parent = $node.parents(".shopClassify:first");
@@ -74,24 +83,7 @@ define([
             (b1 && b2) &&(this.options.requestData.queryShop.commodityCategory2 = text);
             (!b1 && b3)&&(delete this.options.requestData.queryShop.commodityCategory3);
             (b1 && b3) &&(this.options.requestData.queryShop.commodityCategory3 = text);
-            can.when(this.sendRequest("queryShop"))
-                .done(
-                    $.proxy(function(responseData){
-                        if(responseData && responseData.success){
-                            this.setRenderData(
-                                responseData.obj.commoditySearchList, "queryShop/commoditySearchList"
-                            );
-                            var pagination = responseData.obj.pagination;
-                            if(pagination && pagination.totalPages>0){
-                                this.pagination = new pagePagination1("page-company-1 #load-pagePagination",{
-                                    config: { direction: "floatRight" },
-                                    responseData: pagination || null,
-                                    parentObj: this
-                                });
-                            }
-                         }
-                    },this)
-                )
+            this.toRender("queryShop/shop/commoditySearchList");
         },
         ".companySort a click": function(node) {
             var $node = $(node);
@@ -115,28 +107,15 @@ define([
                     this.options.requestData.queryShop.priceUp = 1;
                 }
             }
-            can.when(this.sendRequest("queryShop"))
-                .done(
-                    $.proxy(function(responseData){
-                        this.setRenderData(
-                            responseData.obj.commoditySearchList, "queryShop/commoditySearchList"
-                        );
-                        var pagination = responseData.obj.pagination;
-                        if(pagination && pagination.totalPages>0){
-                            this.pagination = new pagePagination1("page-company-1 #load-pagePagination",{
-                                config: { direction: "floatRight" },
-                                responseData: pagination || null,
-                                parentObj: this
-                            });
-                        }
-                    },this)
-                )
+            this.toRender("queryShop/shop/commoditySearchList");
         },
         ".page-company-content .toCommodity click": function(node){
             var $node = $(node);
-            var memberid = $node.parents(".page-company-content:first").attr("memberid");
-            var commodityid = $node.attr("commodityid");
-            window.open(encodeURI("/app/webpage/shop.html?memberid="+memberid+"&commodityid="+commodityid));
+            var memberId = $node.parents(".page-company-content:first").attr("memberId");
+            var commodityId = $node.attr("memberId");
+            window.open(encodeURI("/app/webpage/shop.html?memberId="+memberId+"&commodityId="+commodityId));
         }
+
     })
+
 });

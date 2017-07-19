@@ -5,6 +5,9 @@
 'use strict';
 
 define([
+    "bower.css!css.font.awesome.min",
+    "bower.css!css.bootstrap.min",
+    "bower.css!css.uFont",
     "bower.jquery",
     "bower.bootstrap.min",
     "bower.can",
@@ -22,11 +25,9 @@ define([
     "control.page.info.1",
     "control.page.info.2",
     "control.page.sideFixed.1",
-    "control.page.footer.1",
-    "bower.css!css.font.awesome.min",
-    "bower.css!css.bootstrap.min",
-    "bower.css!css.uFont"
+    "control.page.footer.1"
 ], function(
+    cssAwesome, cssBootstrap, cssUFont,
     $, bootstrap, can, dot,
     common, scrollMonitor,
     system, helper,
@@ -87,7 +88,7 @@ define([
     can.when(comm.queryIndex()).done(function(responseData){
         if (responseData && responseData.success) {
             var dataObj = responseData.obj;
-            var LOCAL_CITY = common.getRegion().LOCAL_CITY;
+            var localCity = common.getRegion().localCity;
             var INDEX_BANNER = dataObj.INDEX_BANNER;
             var MEMBER_PRODUCT_POPULARIZE = dataObj.MEMBER_PRODUCT_POPULARIZE_1;
             var MEMBER_POPULARIZE = dataObj.MEMBER_POPULARIZE_1;
@@ -96,8 +97,8 @@ define([
             common.logOutput("visit-index", "加载页面模块...");
 
             var top = new pageTop1("#load-pageTop",{
-                responseData: {
-                    LOCAL_CITY: LOCAL_CITY
+                config: {
+                    localCity: localCity
                 }
             });
             var header = new pageHeader1("#load-pageHeader",{
@@ -124,40 +125,29 @@ define([
                 }
             });
             var banner = new pageBanner1("#load-pageBanner",{
-                responseData: {
-                    INDEX_BANNER: INDEX_BANNER
+                response: {
+                    data: { INDEX_BANNER: INDEX_BANNER },
                 }
             });
             var info1 = new pageInfo1("#load-pageInfo1",{
-                responseData: {
-                    MEMBER_PRODUCT_POPULARIZE: MEMBER_PRODUCT_POPULARIZE,
-                    MEMBER_POPULARIZE: MEMBER_POPULARIZE
+                response: {
+                    data: {
+                        MEMBER_PRODUCT_POPULARIZE: MEMBER_PRODUCT_POPULARIZE,
+                        MEMBER_POPULARIZE: MEMBER_POPULARIZE
+                    }
                 }
             });
             var info2 = new pageInfo2("#load-pageInfo2",{
-                responseData: {
-                    PRODUCT_POPULARIZE: PRODUCT_POPULARIZE
-                }
-            });
-            var info3 = new pageInfo1("#load-pageInfo3",{
-                responseData: {
-                    MEMBER_PRODUCT_POPULARIZE: MEMBER_PRODUCT_POPULARIZE,
-                    MEMBER_POPULARIZE: MEMBER_POPULARIZE
-                }
-            });
-            var info4 = new pageInfo2("#load-pageInfo4",{
-                responseData: {
-                    PRODUCT_POPULARIZE: PRODUCT_POPULARIZE
+                response: {
+                    data: { PRODUCT_POPULARIZE: PRODUCT_POPULARIZE }
                 }
             });
             var sideFixed = new pageSideFixed1("#load-pageSideFixed",{
                 config: {
                     list: [
                         {"name":"货源市场", "id":"load-pageNav", "toTop": true},
-                        {"name":"安防消防", "id":"load-pageInfo1"},
-                        {"name":"电子行业", "id":"load-pageInfo2"},
-                        {"name":"酒店家具", "id":"load-pageInfo3"},
-                        {"name":"五金建材", "id":"load-pageInfo4"},
+                        {"name":"新品推荐", "id":"load-pageInfo1"},
+                        {"name":"热卖产品", "id":"load-pageInfo2"}
                     ]
                 },
                 position_offset: 60
@@ -165,17 +155,15 @@ define([
             var footer = new pageFooter1("#load-pageFooter",{});
 
             $.when(
-                top.isFinish,
-                header.isFinish,
-                headerFixed.isFinish,
-                nav.isFinish,
-                banner.isFinish,
-                info1.isFinish,
-                info2.isFinish,
-                info3.isFinish,
-                info4.isFinish,
-                sideFixed.isFinish,
-                footer.isFinish
+                top.state,
+                header.state,
+                headerFixed.state,
+                nav.state,
+                banner.state,
+                info1.state,
+                info2.state,
+                sideFixed.state,
+                footer.state
             ).done(function(){
                 common.logOutput("visit-index", "启用页面事件...");
                 enableEvents(header, headerFixed);
@@ -189,7 +177,11 @@ define([
      */
     function enableEvents(header, headerFixed){
 
-        /** @description: 操作游览器历史纪录
+        /** @description:
+         *     1、设置历史状态（数据）
+         *     2、得到历史状态（数据）
+         *     3、更新 url值（数据）
+         *     4、页面加载,设定历史状态、更新 url值
          */
         var historyState = {
             config: {
@@ -197,10 +189,13 @@ define([
             requestData: {
             }
         };
-        function getHistoryState(state){
-        }
-        function setHistoryState(state, type){
-        }
+        function getHistoryState(state){}
+        function setHistoryState(state, type){}
+        function setHistory(state, type){}
+
+
+        /** @description:   模拟游览器前进后退的事件
+         */
         window.onpopstate = function(e) {
             if( e && e.state && e.state.config && e.state.requestData ){
                 getHistoryState(e.state);
@@ -225,8 +220,6 @@ define([
                 else{
                     $($header,$headerFixed).find(".placeholderIcon").css("display","block");
                 }
-                header.options.config.searchCont = searchCont;
-                headerFixed.options.config.searchCont = searchCont;
                 header_config.attr("searchCont", searchCont);
                 headerFixed_config.attr("searchCont", searchCont);
             });
@@ -238,20 +231,12 @@ define([
                 var header_config = header.options.renderData.CONFIG;
                 var headerFixed_config = headerFixed.options.renderData.CONFIG;
                 $.each(header_config.searchList, function(i, map){
-                    if(searchType == map.attr("type")){
-                        map.attr("active", "active")
-                    }
-                    else{
-                        map.attr("active", null)
-                    }
-                })
+                    searchType == map.attr("type")?
+                        map.attr("active", "active"): map.attr("active", null);
+                });
                 $.each(headerFixed_config.searchList, function(i, map){
-                    if(searchType == map.attr("type")){
-                        map.attr("active", "active");
-                    }
-                    else{
-                        map.attr("active", null);
-                    }
+                    searchType == map.attr("type")?
+                        map.attr("active", "active"): map.attr("active", null);
                 })
             });
 
@@ -260,12 +245,12 @@ define([
                 var $node = $(this);
                 var type = $node.parent().parent().parent().find(".active[searchType]").attr("searchType");
                 var cont = $node.parent().parent().parent().find(".input-search").val().trim();
-                if(type == "1"){
+                if(type == 1){
                     if(location.pathname!= "/app/webpage/searchCompany.html"){
                         location.href = encodeURI("/app/webpage/searchCompany.html?memberName="+cont);
                     }
                 }
-                else if(type == "2"){
+                else if(type == 2){
                     if(location.pathname!= "/app/webpage/searchShop.html"){
                         location.href = encodeURI("/app/webpage/searchShop.html?commodityName="+cont);
                     }

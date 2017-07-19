@@ -6,14 +6,15 @@
 
 define([
     "bower.jquery",
-    "bower.can"
-], function($, can){
+    "bower.can",
+    "bower.text!template.page.header.1.mustache"
+], function($, can, template){
 
     /** @description: 模板组件
      */
     return can.Component.extend({
         tag: "page-header-1",
-        template: can.view("templates.page.header.1.mustache"),
+        template: template,
         helpers: {
         },
         scope: {
@@ -73,4 +74,4 @@ define([
         }
     })
 
-})
+});

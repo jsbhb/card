@@ -76,13 +76,14 @@ page-info-2{
           width: 472.5px;
           height: 260px;
           float: left;
-          background-color: $white;
           position: relative;
+          background-color: $white;
+          border: solid 1px $base_borderColor;
           display: block;
           &>img{
-            width: 100%;
+            width: 95%;
             height: auto;
-            max-height: 100%;
+            max-height: 95%;
             position: absolute;
             top: 0px;
             bottom: 0px;
@@ -91,6 +92,7 @@ page-info-2{
             margin: auto;
           }
           &:hover{
+            border: solid 1px $red;
             box-shadow: 0px 0px 15px 0px $red_transparent;
           }
         }
@@ -104,13 +106,13 @@ page-info-2{
           float: left;
           position: relative;
           background-color: $white;
-          border: solid 1px $red;
+          border: solid 1px $base_borderColor;
           &:not(:nth-of-type(n+5)){
             border-top: none;
           }
           &>.shopImg{
             width: 100%;
-            height: 188px;
+            height: 204px;
             display: block;
             position: relative;
             &>img{
@@ -124,29 +126,44 @@ page-info-2{
               right: 0px;
               margin: auto;
             }
+            &::after{
+              content: "";
+              width: calc(100% + 6px);
+              height: .5px;
+              background-color: $base_borderColor;
+              position: absolute;
+              left: -3px;
+              bottom: -3px;
+            }
           }
           &>.text{
             width: 100%;
             height: 90px;
             &>span{
-              font-size: 12px;
-              line-height:18px;
-              white-space:normal;
-              word-wrap:break-word;
-              word-break:break-all;
-              display: inline-block;
+              height: 25px;
+              padding: 0px 10px;
+              font-size: 13px;
+              line-height: 25px;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              display: block;
+              &>abbr{
+                text-decoration: none;
+                cursor: pointer;
+                border-bottom: none;
+              }
               &.description{
-                line-height: 20px;
-                padding: 3px 0;
+                line-height: 29px;
               }
               &.price{
-                font-size: 13px;
+                font-size: 14px;
                 color: $red;
-                padding: 0 5px;
               }
             }
           }
           &:hover{
+            border: solid 1px $red;
             box-shadow: 0px 0px 15px 0px $red_transparent;
           }
         }

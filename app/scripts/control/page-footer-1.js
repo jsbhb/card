@@ -10,7 +10,6 @@ define([
     "widget.common",
     "config.render",
     "component.page.footer.1",
-    "bower.text!templates.page.footer.1.mustache",
     "bower.css!css.page.footer.1"
 ], function($, can, common, Render){
 
@@ -18,8 +17,18 @@ define([
      */
     return Render.extend({
         //子类扩展
-        templates: "<page-footer-1></page-footer-1>",
-        isDynamic: "NO"
+        template: "<page-footer-1></page-footer-1>",
+        config: {},
+        region: {},
+        requestData: {},
+        requestType: []
+
+
+        //自定义方法
+
+
+        //自定义事件
+
     })
 
 });

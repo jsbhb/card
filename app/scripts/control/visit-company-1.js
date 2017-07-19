@@ -5,6 +5,9 @@
 'use strict';
 
 define([
+    "bower.css!css.font.awesome.min",
+    "bower.css!css.bootstrap.min",
+    "bower.css!css.uFont",
     "bower.jquery",
     "bower.bootstrap.min",
     "bower.can",
@@ -17,11 +20,9 @@ define([
     "control.page.header.1",
     "control.page.nav.1",
     "control.page.company.1",
-    "control.page.footer.1",
-    "bower.css!css.font.awesome.min",
-    "bower.css!css.bootstrap.min",
-    "bower.css!css.uFont"
+    "control.page.footer.1"
 ], function(
+    cssAwesome, cssBootstrap, cssUFont,
     $, bootstrap, can, dot,
     common,
     system, helper,
@@ -62,20 +63,23 @@ define([
      *       --> 启用页面事件
      */
     common.logOutput("visit-company", "获取页面数据");
-    var LOCAL_CITY = common.getRegion().LOCAL_CITY;
-    var memberId =   common.getUrlParam("memberId");
+    var localCity =   common.getRegion().localCity;
+    var memberId =    common.getUrlParam("memberId");
+    var currentPage = common.getUrlParam("currentPage");
+
+    common.logOutput("visit-company", "加载页面模块...");
 
     var top = new pageTop1("#load-pageTop",{
         responseData: {
-            LOCAL_CITY: LOCAL_CITY
+            localCity: localCity
         }
     });
     var header = new pageHeader1("#load-pageHeader",{
         config: {
             searchCont: "",
             searchList:[
-                { type: 1, name: "企业", active: null },
-                { type: 2, name: "商品", active: "active" }
+                { type: 1, name: "企业", active: "active" },
+                { type: 2, name: "商品", active: null }
             ]
         }
     });
@@ -86,20 +90,25 @@ define([
     });
     var company = new pageCompany1("#load-pageCompany",{
         requestData: {
-            queryCompany:{ id: memberId },
-            queryShop:{ memberId: memberId }
+            queryCompany:{
+                id: memberId
+            },
+            queryShop:{
+                memberId: memberId,
+                currentPage: currentPage>0?currentPage:1
+            }
         }
     });
     var footer = new pageFooter1("#load-pageFooter");
 
     $.when(
-        top.isFinish,
-        header.isFinish,
-        nav.isFinish,
-        company.isFinish,
-        footer.isFinish
+        top.state,
+        header.state,
+        nav.state,
+        company.state,
+        footer.state
     ).done(function(){
-        common.logOutput("visit-searchCompany", "启用页面事件...");
+        common.logOutput("visit-company", "启用页面事件...");
         enableEvents(header, company);
     });
 
@@ -109,22 +118,57 @@ define([
      */
     function enableEvents(header, company){
 
-        /** @description: 操作游览器历史纪录
+        /** @description:
+         *     1、设置历史状态（数据）
+         *     2、得到历史状态（数据）
+         *     3、更新 url值（数据）
+         *     4、页面加载,设定历史状态、更新 url值
          */
-        var historyState = {
-            config: {
-            },
-            requestData: {
+        var historyState = {};
+        function setHistoryState(){
+            historyState = {
+                config: {
+                    header: header.options.config,
+                    company: company.options.config
+                },
+                requestData: {
+                    header: header.options.requestData,
+                    company: company.options.requestData
+                }
             }
-        };
+        }
         function getHistoryState(state){
+            header.options.config = state.config.header || {};
+            header.options.requestData = state.requestData.header|| {};
+            company.options.config = state.config.company || {};
+            company.options.requestData = state.requestData.company|| {};
         }
-        function setHistoryState(state, type){
+        function setHistory(state, type){
+            var queryShop = company.options.renderData.RESPONSE.queryShop;
+            var pagination = queryShop && queryShop.pagination;
+            var currentPage = pagination && pagination.currentPage || 1;
+            common.setUrlParam(
+                { "currentPage":  currentPage },
+                type,
+                state
+            )
         }
+        setHistoryState();
+        setHistory(historyState, "cover");
+
+
+        /** @description:   模拟游览器前进后退的事件
+         */
         window.onpopstate = function(e) {
-            if( e && e.state && e.state.config && e.state.requestData ){
+            if( e && e.state &&
+                e.state.config &&
+                e.state.requestData
+            ){
                 getHistoryState(e.state);
-                setHistoryState(e.state,"cover");
+                company.toRender("queryShop/shop/commoditySearchList");
+                $.when(company.state).done(function(){
+                    setHistory(e.state, "cover");
+                });
             }
         };
 
@@ -167,18 +211,29 @@ define([
                 var $node = $(this);
                 var type = $node.parent().parent().parent().find(".active[searchType]").attr("searchType");
                 var cont = $node.parent().parent().parent().find(".input-search").val().trim();
-                if(type == "1"){
+                if(type == 1){
                     if(location.pathname!= "/app/webpage/searchCompany.html"){
                         location.href = encodeURI("/app/webpage/searchCompany.html?memberName="+cont);
                     }
                 }
-                else if(type == "2"){
+                else if(type == 2){
                     if(location.pathname!= "/app/webpage/searchShop.html"){
                         location.href = encodeURI("/app/webpage/searchShop.html?commodityName="+cont);
                     }
                 }
             });
 
+        $(company.element)
+            .on("click",
+                ".shopClassify a," +
+                ".companySort a," +
+                "li.pagination_page>a.pagination_btn", function(){
+                    can.when(company.state)
+                        .done(function(){
+                            setHistoryState();
+                            setHistory(historyState, "add");
+                        })
+                });
 
     }
 

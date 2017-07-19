@@ -6,15 +6,19 @@
 
 define([
     "bower.jquery",
-    "bower.can"
-], function($, can){
+    "bower.can",
+    "bower.text!template.page.shop.1.mustache"
+], function($, can, template){
 
     /** @description: 模板组件
      */
     return can.Component.extend({
         tag: "page-shop-1",
-        template: can.view("templates.page.shop.1.mustache"),
+        template: template,
         helpers:{
+            a:function(a){
+                console.log(a());
+            }
         },
         scope:{
 
@@ -39,7 +43,23 @@ define([
                 var $node = $(node);
                 $element.find(".size span").removeClass("active");
                 $node.addClass("active");
+            },
+            ".shopDetails .btn-collection click": function(node){
+                var $element = this.element;
+                var $node = $(node);
+                $element.find(".modals_company").css({
+                    "display":"block",
+                    "opacity":"0"
+                });
+                $element.find(".modals_company").animate({"opacity":"1"},800)
+            },
+            ".modals_company .glyphicon-remove click": function(node){
+                var $element = this.element;
+                var $node = $(node);
+                $element.find(".modals_company").animate({"opacity":"0"},800,function(){
+                    $element.find(".modals_company").css("display","none");
+                })
             }
         }
     })
-})
+});

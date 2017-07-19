@@ -174,4 +174,4 @@ define(function(){
         }
     }
 
-})
+});

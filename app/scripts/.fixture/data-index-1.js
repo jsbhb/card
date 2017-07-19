@@ -20,7 +20,7 @@ define(function(){
                 "popularizeName":"热卖商品",
                 "modelList":[
                     {
-                        "id":null,
+                        "id":1,
                         "title":"伊丽莎白雅顿",
                         "shortTitle":"伊丽莎白雅顿",
                         "description":"伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水",
@@ -31,7 +31,7 @@ define(function(){
                         "popularizeCode":"PRODUCT_POPULARIZE_1"
                     },
                     {
-                        "id":null,
+                        "id":2,
                         "title":"伊丽莎白雅顿",
                         "shortTitle":"伊丽莎白雅顿",
                         "description":"伊丽莎白雅顿5th第五大道女士香水30/75/125ml持久清新优雅淡香水",
@@ -682,4 +682,4 @@ define(function(){
         }
     }
 
-})
+});

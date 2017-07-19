@@ -6,14 +6,15 @@
 
 define([
     "bower.jquery",
-    "bower.can"
-], function($, can){
+    "bower.can",
+    "bower.text!template.page.headerFixed.1.mustache"
+], function($, can, template){
 
     /** @description: 模板组件
      */
     return can.Component.extend({
         tag: "page-headerfixed-1",
-        template: can.view("templates.page.headerFixed.1.mustache"),
+        template: template,
         helpers: {
         },
         scope: {
@@ -51,8 +52,8 @@ define([
                 var $element = this.element;
                 var $node = $(node);
                 that.scope.timer = setTimeout(function(){ that.scope.qrcodeImgHide($node) }, 350);
-            },
-        },
+            }
+        }
     })
 
-})
+});

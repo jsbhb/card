@@ -6,21 +6,22 @@
 
 define([
     "bower.jquery",
-    "bower.can"
-], function($, can){
+    "bower.can",
+    "bower.text!template.page.company.1.mustache"
+], function($, can, template){
 
     /** @description: 模板组件
      */
     return can.Component.extend({
         tag: "page-company-1",
-        template: can.view("templates.page.company.1.mustache"),
+        template: template,
         helpers:{
             length: function(list, options){
                 var tempList = typeof list=='function'? list(): list;
                 if(tempList && tempList.length>1){
                     this.length = tempList.length;
                     return options.fn(options.context)
-                }else if(tempList.length>0){
+                }else if(tempList && tempList.length>0){
                     this.length = 1;
                     options.inverse(options.context);
                 }else{
@@ -29,7 +30,7 @@ define([
             },
             noImg: function(list, options){
                 var tempList = typeof list==='function'? list(): list;
-                if(tempList || tempList.length===0){
+                if(tempList || (tempList && tempList.length===0)){
                     return options.fn(true);
                 }
             }
@@ -150,4 +151,4 @@ define([
             }
         }
     })
-})
+});

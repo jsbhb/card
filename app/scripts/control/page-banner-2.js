@@ -16,8 +16,18 @@ define([
 
     return Render.extend({
         //子类扩展
-        templates: "<page-banner-2></page-banner-2>",
-        isDynamic: "NO"
+        template: "<page-banner-2></page-banner-2>",
+        config: {},
+        region: {},
+        requestData: {},
+        requestType: []
+
+
+        //自定义方法
+
+
+        //自定义事件
+
     })
 
 });

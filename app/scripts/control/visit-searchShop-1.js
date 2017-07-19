@@ -5,6 +5,9 @@
 
 
 define([
+    "bower.css!css.font.awesome.min",
+    "bower.css!css.bootstrap.min",
+    "bower.css!css.uFont",
     "bower.jquery",
     "bower.bootstrap.min",
     "bower.can",
@@ -17,11 +20,9 @@ define([
     "control.page.header.1",
     "control.page.nav.1",
     "control.page.searchShop.1",
-    "control.page.footer.1",
-    "bower.css!css.font.awesome.min",
-    "bower.css!css.bootstrap.min",
-    "bower.css!css.uFont"
+    "control.page.footer.1"
 ], function(
+    cssAwesome, cssBootstrap, cssUFont,
     $, bootstrap, can, dot,
     common,
     system, helper,
@@ -62,36 +63,42 @@ define([
      *       --> 启用页面事件
      */
     common.logOutput("visit-searchShop", "获取页面数据");
-    var LOCAL_CITY =       common.getRegion().LOCAL_CITY;
+    var localCity =        common.getRegion().localCity;
     var commodityName =    common.getUrlParam("commodityName");
     var currentPage =      common.getUrlParam("currentPage");
     var searchCont =       "";
     var querySearchShop =  {};
     if(commodityName){
         searchCont = commodityName;
-        querySearchShop["currentPage"] = currentPage||1;
+        querySearchShop["currentPage"] = currentPage>0?currentPage:1;
         querySearchShop["commodityName"] = commodityName;
     }
 
+    common.logOutput("visit-searchShop", "加载页面模块...");
+
     var top = new pageTop1("#load-pageTop",{
-        responseData: {
-            LOCAL_CITY: LOCAL_CITY
+        config: {
+            localCity: localCity
         }
     });
     var header = new pageHeader1("#load-pageHeader",{
         config: {
             searchCont: searchCont,
-            searchList:[
+            searchList: [
                 { type: 1, name: "企业", active: null },
                 { type: 2, name: "商品", active: "active" }
             ]
         }
     });
     var nav = new pageNav1("#load-pageNav",{
-        config:{ border: "border" }
+        config:{
+            border: "border"
+        }
     });
     var searchShop = new controlSearchShop1("#load-searchShop",{
-        config: { searchCont: searchCont },
+        config: {
+            searchCont: searchCont
+        },
         requestData: {
             querySearchShop: querySearchShop
         }
@@ -99,12 +106,13 @@ define([
     var footer = new pageFooter1("#load-pageFooter",{});
 
     $.when(
-        top.options.isFinish,
-        header.options.isFinish,
-        nav.options.isFinish,
-        searchShop.options.isFinish,
-        footer.options.isFinish
+        top.options.state,
+        header.options.state,
+        nav.options.state,
+        searchShop.options.state,
+        footer.options.state
     ).done(function(){
+        common.logOutput("visit-searchShop", "启用页面事件...");
         enableEvents(header, searchShop);
     });
 
@@ -136,15 +144,16 @@ define([
         function getHistoryState(state){
             header.options.config = state.config.header || {};
             header.options.requestData = state.requestData.header|| {};
+            header.options.renderData.CONFIG.attr("searchCont", state.config.header.searchCont);
             searchShop.options.config = state.config.searchShop || {};
             searchShop.options.requestData = state.requestData.searchShop|| {};
         }
         function setHistory(state, type){
-            var memberName = searchShop.options.requestData.querySearchShop.memberName;
+            var commodityName = searchShop.options.requestData.querySearchShop.commodityName;
             var pagination = searchShop.options.renderData.RESPONSE.pagination;
-            var currentPage = pagination && pagination.currentPage;
+            var currentPage = pagination && pagination.currentPage || 1;
             common.setUrlParam(
-                { "memberName":  memberName, "currentPage":  currentPage },
+                { "commodityName": commodityName, "currentPage": currentPage },
                 type,
                 state
             )
@@ -161,8 +170,8 @@ define([
                 e.state.requestData
             ){
                 getHistoryState(e.state);
-                searchShop.toRender("querySearchShop");
-                $.when(searchShop.isFinish).done(function(){
+                searchShop.toRender("querySearchShop/searchShop");
+                $.when(searchShop.state).done(function(){
                     setHistory(e.state, "cover");
                 });
             }
@@ -191,11 +200,11 @@ define([
                 var $node = $(this);
                 var type = $node.parent().parent().parent().find(".active[searchType]").attr("searchType");
                 var cont = $node.parent().parent().parent().find(".input-search").val().trim();
-                if(type == "1"){
+                if(type == 1){
                     if(location.pathname!= "/app/webpage/searchCompany.html"){
                         location.href = encodeURI("/app/webpage/searchCompany.html?memberName="+cont);
                     }
-                }else if(type == "2"){
+                }else if(type == 2){
                     if(location.pathname!= "/app/webpage/searchShop.html"){
                         location.href = encodeURI("/app/webpage/searchShop.html?commodityName="+cont);
                     }
@@ -218,8 +227,8 @@ define([
                             numPerPage: 10,
                             commodityName: header.options.renderData.CONFIG.searchCont
                         };
-                        searchShop.toRender("querySearchShop");
-                        can.when(searchShop.isFinish)
+                        searchShop.toRender("querySearchShop/searchShop");
+                        can.when(searchShop.state)
                             .done(function(){
                                 setHistoryState();
                                 setHistory(historyState, "add");
@@ -240,7 +249,7 @@ define([
                 ".filter>.btn-group>a," +
                 ".inputGroup>label," +
                 "li.pagination_page>a.pagination_btn", function(){
-                    can.when(searchShop.isFinish)
+                    can.when(searchShop.state)
                         .done(function(){
                             setHistoryState();
                             setHistory(historyState, "add");

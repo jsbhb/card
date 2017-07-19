@@ -11,12 +11,12 @@ define([
     "config.render",
     "control.page.pagination.1",
     "component.page.searchCompany.1",
-    "bower.text!templates.page.searchCompany.1.mustache",
     "bower.css!css.page.searchCompany.1"
 ], function($, can, common, Render, pagePagination1){
 
     return Render.extend({
         //子类扩展
+        template: "<page-searchcompany-1></page-searchcompany-1>",
         config: {
             industryName: null,
             dictName: null,
@@ -29,30 +29,43 @@ define([
             returnGoods: false,
             guarantee: false
         },
-        templates: "<page-searchcompany-1></page-searchcompany-1>",
-        requestType:   "querySearchCompany",
+        region: {
+            searchCompany: {
+                path: "RESPONSE",
+                dynamic: true,
+                beforeFunc: false,
+                afterFunc:  function(that){
+                    var pagination = that.options.renderData.RESPONSE.pagination;
+                    if(pagination && pagination.totalPages>0){
+                        that.pagination = new pagePagination1("page-searchcompany-1 #load-pagePagination",{
+                            config: {
+                                direction: "floatRight"
+                            },
+                            response: {
+                                data: pagination || null,
+                                region: "pagination"
+                            },
+                            parentObj: that
+                        });
+                    }
+                }
+            }
+        },
         requestData: {
             querySearchCompany: {
                 "numPerPage": 10,
                 "currentPage": 1
             }
         },
-        renderAfterFunc: function(){
-            var pagination = this.options.renderData.RESPONSE.pagination;
-            if(pagination && pagination.totalPages>0){
-                this.pagination = new pagePagination1("page-searchcompany-1 #load-pagePagination",{
-                    config: { direction: "floatRight" },
-                    responseData: pagination || null,
-                    parentObj: this
-                });
-            }
-        },
+        requestType: [
+            "querySearchCompany/searchCompany"
+        ],
 
 
         //自定义方法
         callback: function(currentPage){
             this.options.requestData.querySearchCompany.currentPage = currentPage;
-            this.toRender("querySearchCompany");
+            this.toRender("querySearchCompany/searchCompany");
         },
 
 
@@ -64,7 +77,7 @@ define([
             this.options.config["industryName"] = content;
             this.options.requestData.querySearchCompany["currentPage"] = 1;
             this.options.requestData.querySearchCompany["industryList[0].industry"] = index;
-            this.toRender("querySearchCompany");
+            this.toRender("querySearchCompany/searchCompany");
         },
         "[dictMap] click": function(node){
             var $node = $(node);
@@ -73,7 +86,7 @@ define([
             this.options.config["dictName"] = content;
             this.options.requestData.querySearchCompany["currentPage"] = 1;
             this.options.requestData.querySearchCompany["dictList[0].categoryDict"] = index;
-            this.toRender("querySearchCompany");
+            this.toRender("querySearchCompany/searchCompany");
         },
         "[entryMap] click": function(node){
             var $node = $(node);
@@ -82,7 +95,7 @@ define([
             this.options.config["entryName"] = content;
             this.options.requestData.querySearchCompany["currentPage"] = 1;
             this.options.requestData.querySearchCompany["entryList[0].categoryEntry"] = index;
-            this.toRender("querySearchCompany");
+            this.toRender("querySearchCompany/searchCompany");
         },
         ".resultCategory .deleteIcon click": function(node){
             var $node = $(node);
@@ -100,7 +113,7 @@ define([
                 this.options.config["entryName"] = null;
                 delete this.options.requestData.querySearchCompany["entryList[0].categoryEntry"];
             }
-            this.toRender("querySearchCompany");
+            this.toRender("querySearchCompany/searchCompany");
         },
         ".filter>.btn-group>a click": function(node){
             var $node = $(node);
@@ -136,7 +149,7 @@ define([
                 this.options.config.filterReputation.active = false;
                 this.options.config.filterCalendar.active = true;
             }
-            this.toRender("querySearchCompany");
+            this.toRender("querySearchCompany/searchCompany");
         },
         ".inputGroup>label click": function(node){
             var $node = $(node);
@@ -179,7 +192,9 @@ define([
                     this.options.requestData.querySearchCompany.sincerity=1;
                 }
             }
-            this.toRender("querySearchCompany");
+            this.toRender("querySearchCompany/searchCompany");
         }
+
     })
+
 });

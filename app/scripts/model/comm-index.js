@@ -12,7 +12,7 @@ define(["config.comm"], function(Comm){
 
         queryAll: function(data, fixture){
             return this.sendRequest({
-                "urlPath":  "/popularizations/index",
+                "apiPath":  "/popularizations/index",
                 "type":     "get",
                 "data":      data||null,
                 "fixture":   fixture

@@ -19,8 +19,8 @@ define([
          * @description 为Comm对象绑定参数
          */
         setData: function(param){
-            var tempUrl =  system.urlHost + param.urlPath;
-            this.url =     param.urlPath!=null?  tempUrl:       (this.url!=null?     this.url:    "");
+            var tempUrl =  system.apiUrl + param.apiPath;
+            this.url =     param.apiPath!=null?  tempUrl:       (this.url!=null?     this.url:    "");
             this.type =    param.type!=null?     param.type:    (this.type!=null?    this.type:   "post");
             this.data =    param.data!=null?     param.data:    (this.data!=null?    this.data:    {});
             this.fixture = param.fixture!=null?  param.fixture: (this.fixture!=null? this.fixture: system.fixture);

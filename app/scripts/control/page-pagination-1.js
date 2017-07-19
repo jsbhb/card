@@ -10,16 +10,27 @@ define([
     "widget.common",
     "config.render",
     "component.page.pagination.1",
-    "bower.text!templates.page.pagination.1.mustache",
     "bower.css!css.page.pagination.1"
 ], function($, can, common, Render){
 
     return Render.extend({
         //子类扩展
-        templates: "<page-pagination-1></page-pagination-1>",
+        template: "<page-pagination-1></page-pagination-1>",
+        config: {},
+        region: {
+            pagination: {
+                path: "RESPONSE",
+                dynamic: true
+            }
+        },
+        requestData: {},
+        requestType: [],
 
 
-        //事件
+        //自定义方法
+
+
+        //自定义事件
         "li.pagination_page>a.pagination_btn click": function(node){
             var $node = $(node);
             var currentPage = this.options.renderData.RESPONSE.currentPage*1;
@@ -72,5 +83,7 @@ define([
             }
             this.options.renderData.RESPONSE.attr("currentPage", tempVal);
         }
+
     })
+
 });
