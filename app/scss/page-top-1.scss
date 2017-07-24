@@ -73,6 +73,7 @@ page-top-1{
         &:hover{
           padding-right: 3px;
           background-color: $white;
+          border-top:solid 1px $tangerine;
           border-right:solid 1px $tangerine;
           &::before{
             content: "";
@@ -99,6 +100,10 @@ page-top-1{
         }
         &:hover>ul{
           display: block;
+        }
+        &>img{
+
+
         }
         &>ul{
           min-width: calc(100% + 2px);

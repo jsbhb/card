@@ -16,7 +16,7 @@ define([
         tag: "page-shop-1",
         template: template,
         helpers:{
-            ImgSrc: function(html){
+            handleSrc: function(html){
                 var tempHtml = typeof html==='function'? html(): html;
                 return tempHtml && tempHtml.replace(/&quot;|&quot;/gi,"");
             }

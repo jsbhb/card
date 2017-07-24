@@ -93,7 +93,7 @@ define([
             queryCompany:{
                 id: memberId
             },
-            queryShop:{
+            queryCompanyShop:{
                 memberId: memberId,
                 currentPage: currentPage>0?currentPage:1
             }
@@ -147,11 +147,7 @@ define([
             var queryShop = company.options.renderData.RESPONSE.queryShop;
             var pagination = queryShop && queryShop.pagination;
             var currentPage = pagination && pagination.currentPage || 1;
-            common.setUrlParam(
-                { "currentPage":  currentPage },
-                type,
-                state
-            )
+            common.setUrlParam({ "currentPage":  currentPage }, type, state);
         }
         setHistoryState();
         setHistory(historyState, "cover");
@@ -212,13 +208,19 @@ define([
                 var type = $node.parent().parent().parent().find(".active[searchType]").attr("searchType");
                 var cont = $node.parent().parent().parent().find(".input-search").val().trim();
                 if(type == 1){
-                    if(location.pathname!= "/app/webpage/searchCompany.html"){
+                    if(cont){
                         location.href = encodeURI("/app/webpage/searchCompany.html?memberName="+cont);
+                    }
+                    else{
+                        location.href = encodeURI("/app/webpage/searchCompany.html");
                     }
                 }
                 else if(type == 2){
-                    if(location.pathname!= "/app/webpage/searchShop.html"){
+                    if(cont){
                         location.href = encodeURI("/app/webpage/searchShop.html?commodityName="+cont);
+                    }
+                    else{
+                        location.href = encodeURI("/app/webpage/searchShop.html?commodityName=机械冲孔机");
                     }
                 }
             });

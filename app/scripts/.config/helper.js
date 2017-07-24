@@ -7,13 +7,76 @@
 define([
     "bower.jquery",
     "bower.can",
-    "widget.common"
-], function ($, can, common) {
+    "config.system"
+], function ($, can, system) {
 
     /**
-     *  @description  储存图片的区域
+     *  @description 方法工具
      */
-    var imgPrefix = "/app/images/test/";
+    function getContent(content, contType){
+        var tempContent = typeof content==='function'? content(): content;
+        if(contType === "object"){
+            tempContent = typeof tempContent==='function'? tempContent(): tempContent;
+        }
+        else{
+            tempContent = typeof tempContent==='function'? tempContent():
+                              typeof tempContent!=='object'? tempContent: '';
+        }
+        return tempContent!==undefined? tempContent: '';
+    }
+
+
+    /**
+     *  @description 获取储存图片的区域，生成完整的图片路径
+     */
+    can.mustache.registerHelper('getMemberImg', function(imgName, memberId, defaultImg) {
+        var reg1 = /^http/i;
+        var tempImgName = getContent(imgName);
+        var tempMemberId = getContent(memberId);
+        var tempDefaultImg = getContent(defaultImg);
+        var tempCatalog = system.imgCatalog["member"] || "";
+        var memberCatalog = tempCatalog.replace("/memberId/", "/"+tempMemberId+"/");
+        return tempImgName && reg1.test(tempImgName)?
+            can.mustache.safeString(tempImgName): tempImgName?
+                can.mustache.safeString(memberCatalog + tempImgName):
+                can.mustache.safeString("/app/images/members/default/" + tempDefaultImg);
+    });
+    can.mustache.registerHelper('getShopImg', function(imgName, memberId, commodityId, defaultImg) {
+        var reg1 = /^http/i;
+        var tempImgName = getContent(imgName);
+        var tempMemberId = getContent(memberId);
+        var tempCommodityId = getContent(commodityId);
+        var tempDefaultImg = getContent(defaultImg);
+        var tempCatalog = system.imgCatalog["shop"] || "";
+        var shopCatalog = tempCatalog.replace("/memberId/", "/"+tempMemberId+"/");
+            shopCatalog = shopCatalog.replace("/commodityId/", "/"+tempCommodityId+"/");
+        return tempImgName && reg1.test(tempImgName)?
+            can.mustache.safeString(tempImgName): tempImgName?
+                can.mustache.safeString(shopCatalog + tempImgName):
+                can.mustache.safeString("/app/images/members/default/" + tempDefaultImg);
+    });
+    can.mustache.registerHelper('getTestImg', function(imgName, defaultImg) {
+        var reg1 = /^http/i;
+        var tempImgName = getContent(imgName);
+        var tempDefaultImg = getContent(defaultImg);
+        var testCatalog = system.imgCatalog["test"] || "";
+        console.log(tempImgName);
+        return tempImgName && reg1.test(tempImgName)?
+            can.mustache.safeString(tempImgName): tempImgName?
+                can.mustache.safeString(testCatalog + tempImgName):
+                can.mustache.safeString("/app/images/test/default/" + tempDefaultImg);
+    });
+    can.mustache.registerHelper('getPlatformImg', function(imgName, catalog, defaultImg) {
+        var reg1 = /^http/i;
+        var tempImgName = getContent(imgName);
+        var tempCatalog = getContent(catalog);
+        var tempDefaultImg = getContent(defaultImg);
+        var testCatalog = system.imgCatalog["platform"] || "";
+        return tempImgName && reg1.test(tempImgName)?
+            can.mustache.safeString(tempImgName): tempImgName?
+                can.mustache.safeString(testCatalog + tempCatalog + "/" + tempImgName):
+                can.mustache.safeString("/app/images/platform/default/" + tempDefaultImg);
+    });
 
 
     /**
@@ -21,9 +84,10 @@ define([
      */
     can.mustache.registerHelper(
         'setRenderRange', function(index, count, options) {
-            var tempIndex = typeof index=='function'? index(): index;
-            if((tempIndex||tempIndex == 0) && count){
-                var bool = index>count-1;
+            var tempIndex = getContent(index);
+            var tempCount = getContent(count, "object");
+            if((tempIndex||tempIndex === 0) && tempCount){
+                var bool = index>tempCount-1;
                 return bool? options.inverse(options.context): options.fn(options.context);
             }
         }
@@ -34,9 +98,9 @@ define([
      *  @description 判断是否存在
      */
     can.mustache.registerHelper('isExist', function(content, options) {
-        var tempContent = typeof content==='function'? content(): content;
-        var bool = tempContent? tempContent.length===undefined || tempContent.length>0? true: false: false;
-        return bool? options.fn(options.context): options.inverse(options.context);
+        var tempContent = getContent(content, "object");
+        var bool = tempContent && (tempContent.length===undefined || tempContent.length>0)? true: false;
+        return bool? options.fn(tempContent): options.inverse(tempContent);
     });
 
 
@@ -44,12 +108,12 @@ define([
      *  @description 将string类型的字符串的空白转换为"/"
      */
     can.mustache.registerHelper('convertStr', function(str, type) {
-        var tempStr = typeof str==='function'? str(): str;
-        var tempType = typeof type==='function'? type(): typeof type==='string'? type: null;
-        if(tempStr||tempStr === "0"){
+        var tempStr = getContent(str);
+        var tempType = getContent(type);
+        if(tempStr){
             return tempType?
-                can.mustache.safeString( tempStr.trim().replace(/\s+/gi,tempType) ):
-                can.mustache.safeString( tempStr.trim().replace(/\s+/gi,"/")) ;
+                can.mustache.safeString( tempStr.trim().replace(/\s(?!color)+/gi,tempType)):
+                can.mustache.safeString( tempStr.trim().replace(/\s(?!color)+/gi,"/"));
         }
     });
 
@@ -58,10 +122,11 @@ define([
      *  @description  z-index 依次降序
      */
     can.mustache.registerHelper(
-        'zIndexDesc', function(index, zIndexVal, options) {
-            var tempIndex = typeof index==='function'? index(): index;
-            if((tempIndex||tempIndex === 0) && zIndexVal){
-                return zIndexVal-index*1;
+        'zIndexDesc', function(index, zIndexVal) {
+            var tempIndex = getContent(index);
+            var tempzIndexVal = getContent(zIndexVal);
+            if(tempIndex>=0 && tempzIndexVal){
+                return tempzIndexVal-tempIndex*1;
             }
         }
     );
@@ -71,10 +136,11 @@ define([
      *  @description  z-index 依次升序
      */
     can.mustache.registerHelper(
-        'zIndexAsc', function(index, zIndexVal, options) {
-            var tempIndex = typeof index==='function'? index(): index;
-            if((tempIndex||tempIndex === 0) && zIndexVal){
-                return zIndexVal+tempIndex*1;
+        'zIndexAsc', function(index, zIndexVal) {
+            var tempIndex = getContent(index);
+            var tempzIndexVal = getContent(zIndexVal);
+            if(tempIndex>=0 && tempzIndexVal){
+                return tempzIndexVal+tempIndex*1;
             }
         }
     );
@@ -84,40 +150,23 @@ define([
      *  @description 判定父元素的第n个子元素添加class
      */
     can.mustache.registerHelper(
-        'addElementClass', function(index, number, className, options) {
-            var tempIndex = typeof index==='function'? index(): index;
-            if((tempIndex||tempIndex === 0) && (number||tempIndex === 0) && className){
-                return tempIndex === number? className: null;
+        'addElementClass', function(index, number, className) {
+            var tempIndex = getContent(index);
+            var tempNumber = getContent(number);
+            var tempClassName = getContent(className);
+            if(tempIndex>=0 && tempNumber && tempClassName){
+                return tempIndex === tempNumber? tempClassName: '';
             }
         }
     );
 
 
     /**
-     *  @description 获取储存图片的区域，与图片名称生成完整的图片路径
-     */
-    can.mustache.registerHelper('getImgUrl', function(imgName, suffix, other) {
-        var tempImgName = typeof imgName==='function'? imgName(): imgName;
-        var tempSuffix =  typeof suffix==='function'? suffix(): typeof suffix==='string'? suffix: null;
-        var reg = new RegExp("^http");
-        if(tempImgName && reg.test(tempImgName)){
-            return can.mustache.safeString(tempImgName);
-        }else if(tempImgName){
-            return tempSuffix?
-                can.mustache.safeString( imgPrefix + tempImgName + "." + tempSuffix ):
-                can.mustache.safeString( imgPrefix + tempImgName );
-        }else if(typeof other === "string"){
-            return can.mustache.safeString( "/app/images/"+ other );
-        }
-    });
-
-
-    /**
      *  @description 价格(使用￥符号, 保留两位小数)
      */
-    can.mustache.registerHelper('format_Money', function(price, options) {
-        var tempPrice = typeof price==='function'? price(): price;
-        if(tempPrice||tempPrice === 0){
+    can.mustache.registerHelper('format_Money', function(price) {
+        var tempPrice = getContent(price);
+        if(tempPrice>=0){
             return can.mustache.safeString( "￥"+(tempPrice*1).toFixed(2) );
         }
     });

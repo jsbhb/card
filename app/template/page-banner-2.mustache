@@ -2,12 +2,12 @@
     <div class="bannerImg">
         {{#each RESPONSE.INDEX_BANNER.modelList}}
             <a href="{{href}}" class="inlineBlock" index="{{@index}}"
-               style="background-image: url({{getImgUrl picPath}});z-index:{{zIndexDesc @index}}">
+               style="background-image: url({{getTestImg picPath}});z-index:{{zIndexDesc @index}}">
             </a>
         {{/each}}
         <span class="carousel_list">
             {{#each RESPONSE.INDEX_BANNER.modelList}}
-                <i class="carousel_i {{addElementClass @index 0 'showing'}}" index="{{@index}}"></i>
+                <i class="carousel_i {{addElementClass @index 0 "showing"}}" index="{{@index}}"></i>
             {{/each}}
         </span>
     </div>

@@ -30,8 +30,10 @@ define([
             },
             noImg: function(list, options){
                 var tempList = typeof list==='function'? list(): list;
-                if(tempList || (tempList && tempList.length===0)){
-                    return options.fn(true);
+                if((tempList && tempList.length===undefined) || (tempList && tempList.length>0)){
+                    return options.inverse(options.contexts || this);
+                } else {
+                    return options.fn(options.contexts || this);
                 }
             }
         },

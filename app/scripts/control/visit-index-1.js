@@ -48,6 +48,7 @@ define([
     common.logOutput("visit-index", "新建页面元素");
     var C_SHORT =         "short";
     var E_HTML =          "body";
+    var E_POPULARIZE =    $("<div id='load-pagePopularize' style='width:100%;height:80px;'></div>");
     var E_TOP =           $("<div id='load-pageTop'></div>");
     var E_HEADER =        $("<div id='load-pageHeader'></div>");
     var E_HEADER_FIXED =  $("<div id='load-pageHeaderFixed'></div>");
@@ -63,6 +64,7 @@ define([
 
     $(E_HTML)
         .addClass(C_SHORT)
+        .append(E_POPULARIZE)
         .append(E_TOP)
         .append(E_HEADER)
         .append(E_HEADER_FIXED)
@@ -93,6 +95,7 @@ define([
             var MEMBER_PRODUCT_POPULARIZE = dataObj.MEMBER_PRODUCT_POPULARIZE_1;
             var MEMBER_POPULARIZE = dataObj.MEMBER_POPULARIZE_1;
             var PRODUCT_POPULARIZE = dataObj.PRODUCT_POPULARIZE_1;
+
 
             common.logOutput("visit-index", "加载页面模块...");
 
@@ -153,6 +156,7 @@ define([
                 position_offset: 60
             });
             var footer = new pageFooter1("#load-pageFooter",{});
+
 
             $.when(
                 top.state,
@@ -246,13 +250,19 @@ define([
                 var type = $node.parent().parent().parent().find(".active[searchType]").attr("searchType");
                 var cont = $node.parent().parent().parent().find(".input-search").val().trim();
                 if(type == 1){
-                    if(location.pathname!= "/app/webpage/searchCompany.html"){
+                    if(cont){
                         location.href = encodeURI("/app/webpage/searchCompany.html?memberName="+cont);
+                    }
+                    else{
+                        location.href = encodeURI("/app/webpage/searchCompany.html");
                     }
                 }
                 else if(type == 2){
-                    if(location.pathname!= "/app/webpage/searchShop.html"){
+                    if(cont){
                         location.href = encodeURI("/app/webpage/searchShop.html?commodityName="+cont);
+                    }
+                    else{
+                        location.href = encodeURI("/app/webpage/searchShop.html?commodityName=机械冲孔机");
                     }
                 }
             })

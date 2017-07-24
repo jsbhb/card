@@ -62,8 +62,9 @@ page-shop-1{
           float: left;
           padding: 15px 50px;
           & > div > span:first-child {
-            width: 85px;
+            width: 100px;
             padding-left: 15px;
+            margin-right: 10px;
           }
           & > .title {
             max-height: 60px;
@@ -89,7 +90,8 @@ page-shop-1{
               &:first-child>td{
                 padding: 5px 0 0 0;
                 &:first-child{
-                  padding:12px 0 0 13px
+                  padding: 12px 0 0 35px;
+
                 }
                 &:not(:first-child){
                   color:red;
@@ -99,9 +101,10 @@ page-shop-1{
               &>td{
                 border: none;
                 &:first-child{
-                  width: 90px;
+                  width: 100px;
                   text-align: center;
-                  vertical-align: middle;
+                  padding-left: 35px;
+
                 }
               }
             }
@@ -203,12 +206,17 @@ page-shop-1{
             font-size: 16px;
             padding: 0 10px;
             margin-bottom: 20px;
-            border: solid 1px $red;
+            border: solid 1px #ff4200;
             vertical-align: sub;
-            color: $red;
-            margin-left: 25px;
+            text-align: center;
+            color: #ff4200;
+            margin-left: 40px;
             margin-right: 10px;
             cursor: pointer;
+            & > span{
+              padding: 0!important;
+              margin: 0!important;
+            }
             &:hover{
                background-color: $red;
                color: $white
@@ -344,9 +352,10 @@ page-shop-1{
           &>.shopDescriptionHtml{
             width: 100%;
             & img{
-              max-width: 44%;
-              margin: 0 3%;
+              max-width: 43%;
+              margin: 0 3% 15px 3%;
               height: auto;
+              float: left;
             }
           }
         }

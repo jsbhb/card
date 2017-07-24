@@ -75,14 +75,12 @@ define([
     var querySearchCompany =  {};
     if(memberName){
         searchCont = memberName;
-        querySearchCompany["currentPage"] = currentPage>0?currentPage:1;
         querySearchCompany["memberName"] = memberName;
     }
-    if(categoryEntryId){
-        searchCont = categoryEntryName;
-        querySearchCompany["currentPage"] =  currentPage>0?currentPage:1;
-        querySearchCompany["entryList[0].categoryEntry"] = categoryEntryId;
+    else{
+        querySearchCompany["currentPage"] = currentPage>0?currentPage:1;
     }
+
 
     common.logOutput("visit-searchCompany", "加载页面模块...");
 
@@ -114,6 +112,7 @@ define([
         }
     });
     var footer = new pageFooter1("#load-pageFooter",{});
+
 
     $.when(
         top.state,
@@ -162,11 +161,15 @@ define([
             var memberName = searchCompany.options.requestData.querySearchCompany.memberName;
             var pagination = searchCompany.options.renderData.RESPONSE.pagination;
             var currentPage = pagination && pagination.currentPage || 1;
-            common.setUrlParam(
-                { "memberName":  memberName, "currentPage":  currentPage },
-                type,
-                state
-            )
+            if(memberName){
+                common.setUrlParam(
+                    { "memberName":  memberName, "currentPage":  currentPage }, type, state
+                )
+            }
+            else{
+                common.delUrlParam(["memberName"], type, state);
+                common.setUrlParam({ "currentPage":  currentPage }, "cover", state )
+            }
         }
         setHistoryState();
         setHistory(historyState, "cover");
@@ -211,37 +214,44 @@ define([
                 var type = $node.parent().parent().parent().find(".active[searchType]").attr("searchType");
                 var cont = $node.parent().parent().parent().find(".input-search").val().trim();
                 if(type == 1){
-                    if(location.pathname!= "/app/webpage/searchCompany.html"){
-                        location.href = encodeURI("/app/webpage/searchCompany.html?memberName="+cont);
-                    }
-                    else{
-                        searchCompany.options.config = {
-                            industryName: null,
-                            dictName: null,
-                            entryName: null,
-                            filterDefault: { active:true, down: true },
-                            filterReputation: { active:null, down: true },
-                            filterCalendar:{ active:null, down: true },
-                            highQuality: false,
-                            sincerity: false,
-                            returnGoods: false,
-                            guarantee: false,
-                            searchCont: header.options.renderData.CONFIG.searchCont
-                        };
+                    searchCompany.options.config = {
+                        industryName: null,
+                        dictName: null,
+                        entryName: null,
+                        filterDefault: { active:true, down: true },
+                        filterReputation: { active:null, down: true },
+                        filterCalendar:{ active:null, down: true },
+                        highQuality: false,
+                        sincerity: false,
+                        returnGoods: false,
+                        guarantee: false,
+                        searchCont: header.options.renderData.CONFIG.searchCont
+                    };
+                    if(header.options.renderData.CONFIG.searchCont){
                         searchCompany.options.requestData.querySearchCompany = {
                             currentPage: 1,
                             numPerPage: 10,
                             memberName: header.options.renderData.CONFIG.searchCont
                         };
-                        searchCompany.toRender("querySearchCompany/searchCompany");
-                        $.when(searchCompany.state).done(function(){
-                            setHistoryState();
-                            setHistory(historyState, "add");
-                        })
                     }
-                }else if(type == 2){
-                    if(location.pathname!= "/app/webpage/searchShop.html"){
+                    else{
+                        searchCompany.options.requestData.querySearchCompany = {
+                            currentPage: 1,
+                            numPerPage: 10
+                        };
+                    }
+                    searchCompany.toRender("querySearchCompany/searchCompany");
+                    $.when(searchCompany.state).done(function(){
+                        setHistoryState();
+                        setHistory(historyState, "add");
+                    })
+                }
+                else if(type == 2){
+                    if(cont){
                         location.href = encodeURI("/app/webpage/searchShop.html?commodityName="+cont);
+                    }
+                    else{
+                        location.href = encodeURI("/app/webpage/searchShop.html?commodityName=机械冲孔机");
                     }
                 }
             });

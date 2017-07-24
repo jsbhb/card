@@ -9,7 +9,8 @@ define([
     "bower.can",
     "widget.common",
     "config.system",
-    "model.comm"
+    "model.comm",
+    "fixture.test"
 ], function($, can, common, system, comm){
 
     /**

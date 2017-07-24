@@ -115,7 +115,7 @@ define(function(){
                             "hotFlg": 0,
                             "choiceFlg": 0,
                             "appreciateFlg": 0,
-                            "picture1": "test_a4.jpg",
+                            "picture1": "",
                             "picture2": "",
                             "picture3": "",
                             "picture4": "",

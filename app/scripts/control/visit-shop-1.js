@@ -64,7 +64,6 @@ define([
      */
     common.logOutput("visit-shop", "获取页面数据");
     var localCity =   common.getRegion().localCity;
-    var memberId =    common.getUrlParam("memberId");
     var commodityId = common.getUrlParam("commodityId");
     var currentPage = common.getUrlParam("currentPage");
 
@@ -95,7 +94,6 @@ define([
         },
         requestData: {
             queryShop: {
-                memberId: memberId,
                 id: commodityId,
                 currentPage: currentPage>0?currentPage:1
             }
@@ -185,14 +183,20 @@ define([
                 var $node = $(this);
                 var type = $node.parent().parent().parent().find(".active[searchType]").attr("searchType");
                 var cont = $node.parent().parent().parent().find(".input-search").val().trim();
-                if(type == "1"){
-                    if(location.pathname!= "/app/webpage/searchCompany.html"){
+                if(type == 1){
+                    if(cont){
                         location.href = encodeURI("/app/webpage/searchCompany.html?memberName="+cont);
                     }
+                    else{
+                        location.href = encodeURI("/app/webpage/searchCompany.html");
+                    }
                 }
-                else if(type == "2"){
-                    if(location.pathname!= "/app/webpage/searchShop.html"){
+                else if(type == 2){
+                    if(cont){
                         location.href = encodeURI("/app/webpage/searchShop.html?commodityName="+cont);
+                    }
+                    else{
+                        location.href = encodeURI("/app/webpage/searchShop.html?commodityName=机械冲孔机");
                     }
                 }
             });

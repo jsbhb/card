@@ -42,11 +42,11 @@ define([
             var bodyWidth = $("body").width();
             var windowHeight = window.innerHeight;
             var thisHeight = this.element.height();
-            var width = (bodyWidth-1310)/2;
+            var width = (bodyWidth+1270)/2;
             var height = (windowHeight-thisHeight)/2;
             height = height>150? height: 150;
             this.options.active_offset = height;
-            if(bodyWidth>=1320){
+            if(bodyWidth>=1280){
                 this.element.css({
                     "display": "block",
                     "position": "fixed",

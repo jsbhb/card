@@ -43,11 +43,11 @@ define([
         isArray: function(o){
             return Object.prototype.toString.call(o) === '[object Array]';
         },
-        arrayExist: function(o){
-            return Object.prototype.toString.call(o) === '[object Array]' && o.length>0;
-        },
         notArray: function(o){
             return Object.prototype.toString.call(o) !== '[object Array]';
+        },
+        arrayExist: function(o){
+            return Object.prototype.toString.call(o) === '[object Array]' && o.length>0;
         },
 
 
@@ -58,7 +58,7 @@ define([
          *      delUrlParam： 删除url参数值: action为 add(cover)时,添加(刷新)当前页记录
          */
         getUrlParam: function(name){
-            var reg = new RegExp("(^|&)"+ name +"((=[^&]*)|(?=&)|$)");
+            var reg = new RegExp("(^|&)"+ name +"((=[^&]*)|$)", "i");
             var matchArr = decodeURI(window.location.search).substr(1).match(reg);
             if(matchArr!=null){
                 return matchArr[2].substr(1);
@@ -75,7 +75,7 @@ define([
                 var url = newUrl? decodeURI(newUrl): decodeURI(window.location.href);
                 var search = newSearch? decodeURI(newSearch): decodeURI(window.location.search);
                 var param = value!=null? name + "=" + encodeURI(value): name;
-                var reg = new RegExp("(^|&)"+ name +"((=[^&]*)|(?=&)|$)");
+                var reg = new RegExp("(^|&)"+ name +"((=[^&]*)|$)", "i");
                 var matchArr = decodeURI(search).substr(1).match(reg);
                 if(matchArr!= null){
                     if(matchArr[0][0] == "&"){
@@ -122,7 +122,7 @@ define([
                 $.each(arr, function(i, name){
                     var url = newUrl? decodeURI(newUrl): decodeURI(window.location.href);
                     var search = newSearch? decodeURI(newSearch): decodeURI(window.location.search);
-                    var reg = new RegExp("(^|&)"+ name +"((=[^&]*)|(?=&)|$)");
+                    var reg = new RegExp("^"+ name +"((=.*)|$)|&"+ name +"((=[^&]*)|$)", "i");
                     var matchArr = decodeURI(search).substr(1).match(reg);
                     if(matchArr!= null){
                         newUrl= url.replace(matchArr[0], "");

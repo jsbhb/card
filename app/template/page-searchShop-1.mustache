@@ -218,15 +218,21 @@
                     <li class="inlineBlock">
                         <a href="/app/webpage/shop.html?memberId={{memberId}}&commodityId={{commodityId}}">
                             <div class="imgBox">
-                                <img src="{{getImgUrl picture1 null "default_search.jpg"}}">
+                                <img src="{{getShopImg picture1 memberId commodityId "commodity_search.jpg"}}">
                             </div>
                         </a>
                         <div class="info">
                             <div class="showImg">
-                                <div class="box"><img src="{{getImgUrl picture1}}" class="active"></div>
-                                {{#if picture2}}<div class="box"><img src="{{getImgUrl picture2}}"></div>{{/if}}
-                                {{#if picture3}}<div class="box"><img src="{{getImgUrl picture3}}"></div>{{/if}}
-                                {{#if picture4}}<div class="box"><img src="{{getImgUrl picture4}}"></div>{{/if}}
+                                <div class="box"><img src="{{getShopImg picture1 memberId commodityId}}" class="active"></div>
+                                {{#if picture2}}
+                                    <div class="box"><img src="{{getShopImg picture2 memberId commodityId}}"></div>
+                                {{/if}}
+                                {{#if picture3}}
+                                    <div class="box"><img src="{{getShopImg picture3 memberId commodityId}}"></div>
+                                {{/if}}
+                                {{#if picture4}}
+                                    <div class="box"><img src="{{getShopImg picture4 memberId commodityId}}"></div>
+                                {{/if}}
                             </div>
                             <div class="showPrice">
                                 {{format_Money price}}

@@ -14,7 +14,7 @@ requirejs.config({
         "bower.dotdotdot.min":       { deps: ['bower.jquery'],              exports: 'dot' },
         'bower.can':                 { deps: ["bower.jquery"],              exports: 'can' },
         'bower.fixture':             { deps: ["bower.can"],                 exports: 'fixture' },
-        'bower.text':                { deps: [],                            exports: 'text' },
+        'bower.text':                { deps: [],                            exports: 'text' }
     },
 
 
@@ -93,16 +93,17 @@ requirejs.config({
          */
         "model.comm":                       "app/scripts/model/comm",
         "model.comm.index":                 "app/scripts/model/comm-index",
+        "model.comm.nav":                   "app/scripts/model/comm-nav",
         "model.comm.searchCompany":         "app/scripts/model/comm-searchCompany",
         "model.comm.searchShop":            "app/scripts/model/comm-searchShop",
-        "model.comm.shop":                  "app/scripts/model/comm-shop",
         "model.comm.company":               "app/scripts/model/comm-company",
-        "model.comm.nav":                   "app/scripts/model/comm-nav",
+        "model.comm.company.shop":          "app/scripts/model/comm-company-shop",
+        "model.comm.shop":                  "app/scripts/model/comm-shop",
 
 
         /** JS --业务模块
-         *    control.page:   将页面各部分拆分为模块（拥有独自的样式、事件、以及通讯交互）
-         *    control.visit： 加载指定的页面模块（即 control.page）, 以生成完整的HTML
+         *    control.page:   将页面各部分拆分为模块
+         *    control.visit： 加载指定的页面模块（即 control.page.xxx.x）
          */
         "control.page.top.1":               "app/scripts/control/page-top-1",
         "control.page.header.1":            "app/scripts/control/page-header-1",
@@ -154,6 +155,7 @@ requirejs.config({
         "fixture.data.searchCompany.1":      "app/scripts/.fixture/data-searchCompany-1",
         "fixture.data.searchShop.1":         "app/scripts/.fixture/data-searchShop-1",
         "fixture.data.company.1":            "app/scripts/.fixture/data-company-1",
+        "fixture.data.company.shop.1":       "app/scripts/.fixture/data-company-shop-1",
         "fixture.data.shop.1":               "app/scripts/.fixture/data-shop-1"
 
     }

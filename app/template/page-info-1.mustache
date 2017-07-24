@@ -23,8 +23,8 @@
                 {{#each RESPONSE.MEMBER_PRODUCT_POPULARIZE.modelList}}
                     {{#setRenderRange @index 5}}
                         <span index="{{../@index}}" class="{{addElementClass ../@index 0 "active"}}">
-                               <img src="{{getImgUrl logoPath}}"/>
-                            </span>
+                           <img src="{{getMemberImg logoPath memberId}}"/>
+                        </span>
                     {{/setRenderRange}}
                 {{/each}}
             </div>
@@ -39,7 +39,7 @@
                                         <span class="description">{{description1}}</span>
                                     </div>
                                     <div class="img">
-                                        <img src="{{getImgUrl picPath1}}">
+                                        <img src="{{getMemberImg picPath1 memberId}}">
                                     </div>
                                 </a>
                                 <a href="/app/webpage/company.html?memberId={{memberId}}" target="_blank" index="1">
@@ -48,7 +48,7 @@
                                         <span class="description">{{description2}}</span>
                                     </div>
                                     <div class="img">
-                                        <img src="{{getImgUrl picPath2}}">
+                                        <img src="{{getMemberImg picPath2 memberId}}">
                                     </div>
                                 </a>
                                 <a href="/app/webpage/company.html?memberId={{memberId}}" target="_blank" index="2">
@@ -57,7 +57,7 @@
                                         <span class="description">{{description3}}</span>
                                     </div>
                                     <div class="img">
-                                        <img src="{{getImgUrl picPath3}}">
+                                        <img src="{{getMemberImg picPath3 memberId}}">
                                     </div>
                                 </a>
                                 <span class="carousel_list">
@@ -68,14 +68,14 @@
                             </li>
                             {{#each generalInfoList}}
                                 {{#setRenderRange @index 7}}
-                                    <li class="generalInfo" style="z-index:{{zIndexAsc ../@index 100}}">
-                                        <a href="/app/webpage/shop.html?memberId={{../memberId}}&commodityId={{productId}}"  target="_blank">
+                                    <li class="generalInfo" style="z-index:{{zIndexAsc @index 100}}">
+                                        <a href="/app/webpage/shop.html?memberId={{memberId}}&commodityId={{productId}}"  target="_blank">
                                             <div class="text">
                                                 <i class="title">{{shortTitle}}</i>
                                                 <i class="price">{{format_Money price}}</i>
                                             </div>
                                             <div class="img">
-                                                <img src="{{getImgUrl picPath}}"/>
+                                                <img src="{{getShopImg picPath memberId productId}}"/>
                                             </div>
                                         </a>
                                     </li>
@@ -94,7 +94,7 @@
                             {{#RESPONSE.MEMBER_POPULARIZE.modelList}}
                                 <li>
                                     <a href="/app/webpage/company.html?memberId={{memberId}}" target="_blank">
-                                        <img src="{{getImgUrl logoPath}}"/>
+                                        <img src="{{getMemberImg logoPath memberId}}"/>
                                     </a>
                                 </li>
                             {{/RESPONSE.MEMBER_POPULARIZE.modelList}}

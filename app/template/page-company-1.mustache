@@ -1,7 +1,7 @@
 <div class="page-company-content" memberId="{{RESPONSE.memberId}}">
     <div class="maxWidth">
         <div class="companyLogo">
-            <img src="{{getImgUrl RESPONSE.topPicPath}}">
+            <img src="{{getMemberImg RESPONSE.topPicPath ESPONSE.memberId}}">
         </div>
     </div>
     <div class="companyHeader">
@@ -43,12 +43,12 @@
                         <a href="javascript:void(0)" class="collectionBtn">收藏店铺</a>
                     </span>
                 </div>
-                {{#isExist RESPONSE.queryShop.memberGoodCommodityList}}
+                {{#isExist RESPONSE.queryCompanyShop.memberGoodCommodityList}}
                     <div class="pictrueTitle"> 优质商品推荐 </div>
                     <div class="pictrueDescription">
-                        {{#each RESPONSE.queryShop.memberGoodCommodityList}}
+                        {{#each RESPONSE.queryCompanyShop.memberGoodCommodityList}}
                             <a href="/app/webpage/shop.html?memberId={{memberId}}&commodityId={{commodityId}}" target="_blank">
-                                <img src="{{getImgUrl picture1 null "default_search.jpg"}}">
+                                <img src="{{getShopImg picture1 memberId commodityId "commodity_search.jpg"}}">
                                 <div class="price">{{format_Money price}}</div>
                             </a>
                         {{/each}}
@@ -58,15 +58,15 @@
             <div class="companyContentRight">
                 <div class="companyImg">
                     {{#each RESPONSE.fileList}}
-                        <img src="{{getImgUrl finalName suffix "default_companyLogo.jpg"}}" index={{@index}} style="z-index:{{zIndexDesc @index 100}}">
+                        <img src="{{getMemberImg finalName RESPONSE.memberId "company_banner.jpg"}}" index={{@index}} style="z-index:{{zIndexDesc @index 100}}">
                     {{/each}}
                     {{#noImg RESPONSE.fileList}}
-                        <img src="/app/images/default_companyLogo.jpg">
+                        <img src="{{getMemberImg "" RESPONSE.memberId "company_banner.jpg"}}">
                     {{/noImg}}
                     {{#length RESPONSE.fileList}}
                         <span class="carousel_list">
                             {{#each RESPONSE.fileList}}
-                                <i class="carousel_i {{addElementClass @index 0 'showing'}}" index="{{@index}}"></i>
+                                <i class="carousel_i {{addElementClass @index 0 "showing"}}" index="{{@index}}"></i>
                             {{/each}}
                         </span>
                         <a class="carousel_btn prev"><</a>
@@ -79,21 +79,21 @@
                     </div>
                 {{/RESPONSE.aboutUs}}
                 <div class="companyShops">
-                    {{#isExist RESPONSE.queryShop.commodityCategory2}}
+                    {{#isExist RESPONSE.queryCompanyShop.commodityCategory2}}
                         <div class="shopClassify commodityCategory2">
                             <div>主营类目:</div>
                             <div>
-                                {{#each RESPONSE.queryShop.commodityCategory2}}
+                                {{#each RESPONSE.queryCompanyShop.commodityCategory2}}
                                     <a href="javascript:void(0)" class="commodityCategory2Item">{{.}}</a>
                                 {{/each}}
                             </div>
                         </div>
                     {{/isExist}}
-                    {{#isExist RESPONSE.queryShop.commodityCategory3}}
+                    {{#isExist RESPONSE.queryCompanyShop.commodityCategory3}}
                         <div class="shopClassify commodityCategory3">
                             <div>类型分类:</div>
                             <div>
-                                {{#each RESPONSE.queryShop.commodityCategory3}}
+                                {{#each RESPONSE.queryCompanyShop.commodityCategory3}}
                                     <a href="javascript:void(0)" class="commodityCategory3Item">{{.}}</a>
                                 {{/each}}
                             </div>
@@ -109,14 +109,14 @@
                         <i class="uFont font-base_directionDown" style="vertical-align:-2px;"></i>
                     </a>
                 </div>
-                {{#isExist RESPONSE.queryShop.commoditySearchList}}
+                {{#isExist RESPONSE.queryCompanyShop.commoditySearchList}}
                     <div class="companyShow">
                         <ul>
-                            {{#each RESPONSE.queryShop.commoditySearchList}}
+                            {{#each RESPONSE.queryCompanyShop.commoditySearchList}}
                                 <li>
                                     <a href="/app/webpage/shop.html?memberId={{memberId}}&commodityId={{commodityId}}" target="_blank">
                                         <div class="imgShow">
-                                            <img src="{{getImgUrl picture1 null "default_search.jpg"}}">
+                                            <img src="{{getShopImg picture1 memberId commodityId "commodity_search.jpg"}}">
                                         </div>
                                         <div class="description">
                                             <abbr title="{{commodityName}}">
@@ -133,7 +133,7 @@
                     </div>
                     <div id="load-pagePagination"></div>
                 {{/isExist}}
-                {{^isExist RESPONSE.queryShop.commoditySearchList}}
+                {{^isExist RESPONSE.queryCompanyShop.commoditySearchList}}
                     <div class="nothingError">
                         <span class="description"><i class="fa fa-warning fa-fw"></i>抱歉没有找到</span>
                         <span class="description">相关商品!</span>

@@ -10,6 +10,7 @@ define([
     "model.comm.searchCompany",
     "model.comm.searchShop",
     "model.comm.company",
+    "model.comm.company.shop",
     "model.comm.shop"
 ], function(
     comm_index,
@@ -17,6 +18,7 @@ define([
     comm_searchCompany,
     comm_searchShop,
     comm_company,
+    comm_company_shop,
     comm_shop
 ){
 
@@ -42,6 +44,10 @@ define([
 
         "queryCompany": function(requestData){
             return comm_company.queryAll(requestData, null)
+        },
+
+        "queryCompanyShop": function(requestData){
+            return comm_company_shop.queryAll(requestData, null)
         },
 
         "queryShop": function(requestData){

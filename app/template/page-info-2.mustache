@@ -23,13 +23,13 @@
                 {{#setRenderRange @index 9}}
                     {{#isFirst @index}}
                         <a class="shop big">
-                            <img src="{{getImgUrl picPath}}"/>
+                            <img src="{{getShopImg picPath memberId productId}}"/>
                         </a>
                     {{/isFirst}}
                     {{#notFirst @index}}
-                        <a class="shop small" href="/app/webpage/shop.html?memberId={{id}}&commodityId={{productId}}" target="_blank">
+                        <a class="shop small" href="/app/webpage/shop.html?memberId={{memberId}}&commodityId={{productId}}" target="_blank">
                             <div class="shopImg">
-                                <img src="{{getImgUrl picPath}}"/>
+                                <img src="{{getShopImg picPath memberId productId}}"/>
                             </div>
                             <div class="text">
                                 <span class="description">

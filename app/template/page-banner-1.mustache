@@ -3,31 +3,31 @@
         {{getCount RESPONSE.INDEX_BANNER.modelList}}
         {{#each RESPONSE.INDEX_BANNER.modelList}}
             <a href="{{href}}" class="inlineBlock" index="{{@index}}"
-               style="background-image: url({{getImgUrl picPath}});z-index:{{zIndexDesc @index}}">
+               style="background-image: url({{getTestImg picPath}});z-index:{{zIndexDesc @index}}">
             </a>
         {{/each}}
         {{#if RESPONSE.INDEX_BANNER.modelList}}
             <span class="carousel_list">
                 {{#each RESPONSE.INDEX_BANNER.modelList}}
-                    <i class="carousel_i {{addElementClass @index 0 'showing'}}" index="{{@index}}"></i>
+                    <i class="carousel_i {{addElementClass @index 0 "showing"}}" index="{{@index}}"></i>
                 {{/each}}
             </span>
         {{/if}}
     </div>
     <div class="plateImg">
         <a href="#" class="inlineBlock">
-          <img src="/app/images/test/plate_1.jpg">
+          <img src="{{getTestImg "plate_1.jpg"}}">
         </a>
         <a href="#" class="inlineBlock">
-            <img src="/app/images/test/plate_2.jpg">
+            <img src="{{getTestImg "plate_2.jpg"}}">
         </a>
         <a href="#" class="inlineBlock">
-            <img src="/app/images/test/plate_3.jpg">
+            <img src="{{getTestImg "plate_3.jpg"}}">
         </a>
     </div>
     <div class="infoPlate">
         <div class="userInfo">
-            <img class="userImg" src="/app/images/logo2.png">
+            <img class="userImg" src="/app/images/platform/logo/logo2.png">
             <div class="info">
                 <span>中国国际商贸城</span>
                 <br>

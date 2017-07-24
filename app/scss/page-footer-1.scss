@@ -52,16 +52,18 @@ page-footer-1{
         height:30px;
         max-width: 1390px;
         margin: auto;
-        padding-top: 8px;
         border-top: dashed 1px $base_color;
         &>span{
+          width: 100%;
           height: 30px;
-          line-height: 30px;
+          line-height: 35px;
           font-size: 14px;
           text-align: center;
-          display: block;
-          &:last-child{
-            line-height: 24px;
+          display: inline-block;
+          &>img{
+            width: 140px;
+            padding-left: 15px;
+            height: 27px;
           }
         }
       }

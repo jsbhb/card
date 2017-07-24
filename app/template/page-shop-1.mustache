@@ -1,7 +1,7 @@
 <div class="page-shop-content">
     <div class="maxWidth">
         <div class="shopImg">
-            <img src="{{RESPONSE.logoPath}}">
+            <img src="{{getMemberImg RESPONSE.logoPath memberId}}">
         </div>
     </div>
     <div class="shopInfo">
@@ -24,13 +24,13 @@
             <div class="shopDetails">
                 <div class="imgs">
                     <div class="showImg">
-                        {{#if picture1}}<img src="{{getImgUrl picture1}}">{{/if}}
+                        {{#if picture1}}<img src="{{getShopImg picture1 memberId commodityId}}">{{/if}}
                     </div>
                     <div class="otherImg">
-                        {{#if picture1}}<img src="{{getImgUrl picture1}}" class="active">{{/if}}
-                        {{#if picture2}}<img src="{{getImgUrl picture2}}">{{/if}}
-                        {{#if picture3}}<img src="{{getImgUrl picture3}}">{{/if}}
-                        {{#if picture4}}<img src="{{getImgUrl picture4}}">{{/if}}
+                        {{#if picture1}}<img src="{{getShopImg picture1 memberId commodityId}}" class="active">{{/if}}
+                        {{#if picture2}}<img src="{{getShopImg picture2 memberId commodityId}}">{{/if}}
+                        {{#if picture3}}<img src="{{getShopImg picture3 memberId commodityId}}">{{/if}}
+                        {{#if picture4}}<img src="{{getShopImg picture4 memberId commodityId}}">{{/if}}
                     </div>
                 </div>
                 <div class="infos">
@@ -39,11 +39,11 @@
                         <tbody>
                         <tr style="height:35px">
                             <td class="price">价格:</td>
-                            <td>{{format_Money price}}</td>
+                            <td style="padding-left:15px;">{{format_Money price}}</td>
                         </tr>
                         <tr style="height:38px">
                             <td class="">起批量:</td>
-                            <td style="padding-left:15px;"> 面议 </td>
+                            <td style="padding-left:30px;"> 面议 </td>
                         </tr>
                         </tbody>
                     </table>
@@ -60,15 +60,15 @@
                         </div>
                     {{/if}}
                     <div class="term">
-                        <span class="inlineBlock">期限：</span>
+                        <span class="inlineBlock">发货期限：</span>
                         <span class="inlineBlock active">面议</span>
                     </div>
                     <div class="postage">
-                        <span class="inlineBlock">邮费：</span>
+                        <span class="inlineBlock">邮费标准：</span>
                         <span class="inlineBlock active">面议</span>
                     </div>
                        <div class="quantity">
-                           <span class="inlineBlock">库存：</span>
+                           <span class="inlineBlock">库存余量：</span>
                           <span>{{quantity}}{{uom}}</span>
                        </div>
                        <div class="btn-collection"><span>联系商家</span>
@@ -98,7 +98,7 @@
                       {{#setRenderRange @index 5}}
                           <li>
                               <a href="/app/webpage/shop.html?memberId={{memberId}}&commodityId={{commodityId}}" target="_blank">
-                                 <img src="{{getImgUrl picture1}}">
+                                 <img src="{{getShopImg picture1 memberId commodityId}}">
                                  <div class="price">{{format_Money price}}</div>
                               </a>
                           </li>
@@ -153,7 +153,7 @@
                 <div class="shopDescriptionHtml">
                     {{#each RESPONSE.commoditySearchList}}
                         {{#setRenderRange @index 1}}
-                            {{{ImgSrc showPageSource}}}
+                            {{{handleSrc showPageSource}}}
                         {{/setRenderRange}}
                     {{/each}}
                 </div>

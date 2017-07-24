@@ -70,9 +70,12 @@ define([
     var querySearchShop =  {};
     if(commodityName){
         searchCont = commodityName;
-        querySearchShop["currentPage"] = currentPage>0?currentPage:1;
         querySearchShop["commodityName"] = commodityName;
     }
+    else{
+        querySearchShop["currentPage"] = currentPage>0?currentPage:1;
+    }
+
 
     common.logOutput("visit-searchShop", "加载页面模块...");
 
@@ -104,6 +107,7 @@ define([
         }
     });
     var footer = new pageFooter1("#load-pageFooter",{});
+
 
     $.when(
         top.options.state,
@@ -152,11 +156,15 @@ define([
             var commodityName = searchShop.options.requestData.querySearchShop.commodityName;
             var pagination = searchShop.options.renderData.RESPONSE.pagination;
             var currentPage = pagination && pagination.currentPage || 1;
-            common.setUrlParam(
-                { "commodityName": commodityName, "currentPage": currentPage },
-                type,
-                state
-            )
+            if(commodityName){
+                common.setUrlParam(
+                    { "commodityName": commodityName, "currentPage": currentPage }, type, state
+                )
+            }
+            else{
+                common.delUrlParam(["memberName"], type, state);
+                common.setUrlParam({ "currentPage": currentPage }, "cover", state)
+            }
         }
         setHistoryState();
         setHistory(historyState, "cover");
@@ -201,39 +209,45 @@ define([
                 var type = $node.parent().parent().parent().find(".active[searchType]").attr("searchType");
                 var cont = $node.parent().parent().parent().find(".input-search").val().trim();
                 if(type == 1){
-                    if(location.pathname!= "/app/webpage/searchCompany.html"){
+                    if(cont){
                         location.href = encodeURI("/app/webpage/searchCompany.html?memberName="+cont);
                     }
-                }else if(type == 2){
-                    if(location.pathname!= "/app/webpage/searchShop.html"){
-                        location.href = encodeURI("/app/webpage/searchShop.html?commodityName="+cont);
-                    }
                     else{
-                        searchShop.options.config = {
-                            brand: null,
-                            commodityCategory2: null,
-                            commodityCategory3: null,
-                            color: null,
-                            size: null,
-                            priceMin: null,
-                            priceMax: null,
-                            priceRegion: null,
-                            filterDefault: { active:true, down: true },
-                            filterHot: { active:null, down: true },
-                            filterPrice:{ active:null, down: true }
-                        };
+                        location.href = encodeURI("/app/webpage/searchCompany.html");
+                    }
+                }else if(type == 2){
+                    searchShop.options.config = {
+                        brand: null,
+                        commodityCategory2: null,
+                        commodityCategory3: null,
+                        color: null,
+                        size: null,
+                        priceMin: null,
+                        priceMax: null,
+                        priceRegion: null,
+                        filterDefault: { active:true, down: true },
+                        filterHot: { active:null, down: true },
+                        filterPrice:{ active:null, down: true }
+                    };
+                    if(header.options.renderData.CONFIG.searchCont){
                         searchShop.options.requestData.querySearchShop = {
                             currentPage: 1,
                             numPerPage: 10,
                             commodityName: header.options.renderData.CONFIG.searchCont
                         };
-                        searchShop.toRender("querySearchShop/searchShop");
-                        can.when(searchShop.state)
-                            .done(function(){
-                                setHistoryState();
-                                setHistory(historyState, "add");
-                            })
                     }
+                    else{
+                        searchShop.options.requestData.querySearchShop = {
+                            currentPage: 1,
+                            numPerPage: 10
+                        };
+                    }
+                    searchShop.toRender("querySearchShop/searchShop");
+                    can.when(searchShop.state)
+                        .done(function(){
+                            setHistoryState();
+                            setHistory(historyState, "add");
+                        })
                 }
             });
 

@@ -10,6 +10,7 @@ define([
     "fixture.data.searchCompany.1",
     "fixture.data.searchShop.1",
     "fixture.data.company.1",
+    "fixture.data.company.shop.1",
     "fixture.data.shop.1"
 ], function(
     dataIndex1,
@@ -17,6 +18,7 @@ define([
     dataSearchCompany1,
     dataSearchShop1,
     dataCompany1,
+    dataCompanyShop1,
     dataShop1){
 
     return {
